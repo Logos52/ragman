@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vite/
+.DS_Store
+Thumbs.db
+
+# private data never lives here; point the app at a ragman-data clone instead
+data/private/
+*.prices.txt

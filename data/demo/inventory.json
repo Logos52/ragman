@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "settings": {
+    "statuses": ["Daily", "Rotation", "Seasonal", "Travel Only", "Not Worn", "Retired"],
+    "categories": ["tops", "bottoms", "outerwear", "footwear", "accessories", "electronics", "bags and cubes", "consumables"],
+    "locations": ["USA", "Vietnam"],
+    "defaultSlots": ["Head", "Eyes", "Ears", "Neck", "Wrist", "Torso Base", "Torso Mid", "Torso Outer", "Hands", "Legs", "Underwear", "Socks", "Feet", "Pockets", "Backpack", "Carry-on", "Pouch"],
+    "stashWidth": 10
+  },
+  "items": {},
+  "loadouts": {
+    "Work": { "slots": ["Head", "Eyes", "Ears", "Neck", "Wrist", "Torso Base", "Torso Mid", "Torso Outer", "Hands", "Legs", "Underwear", "Socks", "Feet", "Pockets", "Backpack", "Pouch"], "pocketsGrid": [4, 1], "placements": {} },
+    "Plane": { "slots": ["Head", "Eyes", "Ears", "Neck", "Wrist", "Torso Base", "Torso Mid", "Torso Outer", "Hands", "Legs", "Underwear", "Socks", "Feet", "Pockets", "Backpack", "Carry-on", "Pouch"], "pocketsGrid": [4, 1], "placements": {} }
+  },
+  "activeLoadout": "Plane",
+  "archive": { "width": 10 },
+  "quickUse": [null, null, null, null, null, null, null, null, null, null],
+  "tasks": [],
+  "skills": []
+}

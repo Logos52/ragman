@@ -1,0 +1,273 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/logos52/ragman/schema/inventory.schema.json",
+  "title": "Ragman inventory file",
+  "description": "One file holds the whole inventory. Every item has a home in a stash, the Archive, or inside a container; a loadout is an overlay that places some items on the person and in carried containers.",
+  "type": "object",
+  "required": ["version", "settings", "items", "loadouts", "activeLoadout", "archive", "quickUse", "tasks", "skills"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "const": 1 },
+    "settings": {
+      "type": "object",
+      "required": ["statuses", "categories", "locations", "defaultSlots", "stashWidth"],
+      "additionalProperties": false,
+      "properties": {
+        "statuses": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "categories": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "locations": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "defaultSlots": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "stashWidth": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "items": {
+      "type": "object",
+      "propertyNames": { "$ref": "#/$defs/slug" },
+      "additionalProperties": { "$ref": "#/$defs/item" }
+    },
+    "loadouts": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/loadout" }
+    },
+    "activeLoadout": { "type": "string" },
+    "archive": {
+      "type": "object",
+      "required": ["width"],
+      "additionalProperties": false,
+      "properties": { "width": { "type": "integer", "minimum": 1 } }
+    },
+    "quickUse": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": { "oneOf": [{ "$ref": "#/$defs/slug" }, { "type": "null" }] }
+    },
+    "tasks": { "type": "array", "items": { "$ref": "#/$defs/task" } },
+    "skills": { "type": "array", "items": { "$ref": "#/$defs/skillGroup" } }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "cells": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "integer", "minimum": 1 },
+      "description": "[w, h] in grid cells"
+    },
+    "cell": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": { "type": "integer", "minimum": 0 },
+      "description": "[x, y], 0-based from the top-left"
+    },
+    "item": {
+      "type": "object",
+      "required": ["name", "category"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "description": "official product name, as the maker writes it" },
+        "nameEn": { "type": "string", "description": "optional English name when the official one is not" },
+        "maker": { "type": "string" },
+        "makerUrl": { "type": "string", "format": "uri" },
+        "category": { "type": "string", "description": "one of settings.categories" },
+        "status": { "type": "string", "description": "one of settings.statuses; use-based, never purchase-based" },
+        "location": { "type": "string", "description": "one of settings.locations" },
+        "size": { "type": ["string", "null"] },
+        "footprint": { "oneOf": [{ "$ref": "#/$defs/cells" }, { "type": "null" }], "description": "null draws as 1x1" },
+        "weight_g": { "type": ["number", "null"], "description": "from the maker's spec or a kitchen scale; null is counted as unweighed, never estimated" },
+        "weightLimit_g": { "type": ["number", "null"], "description": "containers only; an airline allowance such as 23000" },
+        "tags": { "type": "array", "items": { "type": "string" }, "description": "optional properties accepts filters match, beside the category: laptop, flat, band, liquid" },
+        "staple": { "type": "boolean" },
+        "consumable": { "type": "boolean" },
+        "specialCare": { "type": "boolean" },
+        "note": { "type": "string" },
+        "lesson": { "type": "string" },
+        "images": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "icon": { "type": "string", "description": "path under the images folder; cartoon, square, item only" },
+            "photo": { "type": "string", "description": "path under the images folder; real, high-res, item only" }
+          }
+        },
+        "hidden": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "fabric": { "type": "string" },
+            "care": { "type": "string" },
+            "source": { "type": "string" }
+          },
+          "description": "logged, never shown"
+        },
+        "attachmentSlots": { "type": "array", "items": { "type": "string" } },
+        "attachedTo": {
+          "oneOf": [
+            {
+              "type": "object",
+              "required": ["to", "slot"],
+              "additionalProperties": false,
+              "properties": { "to": { "$ref": "#/$defs/slug" }, "slot": { "type": "string" } }
+            },
+            { "type": "null" }
+          ],
+          "description": "an attached item has no home and no placement"
+        },
+        "panels": { "type": "array", "items": { "$ref": "#/$defs/panel" }, "description": "containers only" },
+        "home": { "$ref": "#/$defs/homePlace" }
+      }
+    },
+    "panel": {
+      "type": "object",
+      "required": ["name", "grid"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "grid": { "$ref": "#/$defs/cells" },
+        "accepts": {
+          "oneOf": [{ "type": "array", "items": { "type": "string" } }, { "type": "null" }],
+          "description": "names allowed; each matches an item's tag or its category; null means anything"
+        },
+        "regions": { "type": "array", "items": { "$ref": "#/$defs/region" } }
+      }
+    },
+    "region": {
+      "type": "object",
+      "required": ["name", "at", "size", "accepts"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "at": { "$ref": "#/$defs/cell" },
+        "size": { "$ref": "#/$defs/cells" },
+        "accepts": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "homePlace": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["kind", "location", "x", "y", "rotated"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": { "const": "stash" },
+            "location": { "type": "string" },
+            "x": { "type": "integer", "minimum": 0 },
+            "y": { "type": "integer", "minimum": 0 },
+            "rotated": { "type": "boolean" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["kind", "x", "y", "rotated"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": { "const": "archive" },
+            "x": { "type": "integer", "minimum": 0 },
+            "y": { "type": "integer", "minimum": 0 },
+            "rotated": { "type": "boolean" }
+          }
+        },
+        { "$ref": "#/$defs/panelPlace" }
+      ]
+    },
+    "panelPlace": {
+      "type": "object",
+      "required": ["kind", "in", "panel", "x", "y", "rotated"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "panel" },
+        "in": { "$ref": "#/$defs/slug" },
+        "panel": { "type": "string" },
+        "x": { "type": "integer", "minimum": 0 },
+        "y": { "type": "integer", "minimum": 0 },
+        "rotated": { "type": "boolean" }
+      }
+    },
+    "slotPlace": {
+      "type": "object",
+      "required": ["kind", "slot"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": { "const": "slot" },
+        "slot": { "type": "string" }
+      }
+    },
+    "loadout": {
+      "type": "object",
+      "required": ["slots", "placements"],
+      "additionalProperties": false,
+      "properties": {
+        "slots": { "type": "array", "items": { "type": "string" } },
+        "pocketsGrid": { "$ref": "#/$defs/cells" },
+        "placements": {
+          "type": "object",
+          "propertyNames": { "$ref": "#/$defs/slug" },
+          "additionalProperties": { "oneOf": [{ "$ref": "#/$defs/slotPlace" }, { "$ref": "#/$defs/panelPlace" }] }
+        }
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": ["id", "title", "status", "objectives"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/$defs/slug" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "enum": ["active", "completed", "locked"] },
+        "itemId": { "oneOf": [{ "$ref": "#/$defs/slug" }, { "type": "null" }] },
+        "objectives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["text", "done"],
+            "additionalProperties": false,
+            "properties": {
+              "text": { "type": "string" },
+              "done": { "type": "boolean" },
+              "auto": {
+                "oneOf": [
+                  {
+                    "type": "object",
+                    "required": ["item", "in"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "item": { "$ref": "#/$defs/slug" },
+                      "in": { "type": "string", "description": "a container id or a slot name" },
+                      "loadout": { "type": "string" }
+                    }
+                  },
+                  { "type": "null" }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "skillGroup": {
+      "type": "object",
+      "required": ["name", "skills"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "level", "progress"],
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "parent": { "type": ["string", "null"] },
+              "level": { "type": "integer", "minimum": 0 },
+              "progress": { "type": "number", "minimum": 0, "maximum": 1 },
+              "note": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
