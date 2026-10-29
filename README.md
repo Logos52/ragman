@@ -18,6 +18,12 @@ Named after the Tarkov trader who sells clothing and gear. On screen the app is 
 
 The real inventory lives in the private `ragman-data` repo and is never committed here.
 
+## License and affiliation
+
+Ragman is licensed under the GNU Affero General Public License v3.0; see `LICENSE`. The author holds the copyright and may offer other licenses separately. Outside code contributions are not accepted yet; see `CONTRIBUTING.md`.
+
+Ragman is a fan-made personal tool inspired by the inventory screen of Escape from Tarkov. It is not affiliated with, endorsed by, or connected to Battlestate Games, and it contains none of the game's assets, icons, fonts or artwork.
+
 ## Principles
 
 - Nothing is guessed. A value with no source stays blank.
