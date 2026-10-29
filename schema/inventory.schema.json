@@ -74,6 +74,7 @@
         "status": { "type": "string", "description": "one of settings.statuses; use-based, never purchase-based" },
         "location": { "type": "string", "description": "one of settings.locations" },
         "size": { "type": ["string", "null"] },
+        "color": { "type": "string", "description": "the colorway as the maker names it; distinguishes duplicates" },
         "footprint": { "oneOf": [{ "$ref": "#/$defs/cells" }, { "type": "null" }], "description": "null draws as 1x1" },
         "weight_g": { "type": ["number", "null"], "description": "from the maker's spec or a kitchen scale; null is counted as unweighed, never estimated" },
         "weightLimit_g": { "type": ["number", "null"], "description": "containers only; an airline allowance such as 23000" },
@@ -115,7 +116,7 @@
           "description": "an attached item has no home and no placement"
         },
         "panels": { "type": "array", "items": { "$ref": "#/$defs/panel" }, "description": "containers only" },
-        "home": { "$ref": "#/$defs/homePlace" }
+        "home": { "oneOf": [{ "$ref": "#/$defs/homePlace" }, { "type": "null" }], "description": "null only for an attached item" }
       }
     },
     "panel": {
