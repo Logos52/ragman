@@ -47,6 +47,7 @@ for r in rows:
     if not cat and rid in (13, 14, 51): cat = "outerwear"
     if not cat and rid in (54, 55, 56): cat = "bottoms"
     base = PERSONAL.get(rid, (None, None))[1] or slug(" ".join(x for x in (r["name"], (r.get("colour") or "").split("(")[0].strip(), r.get("fit") or "") if x))
+    if base in items or base in photos_to_get: base = f"{base}-{rid}"  # same name, size and ascii colour: keep the export id apart
     maker_url = np.get("userDefined:URL") or ""
     if not maker_url:
         m = URL_RE.search((r.get("notes") or "") + " " + (r.get("source") or ""))
@@ -55,7 +56,7 @@ for r in rows:
     if r["status"] == "not_used": status = "Not Worn"
     if rid == 45: status = ""  # needs repair, not archived by choice
     note = clean_note(r.get("notes"))
-    if r.get("location") == "packed_vn": note = ("Packed for Vietnam. " + note).strip()
+    if r.get("location") == "packed_vn" and "vietnam" not in note.lower(): note = ("Packed for Vietnam. " + note).strip()
     lesson = r.get("lesson") or ""
     if not lesson:
         if rid in (32, 33, 34): lesson = "Front and back fabric weights differ, so the back pulls down and the front rides up"
