@@ -117,6 +117,7 @@
           "description": "an attached item has no home and no placement"
         },
         "panels": { "type": "array", "items": { "$ref": "#/$defs/panel" }, "description": "containers only" },
+        "panelLayout": { "enum": ["row", "column"], "description": "how the opened window arranges the panels: row side by side (default, bags), column stacked top to bottom (drawer units)" },
         "home": { "oneOf": [{ "$ref": "#/$defs/homePlace" }, { "type": "null" }], "description": "null only for an attached item" }
       }
     },
