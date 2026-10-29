@@ -89,7 +89,8 @@
           "additionalProperties": false,
           "properties": {
             "icon": { "type": "string", "description": "path under the images folder; cartoon, square, item only" },
-            "photo": { "type": "string", "description": "path under the images folder; real, high-res, item only" }
+            "photo": { "type": "string", "description": "path under the images folder; real, high-res, item only" },
+            "worn": { "type": "string", "description": "path under the images folder; the garment drawn on the base figure's pose, transparent elsewhere; wearables only" }
           }
         },
         "hidden": {
