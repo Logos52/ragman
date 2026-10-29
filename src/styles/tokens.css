@@ -1,0 +1,39 @@
+/* Design tokens: "Departures". Source of truth: docs/DESIGN.md. */
+:root {
+  --page: #F5F7FA;
+  --panel: #FFFFFF;
+  --line: #D9DEE5;
+  --grid-bg: #F1F3F6;
+  --grid-line: #CFD5DD;
+  --tile: #FFFFFF;
+  --tile-line: #AEB7C2;
+  --ink: #15181C;
+  --ink-2: #5B6572;
+  --ink-3: #9AA4B1;
+  --accent: #FF5A1F;
+  --accent-ink: #FFFFFF;
+  --ok: #22C55E;
+  --bad: #EF4444;
+  --region: #2F6FED;
+
+  /* status sticker colors */
+  --status-daily: var(--accent);
+  --status-rotation: var(--ink);
+  --status-seasonal: #0EA5E9;
+  --status-travel-only: #7C3AED;
+  --status-not-worn: #9AA4B1;
+  --status-retired: #CBD2DA;
+
+  --cell: 56px;
+
+  --font-label: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Barlow", system-ui, sans-serif;
+}
+
+@media (max-width: 1279.98px) {
+  :root { --cell: 48px; }
+}
+
+@media (max-width: 639.98px) {
+  :root { --cell: 34px; }
+}

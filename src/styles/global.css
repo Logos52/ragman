@@ -1,0 +1,43 @@
+/* Global reset and base styles. */
+*, *::before, *::after { box-sizing: border-box; border-radius: 0; }
+
+html, body { margin: 0; padding: 0; }
+/* the 40 px tab bar is sticky on phone (the page scrolls): anything scrolled into view (a focused field, a
+   scrollIntoView) lands under it, never beneath it */
+html { scroll-padding-top: 40px; }
+h1, h2, h3, h4, h5, h6, p, figure, ul, ol { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+img, svg { display: block; }
+button, input, select, textarea { font: inherit; color: inherit; margin: 0; }
+button { cursor: pointer; background: none; border: 0; padding: 0; }
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+/* thin, light scrollbars */
+* { scrollbar-width: thin; scrollbar-color: var(--tile-line) transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--grid-line); border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: var(--tile-line); background-clip: padding-box; }
+
+/* condensed caps label */
+.label {
+  font-family: var(--font-label);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}

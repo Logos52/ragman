@@ -82,6 +82,11 @@
         "staple": { "type": "boolean" },
         "consumable": { "type": "boolean" },
         "specialCare": { "type": "boolean" },
+        "pinned": { "type": "boolean", "description": "Sort leaves a pinned item where it is and packs everything else around it" },
+        "locked": { "type": "boolean", "description": "a locked item cannot be moved, equipped, archived, deleted, merged or split until unlocked" },
+        "verified": { "type": "boolean", "description": "the owner has checked this item against a source; false or absent is unverified (drawn with a ? mark)" },
+        "nickname": { "type": "string", "description": "containers only; shown on the tile label strip instead of the name" },
+        "quantity": { "type": "integer", "minimum": 1, "description": "consumables only; how many are in this stack; absent counts as 1" },
         "note": { "type": "string" },
         "lesson": { "type": "string" },
         "images": {
@@ -90,6 +95,7 @@
           "properties": {
             "icon": { "type": "string", "description": "path under the images folder; cartoon, square, item only" },
             "photo": { "type": "string", "description": "path under the images folder; real, high-res, item only" },
+            "grok": { "type": "string", "description": "path under the images folder; Grok-generated item image, used as cell art when no fitted icon exists yet" },
             "worn": { "type": "string", "description": "path under the images folder; the garment drawn on the base figure's pose, transparent elsewhere; wearables only" }
           }
         },
@@ -180,7 +186,7 @@
       "additionalProperties": false,
       "properties": {
         "kind": { "const": "panel" },
-        "in": { "$ref": "#/$defs/slug" },
+        "in": { "oneOf": [{ "$ref": "#/$defs/slug" }, { "const": "__pockets__" }], "description": "the container's slug, or __pockets__ for the loadout's Pockets panel" },
         "panel": { "type": "string" },
         "x": { "type": "integer", "minimum": 0 },
         "y": { "type": "integer", "minimum": 0 },
@@ -220,6 +226,7 @@
         "description": { "type": "string" },
         "status": { "enum": ["active", "completed", "locked"] },
         "itemId": { "oneOf": [{ "$ref": "#/$defs/slug" }, { "type": "null" }] },
+        "unlocks": { "type": "array", "items": { "$ref": "#/$defs/slug" }, "description": "task ids; when this task becomes completed, each listed task that is locked becomes active" },
         "objectives": {
           "type": "array",
           "items": {

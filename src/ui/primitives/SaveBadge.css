@@ -1,0 +1,21 @@
+/* ---- save badge ---- */
+.rg-save {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.rg-save--saving { color: var(--ink-3); }
+.rg-save--error { color: var(--bad); }
+.rg-save__retry {
+  color: var(--bad);
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.rg-save__retry:hover { color: var(--ink); }
+

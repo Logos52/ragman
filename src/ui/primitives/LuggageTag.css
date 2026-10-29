@@ -1,0 +1,27 @@
+.rg-ltag {
+  display: inline-flex;
+  align-items: center;
+  height: 14px;
+  max-width: 100%;
+  padding: 0 5px 0 11px;
+  background: var(--ink);
+  color: var(--accent-ink);
+  /* chamfered left end like a baggage tag */
+  clip-path: polygon(4px 0, 100% 0, 100% 100%, 4px 100%, 0 calc(100% - 4px), 0 4px);
+  /* the punched hole */
+  -webkit-mask: radial-gradient(circle at 6px 50%, transparent 1.6px, #000 2.1px);
+  mask: radial-gradient(circle at 6px 50%, transparent 1.6px, #000 2.1px);
+  pointer-events: none;
+}
+
+.rg-ltag__text {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

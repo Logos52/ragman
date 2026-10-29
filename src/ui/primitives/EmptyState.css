@@ -1,0 +1,33 @@
+.rg-empty,
+.rg-later {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  padding: 24px 16px;
+  text-align: center;
+}
+/* inside the Overall and Skills panel (a flex column) the text takes the free height, so it centres in the whole panel */
+.rg-app__panel > .rg-later { flex: 1 0 auto; height: auto; }
+
+.rg-empty__title,
+.rg-later__name {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.rg-empty__title { color: var(--ink-2); }
+/* hint and action: a plain group (laid out as the empty state's own children) unless a host places it */
+.rg-empty__more { display: contents; }
+.rg-empty__hint { max-width: 36ch; color: var(--ink-3); font-size: 13px; }
+.rg-empty__action { margin-top: 8px; }
+
+.rg-later { color: var(--ink-3); }
+.rg-later__name { color: var(--ink-3); }
+.rg-later__text { font-size: 14px; }

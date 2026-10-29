@@ -1,0 +1,404 @@
+/* Gear screen layout. Tokens only; see docs/DESIGN.md "Composition". */
+.gear {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  background: var(--page);
+}
+
+.gear__cols {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  /* the stash column never squeezes its grid: it takes at least strip + stashWidth cells */
+  grid-template-columns: minmax(0, 28fr) minmax(0, 30fr) minmax(min-content, 42fr);
+  gap: 12px;
+  padding: 12px 12px 0;
+}
+/* 24 : 33 : 43 at 1440 and up. The stash never goes under its min-content (strip + stashWidth cells), and the
+   middle column never goes under 2-cell bag art + gap + a 6-cell Main grid + padding, so a bag's Main grid sits
+   beside its art; at exactly 1440 these two floors take precedence over the ratio and the left column gives way. */
+@media (min-width: 1440px) {
+  .gear__cols {
+    grid-template-columns: minmax(0, 24fr) minmax(calc(var(--cell) * 8 + 8px + 24px + 2px + 2px), 33fr) minmax(min-content, 43fr);
+  }
+}
+
+.gear-col {
+  min-width: 0;
+  min-height: 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  overflow: auto;
+}
+.gear__middle { display: flex; min-width: 0; min-height: 0; }
+.gear__middle > .gear-col { flex: 1; }
+
+/* ---------------- person ---------------- */
+.gear-person {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+}
+.gear-person__picker { flex: none; display: flex; align-items: center; gap: 8px; }
+.gear-person__picker > :first-child { flex: 1 1 auto; min-width: 0; }
+.gear-doll {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: start;
+}
+.gear-doll__col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.gear-doll__figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+
+}
+.gear-doll__figure .rg-figure {
+  width: 100%;
+  max-width: calc(var(--cell) * 4.5);
+  max-height: calc((var(--cell) + 24px) * 6.5);
+}
+.gear-doll__below { display: flex; gap: 6px; justify-content: center; }
+
+/* ---------------- carried ---------------- */
+.gear-carried {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 12px;
+}
+.gear-carry { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.gear-carry > .rg-labeltab { flex: none; }
+.gear-bag { align-items: stretch; }
+.gear-bag > .rg-labeltab { align-self: flex-start; }
+.gear-bag__head {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0 6px;
+  border-top: 1px solid var(--line);
+  min-width: 0;
+}
+.gear-bag__name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.gear-bag__head .rg-weight { flex: none; align-items: flex-end; }
+/* the allowance meter: a full-width 2 px line along the bottom of the header (it takes no height of its own,
+   so the header is the same height with or without a limit) */
+.gear-bag__meter.rg-meter { position: absolute; left: 0; right: 0; bottom: 0; width: auto; min-width: 0; }
+.gear-bag__body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 8px;
+}
+/* the bag art is the slot drop zone, 2 x 2 cells, with the Main grid beside it */
+.gear-bag__art { flex: none; }
+
+/* ---------------- stash ---------------- */
+.gear-stash {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px 12px 0;
+}
+.gear-stash__head {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 10px;
+}
+.gear-stash__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.gear-stash__spacer { flex: 1; }
+.gear-stash__search { flex: 1 1 160px; min-width: 0; }
+.gear-stash__tab { flex: none; align-self: flex-start; }
+.gear-stash__body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  gap: 4px;
+}
+.gear-stash__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 12px;
+  /* room for the scrollbar so the grid's right line is never covered */
+  scrollbar-gutter: stable;
+}
+/* Chromium culls small painted boxes and text within the gutter's width of this scroller's left edge (the "?"
+   badge and the consumable dot on column-0 tiles never painted). One composited layer for the stash grid avoids it. */
+.gear-stash__scroll .rg-grid { will-change: transform; }
+.gear-filter {
+  flex: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.gear-filter .gear-filter__btn { width: 32px; height: 32px; }
+
+/* ---------------- quick use ---------------- */
+.gear-quick {
+  flex: none;
+  height: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+}
+.gear-quick__inner { display: flex; flex-direction: column; align-items: flex-start; max-width: 100%; min-width: 0; }
+.gear-quick__boxes {
+  display: flex;
+  gap: 6px;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.gear-quick .rg-slot__glyph { display: none; }
+.gear-quick .rg-slot__box { width: var(--cell); height: var(--cell); }
+/* the tile fills the box exactly (not 1 px over its edge), so the scroller never clips its "?" or its ring */
+.gear-quick .rg-slot--filled .rg-slot__box > :first-child { inset: 0; }
+
+/* ---------------- footer ---------------- */
+.gear-footer {
+  flex: none;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 12px;
+  border-top: 1px solid var(--line);
+  background: var(--panel);
+}
+
+/* ---------------- container windows ---------------- */
+.gear-windows {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+}
+.gear-win-host { position: absolute; inset: 0; pointer-events: none; }
+.gear-win-host > .rg-window { pointer-events: auto; max-height: calc(100vh - 48px); }
+.gear-win-host > .rg-window > .rg-window__body { min-height: 0; }
+.gear-win__panels {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: min(calc(100vw - 40px), calc(var(--cell) * 22));
+}
+.gear-win__panels--column { flex-direction: column; flex-wrap: nowrap; }
+.gear-win__panel { display: flex; flex-direction: column; align-items: flex-start; }
+.gear-win__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding: 0 8px;
+  border: 1px dashed var(--tile-line);
+  color: var(--ink-2);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+.gear-win__more:hover { border-color: var(--ink); color: var(--ink); }
+.gear-win__spare {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-3);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+/* loading/error skeleton: the filter strip has no categories yet but keeps its 32 px column of blank disabled
+   squares, and the location control is a blank two-segment box of the loaded control's width (two 2-word-ish
+   segments), so the header, the strip and the grid do not shift on load */
+.gear--skeleton .gear-filter { min-width: 32px; min-height: 32px; }
+.gear-filter__ph { display: block; flex: none; border: 1px solid var(--line); background: var(--panel); }
+.gear-stash__locph .rg-seg__opt { width: 46px; cursor: default; }
+
+/* grid wrappers */
+.gz, .sz { display: inline-flex; flex: none; }
+
+/* ---------------- phone ---------------- */
+@media (max-width: 639.98px) {
+  .gear { height: auto; min-height: 100%; }
+  .gear__cols {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px 12px 0;
+  }
+  .gear-col { overflow: visible; }
+  .gear__middle { display: block; }
+  .gear-carried { overflow-x: auto; }
+  .gear-stash { overflow: visible; }
+  .gear-stash__body { flex-direction: column; }
+  .gear-filter { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; }
+  .gear-stash__scroll { overflow: visible; }
+  .gear-quick { align-items: stretch; height: auto; padding: 8px 12px; }
+  /* the last box scrolls to end inside the gutter */
+  .gear-quick__boxes { overflow-x: auto; padding-bottom: 4px; padding-right: 12px; }
+  /* the Filter by item chip stays on the search row: the search field gives way first */
+  .gear-stash__search { flex-basis: 80px; }
+  .gear-doll { gap: 6px; }
+  /* container windows keep a 16 px gutter each side (they open centered); panels wrap inside
+     (26 px = the window body's 12 px side padding and its 1 px borders) */
+  .gear-win-host > .rg-window { max-width: calc(100vw - 32px); }
+  .gear-win__panels { max-width: calc(100vw - 32px - 26px); }
+  .rg-grid { touch-action: pan-y; }
+}
+@media (pointer: coarse) {
+  .gear .rg-grid { touch-action: pan-y; }
+}
+
+/* Filter by item chip in the stash header */
+.gear-showing {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  min-width: 0;
+  max-width: 50%;
+  height: 24px;
+  padding: 0 0 0 8px;
+  background: var(--ink);
+  color: var(--accent-ink);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.gear-showing__k { color: var(--ink-3); }
+.gear-showing__v { min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--accent-ink); }
+.gear-showing__x {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 2px;
+  color: var(--accent-ink);
+}
+.gear-showing__x:hover { background: var(--accent); }
+
+/* ---- per-loadout slots editor and pockets size ---- */
+.gear-slots { flex: none; display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 8px; padding: 8px; border: 1px solid var(--ink); background: var(--panel); }
+/* the editor opens over the doll, anchored under the picker row, so the doll keeps its place */
+.gear-person__picker { position: relative; }
+.gear-person__picker > .gear-slots {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  z-index: 6;
+  box-shadow: 0 4px 4px rgb(21 24 28 / 0.18);
+}
+.gear-slots__head { display: flex; align-items: center; justify-content: space-between; }
+.gear-slots__h { font-family: var(--font-label); font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+.gear-slots__x { width: 22px; height: 22px; font-size: 16px; line-height: 1; color: var(--ink-2); }
+.gear-slots__x:hover { background: var(--accent); color: var(--accent-ink); }
+.gear-slots__list { display: flex; flex-wrap: wrap; gap: 4px; }
+.gear-slots__opt {
+  height: 24px; padding: 0 8px; border: 1px solid var(--tile-line); background: var(--grid-bg); color: var(--ink-3);
+  font-family: var(--font-label); font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.gear-slots__opt--on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.gear-slots__opt:hover { border-color: var(--ink); }
+.gear-slots__add { display: flex; gap: 6px; }
+.gear-slots__in { flex: 1 1 auto; min-width: 0; height: 28px; padding: 0 8px; border: 1px solid var(--tile-line); font-size: 13px; }
+.gear-slots__in:focus { border-color: var(--ink); outline: none; }
+.gear-slots__err, .gear-pockets__err { color: var(--bad); font-size: 12px; }
+.gear-pockets__head { display: flex; align-items: center; gap: 8px; }
+.gear-pockets__size { display: inline-flex; align-items: center; gap: 3px; font-family: var(--font-label); font-size: 11px; color: var(--ink-2); }
+.gear-pockets__size input {
+  width: 36px; height: 18px; padding: 0 2px; border: 1px solid var(--line); background: var(--panel);
+  font-family: var(--font-label); font-size: 11px; text-align: center; color: var(--ink-2);
+}
+.gear-pockets__size input:focus { border-color: var(--ink); outline: none; color: var(--ink); }
+.gear-slots__add .rg-btn { flex: none; }
+.gear-pockets__size input { appearance: textfield; -moz-appearance: textfield; }
+.gear-pockets__size input::-webkit-inner-spin-button, .gear-pockets__size input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+/* ---- layout polish (window gutters, empty stash): owned by the layout-polish agent ---- */
+/* Every window keeps a 16 px gutter from the viewport (and the tab bar): the box is capped to that room, and the
+   panels row wraps its collapsed-panel chips so the window is never wider than the viewport less 32 px
+   (body padding 12 + 12 and border 1 + 1 = 26 px). */
+.gear-win-host > .rg-window { max-width: calc(100vw - 32px); max-height: calc(100vh - 40px - 32px); }
+.gear-win__panels { max-width: min(calc(100vw - 32px - 26px), calc(var(--cell) * 22)); }
+/* Empty inventory: the stash grid carries one large Add button, centred on the grid. */
+.gear-stash__first {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  pointer-events: none;
+}
+.gear-stash__first > .rg-btn { pointer-events: auto; }
+.gear-stash__firstbtn.rg-btn {
+  height: 56px;
+  padding: 0 28px;
+  gap: 10px;
+  font-size: 20px;
+  letter-spacing: 0.08em;
+  box-shadow: 0 4px 10px rgb(21 24 28 / 0.12);
+}
+.gear-stash__firstbtn.rg-btn svg { width: 20px; height: 20px; }
+/* collapsed-panel chips: one wrapping group after the shown panels, at most 6 cells wide */
+.gear-win__chips {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: 6px;
+  max-width: calc(var(--cell) * 6);
+}
+@media (max-width: 639.98px) {
+  .gear-win__chips { max-width: none; }
+}

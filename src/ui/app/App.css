@@ -1,0 +1,32 @@
+/* App shell: tab bar, banner, the routed screen. */
+.rg-app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  background: var(--page);
+}
+.rg-app > .rg-tabbar { flex: none; }
+.rg-app > .rg-banner { flex: none; }
+.rg-app__main { flex: 1; min-height: 0; overflow: auto; }
+/* Overall and Skills: the panel is the free flex space under the tab bar and the banner (if any), 12 px gutters */
+.rg-app__main[data-tab='overall'], .rg-app__main[data-tab='skills'] { display: flex; flex-direction: column; }
+.rg-app__panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 12px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+@media (max-width: 640px) {
+  .rg-app { height: auto; min-height: 100vh; min-height: 100dvh; }
+  .rg-app__main { overflow: visible; }
+  /* the page scrolls on phone; the tab bar stays pinned at the top (windows already clamp below its 40 px) */
+  .rg-app > .rg-tabbar { position: sticky; top: 0; z-index: 40; }
+  /* scrolling to an element (scrollIntoView, find, focus) leaves it clear of the pinned tab bar */
+  html { scroll-padding-top: 40px; }
+}

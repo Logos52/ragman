@@ -1,0 +1,21 @@
+/* ---- banner ---- */
+.rg-banner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  min-height: 36px;
+  padding: 6px 12px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+}
+.rg-banner--bad { background: var(--bad); color: var(--accent-ink); }
+.rg-banner--info {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--region);
+}
+.rg-banner__msg { min-width: 0; }
+.rg-banner__action { display: inline-flex; gap: 8px; }

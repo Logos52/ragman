@@ -1,0 +1,14 @@
+.rg-drag-ghost {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  pointer-events: none;
+  will-change: transform;
+}
+
+html.rg-dragging,
+html.rg-dragging * {
+  cursor: grabbing !important;
+  user-select: none !important;
+}

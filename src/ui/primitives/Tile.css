@@ -1,0 +1,299 @@
+.rg-tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--tile);
+  border: 1px solid var(--tile-line);
+  overflow: hidden;
+  user-select: none;
+  /* the luggage tag and the small-tile rule size themselves to the tile's width (see "Small tiles" below) */
+  container: rg-tile / inline-size;
+  /* pin and lock glyph size: 14 px at the 56 px cell, 12 px at 48, 10 px at 34 */
+  --rg-mk: clamp(10px, calc(var(--cell) / 4), 14px);
+}
+
+.rg-tile:hover { border-color: var(--ink); }
+
+/* art: letterboxed with 2 px padding inside the border */
+.rg-tile__art {
+  position: absolute;
+  inset: 2px;
+  container-type: size;
+  overflow: hidden;
+}
+.rg-tile__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+}
+/* rotated: the box is already w x h after rotation; the image is laid out h x w and turned 90deg */
+.rg-tile--rotated .rg-tile__art img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100cqh;
+  height: 100cqw;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* name strip, top-right */
+.rg-tile__name {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  max-width: calc(100% - var(--rg-marks, 0px));
+  padding: 0 3px;
+  height: 13px;
+  background: rgb(255 255 255 / 0.85);
+  color: var(--ink);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 13px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* container: double rule, ink label strip */
+.rg-tile--container { border-color: var(--ink); }
+.rg-tile--container::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border: 1px solid var(--ink);
+  pointer-events: none;
+}
+.rg-tile--container .rg-tile__art { inset: 5px; }
+.rg-tile--container .rg-tile__name {
+  background: var(--ink);
+  color: var(--accent-ink);
+}
+
+/* placeholder: no art */
+.rg-tile--placeholder { background: var(--grid-bg); }
+.rg-tile__ph {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+  text-align: center;
+}
+.rg-tile__ph span {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  color: var(--ink-2);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.rg-tile--container.rg-tile--placeholder .rg-tile__ph { padding: 6px; }
+.rg-tile--placeholder:has(.rg-tile__name) .rg-tile__ph { padding-top: 14px; }
+.rg-tile--placeholder:has(.rg-tile__mark) .rg-tile__ph { padding-top: calc(var(--rg-mk) + 5px); }
+.rg-tile--placeholder:has(.rg-tile__unv) .rg-tile__ph { padding-bottom: 12px; }
+
+/* phone cells are 34 px: tighten placeholder type so names stay legible */
+@media (max-width: 639.98px) {
+  .rg-tile__ph { padding: 2px; }
+  .rg-tile__ph span { font-size: 9px; letter-spacing: 0.02em; }
+}
+
+/* markers: pin, lock and the consumable dot share one row at the top-left. Each glyph is solid --ink on its own
+   white chip with a faint ink hairline, EFT style, so it reads at a glance over any art. */
+.rg-tile__marks {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  height: calc(var(--rg-mk) + 2px);
+  color: var(--ink);
+  pointer-events: none;
+}
+.rg-tile__mark {
+  flex: none;
+  display: block;
+  box-sizing: content-box;
+  width: var(--rg-mk);
+  height: var(--rg-mk);
+  padding: 1px;
+  background: var(--panel);
+  box-shadow: 0 0 0 1px rgb(21 24 28 / 0.22);
+}
+.rg-tile--container .rg-tile__marks { top: 4px; left: 4px; }
+/* the pin reads as a solid push-pin (its head is a closed shape); the lock stays an outline so its keyhole shows */
+.rg-tile__mark--pin path { fill: currentColor; }
+.rg-tile__dot { position: relative; }
+/* the consumable dot sits on its own white chip like the pin and the lock, with a white ring round the dot */
+.rg-tile__dot::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--rg-mk) * 0.5);
+  height: calc(var(--rg-mk) * 0.5);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--ink);
+  box-shadow: 0 0 0 1px var(--panel);
+}
+
+/* quantity, bottom-right (left of the special-care corner when both are drawn) */
+.rg-tile__qty {
+  position: absolute;
+  right: 1px;
+  bottom: 1px;
+  z-index: 2;
+  min-width: 12px;
+  height: 13px;
+  padding: 0 3px;
+  background: rgb(255 255 255 / 0.85);
+  color: var(--ink);
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 13px;
+  text-align: right;
+  pointer-events: none;
+}
+.rg-tile:has(.rg-tile__care) .rg-tile__qty { right: 10px; }
+.rg-tile--container .rg-tile__qty { right: 3px; bottom: 3px; }
+
+/* unverified: EFT's unexamined mark, bottom-left (above the luggage tag in the Archive) */
+.rg-tile__unv {
+  position: absolute;
+  left: 1px;
+  bottom: 1px;
+  z-index: 3;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+  pointer-events: none;
+}
+.rg-tile--container .rg-tile__unv { left: 3px; bottom: 3px; }
+.rg-tile:has(.rg-tile__ltag) .rg-tile__unv { bottom: 18px; }
+
+/* Ctrl-drag quick move: the container tile under the pointer */
+.rg-tile--drop-ok, .rg-tile--drop-bad { outline: 2px solid var(--ok); outline-offset: -2px; z-index: 5; }
+.rg-tile--drop-ok { background-color: color-mix(in srgb, var(--ok) 35%, var(--tile)); }
+.rg-tile--drop-bad { outline-color: var(--bad); background-color: color-mix(in srgb, var(--bad) 35%, var(--tile)); }
+
+.rg-tile__care {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+.rg-tile__ltag {
+  position: absolute;
+  left: 2px;
+  bottom: 2px;
+  z-index: 2;
+  max-width: calc(100% - 14px);
+}
+.rg-tile--container .rg-tile__ltag { left: 4px; bottom: 4px; }
+
+/* Narrow tiles (a 1-cell tile is 33 px on a phone, 55 px on desktop): the full tag would be cut to a sliver.
+   Compact tag: flush in the corner, 11 px tall, smaller hole and padding, no tracking, and a font that shrinks
+   (9 px down to 7 px, by the label's length in --ltag-n) so the whole location always shows. */
+@container rg-tile (max-width: 40px) {
+  .rg-tile .rg-tile__ltag {
+    left: 0;
+    bottom: 0;
+    max-width: 100%;
+    height: 11px;
+    padding: 0 2px 0 7px;
+    clip-path: polygon(3px 0, 100% 0, 100% 100%, 3px 100%, 0 calc(100% - 3px), 0 3px);
+    -webkit-mask: radial-gradient(circle at 3.5px 50%, transparent 1.3px, #000 1.8px);
+    mask: radial-gradient(circle at 3.5px 50%, transparent 1.3px, #000 1.8px);
+  }
+  .rg-tile .rg-tile__ltag .rg-ltag__text {
+    letter-spacing: 0;
+    font-size: clamp(7px, calc((100cqw - 9px) / (var(--ltag-n, 3) * 0.47)), 9px);
+  }
+}
+
+/* A 1-cell-wide desktop tile (55 px at the 56 px cell, 47 at 48) keeps its name strip, shortened past the mark row.
+   With two or more marks that would leave a stub of one or two letters, so the strip is dropped there instead (the
+   name is in the tooltip and on the Inspect card). */
+@container rg-tile (max-width: 63.98px) {
+  .rg-tile[data-marks="2"] .rg-tile__name,
+  .rg-tile[data-marks="3"] .rg-tile__name { display: none; }
+}
+
+/* Small tiles: rendered width under 40 px (a 1-cell tile at the 34 px phone cell, 33 px).
+   Priority, highest first: the art, the marks, the luggage tag, then the name. So the name strip is dropped (the
+   name is in the tooltip and on the Inspect card), the marks shrink to 10 px in the corners, and the "?" moves to
+   the top-right whenever the luggage tag holds the bottom-left, so the two never overlap. */
+@container rg-tile (max-width: 40px) {
+  .rg-tile .rg-tile__name { display: none; }
+  /* marks keep their --cell size (10 px at the 34 px phone cell) and tuck into the corner */
+  .rg-tile .rg-tile__marks { top: 1px; left: 1px; }
+  .rg-tile--container .rg-tile__marks { top: 3px; left: 3px; }
+  .rg-tile .rg-tile__unv { width: 10px; height: 10px; font-size: 9px; line-height: 10px; }
+  .rg-tile:has(.rg-tile__ltag) .rg-tile__unv { left: auto; right: 1px; top: 1px; bottom: auto; }
+  .rg-tile--container:has(.rg-tile__ltag) .rg-tile__unv { right: 3px; top: 3px; }
+  .rg-tile .rg-tile__qty { min-width: 10px; height: 10px; padding: 0 2px; font-size: 9px; line-height: 10px; }
+  .rg-tile:has(.rg-tile__ltag) .rg-tile__qty { bottom: 12px; }
+  .rg-tile--placeholder .rg-tile__ph,
+  .rg-tile--placeholder:has(.rg-tile__name) .rg-tile__ph { padding: 2px 1px; }
+  .rg-tile--placeholder:has(.rg-tile__marks) .rg-tile__ph { padding-top: 13px; }
+  .rg-tile--placeholder:has(.rg-tile__unv) .rg-tile__ph { padding-bottom: 11px; }
+  .rg-tile--placeholder:has(.rg-tile__ltag) .rg-tile__ph { padding-top: 11px; padding-bottom: 11px; }
+}
+
+/* states */
+.rg-tile--selected {
+  z-index: 4;
+  box-shadow: 0 0 0 2px var(--accent);
+  overflow: visible;
+}
+/* inside a slot or Quick Use box the ring is drawn inset (over the tile's own edge), so the box or a scroller
+   never clips three of its four sides */
+.rg-slot .rg-tile--selected {
+  box-shadow: none;
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+/* ... and the "?" steps inside that ring (its 2 px plus 1 px of white), so orange never runs into orange */
+.rg-slot .rg-tile--selected .rg-tile__unv { left: 3px; bottom: 3px; box-shadow: 0 0 0 1px var(--panel); }
+.rg-slot .rg-tile--selected .rg-tile__marks { top: 3px; left: 3px; }
+.rg-tile--selected .rg-tile__art,
+.rg-tile--selected .rg-tile__ph { overflow: hidden; }
+
+/* the drag ghost (EFT): clearly translucent, no shadow, so the --ok/--bad cells under it read through */
+.rg-tile--dragging {
+  opacity: 0.6;
+  transform: scale(1.03);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.rg-tile--flash { animation: rg-tile-flash 80ms ease-out; }
+@keyframes rg-tile-flash {
+  from { background-color: var(--bad); border-color: var(--bad); }
+}

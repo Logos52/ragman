@@ -1,0 +1,67 @@
+.rg-tabbar {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 40px;
+  background: var(--ink);
+  color: var(--accent-ink);
+  user-select: none;
+}
+
+.rg-tabbar__tabs {
+  display: flex;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.rg-tabbar__tabs::-webkit-scrollbar { display: none; }
+
+.rg-tabbar__tab {
+  position: relative;
+  flex: none;
+  padding: 0 16px;
+  color: var(--accent-ink);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 40px;
+}
+/* hover stays white with an --ink-3 bar, so only the active tab is ever accent */
+.rg-tabbar__tab--on,
+.rg-tabbar__tab--on:hover { color: var(--accent); }
+.rg-tabbar__tab--on::after,
+.rg-tabbar__tab:hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--accent);
+}
+.rg-tabbar__tab:not(.rg-tabbar__tab--on):hover::after { background: var(--ink-3); }
+.rg-tabbar__tab:focus-visible { outline-offset: -3px; }
+
+.rg-tabbar__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: none;
+  padding: 0 16px;
+}
+
+.rg-tabbar__app {
+  color: var(--ink-3);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 639.98px) {
+  .rg-tabbar__tab { padding: 0 10px; font-size: 14px; }
+  .rg-tabbar__right { padding: 0 10px; }
+}

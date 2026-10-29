@@ -1,0 +1,107 @@
+.rg-cmenu-root {
+  position: fixed;
+  z-index: 1100;
+}
+.rg-cmenu-root--inline { position: absolute; z-index: 5; }
+
+.rg-cmenu {
+  position: relative;
+  min-width: 180px;
+  padding: 3px 0;
+  background: var(--panel);
+  border: 1px solid var(--ink);
+  box-shadow: 0 4px 4px rgb(21 24 28 / 0.18);
+  user-select: none;
+}
+.rg-cmenu:focus,
+.rg-cmenu:focus-visible { outline: none; }
+
+.rg-cmenu--sub {
+  position: absolute;
+  min-width: 150px;
+  /* never wider than the viewport less the 16 px gutters; long rows truncate */
+  max-width: calc(100vw - 32px);
+}
+.rg-cmenu-root--inline .rg-cmenu--sub { max-width: none; }
+/* stacked under its row (no room either side, a phone): part of the menu's own flow, exactly the menu's width
+   (width 0 + min-width 100%, so its long rows never widen the menu; they truncate), pushing the rows below down.
+   A 3 px accent rule on top ties it to the row; a --line rule closes it; rows indent 8 px. */
+.rg-cmenu.rg-cmenu--stacked {
+  position: static;
+  width: 0;
+  min-width: 100%;
+  max-width: none;
+  padding: 0 0 3px;
+  border: 0;
+  border-top: 3px solid var(--accent);
+  border-bottom: 1px solid var(--line);
+  box-shadow: none;
+}
+.rg-cmenu--stacked .rg-cmenu__row { padding-left: 20px; }
+.rg-cmenu__label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+
+.rg-cmenu__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 28px;
+  padding: 0 12px;
+  color: var(--ink);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.rg-cmenu__row--danger { color: var(--bad); }
+.rg-cmenu__row--active { background: var(--accent); color: var(--accent-ink); }
+.rg-cmenu__row--danger.rg-cmenu__row--active { background: var(--bad); }
+.rg-cmenu__row--disabled { color: var(--ink-3); cursor: default; }
+/* a question or notice (the delete confirm): readable --ink, not the greyed disabled look */
+.rg-cmenu__row--prompt { color: var(--ink); cursor: default; }
+
+.rg-cmenu__more {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1;
+}
+
+/* inline input row (Rename, Split stack): the label, a small field, an OK */
+.rg-cmenu__row--content { cursor: default; gap: 6px; padding-right: 12px; }
+.rg-cmenu__row--content:hover { background: var(--grid-bg); }
+.rg-cmenu__in {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 22px;
+  padding: 0 6px;
+  background: var(--panel);
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.rg-cmenu__in:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.rg-cmenu__in--num { flex: 0 0 44px; width: 44px; text-align: right; appearance: textfield; -moz-appearance: textfield; }
+.rg-cmenu__in--num::-webkit-inner-spin-button,
+.rg-cmenu__in--num::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.rg-cmenu__ok {
+  flex: none;
+  height: 22px;
+  padding: 0 8px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.rg-cmenu__ok:disabled { background: var(--ink-3); }
+.rg-cmenu__of { flex: none; color: var(--ink-2); font-size: 12px; }
+/* the prefilled value is selected on open (type to replace it); a light selection keeps the digits readable */
+.rg-cmenu__in::selection { background: color-mix(in srgb, var(--accent) 28%, transparent); color: var(--ink); }

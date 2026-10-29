@@ -1,0 +1,47 @@
+.rg-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgb(21 24 28 / 0.32);
+  overflow: auto;
+}
+
+.rg-modal--inline {
+  position: relative;
+  inset: auto;
+  z-index: auto;
+  padding: 24px 16px;
+}
+
+.rg-modal__card {
+  position: relative;
+  max-width: 100%;
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  padding: 18px 20px 20px;
+  background: var(--panel);
+  border: 1px solid var(--ink);
+  border-top: 6px solid var(--accent);
+  box-shadow: 0 8px 24px rgb(21 24 28 / 0.18);
+}
+.rg-modal--inline .rg-modal__card { max-height: none; }
+.rg-modal__card:focus,
+.rg-modal__card:focus-visible { outline: none; }
+
+.rg-modal__close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  color: var(--ink-2);
+  z-index: 2; /* above the paste zone, which is positioned and comes later in the card */
+}
+.rg-modal__close:hover { color: var(--accent); }

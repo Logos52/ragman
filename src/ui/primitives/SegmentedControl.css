@@ -1,0 +1,33 @@
+.rg-seg {
+  display: inline-flex;
+  flex: none;
+  max-width: 100%;
+  border: 1px solid var(--tile-line);
+  background: var(--panel);
+}
+.rg-seg--block { display: flex; width: 100%; }
+.rg-seg--block .rg-seg__opt { flex: 1 1 0; }
+
+.rg-seg__opt {
+  min-width: 0;
+  padding: 0 12px;
+  color: var(--ink-2);
+  font-family: var(--font-label);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rg-seg__opt + .rg-seg__opt { border-left: 1px solid var(--line); }
+.rg-seg--md .rg-seg__opt { height: 30px; font-size: 14px; }
+.rg-seg--sm .rg-seg__opt { height: 22px; font-size: 12px; padding: 0 8px; }
+
+.rg-seg__opt:hover { color: var(--ink); }
+.rg-seg__opt--on,
+.rg-seg__opt--on:hover { background: var(--accent); color: var(--accent-ink); }
+.rg-seg__opt--on + .rg-seg__opt,
+.rg-seg__opt + .rg-seg__opt--on { border-left-color: var(--accent); }
+.rg-seg__opt:focus-visible { outline-offset: -2px; outline-color: var(--ink); }

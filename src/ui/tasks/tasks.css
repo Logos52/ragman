@@ -1,0 +1,243 @@
+/* Tasks tab: two panes, an EFT quest log. */
+.rg-tasks {
+  display: grid;
+  grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
+  gap: 12px;
+  height: 100%;
+  min-height: 0;
+  padding: 12px;
+}
+.rg-tasks__list, .rg-tasks__sheet {
+  min-height: 0;
+  overflow: auto;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.rg-tasks__list { display: flex; flex-direction: column; }
+.rg-tasks__list > * { flex: none; }
+/* the empty state takes the rest of the list pane with its own 24 px padding, and grows to fit its content at every width.
+   Its title sits on the midline of the area under the list header (the hint and button hang below it), and the
+   quest sheet's message centres on the same box (desktop: the sheet keeps the header's 44 px above it), so the two
+   messages share one line across the screen. */
+.rg-tasks__list > .rg-empty {
+  flex: 1 0 auto;
+  height: auto;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  justify-items: center;
+  row-gap: 6px;
+}
+.rg-tasks__list > .rg-empty > .rg-empty__title { grid-row: 2; }
+.rg-tasks__list > .rg-empty > .rg-empty__more { grid-row: 3; align-self: start; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.rg-tasks__listhead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 44px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--line);
+}
+.rg-tasks__h, .rg-quest__label {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.rg-tasks__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  border-left: 3px solid transparent;
+  text-align: left;
+}
+.rg-tasks__item:hover { background: var(--grid-bg); }
+.rg-tasks__item--on { border-left-color: var(--accent); background: var(--grid-bg); }
+.rg-tasks__title {
+  min-width: 0;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+.rg-tasks__new { display: grid; gap: 8px; padding: 12px; border-bottom: 1px solid var(--line); background: var(--grid-bg); }
+.rg-tasks__new .rg-field { width: 100%; }
+.rg-tasks__area {
+  width: 100%;
+  padding: 6px 8px;
+  background: var(--panel);
+  border: 1px solid var(--tile-line);
+  font-family: var(--font-body);
+  font-size: 14px;
+  resize: vertical;
+}
+.rg-tasks__area:focus { border-color: var(--ink); outline: none; }
+.rg-tasks__row { display: flex; gap: 8px; }
+.rg-tasks__skel { height: 132px; margin: 12px; background: var(--grid-bg); }
+.rg-tasks__none {
+  display: flex; align-items: center; justify-content: center; height: 100%; min-height: 160px;
+  padding-top: 44px; /* the list header's height: centred on the same box as the list's empty state */
+  color: var(--ink-3); font-size: 14px;
+}
+
+/* ---- quest sheet ---- */
+.rg-quest { padding: 18px 20px 20px; }
+.rg-quest__head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 10px 16px; }
+.rg-quest__title {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.rg-quest__desc { margin-top: 8px; font-size: 14px; color: var(--ink-2); max-width: 64ch; }
+.rg-quest__label { margin: 18px 0 6px; }
+.rg-quest__objs { border-top: 1px solid var(--line); }
+
+.rg-obj {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.rg-obj--empty { color: var(--ink-3); }
+.rg-obj__box {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid var(--ink);
+  background: var(--panel);
+  color: var(--accent-ink);
+}
+.rg-obj__box:hover:not(:disabled) { border-color: var(--accent); }
+.rg-obj--done .rg-obj__box { background: var(--accent); border-color: var(--accent); }
+.rg-obj__box:disabled { cursor: default; border-style: dashed; border-color: var(--region); }
+.rg-obj--done .rg-obj__box:disabled { border-style: solid; }
+.rg-obj__text { flex: 1; min-width: 0; }
+.rg-obj--done .rg-obj__text { color: var(--ink-2); }
+.rg-obj__rm {
+  flex: none; width: 24px; height: 24px; color: var(--ink-3); font-size: 16px; line-height: 1;
+  visibility: hidden;
+}
+.rg-obj:hover .rg-obj__rm, .rg-obj__rm:focus-visible { visibility: visible; }
+.rg-obj__rm:hover { color: var(--bad); }
+.rg-quest__add { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 10px; }
+.rg-quest__add .rg-field { flex: 1 1 160px; }
+
+.rg-tasks__linked {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 4px 10px 4px 4px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  max-width: 100%;
+}
+.rg-tasks__linked:hover { border-color: var(--ink); }
+.rg-tasks__lname {
+  font-family: var(--font-label); font-weight: 600; font-size: 13px;
+  letter-spacing: 0.05em; text-transform: uppercase; text-align: left;
+  min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
+.rg-quest__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 22px; }
+.rg-quest__spacer { flex: 1; }
+.rg-quest__confirm { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--bad); }
+.rg-quest__del.rg-btn--ghost { color: var(--bad); }
+.rg-quest__yes.rg-btn--ghost { color: var(--accent-ink); background: var(--bad); border-color: var(--bad); }
+
+@media (max-width: 640px) {
+  .rg-tasks { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; height: auto; padding: 12px; }
+  .rg-tasks__list, .rg-tasks__sheet { overflow: visible; }
+  .rg-quest { padding: 14px 12px 16px; }
+  .rg-obj__rm { visibility: visible; }
+  .rg-tasks__none { padding-top: 0; }
+  /* a list with no body (no inventory file): the header's divider would double the pane's own bottom border */
+  .rg-tasks__list:not(:has(li, .rg-empty, .rg-tasks__new, .rg-tasks__skel)) > .rg-tasks__listhead { border-bottom: 0; }
+}
+.rg-tasks__linked .rg-tile__name { display: none; }
+
+/* chain line under a task title, and the Unlocks multi-select */
+.rg-tasks__text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.rg-tasks__chain {
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rg-unlocks { display: flex; flex-wrap: wrap; gap: 6px; }
+.rg-unlocks__opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 4px 8px;
+  border: 1px solid var(--tile-line);
+  background: var(--panel);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.rg-unlocks__opt:hover { border-color: var(--ink); }
+.rg-unlocks__opt--on { border-color: var(--accent); }
+.rg-unlocks__box {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--ink);
+  color: var(--accent-ink);
+}
+.rg-unlocks__opt--on .rg-unlocks__box { background: var(--accent); border-color: var(--accent); }
+.rg-unlocks__none { font-size: 13px; color: var(--ink-3); }
+
+/* ---- authoring: linked item, auto objective rule ---- */
+.rg-quest__link { margin-top: 10px; }
+.rg-quest__link .rg-select, .rg-tasks__new .rg-select { max-width: 100%; }
+/* the Item select spans the sheet's content width, like the objective rows */
+.rg-quest__link .rg-select { display: flex; width: 100%; }
+.rg-quest__link .rg-select select { flex: 1 1 auto; }
+.rg-quest__auto {
+  display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 8px; border: 1px solid var(--tile-line);
+  font-family: var(--font-label); font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2);
+}
+.rg-quest__auto input { accent-color: var(--accent); }
+.rg-quest__auto--on { border-color: var(--region); color: var(--region); }
+.rg-quest__rule {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  width: 100%;
+  padding-left: 10px;
+  border-left: 2px solid var(--region);
+}
+/* the three selects share the content width edge to edge (like the Item select and the objective rows); on a
+   narrow sheet they wrap, and each line still fills the width */
+.rg-quest__rule .rg-select { display: flex; flex: 1 1 160px; max-width: 100%; }
+.rg-quest__rule .rg-select select { flex: 1 1 auto; }

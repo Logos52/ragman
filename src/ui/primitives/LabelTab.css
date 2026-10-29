@@ -1,0 +1,26 @@
+.rg-labeltab {
+  display: inline-flex;
+  align-items: center;
+  height: 18px;
+  max-width: 100%;
+  padding: 0 14px 0 6px;
+  background: var(--line);
+  color: var(--ink-2);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* slanted right end, like EFT's tabs */
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);
+  user-select: none;
+}
+
+.rg-labeltab--strong {
+  background: var(--ink);
+  color: var(--accent-ink);
+}

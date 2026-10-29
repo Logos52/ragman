@@ -1,0 +1,221 @@
+/* Inspect card + Edit/Add form. Tokens from src/styles/tokens.css. */
+.rg-insp {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.rg-insp__photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--grid-bg);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.rg-insp__photo img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
+.rg-insp__ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  text-align: center;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  overflow-wrap: anywhere;
+}
+
+.rg-insp__body { min-width: 0; padding-right: 20px; }
+.rg-insp__name {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.rg-insp__en { margin-top: 2px; font-size: 14px; color: var(--ink-2); }
+.rg-insp__chips { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; min-height: 22px; margin-top: 8px; }
+
+.rg-insp__fields {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  margin: 14px 0 0;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+}
+.rg-insp__k, .rg-insp__v {
+  margin: 0;
+  min-height: 28px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--line);
+}
+.rg-insp__k {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding-top: 7px;
+}
+.rg-insp__v { color: var(--ink); overflow-wrap: anywhere; }
+.rg-insp__v a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 2px; }
+.rg-insp__v a:hover { color: var(--accent); }
+.rg-insp__list { display: grid; gap: 4px; }
+.rg-insp__sub { color: var(--ink-2); }
+.rg-insp__pname {
+  font-family: var(--font-label); font-weight: 600; font-size: 12px;
+  letter-spacing: 0.05em; text-transform: uppercase;
+}
+.rg-insp__region { margin-left: 10px; color: var(--region); font-size: 12px; }
+.rg-insp__link { text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 2px; text-align: left; }
+.rg-insp__link:hover { color: var(--accent); }
+
+.rg-insp__actions { display: flex; gap: 8px; margin-top: 16px; }
+.rg-insp__slug { margin-top: 14px; font-size: 11px; color: var(--ink-3); font-family: ui-monospace, Consolas, monospace; }
+
+/* ---- form ---- */
+/* desktop: the photo column stays in view (sticky in the card's scroller) while the fields and Panels scroll */
+.rg-form__side { display: grid; gap: 8px; position: sticky; top: 0; }
+.rg-paste { display: grid; gap: 6px; cursor: copy; }
+.rg-paste .rg-insp__photo { border: 1px dashed var(--tile-line); }
+.rg-paste:focus-visible { outline: none; }
+.rg-paste:focus-visible .rg-insp__photo,
+.rg-paste--over .rg-insp__photo { border: 1px solid var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.rg-paste__hint { font-size: 12px; color: var(--ink-3); }
+
+.rg-form__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+  margin-top: 14px;
+}
+.rg-form__f { display: grid; gap: 4px; min-width: 0; }
+.rg-form__f--wide { grid-column: 1 / -1; }
+.rg-form__f .rg-field, .rg-form__f .rg-select { width: 100%; }
+.rg-form__k {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.rg-form__pair { display: flex; align-items: center; gap: 6px; }
+.rg-form__x { color: var(--ink-2); }
+.rg-form__num, .rg-form__area {
+  height: 32px;
+  width: 64px;
+  padding: 0 8px;
+  background: var(--panel);
+  border: 1px solid var(--tile-line);
+  font-size: 14px;
+}
+.rg-form__num--wide { width: 100%; }
+.rg-form__area { width: 100%; height: auto; padding: 6px 8px; resize: vertical; font-family: var(--font-body); }
+.rg-form__num:focus, .rg-form__area:focus { border-color: var(--ink); outline: none; }
+.rg-form__checks { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; }
+.rg-form__checks label { display: inline-flex; align-items: center; gap: 6px; }
+.rg-form__checks input { accent-color: var(--accent); width: 15px; height: 15px; }
+.rg-form__aside { margin-top: 10px; font-size: 12px; color: var(--ink-3); }
+.rg-form__err { margin-top: 10px; font-size: 13px; color: var(--bad); }
+
+@media (max-width: 640px) {
+  .rg-insp { grid-template-columns: minmax(0, 1fr); }
+  /* stacked: the photo (or paste zone) spans the card's width, square */
+  .rg-insp__photo { width: 100%; max-width: none; }
+  .rg-insp__body { padding-right: 0; }
+  .rg-form__side { position: static; } /* stacked: the paste zone scrolls away above the fields */
+  .rg-form__grid { grid-template-columns: minmax(0, 1fr); }
+  .rg-modal .rg-modal__card { width: 100% !important; padding: 40px 16px 16px; } /* the stacked photo starts under the close x */
+}
+
+/* ---- Inspect window (movable, several at once) ---- */
+.rg-insp-win .rg-window__body {
+  width: 720px;
+  max-width: calc(100vw - 34px); /* the window keeps a 16 px gutter each side, less its 1 px borders */
+  min-height: 0;
+  padding: 16px 0 14px 16px;
+  border-top: 6px solid var(--accent);
+}
+.gear-win-host > .rg-insp-win { max-height: calc(100vh - 40px - 32px - var(--rg-cascade, 0px)); }
+.rg-insp-wrap { min-width: 0; }
+.rg-insp__verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  cursor: pointer;
+}
+.rg-insp__verify--on { color: var(--ink); }
+.rg-insp__verify input { accent-color: var(--accent); width: 15px; height: 15px; margin: 0; }
+.rg-insp__unv {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 14px;
+  text-align: center;
+}
+.rg-insp__grids {
+  display: grid;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 10px 16px 0 0;
+  border-top: 1px solid var(--line);
+}
+.rg-insp__grids .gear-win__panels { max-width: 100%; }
+.rg-insp-win .rg-insp__slug { padding-right: 16px; }
+@media (max-width: 640px) {
+  .rg-insp-win .rg-window__body { width: calc(100vw - 34px); padding: 12px; }
+  .rg-insp__grids { padding-right: 0; }
+  .rg-insp-win .rg-insp__slug { padding-right: 0; }
+}
+
+/* ---- panels editor (Edit form) ---- */
+.rg-form__sect { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 16px; }
+.rg-pe { display: grid; gap: 8px; margin-top: 8px; justify-items: start; }
+.rg-pe__panel { display: grid; gap: 6px; width: 100%; padding: 8px; border: 1px solid var(--line); justify-items: start; }
+.rg-pe__row { display: flex; flex-wrap: nowrap; align-items: flex-start; gap: 6px; width: 100%; }
+/* the fields wrap among themselves; the remove x keeps a fixed column at the row's first line, so it never
+   wraps away from its panel or region */
+.rg-pe__fields { flex: 1 1 auto; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.rg-pe__row > .rg-pe__rm { flex: none; margin-top: 2px; }
+.rg-pe__row--region { padding-left: 14px; border-left: 2px dashed var(--region); }
+.rg-pe__text {
+  height: 28px; min-width: 0; flex: 1 1 120px; padding: 0 8px;
+  background: var(--panel); border: 1px solid var(--tile-line); font-size: 13px;
+}
+.rg-pe__acc { flex: 2 1 140px; }
+.rg-pe__text:focus { border-color: var(--ink); outline: none; }
+.rg-pe__num { width: 52px; height: 28px; font-size: 13px; padding: 0 4px; }
+.rg-pe__k { font-family: var(--font-label); font-size: 11px; text-transform: uppercase; color: var(--ink-2); }
+.rg-pe__rm { width: 24px; height: 24px; color: var(--ink-2); font-size: 16px; line-height: 1; }
+.rg-pe__rm:hover { color: var(--accent-ink); background: var(--bad); }
+.rg-insp__detach {
+  height: 18px; padding: 0 6px; border: 1px solid var(--tile-line); font-family: var(--font-label); font-weight: 600;
+  font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2);
+}
+.rg-insp__detach:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.rg-insp__detach:disabled { color: var(--ink-3); }

@@ -1,0 +1,16 @@
+.rg-itile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: grab;
+}
+.rg-itile--dim { opacity: 0.25; }
+.rg-itile:has(.rg-tile--locked) { cursor: default; }
+.rg-itile--source { opacity: 0.35; }
+.rg-gridpos:has(.rg-tile--selected) { z-index: 4; }
+
+/* phone: let the page scroll over tiles; a pan cancels the drag */
+@media (pointer: coarse) {
+  .rg-itile { touch-action: auto; }
+}

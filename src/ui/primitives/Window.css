@@ -1,0 +1,60 @@
+.rg-window {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100vw - 16px);
+  background: var(--panel);
+  border: 1px solid var(--ink);
+  box-shadow: 0 4px 10px rgb(21 24 28 / 0.12);
+}
+
+.rg-window__bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 28px;
+  padding: 0 0 0 10px;
+  background: var(--ink);
+  color: var(--accent-ink);
+  cursor: move;
+  touch-action: none;
+  user-select: none;
+}
+
+.rg-window__title {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.rg-window__right {
+  display: flex;
+  align-items: center;
+  flex: none;
+  color: var(--accent-ink);
+}
+
+.rg-window__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  color: var(--accent-ink);
+  cursor: pointer;
+}
+.rg-window__close:hover { background: var(--accent); }
+.rg-window__close:focus-visible { outline-offset: -2px; outline-color: var(--accent-ink); }
+
+.rg-window__body {
+  padding: 10px 12px 12px;
+  overflow: auto;
+}

@@ -1,0 +1,59 @@
+/* ---- weight readout ---- */
+.rg-weight {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3px;
+  min-width: 0;
+  color: var(--ink-2);
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.rg-weight__text { overflow: hidden; text-overflow: ellipsis; }
+.rg-weight--light { color: var(--accent-ink); }
+.rg-weight--over,
+.rg-weight--light.rg-weight--over { color: var(--bad); font-weight: 600; }
+
+/* ---- allowance meter ---- */
+.rg-meter {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 48px;
+  height: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+.rg-meter__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: var(--ink);
+}
+.rg-weight--light .rg-meter { background: rgb(255 255 255 / 0.25); }
+.rg-weight--light .rg-meter__fill { background: var(--accent-ink); }
+.rg-meter--over .rg-meter__fill,
+.rg-weight--light .rg-meter--over .rg-meter__fill { background: var(--bad); }
+
+/* ---- carried (footer) ---- */
+.rg-carried {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-2);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.rg-carried b { color: var(--ink); font-weight: 700; text-transform: none; }
+

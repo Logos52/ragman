@@ -13,10 +13,34 @@ Named after the Tarkov trader who sells clothing and gear. On screen the app is 
 | `schema/inventory.schema.json` | the formal schema for `inventory.json` |
 | `data/demo/` | demo data for the public build, pre-approved items only |
 | `docs/` | the PRD and design notes |
-| `src/` | the app (not yet started) |
-| `scripts/` | import, validate and icon helpers (not yet started) |
+| `src/` | the app: `model/` (types, store contract, engine, persistence), `ui/` (screens, drag, menus, windows), `styles/` (tokens, fonts) |
+| `scripts/` | `serve.mjs` (production server), `shots.mjs` (Playwright proof), `icon-fit.py`, `link-grok.py`, `import_export.py` |
+| `refs/` | local screenshots and references, gitignored |
 
 The real inventory lives in the private `ragman-data` repo and is never committed here.
+
+## Running it
+
+Needs Node 22 and a clone of the private `ragman-data` repo beside this one (`../ragman-data`, or set `RAGMAN_DATA`).
+
+```
+npm install
+npm run dev          # http://localhost:5173, serves ../ragman-data at /data/*, saves in place
+npm run build && npm run serve   # production build with the same data endpoints
+npm run build:public # public demo build (bundles data/demo, edits reset on reload)
+npm test             # engine, store, real-data and UI-rule tests
+npm run typecheck
+npm run shots        # Playwright proof: refs/proof/*.png at 1440 and 390, perf.json, tests.txt
+```
+
+The dev and production servers refuse any path containing `prices` or `..`, and only `inventory.json` and `images/*` are reachable. Every mutation is in memory; the file is written in the background and the footer badge shows the save state.
+
+Data helpers, run from this folder with `python -I`:
+
+- `scripts/link-grok.py ../ragman-data` links `images/grok/<slug>.*` files to items (`images.grok`); files whose name is not the slug are listed in the script by hand.
+- `scripts/icon-fit.py <slug> <image> --footprint WxH --data ../ragman-data` cuts the background, fits the art to the footprint canvas and sets `images.icon`; see `docs/icons.md`.
+
+See `docs/DESIGN.md` for the look ("Departures") and `docs/ARCHITECTURE.md` for the engine rules, slot rules, sort modes and the EFT inventory fields.
 
 ## License and affiliation
 

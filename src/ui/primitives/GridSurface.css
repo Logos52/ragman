@@ -1,0 +1,70 @@
+.rg-grid {
+  position: relative;
+  flex: none;
+  width: calc(var(--rg-cell) * var(--rg-w) + 1px);
+  height: calc(var(--rg-cell) * var(--rg-h) + 1px);
+  background-color: var(--grid-bg);
+  /* graph paper: 1 px lines every --cell, starting at 0 so the last line closes the grid */
+  background-image:
+    repeating-linear-gradient(to right, var(--grid-line) 0 1px, transparent 1px var(--rg-cell)),
+    repeating-linear-gradient(to bottom, var(--grid-line) 0 1px, transparent 1px var(--rg-cell));
+  background-position: 0 0;
+  user-select: none;
+  touch-action: none;
+}
+
+.rg-grid__region {
+  position: absolute;
+  z-index: 0;
+  border: 1.5px dashed var(--region);
+  pointer-events: none;
+}
+
+.rg-grid__region-label {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  box-sizing: border-box;
+  /* bottom-centre of the region, 2 px above its dashed bottom edge: the one spot a tile draws nothing (name strip
+     top-right, pin and lock top-left, "?" and luggage tag bottom-left, quantity and care corner bottom-right).
+     It keeps 14 px clear at each side for the "?" and the quantity, and truncates rather than reach them. */
+  left: calc(var(--rg-cell) * (var(--rg-rx) + var(--rg-rw) / 2));
+  top: calc(var(--rg-cell) * (var(--rg-ry) + var(--rg-rh)) - 13px);
+  transform: translateX(-50%);
+  max-width: calc(var(--rg-cell) * var(--rg-rw) - 28px);
+  padding: 0 3px;
+  /* a small translucent paper chip, so the label reads over art */
+  background: rgb(255 255 255 / 0.85);
+  color: var(--region);
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* phone (34 px cells): 8 px caps, so a 3-cell region still shows its whole name */
+@media (max-width: 639.98px) {
+  .rg-grid__region-label { font-size: 8px; line-height: 10px; letter-spacing: 0.04em; top: calc(var(--rg-cell) * (var(--rg-ry) + var(--rg-rh)) - 12px); }
+}
+
+.rg-gridpos {
+  position: absolute;
+  z-index: 1;
+}
+
+/* drop highlight: drawn on the grid (under the fixed ghost), a solid 35% tint plus a 2 px border, so it reads
+   through the translucent ghost and a valid drop never looks like an invalid one */
+.rg-grid__hl {
+  position: absolute;
+  z-index: 3;
+  box-sizing: border-box;
+  width: calc(var(--rg-cell) + 1px);
+  height: calc(var(--rg-cell) + 1px);
+  pointer-events: none;
+}
+.rg-grid__hl--ok { background: color-mix(in srgb, var(--ok) 35%, transparent); border: 2px solid var(--ok); }
+.rg-grid__hl--bad { background: color-mix(in srgb, var(--bad) 35%, transparent); border: 2px solid var(--bad); }
