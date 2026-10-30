@@ -9,7 +9,7 @@ Vite + React 18 + TypeScript + zustand. No router, no CSS framework, no UI libra
 | `src/model/types.ts` | the data model, mirrors `schema/inventory.schema.json` |
 | `src/model/api.ts` | the store contract the UI codes against |
 | `src/model/store.ts` | zustand store implementing `InventoryStore` |
-| `src/model/engine/*.ts` | pure functions: placement, fit, occupancy, weights, loadout switch, sort, stacks, undo, structure edits (`structure.ts`: panels, loadout slots and pockets, attach/detach) |
+| `src/model/engine/*.ts` | pure functions: placement, fit, occupancy, weights, loadout switch, sort, stacks, undo, structure edits (`structure.ts`: panels, loadout slots and pockets, attach/detach), the Overall summary (`overall.ts`) |
 | `src/model/persist.ts` | data sources: server (`/data/*`), folder (File System Access API), bundled (public demo) |
 | `src/ui/*` | React components; one folder per screen region |
 | `src/styles/*` | design tokens and global CSS; see `docs/DESIGN.md` |
@@ -99,6 +99,17 @@ Panel sizes, slot lists and attachments are edited in the tool, never by hand in
 - `setPanels(id, panels, from?)` replaces a container's panels (any item can gain panels and become a container). `from[i]` is the old name of `panels[i]` (null for a new one), so a rename rewrites the `panel` of every home and placement inside it. Contents that no longer fit (a smaller grid, a removed panel, a new accepts or region) are re-placed by the footprint-edit rule (`refit`). Refused: an empty list, a blank or duplicate panel or region name, cells that are not whole numbers 1 to 40, a region outside its grid, or any edit that would move a locked item. `ItemPatch` still leaves `panels` out: the Edit form calls `setPanels`, then `updateItem` (which writes `weightLimit_g`, `quantity`, `panelLayout`).
 - `setLoadoutSlots(slots)` and `setPocketsGrid([w, h])` edit the active loadout. A placement in a removed slot (or in the pockets when Pockets is removed) is deleted and the item goes home; after either edit the loadout is re-settled as on a switch (`settleLoadout`: placements first, then homes). Refused when a locked item would move.
 - `attach(id, parent, slot)` / `detach(id)`. An attachment slot takes an item whose tags or category include the slot name (`band` takes items tagged band). Attaching removes the item's home and every loadout placement (it goes where the parent goes; its Quick Use pin stays); an item already in the slot is detached first (a swap). A detached item gets a home at the first free cells of its stash (the Archive when Not Worn). Refused: locked item or locked occupant, self, a cycle (the parent sits inside the item), a slot the parent does not offer. `canAttach` and `attachTargets` are the reads the menu and the drag use.
+
+## Overall (`engine/overall.ts`)
+
+`overallSummary(inv)` returns the Overall tab's numbers as one plain object; the store memoises it per `inv` (`overallSummary()` in `api.ts`).
+
+- `byStatus`, `byLocation`: counts in `settings` order, zero rows kept; a value found in the data but not in `settings` comes after them; the blank value (`name: ''`) comes last, only when some item has none.
+- `loadouts`: for every loadout, the count and weight of `carriedIds(inv, links, name)`, the same set the footer's carried weight sums (slots, pockets, carried-container contents, attachments). `carriedIds` and `carriedWeight` take an optional loadout name for this; it defaults to the active one. A loadout that is not on screen is read as stored, without the settle a switch runs; `realdata.test.ts` checks that on the real data this equals the footer's figure after switching to it.
+- `stashes`: each location's stash, then the Archive, as the active loadout draws them. Fill is occupied cells over the cells in the rows in use: `width × (bottom-most occupied row + 1)`. An empty stash has `fill: null`.
+- `emptyContainers`: items with panels where no item sits in any panel at the active loadout's placement, with where each is drawn (a grid or a slot).
+
+The Export button downloads `exportJson()` from `engine/strip.ts`, the same export that drops `hidden` from every item.
 
 ## Data flow
 

@@ -13,10 +13,11 @@
  */
 import { create } from 'zustand';
 import type { InventoryStore } from './api';
-import type { DataSource, DropTarget, Filters, FitResult, GridRef, GridView, Inventory, Loadout, SplitResult, Task } from './types';
+import type { DataSource, DropTarget, Filters, FitResult, GridRef, GridView, Inventory, Loadout, OverallSummary, SplitResult, Task } from './types';
 import { buildLinks, contentsOf, effectivePlace, footprintOf, gridBuckets, gridView, isContainer, refKey, type Links } from './engine/place';
 import { canFit, slotOccupant } from './engine/fit';
 import { carriedWeight, weightOf } from './engine/weights';
+import { overallSummary } from './engine/overall';
 import { switchLoadout } from './engine/loadout';
 import { sortGrid } from './engine/sort';
 import { setTaskStatus, taskChecklist, tasksView, updateTask } from './engine/tasks';
@@ -42,6 +43,7 @@ export type RagmanStore = InventoryStore & StoreExtras;
 export const CARRY_SLOTS = ['Pockets', 'Backpack', 'Carry-on', 'Pouch'];
 const EMPTY_LOADOUT: Loadout = { slots: [], pocketsGrid: [4, 1], placements: {} };
 const PERF_CAP = 500;
+const EMPTY_OVERALL: OverallSummary = { items: 0, byStatus: [], byLocation: [], loadouts: [], stashes: [], emptyContainers: [] };
 
 /* ---------------- module state (not React state) ---------------- */
 
@@ -240,6 +242,11 @@ export const useInventory = create<RagmanStore>()((set, get) => {
       const inv = get().inv;
       if (!inv) return { grams: 0, unweighed: 0, estimated: 0, limit: null, overLimit: false };
       return cached(inv, 'carried', '', () => carriedWeight(inv, linksOf(inv)));
+    },
+    overallSummary() {
+      const inv = get().inv;
+      if (!inv) return EMPTY_OVERALL;
+      return cached(inv, 'overall', '', () => overallSummary(inv));
     },
     imageUrl(id, kind) {
       const inv = get().inv;

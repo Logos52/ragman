@@ -11,6 +11,9 @@ import { normalize } from './engine/normalize';
 import { effectivePlace, gridBuckets, gridView, isContainer } from './engine/place';
 import { detectEol, serializeInventory } from './engine/strip';
 import { slotAccepts } from './engine/slotRules';
+import { overallSummary } from './engine/overall';
+import { switchLoadout } from './engine/loadout';
+import { carriedIds, carriedWeight } from './engine/weights';
 
 // vitest runs from the repo root; the data clone sits beside the repo.
 const file = join(cwd(), '..', 'ragman-data', 'inventory.json');
@@ -67,6 +70,21 @@ describe.skipIf(!present)('real inventory.json', () => {
     const arch = new Set(gridView(inv, { kind: 'archive' }).items.map((v) => v.id));
     for (const [id, item] of Object.entries(inv.items)) {
       if (item.status === 'Not Worn' && item.home?.kind !== 'panel') expect(arch.has(id), id).toBe(true);
+    }
+  });
+
+  it('Overall: counts add up to 73, fills are fractions, every loadout matches the footer after a switch', () => {
+    const s = overallSummary(inv);
+    expect(s.items).toBe(73);
+    expect(s.byStatus.reduce((n, r) => n + r.count, 0)).toBe(73);
+    expect(s.byLocation.reduce((n, r) => n + r.count, 0)).toBe(73);
+    for (const f of s.stashes) if (f.fill !== null) expect(f.fill > 0 && f.fill <= 1, JSON.stringify(f.ref)).toBe(true);
+    // a loadout not on screen is read without the settle; on this data that gives what the footer shows once switched to
+    for (const lo of s.loadouts) {
+      const switched = structuredClone(inv);
+      switchLoadout(switched, lo.name);
+      expect(lo.items, lo.name).toBe(carriedIds(switched).length);
+      expect(lo.weight, lo.name).toEqual(carriedWeight(switched));
     }
   });
 

@@ -11,7 +11,7 @@
   padding: 24px 16px;
   text-align: center;
 }
-/* inside the Overall and Skills panel (a flex column) the text takes the free height, so it centres in the whole panel */
+/* inside the Skills panel (a flex column) the text takes the free height, so it centres in the whole panel */
 .rg-app__panel > .rg-later { flex: 1 0 auto; height: auto; }
 
 .rg-empty__title,

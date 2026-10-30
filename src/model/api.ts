@@ -5,7 +5,7 @@
  */
 import type {
   Cell, Cells, DataSource, DropTarget, EffectivePlace, Filters, FitResult, GridRef, GridView, Inventory, Item, ItemPatch,
-  Loadout, Panel, SaveState, SortMode, SplitResult, Task, WeightSummary, LoadoutPlace,
+  Loadout, OverallSummary, Panel, SaveState, SortMode, SplitResult, Task, WeightSummary, LoadoutPlace,
 } from './types';
 
 export interface InventoryState {
@@ -55,6 +55,8 @@ export interface InventoryActions {
   weightOf(containerId: string): WeightSummary;
   /** Everything on the person in the active loadout, recursive, attachments included. No limit. */
   carriedWeight(): WeightSummary;
+  /** The Overall tab: counts, every loadout's carried items and weight, stash fill, empty containers. */
+  overallSummary(): OverallSummary;
   /** Resolve cell art: icon → grok → photo → null (placeholder). Returns a URL usable in <img src>. */
   imageUrl(id: string, kind: 'cell' | 'photo' | 'worn'): string | null;
   /** The URL of the avatar base figure, or null if images/avatar/base.png does not exist. */

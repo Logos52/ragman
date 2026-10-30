@@ -33,20 +33,24 @@ export function weightOf(inv: Inventory, id: string, links: Links = buildLinks(i
   return { grams, unweighed, estimated, limit, overLimit: limit != null && grams > limit };
 }
 
-/** Ids of everything on the person in the active loadout: slots, pockets, their contents and attachments. */
-export function carriedIds(inv: Inventory, links: Links = buildLinks(inv)): string[] {
+/**
+ * Ids of everything on the person in a loadout (default the active one): slots, pockets, their contents and
+ * attachments. `links`, if passed, must be built for the same loadout.
+ */
+export function carriedIds(inv: Inventory, links?: Links, loadout: string = inv.activeLoadout): string[] {
+  const l = links ?? buildLinks(inv, loadout);
   const seen = new Set<string>();
   const out: string[] = [];
   for (const id of Object.keys(inv.items)) {
     if (inv.items[id].attachedTo) continue;
-    const p = effectivePlace(inv, id);
+    const p = effectivePlace(inv, id, loadout);
     const onPerson = p && (p.kind === 'slot' || (p.kind === 'panel' && p.in === POCKETS_ID));
-    if (onPerson) out.push(...subtreeOf(links, id, seen));
+    if (onPerson) out.push(...subtreeOf(l, id, seen));
   }
   return out;
 }
 
-/** Total carried weight. No limit on the person. */
-export function carriedWeight(inv: Inventory, links: Links = buildLinks(inv)): WeightSummary {
-  return { ...sum(inv, carriedIds(inv, links)), limit: null, overLimit: false };
+/** Total carried weight in a loadout (default the active one). No limit on the person. */
+export function carriedWeight(inv: Inventory, links?: Links, loadout: string = inv.activeLoadout): WeightSummary {
+  return { ...sum(inv, carriedIds(inv, links, loadout)), limit: null, overLimit: false };
 }

@@ -481,7 +481,6 @@ export function Gallery() {
         <div className="gx-row gx-row--top">
           <div className="gx-panel"><EmptyState title="Stash is empty" hint="Add your first item. It lands as 1 × 1 in this stash." action={<Button variant="accent" icon="plus">Add</Button>} /></div>
           <div className="gx-panel"><ComingLater name="Skills" /></div>
-          <div className="gx-panel"><ComingLater name="Overall" /></div>
         </div>
       </Section>
     </div>

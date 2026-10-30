@@ -10,8 +10,8 @@
 .rg-app > .rg-tabbar { flex: none; }
 .rg-app > .rg-banner { flex: none; }
 .rg-app__main { flex: 1; min-height: 0; overflow: auto; }
-/* Overall and Skills: the panel is the free flex space under the tab bar and the banner (if any), 12 px gutters */
-.rg-app__main[data-tab='overall'], .rg-app__main[data-tab='skills'] { display: flex; flex-direction: column; }
+/* Skills: the panel is the free flex space under the tab bar and the banner (if any), 12 px gutters */
+.rg-app__main[data-tab='skills'] { display: flex; flex-direction: column; }
 .rg-app__panel {
   display: flex;
   flex-direction: column;

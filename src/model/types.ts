@@ -203,3 +203,36 @@ export interface Filters {
   search: string;
   sort: SortMode;
 }
+
+/* ---------- Overall tab (engine/overall.ts) ---------- */
+
+/** One row of a count table. `name` '' is the blank value (items with no status or no location). */
+export interface CountRow { name: string; count: number }
+
+/** A loadout as it would be carried: items on the person (slots, pockets, carried-container contents, attachments). */
+export interface LoadoutSummary { name: string; active: boolean; items: number; weight: WeightSummary }
+
+/**
+ * How full a stash (or the Archive) is at the current placement. The grid scrolls down without limit, so the
+ * denominator is the rows actually used: width x (bottom-most occupied row + 1). `fill` is null when empty.
+ */
+export interface StashFill {
+  ref: { kind: 'stash'; location: LocationName } | { kind: 'archive' };
+  items: number;
+  occupied: number;
+  rows: number;
+  cells: number;
+  fill: number | null; // 0..1
+}
+
+/** A container whose every panel holds nothing, and where it is drawn now. */
+export interface EmptyContainer { id: string; where: GridRef | { kind: 'slot'; slot: string } | null }
+
+export interface OverallSummary {
+  items: number;
+  byStatus: CountRow[];
+  byLocation: CountRow[];
+  loadouts: LoadoutSummary[];
+  stashes: StashFill[];
+  emptyContainers: EmptyContainer[];
+}

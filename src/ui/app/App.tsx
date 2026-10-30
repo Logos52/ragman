@@ -6,6 +6,7 @@ import { Button } from '../primitives/Button';
 import { ComingLater } from '../primitives/EmptyState';
 import { GearScreen } from '../gear/GearScreen';
 import { TasksScreen } from '../tasks/TasksScreen';
+import { OverallScreen } from '../overall/OverallScreen';
 import { useUi } from '../uiStore';
 import type { TabId } from '../uiStore';
 import { getStore, isTyping, useInv, useInventory } from './useStore';
@@ -119,7 +120,7 @@ export function App() {
   switch (tab) {
     case 'gear': screen = inv ? <GearScreen /> : <GearSkeleton />; break;
     case 'tasks': screen = <TasksScreen />; break;
-    case 'overall': screen = <div className="rg-app__panel"><ComingLater name="Overall" /></div>; break;
+    case 'overall': screen = <OverallScreen />; break;
     case 'skills': screen = <div className="rg-app__panel"><ComingLater name="Skills" /></div>; break;
   }
 

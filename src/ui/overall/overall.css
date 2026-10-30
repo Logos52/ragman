@@ -1,0 +1,141 @@
+/* Overall tab: a read-only profile. One header panel, then the sections in a grid of white panels. */
+.rg-overall {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  min-height: 100%;
+}
+.rg-ov__head,
+.rg-ov__sec {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+.rg-ov__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 16px;
+}
+.rg-ov__total { display: flex; align-items: baseline; gap: 12px; min-height: 40px; }
+.rg-ov__key {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.rg-ov__big {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.rg-ov__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+.rg-ov__col { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.rg-ov__sec { display: flex; flex-direction: column; min-width: 0; padding: 12px; }
+.rg-ov__sec > .rg-labeltab { align-self: flex-start; }
+.rg-ov__body { border-top: 1px solid var(--line); }
+
+.rg-ov__rows { list-style: none; margin: 0; padding: 0; }
+.rg-ov__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 36px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  min-width: 0;
+}
+.rg-ov__row:last-child { border-bottom: 0; }
+.rg-ov__name {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.rg-ov__blank { color: var(--ink-3); }
+.rg-ov__num {
+  font-family: var(--font-label);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+.rg-ov__meta {
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: var(--ink-2);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.rg-ov__row--zero .rg-ov__num,
+.rg-ov__row--zero .rg-ov__name,
+.rg-ov__row--zero .rg-ov__meta { color: var(--ink-3); }
+
+/* loadouts: name, item count, weight readout on one line; the readout wraps under on a narrow panel */
+.rg-ov__row--lo { flex-wrap: wrap; row-gap: 2px; }
+.rg-ov__weight { flex: none; align-items: flex-end; }
+
+/* stashes: name, counts, percent; the fill line runs along the row's bottom edge */
+.rg-ov__row--stash { position: relative; flex-wrap: wrap; row-gap: 2px; padding-bottom: 8px; }
+.rg-ov__pct { min-width: 4ch; text-align: right; }
+.rg-ov__meter.rg-meter { position: absolute; left: 0; right: 0; bottom: -1px; width: auto; min-width: 0; }
+
+/* empty containers */
+.rg-ov__row--box { gap: 10px; }
+.rg-ov__tile { flex: none; }
+.rg-ov__tile .rg-tile__name { display: none; }
+.rg-ov__tile .rg-tile__ph { padding: 5px; }
+.rg-ov__tile .rg-tile__ph span { font-size: 9px; -webkit-line-clamp: 3; }
+.rg-ov__boxtext { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.rg-ov__boxname {
+  font-family: var(--font-label);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rg-ov__where {
+  font-family: var(--font-label);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+.rg-ov__none { padding: 10px 0; color: var(--ink-3); font-size: 14px; }
+
+/* under 1100 px the three columns dissolve and the sections flow two to a row, then one */
+@media (max-width: 1099.98px) {
+  .rg-ov__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rg-ov__col { display: contents; }
+}
+@media (max-width: 640px) {
+  .rg-ov__grid { grid-template-columns: minmax(0, 1fr); }
+  .rg-ov__head { padding: 10px 12px; }
+  .rg-ov__big { font-size: 32px; }
+}
