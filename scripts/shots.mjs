@@ -28,6 +28,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(root, 'refs', 'proof');
 const PORT = Number(process.env.SHOTS_PORT ?? 5370); // override when 5370 is taken
 const BASE = `http://localhost:${PORT}/`;
+const CTRL = process.platform === 'darwin' ? 'Meta' : 'Control'; // macOS Chromium turns Ctrl-click into a right-click; the app takes Cmd as Ctrl
 const VIEWPORTS = [
   { tag: 'desktop', width: 1440, height: 900 },
   { tag: 'phone', width: 390, height: 844 },
@@ -639,7 +640,7 @@ const SHOTS = {
     const scope = vp.tag === 'phone' ? '.gear-carried' : '.gear-stash';
     const f = await tileCenter(page, FILSON, '.gear-carried');
     const a = await tileCenter(page, id, scope);
-    await page.keyboard.down('Control');
+    await page.keyboard.down(CTRL);
     await dragTo(page, a, f, 12);
     await page.mouse.move(f.x + 1, f.y + 1);
     await page.waitForTimeout(80);
@@ -647,7 +648,7 @@ const SHOTS = {
     if (!lit) throw new Error('ctrl-drag: the Filson tile is not lit --ok');
     await shot(page, 'ctrl-drag', vp, { keepPointer: true });
     await page.mouse.up();
-    await page.keyboard.up('Control');
+    await page.keyboard.up(CTRL);
     await settle(page);
     const anc = await store(page, (s, id) => { const p = s.effectivePlace(id); return p && p.kind === 'panel' ? p.in : null; }, id);
     if (anc !== FILSON) throw new Error(`ctrl-drag: ${id} landed in ${anc} (lit ${lit})`);
@@ -923,9 +924,9 @@ async function perfRun(browser) {
     bump('altEquips');
     const back = await tileCenter(page, id, '.gear-person');
     await measureNext('click', 'shots:ctrlclick-stash-to-frame');
-    await page.keyboard.down('Control');
+    await page.keyboard.down(CTRL);
     await page.mouse.click(back.x, back.y);
-    await page.keyboard.up('Control');
+    await page.keyboard.up(CTRL);
     await page.waitForTimeout(80);
     const home = await store(page, (s, id) => s.effectivePlace(id), id);
     if (home?.kind !== 'stash') throw new Error(`perf: Ctrl-click did not stash ${id}`);
@@ -935,11 +936,11 @@ async function perfRun(browser) {
   for (let i = 0; i < 10; i++) {
     const { id, c } = await stashTile(PLAIN);
     const f = await tileCenter(page, FILSON, '.gear-carried');
-    await page.keyboard.down('Control');
+    await page.keyboard.down(CTRL);
     await dragTo(page, c, f, 8);
     await measureNext('pointerup', 'shots:ctrldrag-drop-to-frame');
     await page.mouse.up();
-    await page.keyboard.up('Control');
+    await page.keyboard.up(CTRL);
     await page.waitForTimeout(100);
     const p = await store(page, (s, id) => s.effectivePlace(id), id);
     if (p?.kind !== 'panel' || p.in !== FILSON) throw new Error(`perf: Ctrl-drag did not land ${id} in the Filson (${JSON.stringify(p)})`);
