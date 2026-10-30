@@ -8,7 +8,7 @@ export function Footer() {
   const saveState = useInventory((s) => s.saveState);
   return (
     <footer className="gear-footer">
-      <CarriedReadout grams={w.grams} unweighed={w.unweighed} />
+      <CarriedReadout grams={w.grams} unweighed={w.unweighed} estimated={w.estimated} />
       <SaveBadge state={saveState} onRetry={() => { void getStore().saveNow(); }} />
     </footer>
   );

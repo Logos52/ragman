@@ -79,7 +79,7 @@ export function InspectBody({ id }: { id: string }) {
             <Row k="Size">{item.size}</Row>
             <Row k="Color">{item.color}</Row>
             <Row k="Footprint">{fmtCells(item.footprint)}</Row>
-            <Row k="Weight">{fmtGrams(item.weight_g)}</Row>
+            <Row k="Weight">{item.weightEstimated && item.weight_g != null ? `~${fmtGrams(item.weight_g)} · estimate` : fmtGrams(item.weight_g)}</Row>
             {item.consumable ? <Row k="Quantity">{s.quantityOf(id)}</Row> : null}
             <Row k="Tags">{(item.tags ?? []).join(', ')}</Row>
             <Row k="Note">{item.note}</Row>

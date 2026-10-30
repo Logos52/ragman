@@ -10,6 +10,8 @@ export interface WeightReadoutProps {
   /** Sum of known weights (blank weights count 0 here; they are reported as unweighed). */
   grams: number;
   unweighed: number;
+  /** Items whose weight is a guesstimate (summed in grams). Draws a ~ before the total and a count. */
+  estimated?: number;
   /** weightLimit_g. Adds " / 7.0 kg" and the allowance meter. */
   limit?: number | null;
   overLimit: boolean;
@@ -20,8 +22,8 @@ export interface WeightReadoutProps {
   className?: string;
 }
 
-/** `1.2 kg · 3 unweighed / 7.0 kg`, red past the limit, with a 2 px allowance meter under it. */
-export function WeightReadout({ grams, unweighed, limit, overLimit, tone = 'default', meter, className }: WeightReadoutProps) {
+/** `1.2 kg · 3 unweighed / 7.0 kg`, `~1.2 kg · 5 est.` when any weight is a guesstimate, red past the limit, with a 2 px allowance meter under it. */
+export function WeightReadout({ grams, unweighed, estimated = 0, limit, overLimit, tone = 'default', meter, className }: WeightReadoutProps) {
   const hasLimit = limit != null && limit > 0;
   const showMeter = meter ?? hasLimit;
   const cls = [
@@ -33,8 +35,9 @@ export function WeightReadout({ grams, unweighed, limit, overLimit, tone = 'defa
   return (
     <span className={cls}>
       <span className="rg-weight__text">
-        {formatKg(grams)}
+        {estimated > 0 ? '~' : ''}{formatKg(grams)}
         {unweighed > 0 ? <> · {unweighed} unweighed</> : null}
+        {estimated > 0 ? <> · {estimated} est.</> : null}
         {hasLimit ? <> / {formatKg(limit!)}</> : null}
       </span>
       {showMeter && hasLimit ? <AllowanceMeter grams={grams} limit={limit!} overLimit={overLimit} /> : null}
@@ -69,16 +72,18 @@ export function AllowanceMeter({ grams, limit, overLimit, className }: Allowance
 export interface CarriedReadoutProps {
   grams: number;
   unweighed: number;
+  estimated?: number;
 }
 
-/** Footer: `CARRIED 3.42 kg · 12 unweighed` with the tag glyph. */
-export function CarriedReadout({ grams, unweighed }: CarriedReadoutProps) {
+/** Footer: `CARRIED 3.42 kg · 12 unweighed`, `CARRIED ~3.42 kg · 5 estimated` when any carried weight is a guesstimate, with the tag glyph. */
+export function CarriedReadout({ grams, unweighed, estimated = 0 }: CarriedReadoutProps) {
   return (
     <span className="rg-carried">
       <Glyph name="tag" size={15} />
       <span>
-        Carried <b>{formatKg(grams, 2)}</b>
+        Carried <b>{estimated > 0 ? '~' : ''}{formatKg(grams, 2)}</b>
         {unweighed > 0 ? <> · {unweighed} unweighed</> : null}
+        {estimated > 0 ? <> · {estimated} estimated</> : null}
       </span>
     </span>
   );

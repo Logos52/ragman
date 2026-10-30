@@ -11,7 +11,7 @@ import { sortGrid } from './sort';
 import { taskChecklist, tasksView } from './tasks';
 import { UndoRing } from './undo';
 import { exportJson, serializeInventory } from './strip';
-import { archiveItem, deleteItem, moveItem, sendToStash, unarchiveItem, equipItem, addItem, quickMoveInto } from './moves';
+import { archiveItem, deleteItem, moveItem, sendToStash, unarchiveItem, equipItem, addItem, quickMoveInto, updateItem } from './moves';
 import { imagePath } from './images';
 import { share } from './share';
 
@@ -159,13 +159,24 @@ describe('firstFree', () => {
 describe('weights', () => {
   it('container weight is recursive with limit; carried weight counts attachments and unweighed', () => {
     const inv = inv0();
-    expect(weightOf(inv, 'filson')).toEqual({ grams: 2500, unweighed: 0, limit: 2600, overLimit: false });
+    expect(weightOf(inv, 'filson')).toEqual({ grams: 2500, unweighed: 0, estimated: 0, limit: 2600, overLimit: false });
     expect(weightOf(inv, 'watch').grams).toBe(80);
-    expect(carriedWeight(inv)).toMatchObject({ grams: 2580, unweighed: 0 });
+    expect(carriedWeight(inv)).toMatchObject({ grams: 2580, unweighed: 0, estimated: 0 });
     expect(moveItem(inv, 'tee', { kind: 'grid', grid: MAIN, x: 4, y: 0, rotated: false }, 'USA')).toBe(true);
     expect(weightOf(inv, 'filson').overLimit).toBe(true);
     expect(moveItem(inv, 'cable', { kind: 'grid', grid: { kind: 'pockets' }, x: 0, y: 0, rotated: true }, 'USA')).toBe(true);
     expect(carriedWeight(inv)).toMatchObject({ grams: 2780, unweighed: 1 });
+  });
+
+  it('an estimated weight is summed and counted; a blank weight can never be estimated', () => {
+    const inv = inv0();
+    inv.items.watch.weightEstimated = true;
+    expect(carriedWeight(inv)).toMatchObject({ grams: 2580, unweighed: 0, estimated: 1 });
+    expect(updateItem(inv, 'watch', { weightEstimated: false }, 'USA')).toBe(true);
+    expect(inv.items.watch.weightEstimated).toBeUndefined();
+    expect(updateItem(inv, 'watch', { weight_g: null, weightEstimated: true }, 'USA')).toBe(true);
+    expect(inv.items.watch.weightEstimated).toBeUndefined();
+    expect(carriedWeight(inv)).toMatchObject({ grams: 2520, unweighed: 1, estimated: 0 });
   });
 });
 

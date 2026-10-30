@@ -49,7 +49,7 @@ function EquippedBag({ slot, id }: { slot: string; id: string }) {
       <LabelTab>{slot}</LabelTab>
       <div className="gear-bag__head">
         <span className="gear-bag__name">{item.name}</span>
-        <WeightReadout grams={weight.grams} unweighed={weight.unweighed} limit={weight.limit} overLimit={weight.overLimit} meter={false} />
+        <WeightReadout grams={weight.grams} unweighed={weight.unweighed} estimated={weight.estimated} limit={weight.limit} overLimit={weight.overLimit} meter={false} />
         {weight.limit != null && weight.limit > 0
           ? <AllowanceMeter grams={weight.grams} limit={weight.limit} overLimit={weight.overLimit} className="gear-bag__meter" />
           : null}

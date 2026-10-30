@@ -18,7 +18,7 @@ interface Draft {
   size: string; color: string;
   fw: string; fh: string; weight: string; weightLimit: string; quantity: string;
   tags: string; panelLayout: string;
-  staple: boolean; consumable: boolean; specialCare: boolean;
+  staple: boolean; consumable: boolean; specialCare: boolean; weightEstimated: boolean;
   note: string; lesson: string;
 }
 
@@ -32,7 +32,7 @@ function draftOf(item: Partial<Item>): Draft {
     fw: item.footprint ? String(item.footprint[0]) : '', fh: item.footprint ? String(item.footprint[1]) : '',
     weight: s2(item.weight_g), weightLimit: s2(item.weightLimit_g), quantity: s2(item.quantity),
     tags: (item.tags ?? []).join(', '), panelLayout: s2(item.panelLayout),
-    staple: !!item.staple, consumable: !!item.consumable, specialCare: !!item.specialCare,
+    staple: !!item.staple, consumable: !!item.consumable, specialCare: !!item.specialCare, weightEstimated: !!item.weightEstimated,
     note: s2(item.note), lesson: s2(item.lesson),
   };
 }
@@ -60,6 +60,7 @@ function fieldsOf(d: Draft, container: boolean): Partial<Item> {
     size: d.size.trim() === '' ? null : d.size.trim(), color: d.color.trim(),
     footprint: fw && fh ? [fw, fh] : null,
     weight_g: grams(d.weight),
+    weightEstimated: d.weightEstimated && grams(d.weight) != null ? true : undefined,
     weightLimit_g: container ? grams(d.weightLimit) : undefined,
     quantity: d.consumable && q && q > 1 ? q : undefined,
     panelLayout: container && d.panelLayout === 'column' ? 'column' : undefined,
@@ -197,8 +198,13 @@ function ItemForm({ mode, id, item, onClose }: ItemFormProps) {
               </span>
             </F>
             <F label="Weight (g)">
-              <input className="rg-form__num rg-form__num--wide" type="number" min={0} step="any" value={d.weight}
-                onChange={(e) => set('weight')(e.target.value)} />
+              <span className="rg-form__pair">
+                <input className="rg-form__num rg-form__num--wide" type="number" min={0} step="any" value={d.weight}
+                  onChange={(e) => set('weight')(e.target.value)} />
+                <label className="rg-form__inline" title="A guesstimate, not a scale or spec figure">
+                  <input type="checkbox" checked={d.weightEstimated} onChange={(e) => set('weightEstimated')(e.target.checked)} aria-label="Weight is an estimate" /> est.
+                </label>
+              </span>
             </F>
             {isContainer ? (
               <F label="Weight limit (g)">

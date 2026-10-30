@@ -170,6 +170,7 @@ export function updateItem(inv: Inventory, id: string, patch: ItemPatch, stashLo
   const prevStatus = item.status, prevLocation = item.location;
   Object.assign(item, p);
   if ('quantity' in p && p.quantity === undefined) delete item.quantity;
+  if (('weightEstimated' in p && !p.weightEstimated) || item.weight_g == null) delete item.weightEstimated; // a blank weight is unweighed, not estimated
   if ('nickname' in p && !p.nickname) delete item.nickname;
   if ('status' in p && p.status !== prevStatus) {
     if (p.status === NOT_WORN) archiveItem(inv, id);

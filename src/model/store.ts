@@ -233,12 +233,12 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     },
     weightOf(containerId) {
       const inv = get().inv;
-      if (!inv) return { grams: 0, unweighed: 0, limit: null, overLimit: false };
+      if (!inv) return { grams: 0, unweighed: 0, estimated: 0, limit: null, overLimit: false };
       return cached(inv, 'weight', containerId, () => weightOf(inv, containerId, linksOf(inv)));
     },
     carriedWeight() {
       const inv = get().inv;
-      if (!inv) return { grams: 0, unweighed: 0, limit: null, overLimit: false };
+      if (!inv) return { grams: 0, unweighed: 0, estimated: 0, limit: null, overLimit: false };
       return cached(inv, 'carried', '', () => carriedWeight(inv, linksOf(inv)));
     },
     imageUrl(id, kind) {

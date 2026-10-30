@@ -59,6 +59,8 @@ export interface Item {
   color?: string;
   footprint?: Cells | null; // null draws as 1x1
   weight_g?: number | null;
+  /** weight_g is a guesstimate (typed in from a similar item or a hunch), not a scale or spec figure. Absent = measured. */
+  weightEstimated?: boolean;
   weightLimit_g?: number | null; // containers only
   tags?: string[];
   staple?: boolean;
@@ -182,6 +184,7 @@ export type DropTarget =
 export interface WeightSummary {
   grams: number;      // sum of known weights
   unweighed: number;  // items with weight_g null/undefined
+  estimated: number;  // items whose weight_g is a guesstimate (weightEstimated); they are included in grams
   limit?: number | null;
   overLimit: boolean;
 }

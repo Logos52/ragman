@@ -219,3 +219,5 @@
 }
 .rg-insp__detach:hover:not(:disabled) { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
 .rg-insp__detach:disabled { color: var(--ink-3); }
+
+.rg-form__inline { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--ink-2); white-space: nowrap; cursor: pointer; }

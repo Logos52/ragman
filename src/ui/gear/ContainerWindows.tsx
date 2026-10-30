@@ -171,7 +171,7 @@ const ContainerWindow = memo(function ContainerWindow({ id, start, fallbackZ }: 
         onMoveEnd={onMoveEnd}
         onRaise={onRaise}
         onClose={onClose}
-        right={<WeightReadout grams={weight.grams} unweighed={weight.unweighed} limit={weight.limit} overLimit={weight.overLimit} tone="light" />}
+        right={<WeightReadout grams={weight.grams} unweighed={weight.unweighed} estimated={weight.estimated} limit={weight.limit} overLimit={weight.overLimit} tone="light" />}
         className="gear-win"
       >
         <ContainerPanels id={id} scope="win" />
