@@ -9,7 +9,7 @@ import { sortGrid } from './sort';
 import { exportJson, serializeInventory } from './strip';
 import {
   archiveItem, deleteItem, equipItem, mergeStacks, moveItem, quickMoveInto, sendToStash, setLocked, setNickname,
-  setPinned, setVerified, splitStack, unarchiveItem, updateItem,
+  setPinned, setVerified, setVerifiedAll, splitStack, unarchiveItem, updateItem,
 } from './moves';
 import { quantityOf, sameJob, sameProduct, splitId } from './stacks';
 import { setTaskStatus, updateTask } from './tasks';
@@ -63,6 +63,17 @@ describe('flags', () => {
     expect('pinned' in inv.items.tee).toBe(false);
     expect(setVerified(inv, 'tee', true)).toBe(true);
     expect(setVerified(inv, 'nope', true)).toBe(false);
+  });
+  it('verify all ticks every item once, in every location and the archive, and unverify all clears them', () => {
+    const inv = inv0();
+    const ids = Object.keys(inv.items);
+    setVerified(inv, 'tee', true);
+    expect(setVerifiedAll(inv, true)).toBe(true);
+    for (const id of ids) expect(inv.items[id].verified).toBe(true);
+    expect(setVerifiedAll(inv, true)).toBe(false); // nothing left to change
+    expect(setVerifiedAll(inv, false)).toBe(true);
+    for (const id of ids) expect('verified' in inv.items[id]).toBe(false);
+    expect(setVerifiedAll(inv, false)).toBe(false);
   });
   it('nickname: containers only, trimmed, blank removes it', () => {
     const inv = inv0();

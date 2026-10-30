@@ -261,6 +261,12 @@ export const setPinned = (inv: Inventory, id: string, on: boolean) => setFlag(in
 export const setLocked = (inv: Inventory, id: string, on: boolean) => setFlag(inv, id, 'locked', on);
 /** Verified: the owner ticked it on the card; unverified draws a "?" mark. */
 export const setVerified = (inv: Inventory, id: string, on: boolean) => setFlag(inv, id, 'verified', on);
+/** Verify (or unverify) every item, or just `ids`, in one step. False when nothing changed. */
+export function setVerifiedAll(inv: Inventory, on: boolean, ids: string[] = Object.keys(inv.items)): boolean {
+  let changed = false;
+  for (const id of ids) if (setFlag(inv, id, 'verified', on)) changed = true;
+  return changed;
+}
 
 /** Containers only. A blank (or whitespace) nickname removes the field. Stored trimmed. */
 export function setNickname(inv: Inventory, id: string, nickname: string | null): boolean {

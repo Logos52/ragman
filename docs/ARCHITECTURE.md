@@ -82,7 +82,7 @@ All optional. `normalize` never adds them and a save never writes one that was n
 | --- | --- | --- | --- |
 | `pinned` | item | Sort leaves it in place and packs around it | `setPinned`, `sort.ts` |
 | `locked` | item | cannot be moved, equipped, archived, unarchived, sent to the stash, deleted, merged or split until unlocked; a Quick Use pin and edits that do not move it are still allowed; it still travels inside its container; a container is not deleted while it would have to move a locked item out | `setLocked`; `canFit` and `move` answer reason `'locked'`; the other moves return false |
-| `verified` | item | false or absent = unverified, drawn with a "?" mark until the owner ticks it on the card | `setVerified` |
+| `verified` | item | false or absent = unverified, drawn with a "?" mark until the owner ticks it on the card; the stash header's Verify all ticks every item in the inventory in one undo step (Unverify all when none is left) | `setVerified`, `setVerifiedAll`, `unverifiedIds` |
 | `weightEstimated` | item | `weight_g` is a guesstimate, not a scale or spec figure; summed like any weight but counted in `WeightSummary.estimated`, so every readout that includes it shows `~` and `N est.` (the card: `~450 g · estimate`); cleared whenever the weight is blank | `updateItem` (the Edit form's `est.` tick), `weights.ts` |
 | `nickname` | container | shown on the tile label strip instead of the name; a blank removes it; refused on a non-container | `setNickname`, `updateItem` |
 | `quantity` | consumable | stack size, integer >= 1, absent counts as 1; refused on a non-consumable | `quantityOf`, `mergeStacks`, `splitStack` |

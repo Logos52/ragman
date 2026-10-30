@@ -1,4 +1,4 @@
-/** Right column: header (location, Archive, search, sort select, Sort, Add), filter strip, stash/archive grid. */
+/** Right column: header (location, Archive, search, sort select, Verify all, Sort, Add), filter strip, stash/archive grid. */
 import { memo, useLayoutEffect, useMemo, useRef } from 'react';
 import type { ReactNode } from 'react';
 import type { GridRef, SortMode } from '../../model/types';
@@ -9,6 +9,7 @@ import { Select } from '../primitives/Select';
 import { LabelTab } from '../primitives/LabelTab';
 import { Glyph, glyphNameFor } from '../primitives/glyphs';
 import { getStore, useInventory } from '../hooks/useInv';
+import { VerifyAllButton } from './VerifyAllButton';
 import { useUi } from '../uiStore';
 import { GridZone } from './GridZone';
 import { useRetainedGrids } from '../hooks/useRetainedGrids';
@@ -118,6 +119,7 @@ export function StashColumn() {
             Archive
           </Button>
           <span className="gear-stash__spacer" />
+          <VerifyAllButton />
           <Button size="sm" icon="sort" onClick={() => store.sortGrid(grid, filters.sort)}>Sort</Button>
           <Button size="sm" variant="accent" icon="plus" onClick={() => useUi.getState().setAddOpen(true)}>Add</Button>
         </div>

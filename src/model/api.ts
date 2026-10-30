@@ -89,6 +89,10 @@ export interface InventoryActions {
   setPinned(id: string, on: boolean): void;                // Sort leaves pinned items in place
   setLocked(id: string, on: boolean): void;                // locked: no move, equip, archive, delete, merge, split
   setVerified(id: string, on: boolean): void;              // the card's tick; false removes the key
+  /** The stash header's Verify all: every item in the inventory (all locations, the Archive, carried), one undo step. */
+  setVerifiedAll(on: boolean): void;
+  /** Items with `verified` false or absent, in item order (the Verify all button's enablement and count). */
+  unverifiedIds(): string[];
   setNickname(id: string, nickname: string | null): void;  // containers only; blank removes it
   /** Merge stack `source` into stack `target`; source is deleted. False when they cannot merge. */
   mergeStacks(source: string, target: string): boolean;

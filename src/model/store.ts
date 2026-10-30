@@ -301,6 +301,12 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     setPinned: (id, on) => mutate('setPinned', undefined, (d) => M.setPinned(d, id, on) && undefined),
     setLocked: (id, on) => mutate('setLocked', undefined, (d) => M.setLocked(d, id, on) && undefined),
     setVerified: (id, on) => mutate('setVerified', undefined, (d) => M.setVerified(d, id, on) && undefined),
+    setVerifiedAll: (on) => mutate('setVerifiedAll', undefined, (d) => M.setVerifiedAll(d, on) && undefined),
+    unverifiedIds() {
+      const inv = get().inv;
+      if (!inv) return [];
+      return cached(inv, 'unverified', '', () => Object.keys(inv.items).filter((id) => !inv.items[id].verified));
+    },
     setNickname: (id, nickname) => mutate('setNickname', undefined, (d) => M.setNickname(d, id, nickname) && undefined),
     mergeStacks: (source, target) => mutate('mergeStacks', false, (d, loc) => M.mergeStacks(d, source, target, loc) && true),
     splitStack(id, n, target) {
