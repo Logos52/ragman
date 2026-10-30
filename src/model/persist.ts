@@ -1,12 +1,13 @@
 /**
  * Data sources and the background saver.
- *   server : GET/PUT `${base}/inventory.json`, PUT `${base}/images/<path>` (vite.config.ts / scripts/serve.mjs)
+ *   server : GET/PUT `${base}/inventory.json`, PUT `${base}/images/<path>` (vite.config.ts / scripts/serve.mjs);
+ *            GET/POST `${base}/sync` reads or runs the background git sync (scripts/sync.mjs)
  *   folder : File System Access API on the ragman-data clone; the handle is kept in IndexedDB so a reload
  *            can re-request permission with one click
  *   bundled: public build (VITE_BUILD === 'public'), frozen demo JSON, never saved
  * Saves are debounced (500 ms), coalesced and sequential: never two writes in flight.
  */
-import type { DataSource, Inventory, SaveState } from './types';
+import type { DataSource, Inventory, SaveState, SyncState } from './types';
 import { detectEol, serializeInventory, type Eol } from './engine/strip';
 import { fileFromDir } from './engine/images';
 
@@ -55,16 +56,39 @@ export function bundledImageUrls(): Record<string, string> {
 
 /* ---------------- writing ---------------- */
 
-export async function writeInventory(source: DataSource, text: string): Promise<void> {
-  if (source.kind === 'bundled') return; // the public build never saves
+/** Write inventory.json. A server that syncs answers with its sync state; otherwise null. */
+export async function writeInventory(source: DataSource, text: string): Promise<SyncInfo | null> {
+  if (source.kind === 'bundled') return null; // the public build never saves
   if (source.kind === 'server') {
     const res = await fetch(`${source.base}/inventory.json`, {
       method: 'PUT', headers: { 'Content-Type': 'application/json; charset=utf-8' }, body: text,
     });
     if (!res.ok) throw new Error(`save failed: HTTP ${res.status}`);
-    return;
+    return parseSync(res.status === 204 ? '' : await res.text().catch(() => ''));
   }
   await writeFileAt(source.handle, 'inventory.json', text);
+  return null;
+}
+
+/* ---------------- git sync state (server source only) ---------------- */
+
+export interface SyncInfo { state: SyncState; lastAt: string | null; message: string | null }
+const SYNC_STATES: SyncState[] = ['off', 'idle', 'pending', 'syncing', 'synced', 'error'];
+
+function parseSync(text: string): SyncInfo | null {
+  try {
+    const j = JSON.parse(text) as Partial<SyncInfo>;
+    if (!j || !SYNC_STATES.includes(j.state as SyncState)) return null;
+    return { state: j.state as SyncState, lastAt: j.lastAt ?? null, message: j.message ?? null };
+  } catch { return null; }
+}
+
+/** GET (read) or POST (sync now) `${base}/sync`. null when the server has no sync route or is not there. */
+export async function fetchSync(base = SERVER_BASE, run = false): Promise<SyncInfo | null> {
+  try {
+    const res = await fetch(`${base}/sync`, { method: run ? 'POST' : 'GET', cache: 'no-store' });
+    return res.ok ? parseSync(await res.text()) : null;
+  } catch { return null; }
 }
 
 async function writeFileAt(dir: FileSystemDirectoryHandle, relPath: string, data: string | Blob): Promise<void> {

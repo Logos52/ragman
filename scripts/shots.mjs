@@ -46,7 +46,7 @@ process.on('SIGINT', () => { stopVite(); process.exit(130); });
 
 async function startVite() {
   vite = spawn(process.execPath, [join(root, 'node_modules', 'vite', 'bin', 'vite.js'), '--port', String(PORT), '--strictPort'], {
-    cwd: root, stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, BROWSER: 'none' },
+    cwd: root, stdio: ['ignore', 'pipe', 'pipe'], env: { ...process.env, BROWSER: 'none', RAGMAN_SYNC: '0' }, // never commit or push the data repo from a proof run
   });
   let log = '';
   vite.stdout.on('data', (d) => { log += d; });

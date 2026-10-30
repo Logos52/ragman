@@ -191,6 +191,9 @@ export interface WeightSummary {
 
 export type SaveState = 'saved' | 'saving' | 'dirty' | 'error';
 
+/** Background git sync of the data repo (scripts/sync.mjs). 'off' also for the folder and bundled sources. */
+export type SyncState = 'off' | 'idle' | 'pending' | 'syncing' | 'synced' | 'error';
+
 export type DataSource =
   | { kind: 'server'; base: string }            // GET/PUT /data/*
   | { kind: 'folder'; handle: FileSystemDirectoryHandle } // File System Access API

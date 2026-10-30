@@ -5,7 +5,7 @@
  */
 import type {
   Cell, Cells, DataSource, DropTarget, EffectivePlace, Filters, FitResult, GridRef, GridView, Inventory, Item, ItemPatch,
-  Loadout, OverallSummary, Panel, SaveState, SortMode, SplitResult, Task, WeightSummary, LoadoutPlace,
+  Loadout, OverallSummary, Panel, SaveState, SortMode, SplitResult, SyncState, Task, WeightSummary, LoadoutPlace,
 } from './types';
 
 export interface InventoryState {
@@ -15,6 +15,10 @@ export interface InventoryState {
   loadError: string | null;   // set when no source can be opened or the file is unreadable
   saveState: SaveState;
   saveError: string | null;
+  /** Git sync of the data repo, as the server reports it (GET /data/sync). */
+  syncState: SyncState;
+  syncAt: string | null;      // ISO time of the last successful sync
+  syncMessage: string | null; // the git error, or "conflict: pull by hand"
   /** The stash/archive view's current filters (UI state, not persisted). */
   filters: Filters;
   /** Which stash location the right column shows, and whether Archive is shown instead. */
@@ -34,6 +38,8 @@ export interface InventoryActions {
   openFolder(): Promise<void>;
   /** Force a save now (used by the "retry" on the not-saved badge). */
   saveNow(): Promise<void>;
+  /** Sync the data repo now (POST /data/sync; the "retry" on the push-failed badge). */
+  retrySync(): Promise<void>;
   /** Save a pasted image; returns the path relative to images/ (e.g. "photos/<slug>.png"). */
   saveImage(relPath: string, blob: Blob): Promise<string>;
 

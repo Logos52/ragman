@@ -14,6 +14,7 @@ Vite + React 18 + TypeScript + zustand. No router, no CSS framework, no UI libra
 | `src/ui/*` | React components; one folder per screen region |
 | `src/styles/*` | design tokens and global CSS; see `docs/DESIGN.md` |
 | `scripts/serve.mjs` | standalone tiny server for a production build pointed at a ragman-data clone |
+| `scripts/sync.mjs` | background git sync of the data repo, used by both servers |
 | `scripts/shots.mjs` | Playwright screenshots of every view in every state, desktop and phone |
 
 ## Rules the code enforces
@@ -117,9 +118,27 @@ The Export button downloads `exportJson()` from `engine/strip.ts`, the same expo
 boot() -> persist.load() -> inv in store -> React selectors -> screen
                ^                                  |
                +---- debounced persist.save() <---+ (every mutation)
+                          |
+                          v
+   PUT /data/inventory.json -> server writes the file -> sync.schedule()
+                                                            |  20 s quiet
+                                                            v
+                         git add, commit, pull --rebase, push -> GET /data/sync -> footer
 ```
 
 `effectivePlace(id)` = `loadouts[active].placements[id] ?? items[id].home`; an attached item resolves to its parent's place. Grids are derived from effective places on demand (`gridView`) and memoised per `inv` reference.
+
+## Sync (`scripts/sync.mjs`)
+
+One module, imported by `vite.config.ts` and `scripts/serve.mjs`; both call `syncFromEnv(dataDir)`, `afterPut` after a successful PUT and `handleSyncRoute` for `/data/sync`. Git runs through `execFile` with argument arrays.
+
+- Startup, before the first request is answered: if the data dir is the top of a git repo with an upstream, commit any changes, `git pull --rebase --autostash` once, push if ahead. A failure (offline) leaves state `error` and the server still serves. `RAGMAN_SYNC=0`, no repo, no upstream, or a vitest run: state `off`, one log line says why.
+- After a PUT of `inventory.json` or an image: wait `RAGMAN_SYNC_DELAY_MS` (default 20000) after the last save, then one sync at a time: `git add -A -- . ':(exclude,icase)*prices*' ':(exclude).claude'`; commit `Layout <ISO time> from <hostname>` when something is staged; when nothing is staged and nothing is unpushed, stop; else pull with rebase and push.
+- Push rejected or no network: state `error` with the git message; the commit stays; the next save or a POST retries.
+- Rebase conflict: `git rebase --abort`, state `error` with message `conflict: pull by hand`, and no automatic sync until the server restarts or a POST sync succeeds.
+- State: `off | idle | pending | syncing | synced | error`, `lastAt`, `message`, `ahead` (unpushed commits), `conflict`. `GET /data/sync` returns it; `POST /data/sync` syncs now and returns it; the PUT of `inventory.json` answers with it (200, JSON).
+- Client: `persist.fetchSync` reads or runs it; the store keeps `syncState`, `syncAt`, `syncMessage`, reads once on load, polls every 5 s while `pending` or `syncing`, and once 25 s after each save. The folder and bundled sources stay `off`.
+- The page reads `inventory.json` once on load; a change pulled while the page is open is overwritten by the next save unless the page is reloaded.
 
 ## Builds
 

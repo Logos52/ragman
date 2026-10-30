@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react';
 import { createReadStream, existsSync, mkdirSync, statSync, writeFileSync, renameSync } from 'node:fs';
 import { dirname, extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { afterPut, handleSyncRoute, syncFromEnv } from './scripts/sync.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 
@@ -13,6 +14,8 @@ const here = dirname(fileURLToPath(import.meta.url));
  *   PUT  /data/inventory.json            atomic write (tmp + rename)
  *   GET  /data/images/<path>             item images
  *   PUT  /data/images/<path>             save a pasted screenshot (raw body)
+ *   GET  /data/sync                      background git sync state (scripts/sync.mjs)
+ *   POST /data/sync                      sync now (the footer's Retry)
  * Point RAGMAN_DATA at the clone; default is ../ragman-data beside this repo.
  */
 function dataServer(): Plugin {
@@ -24,6 +27,10 @@ function dataServer(): Plugin {
   return {
     name: 'ragman-data-server',
     configureServer(server) {
+      const sync = syncFromEnv(root);
+      // The startup sync (commit, pull, push) finishes before the first request is answered.
+      server.middlewares.use((_req, _res, next) => { void sync.ready.then(() => next()); });
+      server.httpServer?.once('close', () => sync.stop());
       server.middlewares.use('/data', (req, res, next) => {
         let url: string;
         try { url = decodeURIComponent((req.url ?? '/').split('?')[0]); }
@@ -31,6 +38,7 @@ function dataServer(): Plugin {
         const rel = normalize(url).replace(/^[/\\]+/, '');
         const lc = rel.toLowerCase(); // Windows paths ignore case, so the guard must too
         if (lc.includes('..') || lc.includes('prices')) { res.statusCode = 403; res.end('forbidden'); return; }
+        if (rel === 'sync') { handleSyncRoute(sync, req, res); return; }
         const file = join(root, rel);
         const ok = rel === 'inventory.json' || rel.startsWith('images/') || rel.startsWith('images\\');
         if (!ok) { res.statusCode = 404; res.end('not found'); return; }
@@ -51,7 +59,7 @@ function dataServer(): Plugin {
               const tmp = file + '.tmp';
               writeFileSync(tmp, Buffer.concat(chunks));
               renameSync(tmp, file);
-              res.statusCode = 204; res.end();
+              afterPut(sync, res, rel);
             } catch (e) { res.statusCode = 500; res.end(String(e)); }
           });
           return;
@@ -67,5 +75,5 @@ export default defineConfig({
   resolve: { alias: { '@': resolve(here, 'src') } },
   server: { port: 5173, strictPort: false },
   build: { target: 'es2022', sourcemap: false },
-  test: { environment: 'jsdom', globals: true, include: ['src/**/*.test.{ts,tsx}'] },
+  test: { environment: 'jsdom', globals: true, include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.mjs'] },
 } as any);

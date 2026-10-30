@@ -31,7 +31,7 @@ import * as M from './engine/moves';
 import * as S from './engine/structure';
 import {
   bundledImageUrls, canPickFolder, hasPermission, IS_PUBLIC, loadBundled, loadFolder, loadServer, pickFolder,
-  recallHandle, rememberHandle, saveImage as persistImage, Saver, SERVER_BASE, writeInventory,
+  recallHandle, rememberHandle, saveImage as persistImage, Saver, SERVER_BASE, writeInventory, fetchSync, type SyncInfo,
 } from './persist';
 
 declare global { interface Window { __ragmanPerf?: { name: string; ms: number }[] } }
@@ -50,6 +50,15 @@ const EMPTY_OVERALL: OverallSummary = { items: 0, byStatus: [], byLocation: [], 
 const undoRing = new UndoRing<Inventory>(10);
 let saver: Saver | null = null;
 let images: ImageResolver | null = null;
+/** Git sync polling: every 5 s while the server says pending or syncing, and once 25 s after each save. */
+const SYNC_POLL_MS = 5000, SYNC_AFTER_SAVE_MS = 25000;
+let syncPoll: ReturnType<typeof setTimeout> | null = null;
+let syncAfterSave: ReturnType<typeof setTimeout> | null = null;
+function clearSyncTimers() {
+  if (syncPoll) clearTimeout(syncPoll);
+  if (syncAfterSave) clearTimeout(syncAfterSave);
+  syncPoll = syncAfterSave = null;
+}
 /** Set by the store initialiser so adoptInventory() can reach adopt(). */
 let adoptHook: ((raw: Inventory, source: DataSource, eol?: Eol) => void) | null = null;
 
@@ -137,6 +146,29 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     });
   }
 
+  /** Take a sync state from the server; keep polling while a sync is waiting or running. */
+  function applySync(info: SyncInfo | null) {
+    if (!info) return;
+    set({ syncState: info.state, syncAt: info.lastAt, syncMessage: info.message });
+    if (syncPoll) { clearTimeout(syncPoll); syncPoll = null; }
+    if (info.state === 'pending' || info.state === 'syncing') {
+      syncPoll = setTimeout(() => { syncPoll = null; void readSync(); }, SYNC_POLL_MS);
+    }
+  }
+  async function readSync(run = false) {
+    const source = get().source;
+    if (source?.kind !== 'server') return;
+    const info = await fetchSync(source.base, run);
+    if (get().source === source) applySync(info);
+  }
+  /** After a save reached the server: one more read 25 s later, when sync is on. */
+  function afterSave(info: SyncInfo | null) {
+    applySync(info);
+    if (get().syncState === 'off') return;
+    if (syncAfterSave) clearTimeout(syncAfterSave);
+    syncAfterSave = setTimeout(() => { syncAfterSave = null; void readSync(); }, SYNC_AFTER_SAVE_MS);
+  }
+
   function adopt(raw: Inventory, source: DataSource, eol: Eol = '\n') {
     const inv = normalize(raw);
     images?.dispose();
@@ -147,17 +179,20 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     });
     saver?.cancel();
     saver = source.kind === 'bundled' ? null : new Saver(
-      (text) => writeInventory(source, text),
+      async (text) => { afterSave(await writeInventory(source, text)); },
       () => get().inv,
       (saveState, saveError) => set({ saveState, saveError }),
       500, eol,
     );
     undoRing.clear();
+    clearSyncTimers();
     set({
       inv, source, loadError: null, saveState: 'saved', saveError: null, undoDepth: 0, openWindows: [],
       stashLocation: inv.settings.locations[0] ?? '', showArchive: false,
+      syncState: 'off', syncAt: null, syncMessage: null,
     });
     void images.probeAvatar();
+    void readSync();
   }
   adoptHook = adopt;
 
@@ -165,6 +200,7 @@ export const useInventory = create<RagmanStore>()((set, get) => {
 
   return {
     inv: null, source: null, loadError: null, saveState: 'saved', saveError: null,
+    syncState: 'off', syncAt: null, syncMessage: null,
     filters: { categories: new Set<string>(), search: '', sort: 'name' },
     stashLocation: '', showArchive: false, openWindows: [], undoDepth: 0, imagesTick: 0,
 
@@ -195,10 +231,19 @@ export const useInventory = create<RagmanStore>()((set, get) => {
       }
     },
     async saveNow() { await saver?.flush(true); },
+    async retrySync() {
+      const source = get().source, prev = get().syncState;
+      if (source?.kind !== 'server') return;
+      set({ syncState: 'syncing' }); // the footer reads PUSHING while the server works
+      const info = await fetchSync(source.base, true);
+      if (get().source !== source) return;
+      if (info) applySync(info); else set({ syncState: prev });
+    },
     async saveImage(relPath, blob) {
       const source = get().source;
       if (!source) throw new Error('no data source');
       const p = await persistImage(source, relPath, blob);
+      if (source.kind === 'server') { afterSave(null); void readSync(); }
       images?.register(p, blob);
       set((s) => ({ imagesTick: s.imagesTick + 1 }));
       return p;

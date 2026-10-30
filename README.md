@@ -35,6 +35,16 @@ npm run shots        # Playwright proof: refs/proof/*.png at 1440 and 390, perf.
 
 The dev and production servers refuse any path containing `prices` or `..`, and only `inventory.json` and `images/*` are reachable. Every mutation is in memory; the file is written in the background and the footer badge shows the save state.
 
+Both servers also commit and push the data repo in the background, so the layout follows you between machines. When the data folder is a git repo with an upstream branch, the server first commits any uncommitted changes, pulls with rebase and pushes. After each save it waits for a quiet period, then commits (`Layout <time> from <hostname>`), pulls with rebase and pushes. Files whose name contains `prices` and the `.claude` folder are never staged. Nothing is force-pushed, reset or checked out.
+
+| Env var | Default | Effect |
+| --- | --- | --- |
+| `RAGMAN_DATA` | `../ragman-data` | the data folder |
+| `RAGMAN_SYNC` | on | `0` turns the git sync off |
+| `RAGMAN_SYNC_DELAY_MS` | `20000` | the quiet period after the last save before a sync |
+
+The footer shows the sync state right of the save badge: nothing when sync is off or nothing has synced yet, `SYNCED 12:04` (local time of the last sync), `PUSHING`, `PUSH FAILED · RETRY` (no network or push rejected; the local commit stays and the next save or Retry tries again), `CONFLICT · PULL BY HAND` (the rebase was aborted; no automatic sync runs until you pull by hand and press Retry or restart the server). The page reads the file once when it loads: reload it after a pull brings changes from the other machine, or the next save writes over them. `npm run shots` and `npm test` run with sync off.
+
 Data helpers, run from this folder with `python -I`:
 
 - `scripts/link-grok.py ../ragman-data` links `images/grok/<slug>.*` files to items (`images.grok`); files whose name is not the slug are listed in the script by hand.

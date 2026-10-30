@@ -1,10 +1,12 @@
 // Tiny local server for a production private build.
-// Serves dist/ and the ragman-data clone at /data/* with the same GET/PUT contract as the Vite plugin.
+// Serves dist/ and the ragman-data clone at /data/* with the same GET/PUT contract as the Vite plugin,
+// plus GET/POST /data/sync for the background git sync (scripts/sync.mjs).
 // Usage: RAGMAN_DATA=../ragman-data node scripts/serve.mjs [port]
 import { createServer } from 'node:http';
 import { createReadStream, existsSync, mkdirSync, statSync, writeFileSync, renameSync } from 'node:fs';
 import { dirname, extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { afterPut, handleSyncRoute, syncFromEnv } from './sync.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const dist = resolve(here, '../dist');
@@ -23,7 +25,10 @@ function send(res, file) {
   createReadStream(file).pipe(res);
 }
 
-createServer((req, res) => {
+const sync = syncFromEnv(data);
+
+createServer(async (req, res) => {
+  await sync.ready; // the startup sync (commit, pull, push) finishes before the first request is answered
   let url;
   try { url = decodeURIComponent((req.url ?? '/').split('?')[0]); }
   catch { res.statusCode = 400; res.end('bad request'); return; } // malformed percent-escape: refuse, never crash
@@ -31,6 +36,7 @@ createServer((req, res) => {
     const rel = normalize(url.slice(6)).replace(/^([/\\])+/, '');
     const lc = rel.toLowerCase(); // Windows paths ignore case, so the guard must too
     if (lc.includes('..') || lc.includes('prices')) { res.statusCode = 403; res.end('forbidden'); return; }
+    if (rel === 'sync') { handleSyncRoute(sync, req, res); return; }
     const ok = rel === 'inventory.json' || rel.startsWith('images/') || rel.startsWith('images\\');
     if (!ok) { res.statusCode = 404; res.end('not found'); return; }
     const file = join(data, rel);
@@ -42,7 +48,7 @@ createServer((req, res) => {
           mkdirSync(dirname(file), { recursive: true });
           writeFileSync(file + '.tmp', Buffer.concat(chunks));
           renameSync(file + '.tmp', file);
-          res.statusCode = 204; res.end();
+          afterPut(sync, res, rel);
         } catch (e) { res.statusCode = 500; res.end(String(e)); }
       });
       return;
