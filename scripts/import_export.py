@@ -185,7 +185,7 @@ for base, url in photos_to_get.items():
             if it["images"].get("photo") == f"photos/{base}.jpg": it["images"] = {}
 
 with open(os.path.join(DATA, "inventory.json"), "w", encoding="utf-8") as f:
-    json.dump(inv, f, ensure_ascii=False, indent=2)
+    json.dump(inv, f, ensure_ascii=False, indent=2); f.write("\n")
 print(f"items: {len(items)}  photos saved: {got}  failed: {failed}")
 print("by category:", {c: sum(1 for i in items.values() if i['category'] == c) for c in CATEGORIES})
 print("by status:", {s: sum(1 for i in items.values() if i['status'] == s) for s in [''] + inv['settings']['statuses']})

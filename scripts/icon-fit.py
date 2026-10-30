@@ -82,5 +82,6 @@ if h and h["kind"] == "stash":
             if x is not None: break
             y += 1
         it["home"] = {"kind": "stash", "location": h["location"], "x": x, "y": y, "rotated": False}
-json.dump(inv, open(p, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
+with open(p, "w", encoding="utf-8", newline="\n") as f:
+    json.dump(inv, f, ensure_ascii=False, indent=2); f.write("\n")
 print(f"{a.slug}: {method} cut, {canvas[0]}x{canvas[1]}, home {it.get('home')}")

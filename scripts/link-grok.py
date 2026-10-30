@@ -25,6 +25,7 @@ for slug, item in inv['items'].items():
     assert f in grok, f
     item.setdefault('images', {})['grok'] = f'grok/{f}'
     linked += 1
-json.dump(inv, open(inv_path, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
+with open(inv_path, 'w', encoding='utf-8', newline='\n') as f:
+    json.dump(inv, f, ensure_ascii=False, indent=2); f.write('\n')
 open(inv_path, 'a', encoding='utf-8').write('\n')
 print(f'linked {linked} of {len(inv["items"])} items')

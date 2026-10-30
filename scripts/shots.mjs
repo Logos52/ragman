@@ -10,16 +10,18 @@
  * loaded file as an in-memory source (adoptInventory with { kind: 'bundled' }), so no save is attempted
  * at all; the PUT abort stays as the backstop. The failed-save shots (archive-error, window-error, inspect-error)
  * mutate on the server source on purpose: their PUT is aborted, which is exactly the error state they show. Playwright is loaded from the portable install at
- * C:\Users\nxlog\tools\pw (override with PW_DIR).
+ * C:\Users\nxlog\tools\pw on the Windows box, ~/Projects/private/pw on the Mac (override with PW_DIR).
  */
 import { createRequire } from 'node:module';
 import { spawn } from 'node:child_process';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { homedir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const require = createRequire(import.meta.url);
-const PW_DIR = process.env.PW_DIR ?? 'C:/Users/nxlog/tools/pw';
+const PW_CANDIDATES = ['C:/Users/nxlog/tools/pw', join(homedir(), 'Projects', 'private', 'pw')];
+const PW_DIR = process.env.PW_DIR ?? PW_CANDIDATES.find((d) => existsSync(join(d, 'node_modules', 'playwright'))) ?? PW_CANDIDATES[0];
 const { chromium } = require(join(PW_DIR, 'node_modules', 'playwright'));
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
