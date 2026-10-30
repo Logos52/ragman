@@ -39,6 +39,8 @@ Data helpers, run from this folder with `python -I`:
 
 - `scripts/link-grok.py ../ragman-data` links `images/grok/<slug>.*` files to items (`images.grok`); files whose name is not the slug are listed in the script by hand.
 - `scripts/icon-fit.py <slug> <image> --footprint WxH --data ../ragman-data` cuts the background, fits the art to the footprint canvas and sets `images.icon`; see `docs/icons.md`.
+- `scripts/worn-fit.py --install-base <image> --data ../ragman-data` cuts and fits Grok's base figure to `images/avatar/base.png`; see `docs/avatar.md`.
+- `scripts/worn-fit.py <slug> [<slug2> ...] <image> --data ../ragman-data` keeps only what differs from the base figure, saves `images/worn/<slug>.png` and sets `images.worn` on each slug; see `docs/avatar.md`.
 
 See `docs/DESIGN.md` for the look ("Departures") and `docs/ARCHITECTURE.md` for the engine rules, slot rules, sort modes and the EFT inventory fields.
 

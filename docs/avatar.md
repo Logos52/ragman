@@ -20,6 +20,14 @@ The character on the Gear screen is dressed by what the active loadout equips. I
 
 Base and layers are generated in one Grok conversation so the layers can reference the base image. First message produces the base. Each later message: "Draw the figure from image 1 wearing {garment}, same pose, same scale, same framing, same style; the garment exactly as in the maker's product photos; everything else unchanged."
 
+## Script
+
+Run from the repo folder. Grok's downloads go in `images/grok/avatar/` first.
+
+- `python -I -X utf8 scripts/worn-fit.py --install-base <grok-image> --data ../ragman-data` cuts the white background, fits the whole frame onto the 768x1536 canvas, saves `images/avatar/base.png` and a preview on `--page` grey (`--paper #RRGGBB` overrides) in `images/avatar/preview/`.
+- `python -I -X utf8 scripts/worn-fit.py <slug> [<slug2> ...] <grok-image> --data ../ragman-data` fits the figure-wearing-the-garment image the same way, aligns the head to the base, keeps the pixels that differ from the base (`--threshold`, default 48 RGB distance; `--open 0` for wire glasses frames), saves `images/worn/<first slug>.png` with a preview, and sets `images.worn` on every listed slug.
+- `python -I -X utf8 scripts/worn-fit.py --selftest` runs the pipeline on synthetic images and prints pass or fail.
+
 ## Schema
 
 `images.worn` on an item: path under the images folder, optional. Containers and electronics never have one.
