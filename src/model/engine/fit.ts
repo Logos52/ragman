@@ -1,6 +1,6 @@
 /**
  * The fit rule: can item `id` be dropped on `target`? Pure; O(footprint cells + grid items).
- * Order of checks: locked (canFit only), self/cycle, bounds, accepts (panel + regions), occupied.
+ * Order of checks: locked (canFit only), self/cycle, stash-only category (furniture never nests), bounds, accepts (panel + regions), occupied.
  * canFit (not fitAt) also answers a grid drop onto exactly one identical stack with ok + `merge`: move() merges.
  */
 import type { Cell, DropTarget, FitResult, GridRef, GridView, Inventory, Item, Region } from '../types';
@@ -8,7 +8,7 @@ import { ancestorsOf, footprintOf, gridView, isGrowing, occupancy, POCKETS_PANEL
 
 export type ViewFn = (ref: GridRef) => GridView;
 
-import { slotAccepts } from './slotRules';
+import { slotAccepts, stashOnly } from './slotRules';
 import { sameProduct } from './stacks';
 export { CONTAINER_SLOTS } from './slotRules';
 
@@ -43,6 +43,7 @@ export function fitAt(inv: Inventory, id: string, ref: GridRef, x: number, y: nu
   if (ref.kind === 'panel') {
     if (ref.in === id) return { ok: false, cells, reason: 'self' };
     if (ancestorsOf(inv, ref.in).includes(id)) return { ok: false, cells, reason: 'cycle' };
+    if (stashOnly(item)) return { ok: false, cells, reason: 'not-accepted' }; // furniture never nests
   }
   if (x < 0 || y < 0 || x + w > v.width || (!isGrowing(ref) && y + h > v.height)) return { ok: false, cells, reason: 'out-of-bounds' };
   if (!acceptsItem(v.accepts, item) || !regionsAccept(v.regions, item, x, y, w, h)) return { ok: false, cells, reason: 'not-accepted' };

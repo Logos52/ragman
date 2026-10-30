@@ -18,7 +18,7 @@ import type { DropTarget, FitResult, GridRef, Inventory, Item, ItemPatch, SplitR
 import { buildLinks, effectivePlace, gridBuckets, gridOfPlace, gridView, isCarried, isContainer, isGrowing, rootPlace } from './place';
 import { acceptsItem, canFit, fitAt } from './fit';
 import { autoPlace } from './firstFree';
-import { equipOrder } from './slotRules';
+import { equipOrder, stashOnly } from './slotRules';
 import { clearPlacement, homeFromRef, placementFromRef, rehomeFirstFree, stashRefFor } from './ops';
 import { NOT_WORN } from './normalize';
 import { quantityOf, sameProduct, splitId } from './stacks';
@@ -357,7 +357,7 @@ export function quickMoveInto(inv: Inventory, id: string, containerId: string, s
   for (const panel of container.panels!) {
     const ref: GridRef = { kind: 'panel', in: containerId, panel: panel.name };
     const view = gridView(inv, ref);
-    if (!acceptsItem(view.accepts, item)) continue;
+    if (stashOnly(item) || !acceptsItem(view.accepts, item)) continue;
     const spot = autoPlace(view, id, item);
     if (!spot) { reason = 'occupied'; continue; }
     const t: DropTarget = { kind: 'grid', grid: ref, ...spot };

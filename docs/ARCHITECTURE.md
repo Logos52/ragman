@@ -52,6 +52,8 @@ Strict, like EFT: a slot takes only items whose category or one of whose tags is
 | Feet | footwear |
 | Backpack, Carry-on, Pouch | bags and cubes, and must be a container |
 
+**Stash-only categories** (`STASH_ONLY_CATEGORIES`, today `furniture`): EFT refuses cases and junk boxes inside a backpack even when they would fit by size, through the container's exclusion filter. Ragman does the same with a category list: a furniture item is refused by every container panel (`fitAt` answers `not-accepted` before the bounds check, so quick move, Ctrl-drag and Sort into a container all refuse it) and is in no slot list, so it lives only in a stash grid. Its own panels (the ALEX drawers) still take anything.
+
 `equip(id)` without a slot tries the item's preferred slots first (its tags, then its category), skipping taken slots and slots not in the loadout, then every other slot of the loadout in order:
 
 | Category or tag | Preferred slots, in order |

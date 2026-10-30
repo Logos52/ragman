@@ -11,7 +11,7 @@ import { sortGrid } from './sort';
 import { taskChecklist, tasksView } from './tasks';
 import { UndoRing } from './undo';
 import { exportJson, serializeInventory } from './strip';
-import { archiveItem, deleteItem, moveItem, sendToStash, unarchiveItem, equipItem, addItem } from './moves';
+import { archiveItem, deleteItem, moveItem, sendToStash, unarchiveItem, equipItem, addItem, quickMoveInto } from './moves';
 import { imagePath } from './images';
 import { share } from './share';
 
@@ -114,6 +114,15 @@ describe('fit rule', () => {
     expect(canFit(inv, 'watch', { kind: 'slot', slot: 'Wrist' }).ok).toBe(true);
     expect(canFit(inv, 'tee', { kind: 'slot', slot: 'Head' }).reason).toBe('not-accepted');
     expect(canFit(inv, 'tee', { kind: 'quickUse', index: 4 }).ok).toBe(true);
+  });
+  it('furniture never nests: refused by every container panel and every slot, allowed in a stash', () => {
+    const inv = inv0();
+    inv.items.chair = { name: 'Chair', category: 'furniture', footprint: [1, 1], location: 'USA', home: { kind: 'stash', location: 'USA', x: 9, y: 9, rotated: false } } as any;
+    expect(canFit(inv, 'chair', { kind: 'grid', grid: MAIN, x: 0, y: 4, rotated: false }).reason).toBe('not-accepted');
+    expect(canFit(inv, 'chair', { kind: 'grid', grid: { kind: 'panel', in: 'filson', panel: 'Glasses pocket' }, x: 0, y: 0, rotated: false }).reason).toBe('not-accepted');
+    for (const slot of ['Head', 'Backpack', 'Carry-on', 'Pouch', 'Torso Outer']) expect(canFit(inv, 'chair', { kind: 'slot', slot }).ok).toBe(false);
+    expect(quickMoveInto(inv, 'chair', 'filson', 'USA').reason).toBe('not-accepted');
+    expect(canFit(inv, 'chair', { kind: 'grid', grid: { kind: 'stash', location: 'USA' }, x: 5, y: 5, rotated: false }).ok).toBe(true);
   });
   it('slot rules: strict accepts by category or tag', () => {
     const inv = inv0();

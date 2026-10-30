@@ -10,6 +10,11 @@ import { isContainer } from './place';
 
 export const BAG_CATEGORY = 'bags and cubes';
 
+/** Categories that never go inside a container, like EFT's cases and junk boxes that a backpack refuses even when they would fit by size.
+ *  Furniture lives in a stash only; it is also in no slot list, so it equips nowhere. */
+export const STASH_ONLY_CATEGORIES = ['furniture'];
+export function stashOnly(item: Item): boolean { return STASH_ONLY_CATEGORIES.includes(item.category); }
+
 /** Slots that take only containers. Pockets is a grid, never a slot target. */
 export const CONTAINER_SLOTS = ['Backpack', 'Carry-on', 'Pouch'];
 
