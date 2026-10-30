@@ -438,6 +438,14 @@ const SHOTS = {
     await shot(page, 'tasks', vp, { fullPage: vp.tag === 'phone' });
     await ctx.close();
   },
+  async overall(b, vp) {
+    const { ctx, page } = await open(b, vp);
+    await tab(page, 'Overall');
+    await page.waitForSelector('.rg-ov');
+    await settle(page);
+    await shot(page, 'overall', vp, { fullPage: vp.tag === 'phone' });
+    await ctx.close();
+  },
   async 'tasks-empty'(b, vp) {
     const { ctx, page } = await open(b, vp);
     await inMemory(page, (inv) => { inv.tasks = []; });
