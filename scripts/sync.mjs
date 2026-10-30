@@ -8,7 +8,8 @@
 //   sync.schedule();                     // after every successful PUT
 //   handleSyncRoute(sync, req, res);     // GET /data/sync (state), POST /data/sync (sync now)
 import { execFile } from 'node:child_process';
-import { existsSync, realpathSync } from 'node:fs';
+import { existsSync, realpathSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { hostname } from 'node:os';
 
 export const DEFAULT_DELAY_MS = 20000;
@@ -32,18 +33,44 @@ function clean(s) {
   return lines.join(' ').slice(0, 300);
 }
 
-function git(dir, args) {
+function git(dir, args, raw = false) {
   return new Promise((resolve, reject) => {
     execFile('git', args, {
       cwd: dir,
       timeout: GIT_TIMEOUT_MS,
-      maxBuffer: 4 * 1024 * 1024,
+      maxBuffer: 64 * 1024 * 1024,
+      encoding: 'buffer',
       env: { ...process.env, GIT_TERMINAL_PROMPT: '0', GIT_EDITOR: 'true', LC_ALL: 'C' },
     }, (err, stdout, stderr) => {
-      if (err) reject(Object.assign(new GitError(args, err, stderr), { code: err.code }));
-      else resolve(String(stdout).trim());
+      if (err) reject(Object.assign(new GitError(args, err, String(stderr)), { code: err.code }));
+      else resolve(raw ? stdout : String(stdout).trim());
     });
   });
+}
+
+/** The commit refs/stash points at, or '' when there is no stash. */
+async function stashTop(dir) {
+  try { return await git(dir, ['rev-parse', '-q', '--verify', 'refs/stash']); } catch { return ''; }
+}
+
+/**
+ * `git pull --rebase --autostash` exits 0 even when the stashed changes (a save that landed after
+ * `git add`) conflict with the pulled commits; the file is left with conflict markers. Put back the
+ * stashed version of each conflicted file (it is what the page holds in memory), mark it resolved,
+ * and drop the autostash. Returns the paths that were in conflict ([] when there were none).
+ */
+async function undoAutostashConflict(dir, stashBefore) {
+  const unmerged = await git(dir, ['diff', '--name-only', '--diff-filter=U', '-z']);
+  const paths = [...new Set(unmerged.split('\0').filter(Boolean))];
+  if (!paths.length) return [];
+  const top = await stashTop(dir);
+  if (!top || top === stashBefore) throw Object.assign(new Error(`unmerged files after pull: ${paths.join(', ')}`), { conflict: true });
+  for (const p of paths) {
+    try { writeFileSync(join(dir, p), await git(dir, ['show', `${top}:${p}`], true)); } catch { /* not in the stash: leave the file */ }
+  }
+  await git(dir, ['add', '-A', '--', ...paths]);
+  await git(dir, ['stash', 'drop', '-q']);
+  return paths;
 }
 
 /** Why sync cannot run in `dir` (a string), or null when it can. */
@@ -74,7 +101,7 @@ export function createSync(opts) {
   const host = opts.host ?? hostname();
 
   let enabled = opts.enabled !== false;
-  let conflict = false;    // set by a rebase conflict; blocks automatic syncs until a manual sync succeeds
+  let conflict = false;    // set by a rebase conflict; blocks automatic syncs until a later sync ends without one
   let timer = null;
   let running = null;      // the sync in flight
   let again = false;       // a save landed while a sync was running
@@ -84,6 +111,12 @@ export function createSync(opts) {
 
   async function ahead() {
     try { return Number(await git(dir, ['rev-list', '--count', '@{u}..HEAD'])) || 0; } catch { return st.ahead; }
+  }
+
+  async function markConflict(detail) {
+    conflict = true;
+    set({ state: 'error', message: CONFLICT_MESSAGE, ahead: await ahead() });
+    log(`ragman sync: ${CONFLICT_MESSAGE} (${detail})`);
   }
 
   /** One pass. `always`: pull and push even when nothing new was committed (startup, manual retry). */
@@ -98,15 +131,17 @@ export function createSync(opts) {
         set({ state: st.lastAt ? 'synced' : 'idle', message: null, ahead: 0 });
         return;
       }
+      const stashBefore = await stashTop(dir);
       try {
         await git(dir, ['pull', '-q', '--rebase', '--autostash']);
+        const clashed = await undoAutostashConflict(dir, stashBefore);
+        // A save landed during the sync and clashes with the pulled commits: same as a rebase conflict.
+        if (clashed.length) return await markConflict(`the last save clashes with pulled changes in ${clashed.join(', ')}; the file holds the last save`);
       } catch (e) {
+        if (e.conflict) return await markConflict(e.message);
         if (await rebaseInProgress(dir)) {
           try { await git(dir, ['rebase', '--abort']); } catch { /* leave it; the message says pull by hand */ }
-          conflict = true;
-          set({ state: 'error', message: CONFLICT_MESSAGE, ahead: await ahead() });
-          log(`ragman sync: ${CONFLICT_MESSAGE} (${e.message})`);
-          return;
+          return await markConflict(e.message);
         }
         throw e;
       }
@@ -114,6 +149,7 @@ export function createSync(opts) {
       conflict = false;
       set({ state: 'synced', lastAt: now().toISOString(), message: null, ahead: await ahead() });
     } catch (e) {
+      conflict = false; // the last outcome was not a conflict: the next save tries again
       set({ state: 'error', message: e instanceof Error ? e.message : String(e), ahead: await ahead() });
       log(`ragman sync: ${st.message}`);
     }

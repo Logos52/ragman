@@ -72,14 +72,14 @@ export async function writeInventory(source: DataSource, text: string): Promise<
 
 /* ---------------- git sync state (server source only) ---------------- */
 
-export interface SyncInfo { state: SyncState; lastAt: string | null; message: string | null }
+export interface SyncInfo { state: SyncState; lastAt: string | null; message: string | null; conflict: boolean }
 const SYNC_STATES: SyncState[] = ['off', 'idle', 'pending', 'syncing', 'synced', 'error'];
 
 function parseSync(text: string): SyncInfo | null {
   try {
     const j = JSON.parse(text) as Partial<SyncInfo>;
     if (!j || !SYNC_STATES.includes(j.state as SyncState)) return null;
-    return { state: j.state as SyncState, lastAt: j.lastAt ?? null, message: j.message ?? null };
+    return { state: j.state as SyncState, lastAt: j.lastAt ?? null, message: j.message ?? null, conflict: j.conflict === true };
   } catch { return null; }
 }
 

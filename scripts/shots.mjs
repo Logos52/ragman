@@ -599,6 +599,30 @@ const SHOTS = {
     await shot(page, 'overall-error', vp);
     await ctx.close();
   },
+  async 'footer-sync'(b, vp) {
+    // The footer's sync badge beside the save badge. The proof server runs with RAGMAN_SYNC=0, so the states are set
+    // on the store directly; each pairing is the widest that can occur, and none may push the page sideways.
+    const STATES = {
+      synced: { saveState: 'saved', syncState: 'synced', syncAt: '2026-10-30T05:04:00.000Z', syncMessage: null, syncConflict: false },
+      pushing: { saveState: 'saving', syncState: 'syncing', syncAt: '2026-10-30T05:04:00.000Z', syncMessage: null, syncConflict: false },
+      'both-failed': { saveState: 'error', saveError: 'PUT failed', syncState: 'error', syncAt: null, syncMessage: 'fatal: unable to access origin', syncConflict: false },
+      conflict: { saveState: 'saving', syncState: 'error', syncAt: null, syncMessage: 'conflict: pull by hand', syncConflict: true },
+    };
+    const { ctx, page } = await open(b, vp);
+    for (const [name, patch] of Object.entries(STATES)) {
+      await page.evaluate(async (patch) => { (await import('/src/model/store.ts')).useInventory.setState(patch); }, patch);
+      await settle(page, 50);
+      await footerInView(page, vp);
+      const m = await page.evaluate(() => {
+        const r = document.querySelector('.gear-footer__state').getBoundingClientRect();
+        const retries = [...document.querySelectorAll('.gear-footer .rg-save__retry')].map((e) => e.getBoundingClientRect().right);
+        return { over: document.documentElement.scrollWidth - innerWidth, right: r.right, retries, w: innerWidth };
+      });
+      if (m.over > 0 || m.right > m.w || m.retries.some((x) => x > m.w)) throw new Error(`footer-sync-${name}: footer wider than the page ${JSON.stringify(m)}`);
+      await shot(page, `footer-sync-${name}`, vp);
+    }
+    await ctx.close();
+  },
   async 'skills-loading'(b, vp) { await heldLoad(b, vp, 'skills-loading', null, 'Skills'); },
   async 'skills-error'(b, vp) {
     const { ctx, page } = await open(b, vp, { inventory: notFound, ready: '.rg-banner' });

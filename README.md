@@ -43,7 +43,7 @@ Both servers also commit and push the data repo in the background, so the layout
 | `RAGMAN_SYNC` | on | `0` turns the git sync off |
 | `RAGMAN_SYNC_DELAY_MS` | `20000` | the quiet period after the last save before a sync |
 
-The footer shows the sync state right of the save badge: nothing when sync is off or nothing has synced yet, `SYNCED 12:04` (local time of the last sync), `PUSHING`, `PUSH FAILED · RETRY` (no network or push rejected; the local commit stays and the next save or Retry tries again), `CONFLICT · PULL BY HAND` (the rebase was aborted; no automatic sync runs until you pull by hand and press Retry or restart the server). The page reads the file once when it loads: reload it after a pull brings changes from the other machine, or the next save writes over them. `npm run shots` and `npm test` run with sync off.
+The footer shows the sync state right of the save badge: nothing when sync is off or nothing has synced yet, `SYNCED 12:04` (local time of the last sync), `PUSHING`, `PUSH FAILED · RETRY` (no network or push rejected; the local commit stays and the next save or Retry tries again), `CONFLICT · PULL BY HAND · RETRY` (the rebase was aborted, or a save made during the sync clashed with the pulled changes and the file was put back to that save; no automatic sync runs until you pull by hand and press Retry or restart the server). The page reads the file once when it loads: reload it after a pull brings changes from the other machine, or the next save writes over them. `npm run shots` and `npm test` run with sync off; the `footer-sync` shots set the sync states on the store and fail if the footer is wider than the page.
 
 Data helpers, run from this folder with `python -I`:
 

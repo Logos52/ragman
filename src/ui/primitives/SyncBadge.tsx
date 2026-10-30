@@ -5,6 +5,7 @@ export interface SyncBadgeProps {
   state: SyncState;
   at: string | null;      // ISO time of the last successful sync
   message: string | null; // the error text, or "conflict: pull by hand"
+  conflict?: boolean;     // the server's conflict flag
   onRetry?: () => void;
 }
 
@@ -18,18 +19,16 @@ function hhmm(iso: string | null): string {
 
 /**
  * Footer sync state, right of the save badge: nothing when off or idle, SYNCED 12:04, PUSHING,
- * PUSH FAILED · RETRY, CONFLICT · PULL BY HAND. While a sync waits for its quiet period the last
- * SYNCED time stays (nothing before the first sync).
+ * PUSH FAILED · RETRY, CONFLICT · PULL BY HAND · RETRY (Retry after the pull by hand). While a sync
+ * waits for its quiet period the last SYNCED time stays (nothing before the first sync).
  */
-export function SyncBadge({ state, at, message, onRetry }: SyncBadgeProps) {
+export function SyncBadge({ state, at, message, conflict, onRetry }: SyncBadgeProps) {
   if (state === 'syncing') return <span className="rg-save rg-save--saving" role="status">Pushing</span>;
-  if (state === 'error' && message?.startsWith('conflict')) {
-    return <span className="rg-save rg-save--error" role="status" title={message}>Conflict · pull by hand</span>;
-  }
   if (state === 'error') {
+    const title = conflict ? 'Pull the data repo by hand, then press Retry' : message ?? undefined;
     return (
-      <span className="rg-save rg-save--error" role="status" title={message ?? undefined}>
-        Push failed ·{' '}
+      <span className="rg-save rg-save--error" role="status" title={title}>
+        {conflict ? 'Conflict · pull by hand' : 'Push failed'} ·{' '}
         <button type="button" className="rg-save__retry" onClick={onRetry}>Retry</button>
       </span>
     );

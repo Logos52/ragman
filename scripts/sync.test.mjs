@@ -53,7 +53,8 @@ beforeEach(() => {
 });
 afterAll(() => { for (let i = 1; i <= n; i++) rmSync(join(ROOT, `run-${process.pid}-${i}`), { recursive: true, force: true }); });
 
-describe('scripts/sync.mjs', () => {
+// Each test makes a bare repo and two clones; on a loaded machine that alone can pass vitest's 5 s default.
+describe('scripts/sync.mjs', { timeout: 30000 }, () => {
   it('commits only when something changed, then pushes', async () => {
     const { a, origin } = machines();
     const s = syncAt(a);
@@ -174,6 +175,61 @@ describe('scripts/sync.mjs', () => {
     await new Promise((r) => setTimeout(r, 60));
     expect(s.state().state).toBe('error');
     expect(git(a, 'status', '--porcelain')).toBe('M other.txt');
+  });
+
+  it('a save that clashes with pulled changes during a sync leaves no conflict markers', async () => {
+    const { a, b, origin } = machines();
+    const lines = (over) => `${Array.from({ length: 10 }, (_, i) => over[i + 1] ?? String(i + 1)).join('\n')}\n`;
+    write(b, 'inventory.json', lines({}));
+    git(b, 'commit', '-q', '-am', 'ten lines');
+    git(b, 'push', '-q');
+    const s0 = syncAt(a);
+    await s0.start(); // a pulls the ten lines
+
+    write(b, 'inventory.json', lines({ 9: '9b' }));
+    git(b, 'commit', '-q', '-am', 'b changes line 9');
+    git(b, 'push', '-q');
+
+    // A saves line 2; a second save (line 9) lands after `git add`, while the commit is being made.
+    const last = lines({ 2: '2a', 9: '9a' });
+    let saved = false;
+    const s = syncAt(a, { now: () => { if (!saved) { saved = true; write(a, 'inventory.json', last); } return new Date(); } });
+    write(a, 'inventory.json', lines({ 2: '2a' }));
+    const st = await s.syncNow();
+
+    expect(st.state).toBe('error');
+    expect(st.message).toBe(CONFLICT_MESSAGE);
+    expect(st.conflict).toBe(true);
+    expect(read(a, 'inventory.json')).toBe(last); // the last save, no conflict markers
+    expect(git(a, 'ls-files', '-u')).toBe('');
+    expect(git(a, 'stash', 'list')).toBe('');
+    expect(git(origin, 'show', 'main:inventory.json')).toBe(lines({ 9: '9b' }).trim()); // nothing pushed
+
+    // A manual retry commits the last save on top of b's change and pushes it.
+    const again = await s.syncNow();
+    expect(again.state).toBe('synced');
+    expect(again.conflict).toBe(false);
+    expect(git(origin, 'show', 'main:inventory.json')).toBe(last.trim());
+  });
+
+  it('a retry after a conflict that fails for another reason lets the next save sync again', async () => {
+    const { a, b } = machines();
+    const s = syncAt(a, { delayMs: 10 });
+    await s.start();
+    write(a, 'inventory.json', '{\n  "a": "a"\n}\n');
+    write(b, 'inventory.json', '{\n  "a": "b"\n}\n');
+    git(b, 'commit', '-q', '-am', 'from b');
+    git(b, 'push', '-q');
+    expect((await s.syncNow()).conflict).toBe(true);
+
+    git(a, 'remote', 'set-url', 'origin', join(base, 'missing.git'));
+    const st = await s.syncNow();
+    expect(st.state).toBe('error');
+    expect(st.message).not.toBe(CONFLICT_MESSAGE);
+    expect(st.conflict).toBe(false);
+    s.schedule();
+    expect(s.state().state).toBe('pending');
+    s.stop();
   });
 
   it('a failed push keeps the local commit and a retry pushes it', async () => {

@@ -7,7 +7,7 @@ import { fetchSync } from './persist';
 import { SyncBadge } from '../ui/primitives/SyncBadge';
 import type { SyncState } from './types';
 
-type Reply = { state: SyncState; lastAt?: string | null; message?: string | null };
+type Reply = { state: SyncState; lastAt?: string | null; message?: string | null; conflict?: boolean };
 
 /** A fake /data server: GET/POST /data/sync answer from `next`, PUT inventory.json answers `put`. */
 function fakeServer(next: () => Reply, put: () => Reply | null = () => null) {
@@ -81,6 +81,17 @@ describe('sync state in the store', () => {
     expect(getStore().syncState).toBe('synced');
   });
 
+  it('keeps the server\'s conflict flag and clears it when a retry ends without one', async () => {
+    let state: Reply = { state: 'error', message: 'conflict: pull by hand', conflict: true };
+    fakeServer(() => state);
+    adoptInventory(fixture(), { kind: 'server', base: '/data' });
+    await vi.advanceTimersByTimeAsync(0);
+    expect(getStore().syncConflict).toBe(true);
+    state = { state: 'error', message: 'fatal: unable to access', conflict: false };
+    await getStore().retrySync();
+    expect(getStore().syncConflict).toBe(false);
+  });
+
   it('the bundled source never asks the server', async () => {
     const calls = fakeServer(() => ({ state: 'synced' }));
     adoptInventory(fixture());
@@ -96,8 +107,8 @@ describe('sync state in the store', () => {
 });
 
 describe('SyncBadge', () => {
-  const text = (state: SyncState, at: string | null = null, message: string | null = null) =>
-    render(createElement(SyncBadge, { state, at, message })).container.textContent;
+  const text = (state: SyncState, at: string | null = null, message: string | null = null, conflict = false) =>
+    render(createElement(SyncBadge, { state, at, message, conflict })).container.textContent;
   const at = new Date(2026, 9, 30, 12, 4).toISOString();
 
   it('draws nothing when off or idle, and nothing pending before the first sync', () => {
@@ -105,11 +116,14 @@ describe('SyncBadge', () => {
     expect(text('idle')).toBe('');
     expect(text('pending')).toBe('');
   });
-  it('SYNCED with the local time, PUSHING, PUSH FAILED · RETRY, CONFLICT · PULL BY HAND', () => {
+  it('SYNCED with the local time, PUSHING, PUSH FAILED · RETRY, CONFLICT · PULL BY HAND · RETRY', () => {
     expect(text('synced', at)).toBe('Synced 12:04');
     expect(text('pending', at)).toBe('Synced 12:04');
     expect(text('syncing', at)).toBe('Pushing');
     expect(text('error', at, 'fatal: could not read from remote')).toBe('Push failed · Retry');
-    expect(text('error', at, 'conflict: pull by hand')).toBe('Conflict · pull by hand');
+    expect(text('error', at, 'conflict: pull by hand', true)).toBe('Conflict · pull by hand · Retry');
+    // The server's conflict flag decides, not the message text.
+    expect(text('error', at, 'conflict in the remote helper')).toBe('Push failed · Retry');
+    expect(text('error', at, 'some other wording', true)).toBe('Conflict · pull by hand · Retry');
   });
 });

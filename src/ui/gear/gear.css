@@ -188,18 +188,29 @@
 .gear-quick .rg-slot--filled .rg-slot__box > :first-child { inset: 0; }
 
 /* ---------------- footer ---------------- */
+/* One 28 px row; when the weight, save badge and sync badge do not fit (phone, both in error),
+   the badges wrap onto more rows, right-aligned, instead of pushing the page sideways. */
 .gear-footer {
   flex: none;
-  height: 28px;
+  min-height: 28px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  padding: 0 12px;
+  gap: 2px 12px;
+  padding: 3px 12px;
   border-top: 1px solid var(--line);
   background: var(--panel);
 }
-.gear-footer__state { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.gear-footer__state {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2px 12px;
+  min-width: 0;
+  margin-left: auto;
+}
 
 /* ---------------- container windows ---------------- */
 .gear-windows {

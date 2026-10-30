@@ -149,7 +149,7 @@ export const useInventory = create<RagmanStore>()((set, get) => {
   /** Take a sync state from the server; keep polling while a sync is waiting or running. */
   function applySync(info: SyncInfo | null) {
     if (!info) return;
-    set({ syncState: info.state, syncAt: info.lastAt, syncMessage: info.message });
+    set({ syncState: info.state, syncAt: info.lastAt, syncMessage: info.message, syncConflict: info.conflict });
     if (syncPoll) { clearTimeout(syncPoll); syncPoll = null; }
     if (info.state === 'pending' || info.state === 'syncing') {
       syncPoll = setTimeout(() => { syncPoll = null; void readSync(); }, SYNC_POLL_MS);
@@ -189,7 +189,7 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     set({
       inv, source, loadError: null, saveState: 'saved', saveError: null, undoDepth: 0, openWindows: [],
       stashLocation: inv.settings.locations[0] ?? '', showArchive: false,
-      syncState: 'off', syncAt: null, syncMessage: null,
+      syncState: 'off', syncAt: null, syncMessage: null, syncConflict: false,
     });
     void images.probeAvatar();
     void readSync();
@@ -200,7 +200,7 @@ export const useInventory = create<RagmanStore>()((set, get) => {
 
   return {
     inv: null, source: null, loadError: null, saveState: 'saved', saveError: null,
-    syncState: 'off', syncAt: null, syncMessage: null,
+    syncState: 'off', syncAt: null, syncMessage: null, syncConflict: false,
     filters: { categories: new Set<string>(), search: '', sort: 'name' },
     stashLocation: '', showArchive: false, openWindows: [], undoDepth: 0, imagesTick: 0,
 

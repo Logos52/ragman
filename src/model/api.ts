@@ -19,6 +19,7 @@ export interface InventoryState {
   syncState: SyncState;
   syncAt: string | null;      // ISO time of the last successful sync
   syncMessage: string | null; // the git error, or "conflict: pull by hand"
+  syncConflict: boolean;      // the last sync stopped on a conflict; automatic syncs wait for a retry
   /** The stash/archive view's current filters (UI state, not persisted). */
   filters: Filters;
   /** Which stash location the right column shows, and whether Archive is shown instead. */
