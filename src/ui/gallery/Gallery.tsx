@@ -107,7 +107,7 @@ export function Gallery() {
       <Section id="tiles" title="Tiles">
         <div className="gx-row">
           <Spec label="1x1 art"><div style={cellBox(1, 1)}><Tile name="Watch" art={ART.watch} w={1} h={1} rotated={false} /></div></Spec>
-          <Spec label="2x2 art"><div style={cellBox(2, 2)}><Tile name="Uniqlo Merino Crew Tee" art={ART.tee} w={2} h={2} rotated={false} /></div></Spec>
+          <Spec label="2x2 art"><div style={cellBox(2, 2)}><Tile name="Northwind Merino Crew Tee" art={ART.tee} w={2} h={2} rotated={false} /></div></Spec>
           <Spec label="1x2 upright"><div style={cellBox(1, 2)}><Tile name="Phone" art={ART.phone} w={1} h={2} rotated={false} /></div></Spec>
           <Spec label="rotated 2x1"><div style={cellBox(2, 1)}><Tile name="Phone" art={ART.phone} w={2} h={1} rotated /></div></Spec>
           <Spec label="rotated 3x2"><div style={cellBox(3, 2)}><Tile name="Chinos" art={ART.trousers} w={3} h={2} rotated /></div></Spec>
@@ -273,7 +273,7 @@ export function Gallery() {
             <TextField value={q} onChange={setQ} placeholder="Search stash" style={{ width: 200 }} />
           </Spec>
           <Spec label="search filled"><TextField value="merino" onChange={() => {}} style={{ width: 200 }} /></Spec>
-          <Spec label="plain field"><TextField variant="plain" value="Uniqlo" onChange={() => {}} /></Spec>
+          <Spec label="plain field"><TextField variant="plain" value="Northwind" onChange={() => {}} /></Spec>
           <Spec label="select">
             <Select
               prefix="Sort"
@@ -329,7 +329,7 @@ export function Gallery() {
         <div className="gx-row gx-row--top">
           <Spec label="tooltip">
             <Tooltip x={0} y={0} inline>
-              <TooltipTitle>Uniqlo Merino Crew Tee</TooltipTitle>
+              <TooltipTitle>Northwind Merino Crew Tee</TooltipTitle>
               <Chip status="Daily" size="sm" />
               <span>2 × 2</span>
               <span>Wash cold, dry flat. Pairs with everything.</span>
@@ -427,11 +427,11 @@ export function Gallery() {
               <div className="gx-card">
                 <div className="gx-card__art"><Tile name="Merino Tee" art={ART.tee} w={2} h={2} rotated={false} /></div>
                 <div>
-                  <div className="gx-card__name label">Uniqlo Merino Crew Tee</div>
+                  <div className="gx-card__name label">Northwind Merino Crew Tee</div>
                   <div className="gx-card__sub">Merino crew neck</div>
                   <Chip status="Daily" />
                   <dl className="gx-card__fields">
-                    <dt>Maker</dt><dd>Uniqlo</dd>
+                    <dt>Maker</dt><dd>Northwind</dd>
                     <dt>Category</dt><dd>tops</dd>
                     <dt>Size</dt><dd>M</dd>
                     <dt>Weight</dt><dd />

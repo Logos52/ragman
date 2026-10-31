@@ -1,20 +1,2501 @@
 {
   "version": 1,
   "settings": {
-    "statuses": ["Daily", "Rotation", "Seasonal", "Travel Only", "Not Worn", "Retired"],
-    "categories": ["tops", "bottoms", "outerwear", "footwear", "accessories", "electronics", "bags and cubes", "consumables"],
-    "locations": ["USA", "Vietnam"],
-    "defaultSlots": ["Head", "Eyes", "Ears", "Neck", "Wrist", "Torso Base", "Torso Mid", "Torso Outer", "Hands", "Legs", "Underwear", "Socks", "Feet", "Pockets", "Backpack", "Carry-on", "Pouch"],
+    "statuses": [
+      "Daily",
+      "Rotation",
+      "Seasonal",
+      "Travel Only",
+      "Not Worn",
+      "Retired"
+    ],
+    "categories": [
+      "tops",
+      "bottoms",
+      "outerwear",
+      "underwear",
+      "footwear",
+      "accessories",
+      "electronics",
+      "bags and cubes",
+      "consumables",
+      "furniture"
+    ],
+    "locations": [
+      "USA",
+      "Vietnam"
+    ],
+    "defaultSlots": [
+      "Head",
+      "Eyes",
+      "Ears",
+      "Neck",
+      "Wrist",
+      "Torso Base",
+      "Torso Mid",
+      "Torso Outer",
+      "Hands",
+      "Legs",
+      "Underwear",
+      "Socks",
+      "Feet",
+      "Pockets",
+      "Backpack",
+      "Carry-on",
+      "Pouch"
+    ],
     "stashWidth": 10
   },
-  "items": {},
+  "items": {
+    "underwear-1": {
+      "name": "Underwear 1",
+      "category": "underwear",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 60,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "black",
+      "images": {}
+    },
+    "underwear-2": {
+      "name": "Underwear 2",
+      "category": "underwear",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 60,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 1,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "navy",
+      "images": {}
+    },
+    "underwear-3": {
+      "name": "Underwear 3",
+      "category": "underwear",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 60,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 2,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "grey",
+      "images": {}
+    },
+    "underwear-4": {
+      "name": "Underwear 4",
+      "category": "underwear",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 60,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 3,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "olive",
+      "images": {}
+    },
+    "top-1": {
+      "name": "Top 1",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 300,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "white",
+      "images": {}
+    },
+    "jacket-1": {
+      "name": "Jacket 1",
+      "category": "outerwear",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        3,
+        2
+      ],
+      "weight_g": 500,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 3,
+        "y": 13,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "tan",
+      "images": {}
+    },
+    "jacket-2": {
+      "name": "Jacket 2",
+      "category": "outerwear",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        3,
+        2
+      ],
+      "weight_g": 500,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 7,
+        "y": 17,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "charcoal",
+      "images": {}
+    },
+    "pants-1": {
+      "name": "Pants 1",
+      "category": "bottoms",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 450,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 7,
+        "y": 19,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "sand",
+      "images": {}
+    },
+    "pants-2": {
+      "name": "Pants 2",
+      "category": "bottoms",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 450,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 22,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "black",
+      "images": {}
+    },
+    "top-2": {
+      "name": "Top 2",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 250,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 1,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "navy",
+      "images": {}
+    },
+    "top-3": {
+      "name": "Top 3",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 250,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 2,
+        "y": 1,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "grey",
+      "images": {}
+    },
+    "top-4": {
+      "name": "Top 4",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 250,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 1,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "olive",
+      "images": {}
+    },
+    "pants-3": {
+      "name": "Pants 3",
+      "category": "bottoms",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 480,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 22,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "white",
+      "images": {}
+    },
+    "pants-4": {
+      "name": "Pants 4",
+      "category": "bottoms",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 480,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 8,
+        "y": 22,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "tan",
+      "images": {}
+    },
+    "pants-5": {
+      "name": "Pants 5",
+      "category": "bottoms",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 480,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 25,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "charcoal",
+      "images": {}
+    },
+    "pants-6": {
+      "name": "Pants 6",
+      "category": "bottoms",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 480,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 25,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "sand",
+      "images": {}
+    },
+    "top-5": {
+      "name": "Top 5",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 280,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 8,
+        "y": 2,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "black",
+      "images": {}
+    },
+    "top-6": {
+      "name": "Top 6",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 280,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 3,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "navy",
+      "images": {}
+    },
+    "jacket-3": {
+      "name": "Jacket 3",
+      "category": "outerwear",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        3,
+        2
+      ],
+      "weight_g": 650,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 26,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "grey",
+      "images": {}
+    },
+    "top-7": {
+      "name": "Top 7",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 260,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 3,
+        "y": 3,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "olive",
+      "images": {}
+    },
+    "top-8": {
+      "name": "Top 8",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 260,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 5,
+        "y": 3,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "white",
+      "images": {}
+    },
+    "top-9": {
+      "name": "Top 9",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 260,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 7,
+        "y": 4,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "tan",
+      "images": {}
+    },
+    "top-10": {
+      "name": "Top 10",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 260,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 5,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "charcoal",
+      "images": {}
+    },
+    "top-11": {
+      "name": "Top 11",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 280,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 2,
+        "y": 5,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "sand",
+      "images": {}
+    },
+    "top-12": {
+      "name": "Top 12",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 280,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 5,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "black",
+      "images": {}
+    },
+    "top-13": {
+      "name": "Top 13",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 280,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 6,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "navy",
+      "images": {}
+    },
+    "top-14": {
+      "name": "Top 14",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 180,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 8,
+        "y": 6,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "grey",
+      "images": {}
+    },
+    "top-15": {
+      "name": "Top 15",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 180,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 7,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "olive",
+      "images": {}
+    },
+    "top-16": {
+      "name": "Top 16",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 240,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 2,
+        "y": 7,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "white",
+      "images": {}
+    },
+    "top-17": {
+      "name": "Top 17",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 260,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 7,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "tan",
+      "images": {}
+    },
+    "top-18": {
+      "name": "Top 18",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 260,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 8,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "charcoal",
+      "images": {}
+    },
+    "top-19": {
+      "name": "Top 19",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 260,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 8,
+        "y": 8,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "sand",
+      "images": {}
+    },
+    "top-20": {
+      "name": "Top 20",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 220,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 9,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "black",
+      "images": {}
+    },
+    "top-21": {
+      "name": "Top 21",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 200,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 2,
+        "y": 9,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "navy",
+      "images": {}
+    },
+    "top-22": {
+      "name": "Top 22",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 200,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 9,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "grey",
+      "images": {}
+    },
+    "top-23": {
+      "name": "Top 23",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 260,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 10,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "top-24": {
+      "name": "Top 24",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 230,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 8,
+        "y": 10,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "top-25": {
+      "name": "Top 25",
+      "category": "tops",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 250,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 11,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "top-26": {
+      "name": "Top 26",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 260,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 2,
+        "y": 11,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "top-27": {
+      "name": "Top 27",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 240,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 11,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "top-28": {
+      "name": "Top 28",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 240,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 12,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "top-29": {
+      "name": "Top 29",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        2
+      ],
+      "weight_g": 380,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 8,
+        "y": 12,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "top-30": {
+      "name": "Top 30",
+      "category": "tops",
+      "status": "Seasonal",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        3,
+        2
+      ],
+      "weight_g": 480,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 13,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "top-31": {
+      "name": "Top 31",
+      "category": "tops",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        3,
+        2
+      ],
+      "weight_g": 500,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 31,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "olive",
+      "images": {}
+    },
+    "top-32": {
+      "name": "Top 32",
+      "category": "tops",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        3,
+        2
+      ],
+      "weight_g": 450,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 3,
+        "y": 31,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "white",
+      "images": {}
+    },
+    "pants-7": {
+      "name": "Pants 7",
+      "category": "bottoms",
+      "status": "",
+      "location": "USA",
+      "size": "M",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 500,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 8,
+        "y": 25,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "pants-8": {
+      "name": "Pants 8",
+      "category": "bottoms",
+      "status": "",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 480,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 28,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "pants-9": {
+      "name": "Pants 9",
+      "category": "bottoms",
+      "status": "",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 500,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 2,
+        "y": 28,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "pants-10": {
+      "name": "Pants 10",
+      "category": "bottoms",
+      "status": "",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 550,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 28,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "jacket-4": {
+      "name": "Jacket 4",
+      "category": "outerwear",
+      "status": "Not Worn",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        3,
+        3
+      ],
+      "weight_g": 900,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 28,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "jacket-5": {
+      "name": "Jacket 5",
+      "category": "outerwear",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        3,
+        3
+      ],
+      "weight_g": 1200,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": true,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 14,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "jacket-6": {
+      "name": "Jacket 6",
+      "category": "outerwear",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        3,
+        3
+      ],
+      "weight_g": 1300,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": true,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 31,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "jacket-7": {
+      "name": "Jacket 7",
+      "category": "outerwear",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        3,
+        2
+      ],
+      "weight_g": 700,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 33,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "underwear-5": {
+      "name": "Underwear 5",
+      "category": "underwear",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 70,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 9,
+        "y": 14,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "pants-11": {
+      "name": "Pants 11",
+      "category": "bottoms",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 520,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 3,
+        "y": 33,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "charcoal",
+      "images": {}
+    },
+    "pants-12": {
+      "name": "Pants 12",
+      "category": "bottoms",
+      "status": "Rotation",
+      "location": "USA",
+      "size": "L",
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 520,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 5,
+        "y": 34,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "sand",
+      "images": {}
+    },
+    "pants-13": {
+      "name": "Pants 13",
+      "category": "bottoms",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        3
+      ],
+      "weight_g": 450,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 7,
+        "y": 34,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "device-1": {
+      "name": "Device 1",
+      "category": "electronics",
+      "status": "Daily",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 165,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": true,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 3,
+        "y": 15,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "navy",
+      "images": {}
+    },
+    "device-2": {
+      "name": "Device 2",
+      "category": "electronics",
+      "status": "Daily",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        4,
+        3
+      ],
+      "weight_g": 1550,
+      "weightEstimated": true,
+      "tags": [
+        "laptop",
+        "flat"
+      ],
+      "staple": true,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "panel",
+        "in": "bag-1",
+        "panel": "Main",
+        "x": 0,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "device-3": {
+      "name": "Device 3",
+      "category": "electronics",
+      "status": "Daily",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 56,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": true,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 15,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "device-4": {
+      "name": "Device 4",
+      "category": "electronics",
+      "status": "Daily",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        1
+      ],
+      "weight_g": 320,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": true,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "panel",
+        "in": "bag-1",
+        "panel": "Glasses pocket",
+        "x": 0,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "white",
+      "images": {}
+    },
+    "bag-1": {
+      "name": "Bag 1",
+      "category": "bags and cubes",
+      "status": "Daily",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        3,
+        4
+      ],
+      "weight_g": 1500,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 17,
+        "rotated": false
+      },
+      "panels": [
+        {
+          "name": "Main",
+          "grid": [
+            6,
+            8
+          ],
+          "accepts": null,
+          "regions": [
+            {
+              "name": "Laptop sleeve",
+              "at": [
+                0,
+                0
+              ],
+              "size": [
+                4,
+                3
+              ],
+              "accepts": [
+                "laptop"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Glasses pocket",
+          "grid": [
+            3,
+            3
+          ],
+          "accepts": null,
+          "regions": []
+        },
+        {
+          "name": "Front pouch",
+          "grid": [
+            4,
+            2
+          ],
+          "accepts": null,
+          "regions": []
+        }
+      ],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "tan",
+      "images": {}
+    },
+    "accessory-1": {
+      "name": "Accessory 1",
+      "category": "accessories",
+      "status": "Daily",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 62,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": true,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 6,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [
+        "band"
+      ],
+      "attachedTo": null,
+      "images": {}
+    },
+    "accessory-2": {
+      "name": "Accessory 2",
+      "category": "accessories",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 12,
+      "weightEstimated": true,
+      "tags": [
+        "band"
+      ],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": null,
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": {
+        "to": "accessory-1",
+        "slot": "band"
+      },
+      "images": {}
+    },
+    "accessory-3": {
+      "name": "Accessory 3",
+      "category": "accessories",
+      "status": "",
+      "location": "USA",
+      "size": "S/M",
+      "footprint": [
+        1,
+        1
+      ],
+      "weight_g": 11,
+      "weightEstimated": true,
+      "tags": [
+        "band"
+      ],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 7,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "black",
+      "images": {}
+    },
+    "accessory-4": {
+      "name": "Accessory 4",
+      "category": "accessories",
+      "status": "Daily",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        1
+      ],
+      "weight_g": 20,
+      "weightEstimated": true,
+      "tags": [
+        "eyewear"
+      ],
+      "staple": true,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "panel",
+        "in": "accessory-5",
+        "panel": "Main",
+        "x": 0,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "accessory-5": {
+      "name": "Accessory 5",
+      "category": "accessories",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        1
+      ],
+      "weight_g": 60,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 16,
+        "rotated": false
+      },
+      "panels": [
+        {
+          "name": "Main",
+          "grid": [
+            2,
+            1
+          ],
+          "accepts": [
+            "eyewear"
+          ],
+          "regions": []
+        }
+      ],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "accessory-6": {
+      "name": "Accessory 6",
+      "category": "accessories",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        2,
+        1
+      ],
+      "weight_g": 60,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 2,
+        "y": 16,
+        "rotated": false
+      },
+      "panels": [
+        {
+          "name": "Main",
+          "grid": [
+            2,
+            1
+          ],
+          "accepts": [
+            "eyewear"
+          ],
+          "regions": []
+        }
+      ],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "bag-2": {
+      "name": "Bag 2",
+      "category": "bags and cubes",
+      "status": "Travel Only",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        4,
+        4
+      ],
+      "weight_g": 900,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 36,
+        "rotated": false
+      },
+      "panels": [
+        {
+          "name": "Main",
+          "grid": [
+            8,
+            7
+          ],
+          "accepts": null,
+          "regions": [
+            {
+              "name": "Laptop sleeve",
+              "at": [
+                0,
+                0
+              ],
+              "size": [
+                5,
+                3
+              ],
+              "accepts": [
+                "laptop"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Phone pocket",
+          "grid": [
+            1,
+            2
+          ],
+          "accepts": null,
+          "regions": []
+        },
+        {
+          "name": "Organizer pocket",
+          "grid": [
+            3,
+            2
+          ],
+          "accepts": null,
+          "regions": []
+        },
+        {
+          "name": "Mesh pocket A",
+          "grid": [
+            2,
+            2
+          ],
+          "accepts": null,
+          "regions": []
+        },
+        {
+          "name": "Mesh pocket B",
+          "grid": [
+            2,
+            2
+          ],
+          "accepts": null,
+          "regions": []
+        },
+        {
+          "name": "External flat pocket",
+          "grid": [
+            4,
+            3
+          ],
+          "accepts": [
+            "flat"
+          ],
+          "regions": []
+        },
+        {
+          "name": "Document pocket",
+          "grid": [
+            4,
+            3
+          ],
+          "accepts": [
+            "flat"
+          ],
+          "regions": []
+        }
+      ],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "white",
+      "images": {}
+    },
+    "accessory-7": {
+      "name": "Accessory 7",
+      "category": "accessories",
+      "status": "Travel Only",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        3,
+        2
+      ],
+      "weight_g": 300,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "panel",
+        "in": "bag-2",
+        "panel": "Main",
+        "x": 5,
+        "y": 0,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "images": {}
+    },
+    "furniture-1": {
+      "name": "Furniture 1",
+      "category": "furniture",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        4,
+        7
+      ],
+      "weight_g": 24000,
+      "weightEstimated": true,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 51,
+        "rotated": false
+      },
+      "panelLayout": "column",
+      "panels": [
+        {
+          "name": "Drawer 1",
+          "grid": [
+            5,
+            5
+          ],
+          "accepts": null,
+          "regions": []
+        },
+        {
+          "name": "Drawer 2",
+          "grid": [
+            5,
+            5
+          ],
+          "accepts": null,
+          "regions": []
+        },
+        {
+          "name": "Drawer 3",
+          "grid": [
+            5,
+            5
+          ],
+          "accepts": null,
+          "regions": []
+        },
+        {
+          "name": "Drawer 4",
+          "grid": [
+            5,
+            5
+          ],
+          "accepts": null,
+          "regions": []
+        },
+        {
+          "name": "Drawer 5",
+          "grid": [
+            5,
+            5
+          ],
+          "accepts": null,
+          "regions": []
+        }
+      ],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "charcoal",
+      "images": {}
+    },
+    "furniture-2": {
+      "name": "Furniture 2",
+      "category": "furniture",
+      "status": "",
+      "location": "USA",
+      "size": null,
+      "footprint": [
+        7,
+        11
+      ],
+      "weight_g": 23474,
+      "tags": [],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 0,
+        "y": 40,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "sand",
+      "images": {}
+    },
+    "device-5": {
+      "name": "Device 5",
+      "category": "electronics",
+      "status": "",
+      "location": "USA",
+      "size": "11-inch",
+      "footprint": [
+        3,
+        2
+      ],
+      "weight_g": 444,
+      "weightEstimated": true,
+      "tags": [
+        "flat"
+      ],
+      "staple": false,
+      "consumable": false,
+      "specialCare": false,
+      "home": {
+        "kind": "stash",
+        "location": "USA",
+        "x": 4,
+        "y": 37,
+        "rotated": false
+      },
+      "panels": [],
+      "attachmentSlots": [],
+      "attachedTo": null,
+      "color": "black",
+      "images": {}
+    }
+  },
   "loadouts": {
-    "Work": { "slots": ["Head", "Eyes", "Ears", "Neck", "Wrist", "Torso Base", "Torso Mid", "Torso Outer", "Hands", "Legs", "Underwear", "Socks", "Feet", "Pockets", "Backpack", "Pouch"], "pocketsGrid": [4, 1], "placements": {} },
-    "Plane": { "slots": ["Head", "Eyes", "Ears", "Neck", "Wrist", "Torso Base", "Torso Mid", "Torso Outer", "Hands", "Legs", "Underwear", "Socks", "Feet", "Pockets", "Backpack", "Carry-on", "Pouch"], "pocketsGrid": [4, 1], "placements": {} }
+    "Work": {
+      "slots": [
+        "Head",
+        "Eyes",
+        "Ears",
+        "Neck",
+        "Wrist",
+        "Torso Base",
+        "Torso Mid",
+        "Torso Outer",
+        "Hands",
+        "Legs",
+        "Underwear",
+        "Socks",
+        "Feet",
+        "Pockets",
+        "Backpack",
+        "Pouch"
+      ],
+      "pocketsGrid": [
+        4,
+        1
+      ],
+      "placements": {
+        "bag-1": {
+          "kind": "slot",
+          "slot": "Backpack"
+        },
+        "accessory-1": {
+          "kind": "slot",
+          "slot": "Wrist"
+        },
+        "accessory-4": {
+          "kind": "slot",
+          "slot": "Eyes"
+        }
+      }
+    },
+    "Plane": {
+      "slots": [
+        "Head",
+        "Eyes",
+        "Ears",
+        "Neck",
+        "Wrist",
+        "Torso Base",
+        "Torso Mid",
+        "Torso Outer",
+        "Hands",
+        "Legs",
+        "Underwear",
+        "Socks",
+        "Feet",
+        "Pockets",
+        "Backpack",
+        "Carry-on",
+        "Pouch"
+      ],
+      "pocketsGrid": [
+        4,
+        1
+      ],
+      "placements": {
+        "bag-1": {
+          "kind": "slot",
+          "slot": "Backpack"
+        },
+        "bag-2": {
+          "kind": "slot",
+          "slot": "Carry-on"
+        },
+        "accessory-1": {
+          "kind": "slot",
+          "slot": "Wrist"
+        },
+        "accessory-4": {
+          "kind": "slot",
+          "slot": "Eyes"
+        }
+      }
+    }
   },
   "activeLoadout": "Plane",
-  "archive": { "width": 10 },
-  "quickUse": [null, null, null, null, null, null, null, null, null, null],
-  "tasks": [],
+  "archive": {
+    "width": 10
+  },
+  "quickUse": [
+    "device-2",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "tasks": [
+    {
+      "id": "task-1",
+      "title": "Task 1",
+      "description": "",
+      "status": "active",
+      "itemId": null,
+      "objectives": [
+        {
+          "text": "Objective 1",
+          "done": false,
+          "auto": {
+            "item": "device-2",
+            "in": "bag-1",
+            "loadout": "Plane"
+          }
+        },
+        {
+          "text": "Objective 2",
+          "done": false,
+          "auto": null
+        },
+        {
+          "text": "Objective 3",
+          "done": false,
+          "auto": null
+        },
+        {
+          "text": "Objective 4",
+          "done": false,
+          "auto": null
+        }
+      ]
+    },
+    {
+      "id": "task-2",
+      "title": "Task 2",
+      "description": "",
+      "status": "active",
+      "itemId": "pants-9",
+      "objectives": [
+        {
+          "text": "Objective 1",
+          "done": false,
+          "auto": null
+        }
+      ]
+    }
+  ],
   "skills": []
 }

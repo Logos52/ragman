@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { TabBar } from '../primitives/TabBar';
+import { PatchNotesButton } from './PatchNotes';
 import { Banner } from '../primitives/Banner';
 import { Button } from '../primitives/Button';
 import { ComingLater } from '../primitives/EmptyState';
@@ -124,7 +125,8 @@ export function App() {
 
   return (
     <div className="rg-app">
-      <TabBar tabs={TABS} active={tab} onChange={(id) => { useUi.getState().closeAll(); setTab(id as TabId); }} />
+      <TabBar tabs={TABS} active={tab} onChange={(id) => { useUi.getState().closeAll(); setTab(id as TabId); }}
+        right={<><PatchNotesButton /><span className="rg-tabbar__app">Inventory</span></>} />
       {loadError ? (
         <Banner
           tone="bad"
