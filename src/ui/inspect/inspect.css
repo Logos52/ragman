@@ -212,7 +212,7 @@
 .rg-pe__num { width: 52px; height: 28px; font-size: 13px; padding: 0 4px; }
 .rg-pe__k { font-family: var(--font-label); font-size: 11px; text-transform: uppercase; color: var(--ink-2); }
 .rg-pe__rm { width: 24px; height: 24px; color: var(--ink-2); font-size: 16px; line-height: 1; }
-.rg-pe__rm:hover { color: var(--accent-ink); background: var(--bad); }
+.rg-pe__rm:hover { color: var(--fill-ink); background: var(--bad); }
 .rg-insp__detach {
   height: 18px; padding: 0 6px; border: 1px solid var(--tile-line); font-family: var(--font-label); font-weight: 600;
   font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2);

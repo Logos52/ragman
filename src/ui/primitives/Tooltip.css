@@ -27,5 +27,5 @@
   text-transform: uppercase;
 }
 
-/* an --ink sticker (Rotation, light theme) on the --bar tooltip: a 1 px --ink-3 edge keeps it reading as a sticker */
-.rg-tooltip .rg-chip[data-ink] { box-shadow: inset 0 0 0 1px var(--ink-3); }
+/* an --ink sticker (Rotation, light theme) on the --bar tooltip: a 1 px --bar-ink-3 edge keeps it reading as a sticker */
+.rg-tooltip .rg-chip[data-ink] { box-shadow: inset 0 0 0 1px var(--bar-ink-3); }

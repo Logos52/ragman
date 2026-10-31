@@ -328,7 +328,7 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
-.gear-showing__k { color: var(--ink-3); }
+.gear-showing__k { color: var(--bar-ink-3); }
 .gear-showing__v { min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--bar-ink); }
 .gear-showing__x {
   flex: none;

@@ -4,7 +4,7 @@ import './Chip.css';
 /** Status sticker colors from DESIGN.md. Keys are lower-cased status names. */
 const STATUS: Record<string, { bg: string; fg: string }> = {
   'daily': { bg: 'var(--status-daily)', fg: 'var(--status-ink)' },
-  'rotation': { bg: 'var(--status-rotation)', fg: 'var(--status-ink)' },
+  'rotation': { bg: 'var(--status-rotation)', fg: 'var(--fill-ink)' },
   'seasonal': { bg: 'var(--status-seasonal)', fg: 'var(--status-ink)' },
   'travel only': { bg: 'var(--status-travel-only)', fg: 'var(--status-travel-only-ink)' },
   'not worn': { bg: 'var(--status-not-worn)', fg: 'var(--status-ink)' },
@@ -16,11 +16,11 @@ export type ChipTone = 'accent' | 'ink' | 'ok' | 'bad' | 'muted' | 'region' | 'o
 
 const TONE: Record<ChipTone, { bg: string; fg: string }> = {
   accent: { bg: 'var(--accent)', fg: 'var(--accent-ink)' },
-  ink: { bg: 'var(--ink)', fg: 'var(--accent-ink)' },
+  ink: { bg: 'var(--ink)', fg: 'var(--fill-ink)' },
   ok: { bg: 'var(--ok)', fg: 'var(--accent-ink)' },
-  bad: { bg: 'var(--bad)', fg: 'var(--accent-ink)' },
-  muted: { bg: 'var(--ink-3)', fg: 'var(--accent-ink)' },
-  region: { bg: 'var(--region)', fg: 'var(--accent-ink)' },
+  bad: { bg: 'var(--bad)', fg: 'var(--fill-ink)' },
+  muted: { bg: 'var(--ink-3)', fg: 'var(--fill-ink)' },
+  region: { bg: 'var(--region)', fg: 'var(--fill-ink)' },
   outline: { bg: 'transparent', fg: 'var(--ink-2)' },
 };
 
@@ -47,7 +47,7 @@ export function Chip(props: ChipProps) {
   } else {
     const s = (props.status ?? '').trim();
     if (!s) return null;
-    colors = STATUS[s.toLowerCase()] ?? { bg: 'var(--ink-2)', fg: 'var(--accent-ink)' };
+    colors = STATUS[s.toLowerCase()] ?? { bg: 'var(--ink-2)', fg: 'var(--fill-ink)' };
     text = s;
   }
   // an --ink sticker vanishes on an --ink ground (the tooltip); data-ink lets that ground give it an edge

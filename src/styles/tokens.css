@@ -9,12 +9,13 @@
   --tile-line: #AEB7C2;
   --ink: #15181C;
   --ink-2: #5B6572;
-  --ink-3: #9AA4B1;
+  --ink-3: #646E7B;                   /* was #9AA4B1; darkened to 4.5:1 on --grid-bg */
   --accent: #FF5A1F;
-  --accent-ink: #FFFFFF;
+  --accent-ink: #15181C;              /* text on --accent and --ok fills; was #FFFFFF (3.12:1 on --accent) */
+  --fill-ink: #FFFFFF;                /* text on --ink, --bad, --region, --ink-3 and --ink-2 fills */
   --ok: #22C55E;
-  --bad: #EF4444;
-  --region: #2F6FED;
+  --bad: #D22424;                     /* was #EF4444; darkened to 4.5:1 as text on --grid-bg */
+  --region: #2563EB;                  /* was #2F6FED; darkened to 4.5:1 as text on --grid-bg */
 
   /* status sticker colors */
   --status-daily: var(--accent);
@@ -23,13 +24,14 @@
   --status-travel-only: #7C3AED;
   --status-not-worn: #9AA4B1;
   --status-retired: #CBD2DA;
-  --status-ink: #FFFFFF;              /* chip text on daily, rotation, seasonal, not worn */
+  --status-ink: #15181C;              /* chip text on daily, seasonal, not worn; rotation uses --fill-ink */
   --status-travel-only-ink: #FFFFFF;  /* chip text on travel only; retired uses --ink */
 
   /* surfaces with their own ink: the tab bar and every ink strip (tooltip, window title bar, luggage tag,
      container label strip, strong label tab) stay dark in both themes */
   --bar: #15181C;
   --bar-ink: #FFFFFF;
+  --bar-ink-3: #9AA4B1;               /* the app name, the theme toggle and the tab hover bar on --bar */
   /* things drawn on a tile: tiles stay light in both themes, since product photos have white backgrounds */
   --strip: rgba(255,255,255,0.85);    /* name and quantity strip */
   --strip-ink: #15181C;               /* strip text, tile hover border, container double rule */
@@ -64,6 +66,7 @@
   --ink-3: #A3ACB7;
   --accent: #FF5A1F;
   --accent-ink: #14171C;
+  --fill-ink: #14171C;
   --ok: #2FD06A;
   --bad: #F25555;
   --region: #5B8EF5;
@@ -79,6 +82,7 @@
 
   --bar: #0C0E11;
   --bar-ink: #F2F4F7;
+  --bar-ink-3: #A3ACB7;
   --strip: rgba(247,248,250,0.90);
   --strip-ink: #14171C;
   --tile-ph: #C9CFD6;

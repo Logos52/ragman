@@ -58,7 +58,7 @@
 }
 .rg-cmenu__row--danger { color: var(--bad); }
 .rg-cmenu__row--active { background: var(--accent); color: var(--accent-ink); }
-.rg-cmenu__row--danger.rg-cmenu__row--active { background: var(--bad); }
+.rg-cmenu__row--danger.rg-cmenu__row--active { background: var(--bad); color: var(--fill-ink); }
 .rg-cmenu__row--disabled { color: var(--ink-3); cursor: default; }
 /* a question or notice (the delete confirm): readable --ink, not the greyed disabled look */
 .rg-cmenu__row--prompt { color: var(--ink); cursor: default; }
@@ -101,7 +101,7 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
-.rg-cmenu__ok:disabled { background: var(--ink-3); }
+.rg-cmenu__ok:disabled { background: var(--ink-3); color: var(--fill-ink); }
 .rg-cmenu__of { flex: none; color: var(--ink-2); font-size: 12px; }
 /* the prefilled value is selected on open (type to replace it); a light selection keeps the digits readable */
 .rg-cmenu__in::selection { background: color-mix(in srgb, var(--accent) 28%, transparent); color: var(--ink); }

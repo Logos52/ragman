@@ -10,7 +10,7 @@
   font-weight: 500;
   font-size: 14px;
 }
-.rg-banner--bad { background: var(--bad); color: var(--accent-ink); }
+.rg-banner--bad { background: var(--bad); color: var(--fill-ink); }
 .rg-banner--info {
   background: var(--panel);
   color: var(--ink);

@@ -42,8 +42,9 @@
   line-height: 1;
   color: var(--ink-3);
   pointer-events: none;
-  /* above the tile that fills the box (name strip z 1, a selected tile z 4), so the bound key always shows */
-  z-index: 5;
+  /* above the tile that fills the box (name strip z 1, a selected tile z 4, the Filter by item --dim veil z 6),
+     so the bound key always shows at full contrast */
+  z-index: 7;
 }
 /* over a tile the digit sits on a small --tile chip, so it reads over any art */
 .rg-slot--filled .rg-slot__corner {

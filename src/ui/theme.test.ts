@@ -62,19 +62,31 @@ describe('dark tokens', () => {
     expect([...light].filter((t) => !dark.has(t))).toEqual([]);
   });
 
-  it('no stylesheet under src/ui hard-codes a color (all go through tokens)', () => {
+  it('no stylesheet under src/ hard-codes a color (all go through tokens.css)', () => {
     const walk = (d: string): string[] => readdirSync(d).flatMap((f) => {
       const p = join(d, f);
       return statSync(p).isDirectory() ? walk(p) : p.endsWith('.css') ? [p] : [];
     });
+    const named = 'white|black|gr[ae]y|silver|red|orange|yellow|gold|green|lime|olive|teal|cyan|aqua|blue|navy|purple|violet|magenta|fuchsia|pink|brown|maroon|beige|ivory|tan';
+    const value = new RegExp(`:[^;{]*(?<![-\\w])(${named})(?![-\\w])`, 'i');
     const hits: string[] = [];
-    for (const f of walk(join(cwd(), 'src', 'ui'))) {
+    for (const f of walk(join(cwd(), 'src')).filter((f) => !f.endsWith(join('styles', 'tokens.css')))) {
       readFileSync(f, 'utf8').split('\n').forEach((line, i) => {
         // comments and alpha masks (black there means "keep", not a color) are not colors on screen
         const code = line.replace(/\/\*.*?\*\//g, '').replace(/(-webkit-)?mask:.*/, '');
-        if (/#[0-9a-f]{3,8}\b|rgba?\(|\bwhite\b(?!-)|\bblack\b/i.test(code)) hits.push(`${f}:${i + 1}`);
+        if (/#[0-9a-f]{3,8}\b|rgba?\(|hsla?\(/i.test(code) || value.test(code)) hits.push(`${f}:${i + 1}`);
       });
     }
     expect(hits).toEqual([]);
+  });
+
+  it('the pre-paint fill in index.html is the dark --page token', () => {
+    const tokens = readFileSync(join(cwd(), 'src', 'styles', 'tokens.css'), 'utf8');
+    const dark = tokens.slice(tokens.indexOf(':root[data-theme="dark"]'));
+    const page = /--page:\s*(#[0-9a-f]+)/i.exec(dark)?.[1];
+    const html = readFileSync(join(cwd(), 'index.html'), 'utf8');
+    const fill = /:root\[data-theme="dark"\][^}]*background:\s*(#[0-9a-f]+)/i.exec(html)?.[1];
+    expect(page).toBeTruthy();
+    expect(fill?.toUpperCase()).toBe(page?.toUpperCase());
   });
 });

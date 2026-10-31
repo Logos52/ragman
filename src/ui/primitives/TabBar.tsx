@@ -10,7 +10,7 @@ export interface TabBarProps {
   tabs: TabDef[];
   active: string;
   onChange: (id: string) => void;
-  /** Right end of the strip. Defaults to the app name "INVENTORY" in --ink-3. */
+  /** Right end of the strip. Defaults to the app name "INVENTORY" in --bar-ink-3. */
   right?: ReactNode;
 }
 

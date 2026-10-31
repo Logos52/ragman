@@ -21,8 +21,8 @@
 .rg-btn--accent { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
 .rg-btn--accent:hover:not(:disabled) { background: var(--accent-hover); border-color: var(--accent-hover); }
 
-.rg-btn--ink { background: var(--ink); color: var(--accent-ink); border-color: var(--ink); }
-.rg-btn--ink:hover:not(:disabled) { background: var(--ink-hover); border-color: var(--ink-hover); }
+.rg-btn--ink { background: var(--ink); color: var(--fill-ink); border-color: var(--ink); }
+.rg-btn--ink:hover:not(:disabled) { background: var(--ink-hover); }
 
 .rg-btn--ghost { background: var(--panel); color: var(--ink); border-color: var(--tile-line); }
 .rg-btn--ghost:hover:not(:disabled) { border-color: var(--ink); }

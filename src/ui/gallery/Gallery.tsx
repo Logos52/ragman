@@ -84,7 +84,7 @@ export function Gallery() {
 
       <Section id="tokens" title="Tokens">
         <div className="gx-swatches">
-          {['page', 'panel', 'line', 'grid-bg', 'grid-line', 'tile', 'tile-line', 'ink', 'ink-2', 'ink-3', 'accent', 'accent-ink', 'ok', 'bad', 'region', 'bar', 'bar-ink', 'strip', 'strip-ink', 'tile-ph', 'tile-ph-ink', 'region-chip', 'glow', 'shadow', 'scrim', 'dim'].map((t) => (
+          {['page', 'panel', 'line', 'grid-bg', 'grid-line', 'tile', 'tile-line', 'ink', 'ink-2', 'ink-3', 'accent', 'accent-ink', 'fill-ink', 'ok', 'bad', 'region', 'bar', 'bar-ink', 'bar-ink-3', 'strip', 'strip-ink', 'tile-ph', 'tile-ph-ink', 'region-chip', 'glow', 'shadow', 'scrim', 'dim'].map((t) => (
             <div key={t} className="gx-swatch">
               <span className="gx-swatch__chip" style={{ background: `var(--${t})` }} />
               <span className="gx-swatch__name">--{t}</span>

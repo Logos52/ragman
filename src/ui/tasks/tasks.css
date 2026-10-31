@@ -161,7 +161,7 @@
 .rg-quest__spacer { flex: 1; }
 .rg-quest__confirm { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--bad); }
 .rg-quest__del.rg-btn--ghost { color: var(--bad); }
-.rg-quest__yes.rg-btn--ghost { color: var(--accent-ink); background: var(--bad); border-color: var(--bad); }
+.rg-quest__yes.rg-btn--ghost { color: var(--fill-ink); background: var(--bad); border-color: var(--bad); }
 
 @media (max-width: 640px) {
   .rg-tasks { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto auto; height: auto; padding: 12px; }
