@@ -38,6 +38,12 @@ export interface DragState {
 
 export const useDragStore = create<DragState>()(() => ({ ghost: null, sourceId: null, hl: null, quick: null, flash: null }));
 
+/** One --bad flash on an item's tile: a failed drop, or a refused move (locked, or no room in its stash). */
+export function flashTile(id: string): void {
+  const f = useDragStore.getState().flash;
+  useDragStore.setState({ flash: { id, n: (f?.n ?? 0) + 1 } });
+}
+
 /** Selector hook for a zone: its highlight, or null. Stable reference until the highlight itself changes. */
 export function useZoneHighlight(zone: string): DragHighlight | null {
   return useDragStore((s) => (s.hl && s.hl.zone === zone ? s.hl : null));

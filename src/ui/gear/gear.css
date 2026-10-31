@@ -137,6 +137,7 @@
   gap: 8px;
 }
 .gear-stash__spacer { flex: 1; }
+.gear-stash__acts { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 .gear-stash__search { flex: 1 1 160px; min-width: 0; }
 .gear-stash__tab { flex: none; align-self: flex-start; }
 .gear-stash__body {
@@ -288,7 +289,9 @@
   .gear-stash { overflow: visible; }
   .gear-stash__body { flex-direction: column; }
   .gear-filter { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; }
-  .gear-stash__scroll { overflow: visible; }
+  /* the stash is a fixed 68-row grid (2312 px at the 34 px cell): it scrolls inside its own box, one screen tall
+     under the sticky tab bar, so Quick Use and the footer stay close below it */
+  .gear-stash__scroll { overflow-x: hidden; overflow-y: auto; max-height: calc(100dvh - 40px - 24px); }
   .gear-quick { align-items: stretch; height: auto; padding: 8px 12px; }
   /* the last box scrolls to end inside the gutter */
   .gear-quick__boxes { overflow-x: auto; padding-bottom: 4px; padding-right: 12px; }
@@ -414,3 +417,43 @@
 @media (max-width: 639.98px) {
   .gear-win__chips { max-width: none; }
 }
+
+/* ---- stash tabs: one row of tabs and a `+`; on phone it scrolls sideways inside the header ---- */
+.gear-tabs {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.gear-tabs::-webkit-scrollbar { display: none; }
+.gear-tabs > .rg-seg { max-width: none; }
+.gear-tabs__new { flex: none; display: flex; }
+.gear-tabs__in {
+  width: 120px; height: 24px; padding: 0 6px; border: 1px solid var(--ink); background: var(--panel);
+  font-family: var(--font-label); font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--ink);
+}
+.gear-tabs__in:focus { outline: none; box-shadow: 0 0 0 1px var(--accent); }
+.gear-tabs__in::placeholder { color: var(--ink-3); }
+.gear-tabs__in--bad, .gear-tabs__in--bad:focus,
+.gear-pockets__size input.gear-tabs__in--bad { border-color: var(--bad); box-shadow: 0 0 0 1px var(--bad); color: var(--bad); }
+/* the tab editor opens over the grid, anchored under the header, so the grid keeps its place */
+.gear-stash__head { position: relative; }
+.gear-stash__head > .gear-tabsman {
+  position: absolute;
+  top: calc(100% - 6px);
+  left: 0;
+  width: min(100%, 360px);
+  z-index: 6;
+  box-shadow: 0 4px 4px rgb(21 24 28 / 0.18);
+}
+.gear-tabsman__row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.gear-tabsman__k { font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); font-size: 12px; margin-right: 3px; }
+.gear-tabsman .gear-pockets__size { gap: 4px; }
+.gear-tabsman__del:not(:disabled) { color: var(--bad); }
+.gear-tabsman__del:not(:disabled):hover { border-color: var(--bad); }
+

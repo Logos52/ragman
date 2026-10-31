@@ -28,7 +28,7 @@ npm install
 npm run dev          # http://localhost:5173, serves ../ragman-data at /data/*, saves in place
 npm run build && npm run serve   # production build with the same data endpoints
 npm run build:public # public demo build (bundles data/demo, edits reset on reload)
-npm test             # engine, store, real-data and UI-rule tests
+npm test             # engine, store, real-data and UI-rule tests (real data from ../ragman-data, or RAGMAN_DATA)
 npm run typecheck
 npm run shots        # Playwright proof: refs/proof/*.png at 1440 and 390, perf.json, tests.txt
 ```

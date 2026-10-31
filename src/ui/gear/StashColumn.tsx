@@ -1,8 +1,7 @@
-/** Right column: header (location, Archive, search, sort select, Verify all, Sort, Add), filter strip, stash/archive grid. */
+/** Right column: header (stash tabs, Archive, tab editor, search, sort select, Verify all, Sort, Add), filter strip, stash/archive grid. */
 import { memo, useLayoutEffect, useMemo, useRef } from 'react';
 import type { ReactNode } from 'react';
 import type { GridRef, SortMode } from '../../model/types';
-import { SegmentedControl } from '../primitives/SegmentedControl';
 import { Button, IconButton } from '../primitives/Button';
 import { TextField } from '../primitives/TextField';
 import { Select } from '../primitives/Select';
@@ -13,6 +12,7 @@ import { VerifyAllButton } from './VerifyAllButton';
 import { useUi } from '../uiStore';
 import { GridZone } from './GridZone';
 import { useRetainedGrids } from '../hooks/useRetainedGrids';
+import { StashTabs, StashTabsManager, StashTabsToggle } from './StashTabs';
 
 export const SORTS:{ value: SortMode; label: string }[] = [
   { value: 'name', label: 'Name' },
@@ -105,23 +105,17 @@ export function StashColumn() {
     <section className="gear-col gear-stash" aria-label="Stash">
       <div className="gear-stash__head">
         <div className="gear-stash__row">
-          {locations?.length ? (
-            <SegmentedControl
-              options={locations}
-              // the Archive spans every location, so no location reads as chosen while it is shown
-              value={showArchive ? '' : location}
-              onChange={(l) => { store.setStashLocation(l); if (showArchive) store.setShowArchive(false); }}
-              size="sm"
-              aria-label="Stash location"
-            />
-          ) : null}
+          <StashTabs />
           <Button size="sm" icon="archive" pressed={showArchive} onClick={() => store.setShowArchive(!showArchive)}>
             Archive
           </Button>
-          <span className="gear-stash__spacer" />
-          <VerifyAllButton />
-          <Button size="sm" icon="sort" onClick={() => store.sortGrid(grid, filters.sort)}>Sort</Button>
-          <Button size="sm" variant="accent" icon="plus" onClick={() => useUi.getState().setAddOpen(true)}>Add</Button>
+          <StashTabsToggle />
+          {/* right-aligned, also when a long tab row wraps them onto a line of their own */}
+          <span className="gear-stash__acts">
+            <VerifyAllButton />
+            <Button size="sm" icon="sort" onClick={() => store.sortGrid(grid, filters.sort)}>Sort</Button>
+            <Button size="sm" variant="accent" icon="plus" onClick={() => useUi.getState().setAddOpen(true)}>Add</Button>
+          </span>
         </div>
         <div className="gear-stash__row">
           <TextField
@@ -139,6 +133,7 @@ export function StashColumn() {
             onChange={(v) => store.setFilters({ sort: v as SortMode })}
           />
         </div>
+        <StashTabsManager />
       </div>
       <LabelTab className="gear-stash__tab">{showArchive ? 'Archive' : `Stash · ${location}`}</LabelTab>
       <div className="gear-stash__body">

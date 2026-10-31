@@ -12,7 +12,8 @@
  *    goes back to its home. If that home is now occupied or invalid, the item is auto-placed at the first free cells
  *    of its location's stash (an archived item: of the Archive) and its home is rewritten.
  * Items that live in a container's panel through `home` need nothing else: they travel with the container.
- * Returns the ids whose home or placement was rewritten.
+ * Returns the ids whose home or placement was rewritten, or null when an item has nowhere to go because its stash is
+ * full (a stash is a fixed grid); the store then refuses the switch and keeps the inventory as it was.
  */
 import type { GridItemView, GridRef, Inventory } from '../types';
 import { effectivePlace, gridBuckets, gridOfPlace, gridShape, gridView } from './place';
@@ -27,7 +28,7 @@ const cellKeys = (v: GridItemView) => {
 };
 
 /** Home fallback: keep a valid home, else first free cells of the location's stash (archived: the Archive). */
-function settleHome(inv: Inventory, id: string, rehomed: string[]): void {
+function settleHome(inv: Inventory, id: string, rehomed: string[], stuck: string[]): void {
   const item = inv.items[id];
   if (!item || item.attachedTo) return; // goes wherever its parent goes
   const home = item.home ?? null;
@@ -35,11 +36,11 @@ function settleHome(inv: Inventory, id: string, rehomed: string[]): void {
   const valid = !!home && !!ref && fitAt(inv, id, ref, home.x, home.y, home.rotated).ok;
   if (valid) return;
   const target: GridRef = home?.kind === 'archive' ? { kind: 'archive' } : stashRefFor(inv, id);
-  if (rehomeFirstFree(inv, id, target)) rehomed.push(id);
+  if (rehomeFirstFree(inv, id, target)) rehomed.push(id); else stuck.push(id);
 }
 
 /** Step 1: placements first, then homes, in every grid the active loadout draws. */
-function settleActive(inv: Inventory, rehomed: string[], fallenBack: string[]): void {
+function settleActive(inv: Inventory, rehomed: string[], fallenBack: string[], stuck: string[]): void {
   const lo = inv.loadouts[inv.activeLoadout];
   const isPlacement = (id: string) => !!lo.placements[id] && effectivePlace(inv, id) === lo.placements[id];
   const placementLosers: string[] = [];
@@ -72,31 +73,34 @@ function settleActive(inv: Inventory, rehomed: string[], fallenBack: string[]): 
     const spot = autoPlace(gridView(inv, gridOfPlace(home)!), id, inv.items[id]);
     if (spot) { home.x = spot.x; home.y = spot.y; home.rotated = spot.rotated; rehomed.push(id); continue; }
     const target: GridRef = home.kind === 'archive' ? { kind: 'archive' } : stashRefFor(inv, id);
-    if (rehomeFirstFree(inv, id, target)) rehomed.push(id);
+    if (rehomeFirstFree(inv, id, target)) rehomed.push(id); else stuck.push(id);
   }
 }
 
-export function switchLoadout(inv: Inventory, name: string): string[] {
+export function switchLoadout(inv: Inventory, name: string): string[] | null {
   const oldLo = inv.loadouts[inv.activeLoadout];
   const newLo = inv.loadouts[name];
   if (!newLo || name === inv.activeLoadout) return [];
   inv.activeLoadout = name;
   const rehomed: string[] = [];
   const fallenBack: string[] = [];
-  settleActive(inv, rehomed, fallenBack);
+  const stuck: string[] = [];
+  settleActive(inv, rehomed, fallenBack, stuck);
   const returning = oldLo ? Object.keys(oldLo.placements).filter((id) => inv.items[id] && !newLo.placements[id]) : [];
-  for (const id of [...fallenBack, ...returning]) settleHome(inv, id, rehomed);
-  return [...new Set(rehomed)];
+  for (const id of [...fallenBack, ...returning]) settleHome(inv, id, rehomed, stuck);
+  return stuck.length ? null : [...new Set(rehomed)];
 }
 
 /**
  * Re-settle the active loadout after its own shape changed (slot list, pockets grid): placements first, then homes,
  * as on a switch; `leaving` (placements just removed) and every placement that had to be dropped go back to their home.
+ * Null when one of them finds its stash full.
  */
-export function settleLoadout(inv: Inventory, leaving: string[]): string[] {
+export function settleLoadout(inv: Inventory, leaving: string[]): string[] | null {
   const rehomed: string[] = [];
   const fallenBack: string[] = [];
-  settleActive(inv, rehomed, fallenBack);
-  for (const id of [...fallenBack, ...leaving]) settleHome(inv, id, rehomed);
-  return [...new Set(rehomed)];
+  const stuck: string[] = [];
+  settleActive(inv, rehomed, fallenBack, stuck);
+  for (const id of [...fallenBack, ...leaving]) settleHome(inv, id, rehomed, stuck);
+  return stuck.length ? null : [...new Set(rehomed)];
 }

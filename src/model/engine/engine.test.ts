@@ -56,11 +56,15 @@ describe('placement', () => {
     expect(footprintOf(inv.items.band)).toEqual([1, 1]);
     expect(footprintOf(inv.items.cable, true)).toEqual([2, 1]);
   });
-  it('stash height grows: max(bottom + 4, 12); archive carries location tags', () => {
+  it('a stash is stashRows tall; the archive grows: max(bottom + 4, 12) and carries location tags', () => {
     const inv = inv0();
-    expect(gridView(inv, USA).height).toBe(12);
+    expect(gridView(inv, USA).height).toBe(68);
     inv.items.tee.home = { kind: 'stash', location: 'USA', x: 0, y: 20, rotated: false };
-    expect(gridView(inv, USA).height).toBe(26);
+    expect(gridView(inv, USA).height).toBe(68);
+    expect(gridView(inv, { kind: 'archive' }).height).toBe(12);
+    inv.items.shirt.home = { kind: 'archive', x: 0, y: 20, rotated: false };
+    expect(gridView(inv, { kind: 'archive' }).height).toBe(26);
+    inv.items.shirt.home = { kind: 'archive', x: 0, y: 0, rotated: false };
     const arch = gridView(inv, { kind: 'archive' });
     expect(arch.items).toEqual([{ id: 'shirt', x: 0, y: 0, w: 2, h: 2, rotated: false, locationTag: 'Vietnam' }]);
     expect(gridView(inv, MAIN).height).toBe(8);
@@ -87,7 +91,8 @@ describe('fit rule', () => {
     expect(st('cable', 0, 0, true).cells).toEqual([[0, 0], [1, 0]]);
     expect(st('cable', 4, 2, true).ok).toBe(true);
     expect(st('cable', 9, 3, true).reason).toBe('out-of-bounds');
-    expect(st('cable', 0, 500).ok).toBe(true); // stash grows without limit
+    expect(st('cable', 0, 66).ok).toBe(true); // the last two rows of a 68-row stash
+    expect(st('cable', 0, 67).reason).toBe('out-of-bounds'); // a stash does not grow
   });
   it('panel accepts filter', () => {
     const inv = inv0();

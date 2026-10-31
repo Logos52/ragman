@@ -18,7 +18,7 @@ import type { Cell, DropTarget, GridRef } from '../../model/types';
 import { getStore } from '../hooks/useInv';
 import { getCellSize } from '../hooks/useCellSize';
 import { useUi } from '../uiStore';
-import { useDragStore, type DragHighlight, type QuickTarget } from './dragStore';
+import { useDragStore, type DragHighlight, type QuickTarget, flashTile } from './dragStore';
 import { zoneAt, type DropZone } from './registry';
 
 const THRESHOLD = 4;
@@ -424,10 +424,7 @@ function onUp(e: PointerEvent) {
   }
 }
 
-function flash(id: string) {
-  const f = useDragStore.getState().flash;
-  useDragStore.setState({ flash: { id, n: (f?.n ?? 0) + 1 } });
-}
+const flash = flashTile;
 
 function snapBack(cur: Session, withFlash: boolean) {
   detach();

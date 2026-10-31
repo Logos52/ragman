@@ -4,7 +4,8 @@
  *   then the blank value ('') when any item has none.
  * - loadouts: for every loadout, the ids `carriedIds` returns for it (the footer's carried set) and their weight.
  *   A loadout that is not on screen is read as stored, without the settle a switch would run.
- * - stashes: each location's stash, then the Archive, as the active loadout draws them.
+ * - stashes: each location's stash, then the Archive, as the active loadout draws them. A stash's fill is occupied
+ *   cells over its fixed grid (stashWidth x stashRows); the Archive's is over the rows in use.
  * - emptyContainers: items with panels where no item sits in any panel, at the active loadout's placement.
  */
 import type { CountRow, EmptyContainer, Inventory, OverallSummary, StashFill } from '../types';
@@ -42,7 +43,7 @@ export function overallSummary(inv: Inventory): OverallSummary {
   const stashes: StashFill[] = refs.map((ref) => {
     const view = gridView(inv, ref, buckets);
     const occupied = occupancy(view).size;
-    const rows = view.items.reduce((m, v) => Math.max(m, v.y + v.h), 0);
+    const rows = ref.kind === 'stash' ? view.height : view.items.reduce((m, v) => Math.max(m, v.y + v.h), 0);
     const cells = view.width * rows;
     return { ref, items: view.items.length, occupied, rows, cells, fill: cells ? occupied / cells : null };
   });

@@ -11,9 +11,12 @@ import type { Cells, GridItemView, GridRef, GridView, Inventory, Item, Loadout, 
 
 export const POCKETS_ID = '__pockets__';
 export const POCKETS_PANEL = 'Pockets';
-/** Stash/Archive draw at least this many rows, and always this many empty rows below the lowest item. */
+/** The Archive draws at least this many rows, and always this many empty rows below the lowest item. */
 export const MIN_ROWS = 12;
 export const PAD_ROWS = 4;
+/** A stash is settings.stashWidth x settings.stashRows, like EFT's fixed stash. Default rows and the most the Rows box takes. */
+export const DEFAULT_STASH_ROWS = 68;
+export const MAX_STASH_ROWS = 200;
 
 export function loadoutOf(inv: Inventory, name: string = inv.activeLoadout): Loadout | undefined {
   return inv.loadouts[name];
@@ -75,9 +78,9 @@ export function refKey(ref: GridRef): string {
   }
 }
 
-/** Stash and Archive grow downward without limit; panels and pockets are fixed. */
+/** Only the Archive grows downward without limit; a stash (stashWidth x stashRows), panels and pockets are fixed. */
 export function isGrowing(ref: GridRef): boolean {
-  return ref.kind === 'stash' || ref.kind === 'archive';
+  return ref.kind === 'archive';
 }
 
 /** The direct parent container (or the item an attachment hangs on), in the given loadout. */
@@ -172,7 +175,7 @@ export function gridBuckets(inv: Inventory, loadout: string = inv.activeLoadout)
 /** Width, fixed height (null when growing), accepts and regions of a grid. */
 export function gridShape(inv: Inventory, ref: GridRef, loadout: string = inv.activeLoadout): { width: number; height: number | null; accepts: string[] | null; regions: Region[] } {
   switch (ref.kind) {
-    case 'stash': return { width: inv.settings.stashWidth, height: null, accepts: null, regions: [] };
+    case 'stash': return { width: inv.settings.stashWidth, height: inv.settings.stashRows ?? DEFAULT_STASH_ROWS, accepts: null, regions: [] };
     case 'archive': return { width: inv.archive.width, height: null, accepts: null, regions: [] };
     case 'pockets': {
       const [w, h] = loadoutOf(inv, loadout)?.pocketsGrid ?? [4, 1];
@@ -187,7 +190,8 @@ export function gridShape(inv: Inventory, ref: GridRef, loadout: string = inv.ac
 }
 
 /**
- * The drawable grid. Stash/Archive height = max(lowest occupied row + PAD_ROWS, MIN_ROWS); panels are fixed.
+ * The drawable grid. Archive height = max(lowest occupied row + PAD_ROWS, MIN_ROWS); a stash is stashRows tall;
+ * panels are fixed.
  * Pass `buckets` (from gridBuckets) to avoid rescanning all items for every grid.
  * `loadout` (default the active one) draws the grid as that loadout sees it; buckets, if passed, must be built for it.
  */
@@ -200,6 +204,20 @@ export function gridView(inv: Inventory, ref: GridRef, buckets?: Map<string, Gri
     height = Math.max(bottom + PAD_ROWS, MIN_ROWS);
   }
   return { ref, width: shape.width, height, accepts: shape.accepts, regions: shape.regions, items };
+}
+
+/**
+ * The rows a stash must keep: the lowest bottom edge of any item whose home is in a stash, over every location
+ * (the Rows box's minimum). Homes count even while a loadout carries the item, since it returns there.
+ */
+export function minStashRows(inv: Inventory): number {
+  let m = 1;
+  for (const it of Object.values(inv.items)) {
+    const h = it.home;
+    if (it.attachedTo || h?.kind !== 'stash') continue;
+    m = Math.max(m, h.y + footprintOf(it, h.rotated)[1]);
+  }
+  return m;
 }
 
 /** Occupancy map "x,y" -> item id for a view, optionally ignoring one item (the one being dragged). */

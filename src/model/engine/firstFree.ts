@@ -1,6 +1,7 @@
 /**
  * First free top-left cell for a w x h footprint, scanning rows then columns.
- * Stash/Archive grow downward without limit, so they always have an answer when w <= width.
+ * The Archive grows downward without limit, so it always has an answer when w <= width. A stash is fixed
+ * (stashWidth x stashRows): when it is full the answer is null.
  */
 import type { Cell, Cells, GridView, Item } from '../types';
 import { footprintOf, isGrowing, occupancy } from './place';
@@ -19,7 +20,7 @@ export function firstFree(view: GridView, size: Cells, opts: FirstFreeOpts = {})
   if (w > view.width) return null;
   const occ = occupancy(view, opts.exclude);
   const growing = isGrowing(view.ref);
-  // For a growing grid the row just below the lowest item is always free, so this bound always finds a spot.
+  // For the growing Archive the row just below the lowest item is always free, so this bound always finds a spot.
   const bottom = view.items.reduce((m, v) => Math.max(m, v.y + v.h), 0);
   const lastY = growing ? bottom : view.height - h;
   for (let y = 0; y <= lastY; y++) {

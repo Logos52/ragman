@@ -267,6 +267,39 @@ const SHOTS = {
     await shot(page, 'archive', vp);
     await ctx.close();
   },
+  async 'stash-tabs'(b, vp) {
+    const { ctx, page } = await open(b, vp);
+    await inMemory(page);
+    // a third tab added through the inline field, then the editor open on it
+    await page.locator('.gear-tabs button[aria-label="Add a stash tab"]').click();
+    await page.locator('.gear-tabs__in').fill('Storage unit');
+    await page.keyboard.press('Enter');
+    await settle(page);
+    if ((await store(page, (s) => s.stashLocation)) !== 'Storage unit') throw new Error('stash-tabs: the new tab is not open');
+    await page.locator('.gear-stash__head button[aria-label="Edit this stash tab"]').click();
+    await page.waitForSelector('.gear-tabsman');
+    await settle(page);
+    await page.locator('.gear-stash').scrollIntoViewIfNeeded();
+    const wide = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+    if (wide) throw new Error('stash-tabs: the page scrolls sideways');
+    await shot(page, 'stash-tabs', vp);
+    await ctx.close();
+  },
+  async 'stash-full-grid'(b, vp) {
+    const { ctx, page } = await open(b, vp);
+    // the stash scroller at its bottom: the last rows of the fixed stashWidth x stashRows grid, empty
+    await page.locator('.gear-stash').scrollIntoViewIfNeeded();
+    await page.evaluate(() => {
+      const sc = document.querySelector('.gear-stash__scroll');
+      sc.scrollTop = sc.scrollHeight;
+      if (document.documentElement.scrollHeight > innerHeight) document.querySelector('.gear-stash').scrollIntoView({ block: 'end' });
+    });
+    await settle(page);
+    const rows = await store(page, (s) => s.gridView({ kind: 'stash', location: s.stashLocation }).height);
+    if (rows !== (await store(page, (s) => s.inv.settings.stashRows))) throw new Error('stash-full-grid: the grid is not stashRows tall');
+    await shot(page, 'stash-full-grid', vp);
+    await ctx.close();
+  },
   async 'filter-strip-active'(b, vp) {
     const { ctx, page } = await open(b, vp);
     await page.locator('.gear-filter button[aria-label="tops"]').click();

@@ -11,7 +11,7 @@ import { Tile } from '../primitives/Tile';
 import { useHoverTooltip } from '../primitives/Tooltip';
 import { getStore, useInventory } from '../hooks/useInv';
 import { useUi } from '../uiStore';
-import { useDragStore, useQuickHighlight } from '../drag/dragStore';
+import { flashTile, useDragStore, useQuickHighlight } from '../drag/dragStore';
 import { beginPointer, isDragging, justDragged } from '../drag/session';
 import './items.css';
 
@@ -76,7 +76,7 @@ function ItemTileImpl({ id, w = 1, h = 1, rotated = false, locationTag, dimmed, 
   };
   const onClick = (e: ReactMouseEvent<HTMLDivElement>) => {
     if (justDragged() || isDragging()) return;
-    if (e.ctrlKey || e.metaKey) { e.preventDefault(); store.sendToStash(id); return; }
+    if (e.ctrlKey || e.metaKey) { e.preventDefault(); if (!store.sendToStash(id) && store.effectivePlace(id)?.kind !== 'stash') flashTile(id); return; }
     if (e.altKey) { e.preventDefault(); store.equip(id); return; }
     useUi.getState().select(id);
   };

@@ -37,12 +37,17 @@ describe('overallSummary', () => {
     expect(plane.weight).toMatchObject({ grams: 2500, unweighed: 1, estimated: 1 });
   });
 
-  it('measures stash fill over the rows used', () => {
-    const [usa, vietnam, archive] = overallSummary(fixture()).stashes;
+  it('measures a stash over its fixed grid (stashWidth x stashRows) and the Archive over the rows used', () => {
+    const inv = fixture();
+    inv.settings.stashRows = 8;
+    const [usa, vietnam, archive] = overallSummary(inv).stashes;
     // Work on screen: tee 2x2, cable 1x2, glasses case 2x1 in USA (the Filson and the watch are on the person)
-    expect(usa).toEqual({ ref: { kind: 'stash', location: 'USA' }, items: 3, occupied: 8, rows: 2, cells: 20, fill: 0.4 });
-    expect(vietnam).toMatchObject({ occupied: 4, rows: 2, cells: 20, fill: 0.2 });
+    expect(usa).toEqual({ ref: { kind: 'stash', location: 'USA' }, items: 3, occupied: 8, rows: 8, cells: 80, fill: 0.1 });
+    expect(vietnam).toMatchObject({ occupied: 4, rows: 8, cells: 80, fill: 0.05 });
     expect(archive).toEqual({ ref: { kind: 'archive' }, items: 0, occupied: 0, rows: 0, cells: 0, fill: null });
+    inv.items.tee.status = 'Not Worn';
+    inv.items.tee.home = { kind: 'archive', x: 0, y: 3, rotated: false };
+    expect(overallSummary(inv).stashes[2]).toMatchObject({ items: 1, occupied: 4, rows: 5, cells: 50, fill: 0.08 });
   });
 
   it('lists containers whose every panel is empty, with where they are drawn', () => {

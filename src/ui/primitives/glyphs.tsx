@@ -171,6 +171,7 @@ const P: Record<string, ReactElement> = {
       <path d="M8 10.5V7.5a4 4 0 0 1 8 0v3M12 14.5v3" />
     </>
   ),
+  edit: <path d="M4 20h4L19.5 8.5l-4-4L4 16v4ZM13.5 6.5l4 4" />,
   link: <path d="M10 14a4 4 0 0 0 5.7 0l3.6-3.6a4 4 0 0 0-5.7-5.7L12 6.3M14 10a4 4 0 0 0-5.7 0l-3.6 3.6a4 4 0 0 0 5.7 5.7l1.6-1.6" />,
 };
 

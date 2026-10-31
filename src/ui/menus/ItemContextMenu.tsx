@@ -3,6 +3,7 @@ import type { KeyboardEvent } from 'react';
 import { ContextMenu } from '../primitives/ContextMenu';
 import type { ContextMenuItem, ContextSubItem } from '../primitives/ContextMenu';
 import { useUi } from '../uiStore';
+import { flashTile } from '../drag/dragStore';
 import { getStore, useInv } from '../app/useStore';
 
 type Mode = 'menu' | 'confirm' | 'rename' | 'split';
@@ -97,7 +98,7 @@ export function ItemContextMenu() {
       ]
       : [
         { label: `Delete ${item.name}?`, prompt: true },
-        { label: 'Yes, delete', danger: true, onSelect: () => { s.deleteItem(id); if (ui.selectedId === id) ui.select(null); } },
+        { label: 'Yes, delete', danger: true, onSelect: () => { if (!s.deleteItem(id)) { flashTile(id); return; } if (ui.selectedId === id) ui.select(null); } },
         { label: 'No', onSelect: () => {} },
       ];
   } else {
@@ -167,11 +168,11 @@ export function ItemContextMenu() {
       { label: 'Filter by item', onSelect: filterBy },
       { label: 'Equip to slot', disabled: locked, submenu: locked ? undefined : slots },
       ...(item.attachedTo
-        ? [{ label: 'Detach', disabled: locked, onSelect: () => { s.detach(id); } }]
+        ? [{ label: 'Detach', disabled: locked, onSelect: () => { if (!s.detach(id)) flashTile(item.attachedTo!.to); } }]
         : attachRows.length ? [{ label: 'Attach to', disabled: locked, submenu: locked ? undefined : attachRows }] : []),
-      { label: 'Move to Stash', disabled: inStash || locked, onSelect: () => s.sendToStash(id) },
+      { label: 'Move to Stash', disabled: inStash || locked, onSelect: () => { if (!s.sendToStash(id)) flashTile(id); } },
       archived
-        ? { label: 'Unarchive', disabled: locked, onSelect: () => s.unarchive(id) }
+        ? { label: 'Unarchive', disabled: locked, onSelect: () => { if (!s.unarchive(id)) flashTile(id); } }
         : { label: 'Archive', disabled: locked, onSelect: () => s.archive(id) },
       { label: 'Add to Quick Use', submenu: quick },
       item.pinned

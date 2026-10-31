@@ -28,6 +28,10 @@ export interface UiState {
   dragging: boolean;
   /** Filter by item: everything else on every grid dims to 0.25 until Esc or a click on empty space. */
   jobFilter: JobFilter | null;
+  /** A refused action with no tile to flash (a loadout switch with no room in a stash): a --bad banner until dismissed. */
+  notice: string | null;
+  /** The stash tab manager (the pencil after the Archive toggle) is open. */
+  tabsOpen: boolean;
 
   setTab(tab: TabId): void;
   select(id: string | null): void;
@@ -44,6 +48,8 @@ export interface UiState {
   setAddOpen(open: boolean): void;
   setDragging(on: boolean): void;
   setJobFilter(f: JobFilter | null): void;
+  setNotice(notice: string | null): void;
+  setTabsOpen(open: boolean): void;
   /** Close every transient overlay (Esc, tab change): menu, tooltip, Edit and Add forms. Windows stay open. */
   closeAll(): void;
 }
@@ -61,6 +67,8 @@ export const useUi = create<UiState>()((set) => ({
   addOpen: false,
   dragging: false,
   jobFilter: null,
+  notice: null,
+  tabsOpen: false,
 
   setTab: (tab) => set({ tab, contextMenu: null, tooltip: null }),
   select: (selectedId) => set({ selectedId }),
@@ -86,5 +94,7 @@ export const useUi = create<UiState>()((set) => ({
   setAddOpen: (addOpen) => set({ addOpen, contextMenu: null, tooltip: null }),
   setDragging: (dragging) => set(dragging ? { dragging, contextMenu: null, tooltip: null } : { dragging }),
   setJobFilter: (jobFilter) => set({ jobFilter }),
+  setNotice: (notice) => set({ notice }),
+  setTabsOpen: (tabsOpen) => set({ tabsOpen }),
   closeAll: () => set({ contextMenu: null, tooltip: null, editId: null, addOpen: false }),
 }));

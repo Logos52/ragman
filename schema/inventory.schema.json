@@ -17,7 +17,8 @@
         "categories": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
         "locations": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
         "defaultSlots": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-        "stashWidth": { "type": "integer", "minimum": 1 }
+        "stashWidth": { "type": "integer", "minimum": 1 },
+        "stashRows": { "type": "integer", "minimum": 1, "maximum": 200, "description": "Rows in every stash. A stash is stashWidth x stashRows cells and does not grow, like EFT's stash. When absent the app uses 68 and writes it on the next save. The Archive is not affected: it grows downward." }
       }
     },
     "items": {

@@ -10,7 +10,7 @@ import { Figure } from '../primitives/Figure';
 import { SlotBox } from '../primitives/SlotBox';
 import { GridSurface } from '../primitives/GridSurface';
 import { LabelTab } from '../primitives/LabelTab';
-import { Button } from '../primitives/Button';
+import { Button, IconButton } from '../primitives/Button';
 import { TextField } from '../primitives/TextField';
 import { Select } from '../primitives/Select';
 import { Glyph, glyphNameFor } from '../primitives/glyphs';
@@ -71,15 +71,20 @@ export function GearSkeleton() {
         <section className="gear-col gear-stash">
           <div className="gear-stash__head">
             <div className="gear-stash__row">
-              {/* the location control's box: two blank disabled segments (no location names guessed) */}
-              <div className="rg-seg rg-seg--sm gear-stash__locph">
-                <button type="button" className="rg-seg__opt" disabled tabIndex={-1} />
-                <button type="button" className="rg-seg__opt" disabled tabIndex={-1} />
+              {/* the stash tabs' box: two blank disabled segments (no location names guessed) and the `+` */}
+              <div className="gear-tabs">
+                <div className="rg-seg rg-seg--sm gear-stash__locph">
+                  <button type="button" className="rg-seg__opt" disabled tabIndex={-1} />
+                  <button type="button" className="rg-seg__opt" disabled tabIndex={-1} />
+                </div>
+                <IconButton size="sm" icon="plus" label="Add a stash tab" disabled />
               </div>
               <Button size="sm" icon="archive" disabled>Archive</Button>
-              <span className="gear-stash__spacer" />
-              <Button size="sm" icon="sort" disabled>Sort</Button>
-              <Button size="sm" variant="accent" icon="plus" disabled>Add</Button>
+              <IconButton size="sm" icon="edit" label="Edit this stash tab" disabled />
+              <span className="gear-stash__acts">
+                <Button size="sm" icon="sort" disabled>Sort</Button>
+                <Button size="sm" variant="accent" icon="plus" disabled>Add</Button>
+              </span>
             </div>
             <div className="gear-stash__row">
               <TextField size="sm" value="" onChange={noop} disabled className="gear-stash__search" />

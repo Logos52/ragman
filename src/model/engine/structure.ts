@@ -19,9 +19,16 @@
  * name (the band slot takes items tagged band). attach() drops the item's home and placements (an attached item
  * goes where its parent goes); an item already in that slot is detached first (a swap) and gets a home in its stash.
  * detach() gives the item a home at the first free cells of its location's stash (the Archive when Not Worn).
+ *
+ * Stash tabs. settings.locations is the list of stashes, in tab order. addLocation / renameLocation refuse a blank
+ * name and a name already in the list (trimmed, any case). A rename rewrites settings.locations, every item.location
+ * and every stash home's location in one step. removeLocation refuses the last location and a location any item still
+ * names (its location, or a stash home there: items in that stash, carried items and archived items from there).
+ * moveLocation swaps a location with its neighbour. setStashRows sets the rows of every stash: a whole number from the
+ * lowest stash home's bottom edge (minStashRows) to MAX_STASH_ROWS.
  */
 import type { Cells, Inventory, Item, Panel, Region } from '../types';
-import { ancestorsOf, POCKETS_ID, POCKETS_PANEL } from './place';
+import { ancestorsOf, MAX_STASH_ROWS, minStashRows, POCKETS_ID, POCKETS_PANEL } from './place';
 import { acceptsItem } from './fit';
 import { refit } from './moves';
 import { clearPlacement, rehomeFirstFree, stashRefFor } from './ops';
@@ -96,7 +103,7 @@ export function setPanels(inv: Inventory, id: string, panels: Panel[], from: (st
     }
   }
   item.panels = clean;
-  for (const cid of inside) refit(inv, cid, stashLocation);
+  for (const cid of inside) if (!refit(inv, cid, stashLocation)) return false;
   return !lockedMoved(inv, locked);
 }
 
@@ -170,7 +177,7 @@ export function setLoadoutSlots(inv: Inventory, slots: string[]): boolean {
     if (gone) { delete lo.placements[id]; leaving.push(id); }
   }
   lo.slots = next;
-  settleLoadout(inv, leaving);
+  if (!settleLoadout(inv, leaving)) return false;
   return !lockedMoved(inv, locked);
 }
 
@@ -182,7 +189,73 @@ export function setPocketsGrid(inv: Inventory, grid: Cells): boolean {
   if (cur[0] === grid[0] && cur[1] === grid[1]) return false;
   const locked = placesOf(inv, lockedIds(inv));
   lo.pocketsGrid = [grid[0], grid[1]];
-  settleLoadout(inv, []);
+  if (!settleLoadout(inv, [])) return false;
   return !lockedMoved(inv, locked);
 }
 
+
+/* ---------------- stash tabs (settings.locations) ---------------- */
+
+const sameName = (a: string, b: string) => a.trim().toLowerCase() === b.trim().toLowerCase();
+
+/** Why `name` cannot be a new location name (ignoring `except`, the location being renamed), or null when it can. */
+export function locationNameRefusal(inv: Inventory, name: string, except?: string): 'blank' | 'duplicate' | null {
+  const n = name.trim();
+  if (!n) return 'blank';
+  if (inv.settings.locations.some((l) => l !== except && sameName(l, n))) return 'duplicate';
+  return null;
+}
+
+/** Items that still name a location: their location, or a stash home there. */
+export function itemsAt(inv: Inventory, location: string): string[] {
+  return Object.keys(inv.items).filter((id) => {
+    const it = inv.items[id];
+    return it.location === location || (it.home?.kind === 'stash' && it.home.location === location);
+  });
+}
+
+/** Add a stash tab at the end. */
+export function addLocation(inv: Inventory, name: string): boolean {
+  if (locationNameRefusal(inv, name)) return false;
+  inv.settings.locations.push(name.trim());
+  return true;
+}
+
+/** Rename a stash tab; every item.location and stash home that names it follows. */
+export function renameLocation(inv: Inventory, from: string, to: string): boolean {
+  const i = inv.settings.locations.indexOf(from);
+  const n = to.trim();
+  if (i < 0 || n === from || locationNameRefusal(inv, n, from)) return false;
+  inv.settings.locations[i] = n;
+  for (const it of Object.values(inv.items)) {
+    if (it.location === from) it.location = n;
+    if (it.home?.kind === 'stash' && it.home.location === from) it.home.location = n;
+  }
+  return true;
+}
+
+/** Remove a stash tab no item names; the last tab stays. */
+export function removeLocation(inv: Inventory, name: string): boolean {
+  const list = inv.settings.locations;
+  if (!list.includes(name) || list.length <= 1 || itemsAt(inv, name).length) return false;
+  inv.settings.locations = list.filter((l) => l !== name);
+  return true;
+}
+
+/** Move a stash tab one place left (-1) or right (1). */
+export function moveLocation(inv: Inventory, name: string, dir: -1 | 1): boolean {
+  const list = inv.settings.locations;
+  const i = list.indexOf(name);
+  const j = i + dir;
+  if (i < 0 || (dir !== -1 && dir !== 1) || j < 0 || j >= list.length) return false;
+  [list[i], list[j]] = [list[j], list[i]];
+  return true;
+}
+
+/** Rows in every stash, from minStashRows to MAX_STASH_ROWS. */
+export function setStashRows(inv: Inventory, rows: number): boolean {
+  if (!Number.isInteger(rows) || rows < minStashRows(inv) || rows > MAX_STASH_ROWS) return false;
+  if (inv.settings.stashRows === rows) return false;
+  inv.settings.stashRows = rows;
+  return true;
+}

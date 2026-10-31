@@ -9,6 +9,10 @@
  * Archive in/out: a drop into the Archive sets status 'Not Worn'; an archived item dropped anywhere outside the Archive
  * (a slot, the pockets, a panel, a stash) gets status '' and, if its home was in the Archive, a home in its stash.
  *
+ * Full stash: a stash is a fixed grid (stashWidth x stashRows). Every path that auto-places an item in a stash (add,
+ * send to stash, unarchive, detach, delete's re-homing, a location or footprint edit, a drag out of the Archive) returns
+ * false when there are no free cells, and the store then keeps the inventory as it was.
+ *
  * Locked: a locked item is never moved, equipped, archived, unarchived, sent to the stash, deleted, merged or split
  * (canFit says 'locked'; the other moves return false). Deleting a container is refused while one of the items it
  * would move out (its direct contents and its attachments) is locked. A locked item inside a container still travels
@@ -25,12 +29,12 @@ import { quantityOf, sameProduct, splitId } from './stacks';
 
 const isArchived = (item: Item) => item.status === NOT_WORN || item.home?.kind === 'archive';
 
-/** Detach an attachment that is being moved on its own; it needs a home so other loadouts can still find it. */
-function detach(inv: Inventory, id: string, stashLocation: string): void {
+/** Detach an attachment that is being moved on its own; it needs a home so other loadouts can still find it. False when its stash is full. */
+function detach(inv: Inventory, id: string, stashLocation: string): boolean {
   const item = inv.items[id];
-  if (!item.attachedTo) return;
+  if (!item.attachedTo) return true;
   item.attachedTo = null;
-  if (!item.home) rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation));
+  return !!item.home || rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation));
 }
 
 /** Pin (or unpin) a Quick Use box. Ids only; an item is pinned in at most one box. */
@@ -49,7 +53,7 @@ export function moveItem(inv: Inventory, id: string, target: DropTarget, stashLo
   if (target.kind === 'quickUse') return setQuickUse(inv, target.index, id);
   const item = inv.items[id];
   const wasArchived = isArchived(item);
-  detach(inv, id, stashLocation);
+  if (!detach(inv, id, stashLocation)) return false;
   const lo = inv.loadouts[inv.activeLoadout];
   if (target.kind === 'slot') {
     lo.placements[id] = { kind: 'slot', slot: target.slot };
@@ -69,7 +73,7 @@ export function moveItem(inv: Inventory, id: string, target: DropTarget, stashLo
   // home still in the Archive moves to the location's stash. A drop into a container that sits in the Archive stays archived.
   if (wasArchived && rootPlace(inv, id)?.kind !== 'archive') {
     item.status = '';
-    if (item.home?.kind === 'archive') rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation));
+    if (item.home?.kind === 'archive' && !rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation))) return false;
   }
   return true;
 }
@@ -106,7 +110,7 @@ export function unarchiveItem(inv: Inventory, id: string, stashLocation: string,
     if (target.kind === 'grid' && target.grid.kind === 'archive') return false;
     if (!moveItem(inv, id, target, stashLocation)) return false;
     if (item.status === NOT_WORN) item.status = '';
-    if (item.home?.kind === 'archive') rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation));
+    if (item.home?.kind === 'archive') return rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation));
     return true;
   }
   item.status = '';
@@ -117,29 +121,32 @@ export function unarchiveItem(inv: Inventory, id: string, stashLocation: string,
  * After a footprint change, in every loadout (the active one first): if the item no longer fits where that loadout
  * draws it, re-place it in the same grid. A loadout placement that cannot be re-placed is dropped, so the item falls
  * back to its home there (which is then checked the same way); a home that cannot be re-placed goes to the stash.
+ * False when a home has nowhere to go (its stash is full).
  */
-export function refit(inv: Inventory, id: string, stashLocation: string): void {
-  if (!inv.items[id] || inv.items[id].attachedTo) return;
+export function refit(inv: Inventory, id: string, stashLocation: string): boolean {
+  if (!inv.items[id] || inv.items[id].attachedTo) return true;
   const names = [inv.activeLoadout, ...Object.keys(inv.loadouts).filter((n) => n !== inv.activeLoadout)];
-  for (const name of names) refitIn(inv, id, name, stashLocation);
+  let ok = true;
+  for (const name of names) if (!refitIn(inv, id, name, stashLocation)) ok = false;
+  return ok;
 }
 
-function refitIn(inv: Inventory, id: string, loadout: string, stashLocation: string): void {
+function refitIn(inv: Inventory, id: string, loadout: string, stashLocation: string): boolean {
   for (let pass = 0; pass < 2; pass++) {
     const place = effectivePlace(inv, id, loadout);
     const ref = gridOfPlace(place);
-    if (!place || !ref || place.kind === 'slot') return;
+    if (!place || !ref || place.kind === 'slot') return true;
     const buckets = gridBuckets(inv, loadout);
     const view = (r: GridRef) => gridView(inv, r, buckets, loadout);
-    if (fitAt(inv, id, ref, place.x, place.y, place.rotated, view).ok) return;
-    if (isGrowing(ref)) { rehomeFirstFree(inv, id, ref, loadout); return; } // stash/archive: always a home
+    if (fitAt(inv, id, ref, place.x, place.y, place.rotated, view).ok) return true;
+    if (isGrowing(ref)) return rehomeFirstFree(inv, id, ref, loadout); // the Archive: always a home
     const spot = autoPlace(view(ref), id, inv.items[id]);
-    if (spot) { place.x = spot.x; place.y = spot.y; place.rotated = spot.rotated; return; }
+    if (spot) { place.x = spot.x; place.y = spot.y; place.rotated = spot.rotated; return true; }
     const lo = inv.loadouts[loadout];
     if (lo?.placements[id] === place) { delete lo.placements[id]; continue; } // fall back to the home, check it next
-    rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation), loadout);
-    return;
+    return rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation), loadout);
   }
+  return true;
 }
 
 /**
@@ -150,7 +157,8 @@ function refitIn(inv: Inventory, id: string, loadout: string, stashLocation: str
  * A location change moves a stash-homed item to the new location's stash. A footprint change re-fits.
  * Refused (false, nothing changes): a nickname on an item that is not a container; a quantity that is not an integer
  * >= 1 or on an item that is not consumable; on a locked item, a status change into or out of Not Worn or a location
- * change of a stash-homed item (both would move it). `quantity: undefined` or `nickname: ''` removes the field.
+ * change of a stash-homed item (both would move it); a change that has to move the item into a stash that is full.
+ * `quantity: undefined` or `nickname: ''` removes the field.
  */
 export function updateItem(inv: Inventory, id: string, patch: ItemPatch, stashLocation: string): boolean {
   const item = inv.items[id];
@@ -174,12 +182,12 @@ export function updateItem(inv: Inventory, id: string, patch: ItemPatch, stashLo
   if ('nickname' in p && !p.nickname) delete item.nickname;
   if ('status' in p && p.status !== prevStatus) {
     if (p.status === NOT_WORN) archiveItem(inv, id);
-    else if (prevStatus === NOT_WORN && item.home?.kind === 'archive') rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation));
+    else if (prevStatus === NOT_WORN && item.home?.kind === 'archive' && !rehomeFirstFree(inv, id, stashRefFor(inv, id, stashLocation))) return false;
   }
   if ('location' in p && p.location !== prevLocation && item.home?.kind === 'stash' && p.location) {
-    rehomeFirstFree(inv, id, { kind: 'stash', location: p.location });
+    if (!rehomeFirstFree(inv, id, { kind: 'stash', location: p.location })) return false;
   }
-  if ('footprint' in p) refit(inv, id, stashLocation);
+  if ('footprint' in p && !refit(inv, id, stashLocation)) return false;
   return true;
 }
 
@@ -198,7 +206,7 @@ export function addItem(inv: Inventory, id: string, item: Item, stashLocation: s
  * Delete (PRD: "removes its placements, its attachments' links, and its Quick Use pin").
  * Its contents go to their stash (first free cells). Its attachments survive, detached: each gets a home at the
  * first free cells of its location's stash (the Archive when it is Not Worn). Its Quick Use pins and loadout
- * placements go. Task auto objectives that name it stay (they never tick).
+ * placements go. Task auto objectives that name it stay (they never tick). Refused when one of them finds its stash full.
  */
 export function deleteItem(inv: Inventory, id: string, stashLocation: string): boolean {
   if (!inv.items[id] || inv.items[id].locked) return false;
@@ -220,12 +228,12 @@ export function deleteItem(inv: Inventory, id: string, stashLocation: string): b
   delete inv.items[id];
   for (const cid of inside) {
     const c = inv.items[cid];
-    if (c && (!c.home || (c.home.kind === 'panel' && c.home.in === id))) rehomeFirstFree(inv, cid, stashRefFor(inv, cid, stashLocation));
+    if (c && (!c.home || (c.home.kind === 'panel' && c.home.in === id)) && !rehomeFirstFree(inv, cid, stashRefFor(inv, cid, stashLocation))) return false;
   }
   for (const aid of attachments) {
     const a = inv.items[aid];
     a.attachedTo = null;
-    rehomeFirstFree(inv, aid, a.status === NOT_WORN ? { kind: 'archive' } : stashRefFor(inv, aid, stashLocation));
+    if (!rehomeFirstFree(inv, aid, a.status === NOT_WORN ? { kind: 'archive' } : stashRefFor(inv, aid, stashLocation))) return false;
   }
   return true;
 }
@@ -332,7 +340,7 @@ export function splitStack(inv: Inventory, id: string, n: number, stashLocation:
     if (ref && spot) t = { kind: 'grid', grid: ref, ...spot };
   }
   if (!t) {
-    if (!rehomeFirstFree(inv, newId, stashRefFor(inv, newId, stashLocation))) return undo(fail('occupied'));
+    if (!rehomeFirstFree(inv, newId, stashRefFor(inv, newId, stashLocation))) return undo(fail('full'));
     return { ok: true, cells: [], id: newId };
   }
   const fit = canFit(inv, newId, t);
@@ -342,9 +350,11 @@ export function splitStack(inv: Inventory, id: string, n: number, stashLocation:
     mergeStacks(inv, newId, fit.merge, stashLocation);
     return { ...fit, id: fit.merge };
   }
-  moveItem(inv, newId, t, stashLocation);
+  if (!moveItem(inv, newId, t, stashLocation)) return { ok: false, cells: fit.cells, reason: 'full' }; // the store drops the whole step
   const made = inv.items[newId];
-  if (!made.home && !made.attachedTo) rehomeFirstFree(inv, newId, stashRefFor(inv, newId, stashLocation));
+  if (!made.home && !made.attachedTo && !rehomeFirstFree(inv, newId, stashRefFor(inv, newId, stashLocation))) {
+    return { ok: false, cells: fit.cells, reason: 'full' }; // the store drops the whole step
+  }
   return { ...fit, id: newId };
 }
 
@@ -374,7 +384,7 @@ export function quickMoveInto(inv: Inventory, id: string, containerId: string, s
       reason = fit.reason;
       continue;
     }
-    moveItem(inv, id, t, stashLocation);
+    if (!moveItem(inv, id, t, stashLocation)) return { ok: false, cells: fit.cells, reason: 'full' };
     return fit;
   }
   return { ok: false, cells: [], reason };

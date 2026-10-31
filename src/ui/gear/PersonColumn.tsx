@@ -2,6 +2,7 @@
 import { useMemo, useState } from 'react';
 import { SegmentedControl } from '../primitives/SegmentedControl';
 import { Figure } from '../primitives/Figure';
+import { useUi } from '../uiStore';
 import { getStore, useInventory } from '../hooks/useInv';
 import { ItemTile } from '../items/ItemTile';
 import { SlotZone } from './SlotZone';
@@ -64,7 +65,11 @@ export function PersonColumn() {
           <SegmentedControl
             options={loadoutNames}
             value={active}
-            onChange={(name) => store.switchLoadout(name)}
+            onChange={(name) => {
+              if (name === active) return;
+              const ok = store.switchLoadout(name);
+              useUi.getState().setNotice(ok ? null : `Cannot switch to ${name}: an item going back to its stash has no free cells there`);
+            }}
             block
             aria-label="Loadout"
           />

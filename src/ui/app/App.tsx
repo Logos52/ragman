@@ -108,6 +108,7 @@ export function App() {
   const setTab = useUi((s) => s.setTab);
   const inv = useInv();
   const loadError = useInventory((s) => s.loadError);
+  const notice = useUi((s) => s.notice);
 
   useEffect(() => { if (!booted) { booted = true; void getStore().boot(); } }, []);
   useEffect(() => {
@@ -128,12 +129,19 @@ export function App() {
     <div className="rg-app">
       <TabBar tabs={TABS} active={tab} onChange={(id) => { useUi.getState().closeAll(); setTab(id as TabId); }}
         right={<><PatchNotesButton /><span className="rg-tabbar__app">Inventory</span></>} />
-      {loadError ? (
+      {loadError && !inv ? (
         <Banner
           tone="bad"
           action={<Button size="sm" variant="ink" onClick={() => void getStore().openFolder()}>Choose folder</Button>}
         >
           Inventory file not found ·
+        </Banner>
+      ) : null}
+      {/* the file loaded, but some items have no room in their stash (a stash is a fixed grid): named, never dropped */}
+      {loadError && inv ? <Banner tone="bad">{loadError}</Banner> : null}
+      {notice ? (
+        <Banner tone="bad" action={<Button size="sm" variant="ink" onClick={() => useUi.getState().setNotice(null)}>Dismiss</Button>}>
+          {notice}
         </Banner>
       ) : null}
       <main className="rg-app__main" data-tab={tab}>{screen}</main>

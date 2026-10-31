@@ -143,11 +143,13 @@ function ItemForm({ mode, id, item, onClose }: ItemFormProps) {
         }
         const patch = diff(cur, fields) as Record<string, unknown>;
         if (photo) patch.images = { ...(cur.images ?? {}), photo };
-        if (Object.keys(patch).length) getStore().updateItem(slug, patch as Partial<Item>);
+        if (Object.keys(patch).length && !getStore().updateItem(slug, patch as Partial<Item>)) {
+          throw new Error(cur.locked ? 'the item is locked and this change would move it' : 'the stash it has to move to has no free cells');
+        }
       } else if (mode === 'add') {
         const clean = Object.fromEntries(Object.entries(fields).filter(([, v]) => v !== undefined));
         const newItem = { ...clean, images: photo ? { photo } : {} } as Item;
-        getStore().addItem(slug, newItem);
+        if (!getStore().addItem(slug, newItem)) throw new Error(`the ${stashLocation} stash has no free cells`);
         if ('panels' in parsed && parsed.panels.length) getStore().setPanels(slug, parsed.panels, parsed.panels.map(() => null));
         useUi.getState().select(slug);
       }

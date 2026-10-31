@@ -14,7 +14,7 @@
 import { create } from 'zustand';
 import type { InventoryStore } from './api';
 import type { DataSource, DropTarget, Filters, FitResult, GridRef, GridView, Inventory, Loadout, OverallSummary, SplitResult, Task } from './types';
-import { buildLinks, contentsOf, effectivePlace, footprintOf, gridBuckets, gridView, isContainer, refKey, type Links } from './engine/place';
+import { buildLinks, contentsOf, effectivePlace, footprintOf, gridBuckets, gridView, isContainer, minStashRows, refKey, type Links } from './engine/place';
 import { canFit, slotOccupant } from './engine/fit';
 import { carriedWeight, weightOf } from './engine/weights';
 import { overallSummary } from './engine/overall';
@@ -25,7 +25,7 @@ import { quantityOf, sameJob, sameProduct } from './engine/stacks';
 import { UndoRing } from './engine/undo';
 import { ImageResolver, imagePath } from './engine/images';
 import { exportJson, type Eol } from './engine/strip';
-import { normalize } from './engine/normalize';
+import { normalize, stashMisfits } from './engine/normalize';
 import { share } from './engine/share';
 import * as M from './engine/moves';
 import * as S from './engine/structure';
@@ -169,8 +169,18 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     syncAfterSave = setTimeout(() => { syncAfterSave = null; void readSync(); }, SYNC_AFTER_SAVE_MS);
   }
 
+  /** The stash tab on screen after the location list changed: the same name if it is still there, else `fallback`, else the first. */
+  function keepLocation(inv: Inventory, fallback?: string) {
+    const list = inv.settings.locations;
+    const cur = get().stashLocation;
+    if (list.includes(cur)) return;
+    set({ stashLocation: fallback && list.includes(fallback) ? fallback : list[0] ?? '' });
+  }
+
   function adopt(raw: Inventory, source: DataSource, eol: Eol = '\n') {
     const inv = normalize(raw);
+    // A stash is a fixed grid: an item that could not be re-placed inside it is named, never dropped.
+    const misfits = stashMisfits(inv);
     images?.dispose();
     images = new ImageResolver(source, {
       bundledUrls: source.kind === 'bundled' ? bundledImageUrls() : undefined,
@@ -187,7 +197,8 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     undoRing.clear();
     clearSyncTimers();
     set({
-      inv, source, loadError: null, saveState: 'saved', saveError: null, undoDepth: 0, openWindows: [],
+      inv, source, loadError: misfits.length ? `No room in the stash for: ${misfits.map((id) => inv.items[id].name || id).join(', ')}` : null,
+      saveState: 'saved', saveError: null, undoDepth: 0, openWindows: [],
       stashLocation: inv.settings.locations[0] ?? '', showArchive: false,
       syncState: 'off', syncAt: null, syncMessage: null, syncConflict: false,
     });
@@ -288,6 +299,9 @@ export const useInventory = create<RagmanStore>()((set, get) => {
       if (!inv) return { grams: 0, unweighed: 0, estimated: 0, limit: null, overLimit: false };
       return cached(inv, 'carried', '', () => carriedWeight(inv, linksOf(inv)));
     },
+    minStashRows() { const inv = get().inv; return inv ? cached(inv, 'minRows', '', () => minStashRows(inv)) : 1; },
+    itemsAtLocation(name) { const inv = get().inv; return inv ? cached(inv, 'itemsAt', name, () => S.itemsAt(inv, name)) : []; },
+    locationNameRefusal(name, except) { const inv = get().inv; return inv ? S.locationNameRefusal(inv, name, except) : 'blank'; },
     overallSummary() {
       const inv = get().inv;
       if (!inv) return EMPTY_OVERALL;
@@ -339,16 +353,17 @@ export const useInventory = create<RagmanStore>()((set, get) => {
       if (!inv) return { ok: false, cells: [], reason: 'not-accepted' };
       const fit = get().canFit(id, target);
       if (!fit.ok) return fit;
-      return mutate('move', fit, (d, loc) => (M.moveItem(d, id, target, loc) ? fit : new Abort(fit)));
+      // canFit said yes but the move still found no room (an attachment or an archived item needing a stash home)
+      return mutate('move', fit, (d, loc) => (M.moveItem(d, id, target, loc) ? fit : new Abort({ ...fit, ok: false, reason: 'full' })));
     },
     quickMoveInto(id, containerId) {
       const none: FitResult = { ok: false, cells: [], reason: 'not-accepted' };
       return mutate('quickMoveInto', none, (d, loc) => { const r = M.quickMoveInto(d, id, containerId, loc); return r.ok ? r : new Abort(r); });
     },
     equip: (id, slot) => mutate('equip', false, (d, loc) => M.equipItem(d, id, loc, slot) && true),
-    sendToStash: (id) => mutate('sendToStash', undefined, (d, loc) => M.sendToStash(d, id, loc) && undefined),
-    archive: (id) => mutate('archive', undefined, (d) => M.archiveItem(d, id) && undefined),
-    unarchive: (id, target?: DropTarget) => mutate('unarchive', undefined, (d, loc) => M.unarchiveItem(d, id, loc, target) && undefined),
+    sendToStash: (id) => mutate('sendToStash', false, (d, loc) => M.sendToStash(d, id, loc) && true),
+    archive: (id) => mutate('archive', false, (d) => M.archiveItem(d, id) && true),
+    unarchive: (id, target?: DropTarget) => mutate('unarchive', false, (d, loc) => M.unarchiveItem(d, id, loc, target) && true),
     setQuickUse: (index, id) => mutate('setQuickUse', undefined, (d) => M.setQuickUse(d, index, id) && undefined),
     setPinned: (id, on) => mutate('setPinned', undefined, (d) => M.setPinned(d, id, on) && undefined),
     setLocked: (id, on) => mutate('setLocked', undefined, (d) => M.setLocked(d, id, on) && undefined),
@@ -369,10 +384,9 @@ export const useInventory = create<RagmanStore>()((set, get) => {
       const m = mode ?? get().filters.sort;
       return mutate('sortGrid', undefined, (d) => sortGrid(d, ref, m) && undefined);
     },
-    switchLoadout: (name) => mutate('switchLoadout', undefined, (d) => {
+    switchLoadout: (name) => mutate('switchLoadout', false, (d) => {
       if (!d.loadouts[name] || d.activeLoadout === name) return false;
-      switchLoadout(d, name);
-      return undefined;
+      return switchLoadout(d, name) !== null; // null: an item going home found its stash full
     }),
     // Not undoable (view state, not data), but timed like the mutations: each is a section 7 interaction.
     setStashLocation: (stashLocation) => perf('setStashLocation', () => set({ stashLocation })),
@@ -381,11 +395,12 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     openWindow: (id) => perf('openWindow', () => set((s) => ({ openWindows: [...s.openWindows.filter((w) => w !== id), id] }))),
     closeWindow: (id) => set((s) => ({ openWindows: s.openWindows.filter((w) => w !== id) })),
     raiseWindow: (id) => set((s) => (s.openWindows.includes(id) ? { openWindows: [...s.openWindows.filter((w) => w !== id), id] } : {})),
-    updateItem: (id, patch) => mutate('updateItem', undefined, (d, loc) => M.updateItem(d, id, patch, loc) && undefined),
-    addItem: (id, item) => mutate('addItem', undefined, (d, loc) => M.addItem(d, id, item, loc) && undefined),
+    updateItem: (id, patch) => mutate('updateItem', false, (d, loc) => M.updateItem(d, id, patch, loc) && true),
+    addItem: (id, item) => mutate('addItem', false, (d, loc) => M.addItem(d, id, item, loc) && true),
     deleteItem(id) {
-      mutate('deleteItem', undefined, (d, loc) => M.deleteItem(d, id, loc) && undefined);
+      const ok = mutate('deleteItem', false, (d, loc) => M.deleteItem(d, id, loc) && true);
       if (!get().inv?.items[id]) set((s) => ({ openWindows: s.openWindows.filter((w) => w !== id) })); // a locked item stays
+      return ok;
     },
     setObjectiveDone: (taskId, index, done) => mutate('setObjectiveDone', undefined, (d) => {
       const o = d.tasks.find((t) => t.id === taskId)?.objectives[index];
@@ -416,12 +431,28 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     setPocketsGrid: (grid) => mutate('setPocketsGrid', false, (d) => S.setPocketsGrid(d, grid) && true),
     attach: (id, parent, slot) => mutate('attach', false, (d, loc) => S.attach(d, id, parent, slot, loc) && true),
     detach: (id) => mutate('detach', false, (d, loc) => S.detach(d, id, loc) && true),
+    addLocation: (name) => mutate('addLocation', false, (d) => S.addLocation(d, name) && true),
+    renameLocation(from, to) {
+      const ok = mutate('renameLocation', false, (d) => S.renameLocation(d, from, to) && true);
+      if (ok && get().stashLocation === from) set({ stashLocation: to.trim() }); // the tab on screen follows its rename
+      return ok;
+    },
+    removeLocation(name) {
+      const ok = mutate('removeLocation', false, (d) => S.removeLocation(d, name) && true);
+      if (ok) keepLocation(get().inv!); // the open tab was removed: the first tab shows
+      return ok;
+    },
+    moveLocation: (name, dir) => mutate('moveLocation', false, (d) => S.moveLocation(d, name, dir) && true),
+    setStashRows: (rows) => mutate('setStashRows', false, (d) => S.setStashRows(d, rows) && true),
     undo() {
       perf('undo', () => {
         const prev = undoRing.pop();
         const cur = get().inv;
         if (!prev || !cur) return;
+        // an undone rename or add: show the tab at the same place in the restored list
+        const at = cur.settings.locations.indexOf(get().stashLocation);
         set({ inv: share(cur, prev), undoDepth: undoRing.depth });
+        keepLocation(prev, prev.settings.locations[at]);
         saver?.schedule();
       });
     },

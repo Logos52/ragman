@@ -16,6 +16,8 @@ export interface Settings {
   locations: string[];
   defaultSlots: string[];
   stashWidth: number;
+  /** Rows in every stash: a stash is stashWidth x stashRows cells, like EFT. normalize sets 68 when the file has none. */
+  stashRows: number;
 }
 
 export interface Region {
@@ -155,7 +157,7 @@ export interface GridItemView {
 export interface GridView {
   ref: GridRef;
   width: number;
-  height: number; // stash/archive: grows to fit contents + padding rows; panel: fixed
+  height: number; // archive: grows to fit contents + padding rows; stash: settings.stashRows; panel: fixed
   accepts: string[] | null;
   regions: Region[];
   items: GridItemView[];
@@ -165,7 +167,8 @@ export interface FitResult {
   ok: boolean;
   /** Cells the dragged item would cover, for the green/red highlight. */
   cells: Cell[];
-  reason?: 'occupied' | 'out-of-bounds' | 'not-accepted' | 'self' | 'cycle' | 'locked';
+  /** 'full': an auto-place path (Add, send to stash, unarchive, a loadout returning items home) found no free cells. */
+  reason?: 'occupied' | 'out-of-bounds' | 'not-accepted' | 'self' | 'cycle' | 'locked' | 'full';
   /** Grid drops only: the drop lands on exactly one identical stack (same product, both consumable), so move() merges into it. */
   merge?: string;
 }
@@ -216,8 +219,9 @@ export interface CountRow { name: string; count: number }
 export interface LoadoutSummary { name: string; active: boolean; items: number; weight: WeightSummary }
 
 /**
- * How full a stash (or the Archive) is at the current placement. The grid scrolls down without limit, so the
- * denominator is the rows actually used: width x (bottom-most occupied row + 1). `fill` is null when empty.
+ * How full a stash (or the Archive) is at the current placement. A stash is a fixed grid, so its denominator is
+ * stashWidth x stashRows (`rows` = stashRows). The Archive scrolls down without limit, so its denominator is the rows
+ * actually used: width x (bottom-most occupied row + 1). `fill` is null when there are no cells.
  */
 export interface StashFill {
   ref: { kind: 'stash'; location: LocationName } | { kind: 'archive' };

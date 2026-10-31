@@ -137,4 +137,55 @@ describe('store: EFT features', () => {
     getStore().setTaskStatus('pack', 'completed');
     expect(getStore().inv?.tasks.find((t) => t.id === 'next')?.status).toBe('active');
   });
+
+  it('stash tabs: the open tab follows a rename, falls back to the first after a delete, and undo restores it', () => {
+    const s = getStore();
+    expect(s.addLocation('Storage')).toBe(true);
+    s.setStashLocation('Storage');
+    expect(getStore().renameLocation('Storage', ' Unit 4 ')).toBe(true);
+    expect(getStore().stashLocation).toBe('Unit 4');
+    getStore().undo(); // one step: settings, items and homes
+    expect(getStore().inv?.settings.locations).toEqual(['USA', 'Vietnam', 'Storage']);
+    expect(getStore().stashLocation).toBe('Storage');
+    expect(getStore().removeLocation('Storage')).toBe(true);
+    expect(getStore().stashLocation).toBe('USA');
+    expect(getStore().removeLocation('Vietnam')).toBe(false); // the archived Old shirt still names it
+    expect(getStore().itemsAtLocation('Vietnam')).toEqual(['shirt']);
+    expect(getStore().locationNameRefusal(' usa ')).toBe('duplicate');
+    expect(getStore().locationNameRefusal('USA', 'USA')).toBeNull();
+    expect(getStore().locationNameRefusal('  ')).toBe('blank');
+  });
+
+  it('a full stash: Add, send to stash, a loadout switch and a drag out of the Archive refuse and change nothing', () => {
+    const raw = fixture();
+    raw.settings.stashRows = 4;
+    delete raw.loadouts.Plane.placements.tee;
+    for (let y = 0; y < 4; y++) for (let x = 0; x < 10; x++) {
+      // the tee, the cable and the glasses case; the Filson's and the watch's home cells are free while Work carries them
+      const taken = (x >= 3 && x <= 5 && y < 2) || (x >= 8 && y === 0);
+      if (!taken) raw.items[`f${x}-${y}`] = { name: 'Filler', category: 'tops', location: 'USA', home: { kind: 'stash', location: 'USA', x, y, rotated: false } };
+    }
+    raw.items.vfill = { name: 'Filler', category: 'tops', footprint: [10, 4], location: 'Vietnam', home: { kind: 'stash', location: 'Vietnam', x: 0, y: 0, rotated: false } };
+    raw.items.shirt.home = { kind: 'archive', x: 0, y: 0, rotated: false };
+    adoptInventory(raw);
+    expect(getStore().loadError).toBeNull();
+    const before = getStore().inv;
+    expect(getStore().addItem('new', { name: 'New', category: 'tops' })).toBe(false);
+    expect(getStore().sendToStash('macbook')).toBe(false);
+    expect(getStore().move('shirt', { kind: 'slot', slot: 'Torso Base' })).toMatchObject({ ok: false, reason: 'full' });
+    expect(getStore().inv).toBe(before);
+    expect(getStore().undoDepth).toBe(0);
+    // Plane sends the watch home, but fillers took its home cells while Work had it on the wrist
+    expect(getStore().switchLoadout('Plane')).toBe(false);
+    expect(getStore().inv).toBe(before);
+    expect(getStore().inv?.activeLoadout).toBe('Work');
+  });
+
+  it('a file whose items run past the last stash row: re-placed when there is room, named in the load error when not', () => {
+    const raw = fixture();
+    raw.settings.stashRows = 2;
+    adoptInventory(raw);
+    expect(getStore().loadError).toBe('No room in the stash for: Filson');
+    expect(getStore().getItem('filson')?.home).toMatchObject({ kind: 'stash', x: 0, y: 0 });
+  });
 });

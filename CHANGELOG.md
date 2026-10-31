@@ -2,6 +2,11 @@
 
 Newest first. The public demo at logos52.github.io/ragman shows these under Patch notes in the top bar.
 
+## 2026-10-31
+
+- Fixed stash size, like EFT: every stash is 10 cells wide and 68 rows tall. When a stash is full, Add, Move to Stash, Unarchive and a loadout switch that would send an item home are refused instead of growing the grid. The Archive still grows.
+- Stash tabs: add a tab with the `+` at the end of the row; the pencil after Archive renames the open tab, moves it left or right, deletes it (only when no item has that location) and sets the number of stash rows.
+
 ## 2026-10-30
 
 - Public demo: the app now publishes itself to logos52.github.io/ragman on every push, with a demo inventory shaped like the real one (same counts, footprints, loadouts and tasks) but with made-up names, generic colours and no photos.

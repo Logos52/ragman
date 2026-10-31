@@ -62,6 +62,12 @@ export interface InventoryActions {
   weightOf(containerId: string): WeightSummary;
   /** Everything on the person in the active loadout, recursive, attachments included. No limit. */
   carriedWeight(): WeightSummary;
+  /** The Rows box's minimum: the lowest bottom edge of any stash home, over every location (homes of carried items count). */
+  minStashRows(): number;
+  /** Items that still name a location (their location, or a stash home there); a tab is not removed while any do. */
+  itemsAtLocation(name: string): string[];
+  /** Why `name` cannot name a stash tab ('blank', or 'duplicate' trimmed and in any case; `except` is the tab being renamed), else null. */
+  locationNameRefusal(name: string, except?: string): 'blank' | 'duplicate' | null;
   /** The Overall tab: counts, every loadout's carried items and weight, stash fill, empty containers. */
   overallSummary(): OverallSummary;
   /** Resolve cell art: icon → grok → photo → null (placeholder). Returns a URL usable in <img src>. */
@@ -91,9 +97,9 @@ export interface InventoryActions {
   /** Quick move: first free cells of the container's first panel (in order) that accepts the item; snaps back when !ok. */
   quickMoveInto(id: string, containerId: string): FitResult;
   equip(id: string, slot?: string): boolean;               // Alt-click / menu; picks the first fitting empty slot when slot omitted
-  sendToStash(id: string): void;                           // Ctrl-click / menu; auto-place first free cells of the item's location
-  archive(id: string): void;                               // sets status Not Worn, moves to archive first free cells
-  unarchive(id: string, target?: DropTarget): void;        // clears status, returns to its location's stash (or target)
+  sendToStash(id: string): boolean;                        // Ctrl-click / menu; auto-place first free cells of the item's location; false when locked or the stash is full
+  archive(id: string): boolean;                            // sets status Not Worn, moves to archive first free cells
+  unarchive(id: string, target?: DropTarget): boolean;     // clears status, returns to its location's stash (or target); false when that stash is full
   setQuickUse(index: number, id: string | null): void;
   setPinned(id: string, on: boolean): void;                // Sort leaves pinned items in place
   setLocked(id: string, on: boolean): void;                // locked: no move, equip, archive, delete, merge, split
@@ -108,16 +114,16 @@ export interface InventoryActions {
   /** Split n off a stack into a new item `<id>-<k>` at `target` (default: first free cells of the stack's grid). */
   splitStack(id: string, n: number, target?: DropTarget): SplitResult;
   sortGrid(ref: GridRef, mode?: SortMode): void;           // Sort button: first-free repack in `mode` order (default filters.sort)
-  switchLoadout(name: string): void;                       // unused items go back to stash, first free cells
+  switchLoadout(name: string): boolean;                    // unused items go back to stash, first free cells; false (no switch) when one finds its stash full
   setStashLocation(loc: string): void;                     // UI state, not undoable
   setShowArchive(on: boolean): void;                       // UI state
   setFilters(patch: Partial<Filters>): void;               // UI state
   openWindow(id: string): void;
   closeWindow(id: string): void;
   raiseWindow(id: string): void;
-  updateItem(id: string, patch: ItemPatch): void;          // Edit form; hidden, home, panels, attachedTo are stripped (panels: setPanels, attachedTo: attach/detach); bad nickname/quantity refused
-  addItem(id: string, item: Item): void;                   // lands 1x1 in the current stash, first free cells
-  deleteItem(id: string): void;                            // contents go to stash; attachments are detached and go to their stash; refused when locked
+  updateItem(id: string, patch: ItemPatch): boolean;          // Edit form; hidden, home, panels, attachedTo are stripped (panels: setPanels, attachedTo: attach/detach); bad nickname/quantity refused
+  addItem(id: string, item: Item): boolean;                // lands 1x1 in the current stash, first free cells; false when that stash is full
+  deleteItem(id: string): boolean;                         // contents go to stash; attachments are detached and go to their stash; refused when locked or a stash is full
   setObjectiveDone(taskId: string, index: number, done: boolean): void;
   setTaskStatus(taskId: string, status: Task['status']): void; // to completed: every locked task in `unlocks` becomes active
   addTask(task: Task): void;
@@ -139,6 +145,15 @@ export interface InventoryActions {
   attach(id: string, parent: string, slot: string): boolean;
   /** Take an attachment off; it lands at the first free cells of its stash (the Archive when Not Worn). */
   detach(id: string): boolean;
+  /** Stash tabs (settings.locations). Names are trimmed; blank and duplicate names (any case) are refused. */
+  addLocation(name: string): boolean;
+  /** Rewrites settings.locations, every item.location and every stash home in one undo step; the open tab follows. */
+  renameLocation(from: string, to: string): boolean;
+  /** Refused while any item names it (itemsAtLocation) and for the last tab. The open tab falls back to the first. */
+  removeLocation(name: string): boolean;
+  moveLocation(name: string, dir: -1 | 1): boolean;
+  /** Rows in every stash, minStashRows() to 200. */
+  setStashRows(rows: number): boolean;
   undo(): void;                                            // up to 10 steps
   /** Export helpers. JSON export never includes hidden.* (strip) and never prices (there are none). */
   exportJson(): string;

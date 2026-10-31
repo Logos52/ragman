@@ -7,16 +7,16 @@ import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { cwd } from 'node:process';
 import type { GridRef, Inventory } from './types';
-import { normalize } from './engine/normalize';
-import { effectivePlace, gridBuckets, gridView, isContainer } from './engine/place';
+import { normalize, stashMisfits } from './engine/normalize';
+import { effectivePlace, gridBuckets, gridView, isContainer, minStashRows } from './engine/place';
 import { detectEol, serializeInventory } from './engine/strip';
 import { slotAccepts } from './engine/slotRules';
 import { overallSummary } from './engine/overall';
 import { switchLoadout } from './engine/loadout';
 import { carriedIds, carriedWeight } from './engine/weights';
 
-// vitest runs from the repo root; the data clone sits beside the repo.
-const file = join(cwd(), '..', 'ragman-data', 'inventory.json');
+// vitest runs from the repo root; the data clone sits beside the repo (or where RAGMAN_DATA points, as for the dev server).
+const file = join(process.env.RAGMAN_DATA ?? join(cwd(), '..', 'ragman-data'), 'inventory.json');
 const present = existsSync(file);
 
 describe.skipIf(!present)('real inventory.json', () => {
@@ -32,6 +32,14 @@ describe.skipIf(!present)('real inventory.json', () => {
     }
     return refs;
   }
+
+  it('fits the fixed stash: no home moves on load and nothing is left without room', () => {
+    expect(stashMisfits(inv)).toEqual([]);
+    expect(minStashRows(inv)).toBeLessThanOrEqual(inv.settings.stashRows);
+    for (const [id, item] of Object.entries(raw.items)) {
+      if (item.home?.kind === 'stash' && item.status !== 'Not Worn') expect(inv.items[id].home, id).toEqual(item.home);
+    }
+  });
 
   it('has 73 items and every one has an effective place', () => {
     expect(Object.keys(inv.items)).toHaveLength(73);
@@ -78,7 +86,7 @@ describe.skipIf(!present)('real inventory.json', () => {
     expect(s.items).toBe(73);
     expect(s.byStatus.reduce((n, r) => n + r.count, 0)).toBe(73);
     expect(s.byLocation.reduce((n, r) => n + r.count, 0)).toBe(73);
-    for (const f of s.stashes) if (f.fill !== null) expect(f.fill > 0 && f.fill <= 1, JSON.stringify(f.ref)).toBe(true);
+    for (const f of s.stashes) if (f.fill !== null) expect(f.fill >= 0 && f.fill <= 1, JSON.stringify(f.ref)).toBe(true);
     // a loadout not on screen is read without the settle; on this data that gives what the footer shows once switched to
     for (const lo of s.loadouts) {
       const switched = structuredClone(inv);

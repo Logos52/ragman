@@ -13,6 +13,7 @@ export function fixture(): Inventory {
       locations: ['USA', 'Vietnam'],
       defaultSlots: SLOTS,
       stashWidth: 10,
+      stashRows: 68,
     },
     items: {
       filson: {
