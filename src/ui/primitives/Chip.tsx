@@ -3,11 +3,11 @@ import './Chip.css';
 
 /** Status sticker colors from DESIGN.md. Keys are lower-cased status names. */
 const STATUS: Record<string, { bg: string; fg: string }> = {
-  'daily': { bg: 'var(--status-daily)', fg: 'var(--accent-ink)' },
-  'rotation': { bg: 'var(--status-rotation)', fg: 'var(--accent-ink)' },
-  'seasonal': { bg: 'var(--status-seasonal)', fg: 'var(--accent-ink)' },
-  'travel only': { bg: 'var(--status-travel-only)', fg: 'var(--accent-ink)' },
-  'not worn': { bg: 'var(--status-not-worn)', fg: 'var(--accent-ink)' },
+  'daily': { bg: 'var(--status-daily)', fg: 'var(--status-ink)' },
+  'rotation': { bg: 'var(--status-rotation)', fg: 'var(--status-ink)' },
+  'seasonal': { bg: 'var(--status-seasonal)', fg: 'var(--status-ink)' },
+  'travel only': { bg: 'var(--status-travel-only)', fg: 'var(--status-travel-only-ink)' },
+  'not worn': { bg: 'var(--status-not-worn)', fg: 'var(--status-ink)' },
   'retired': { bg: 'var(--status-retired)', fg: 'var(--ink)' },
 };
 

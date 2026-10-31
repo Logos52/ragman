@@ -10,7 +10,7 @@
   padding: 3px 0;
   background: var(--panel);
   border: 1px solid var(--ink);
-  box-shadow: 0 4px 4px rgb(21 24 28 / 0.18);
+  box-shadow: 0 4px 4px var(--shadow);
   user-select: none;
 }
 .rg-cmenu:focus,

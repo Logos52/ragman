@@ -2,8 +2,8 @@
   position: relative;
   width: 100%;
   aspect-ratio: 3 / 6;
-  /* faint white glow behind the figure */
-  background: radial-gradient(ellipse 60% 48% at 50% 46%, rgb(255 255 255 / 0.95), rgb(255 255 255 / 0) 100%);
+  /* faint glow behind the figure (white in light, a dim white in dark) */
+  background: radial-gradient(ellipse 60% 48% at 50% 46%, var(--glow), transparent 100%);
   user-select: none;
 }
 

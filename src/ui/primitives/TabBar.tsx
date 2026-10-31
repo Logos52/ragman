@@ -14,7 +14,7 @@ export interface TabBarProps {
   right?: ReactNode;
 }
 
-/** The 40 px --ink strip across the top. Active tab: --accent text with a 3 px --accent bar. */
+/** The 40 px --bar strip across the top. Active tab: --accent text with a 3 px --accent bar. */
 export function TabBar({ tabs, active, onChange, right }: TabBarProps) {
   const onKey = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;

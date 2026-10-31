@@ -21,6 +21,6 @@
 }
 
 .rg-labeltab--strong {
-  background: var(--ink);
-  color: var(--accent-ink);
+  background: var(--bar);
+  color: var(--bar-ink);
 }

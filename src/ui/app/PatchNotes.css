@@ -11,7 +11,7 @@
   text-transform: uppercase;
   cursor: pointer;
 }
-.rg-notes__btn:hover, .rg-notes__btn:focus-visible { color: #fff; text-decoration: underline; outline: none; }
+.rg-notes__btn:hover, .rg-notes__btn:focus-visible { color: var(--bar-ink); text-decoration: underline; outline: none; }
 
 .rg-notes { padding: 20px 24px 24px; max-height: min(70vh, 640px); overflow: auto; font-size: 13px; line-height: 1.5; color: var(--ink); }
 .rg-notes h1 { margin: 0 0 4px; font-family: var(--font-label); font-weight: 700; font-size: 22px; letter-spacing: 0.02em; text-transform: uppercase; }

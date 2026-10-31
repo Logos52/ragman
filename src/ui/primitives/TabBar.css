@@ -3,8 +3,8 @@
   align-items: stretch;
   justify-content: space-between;
   height: 40px;
-  background: var(--ink);
-  color: var(--accent-ink);
+  background: var(--bar);
+  color: var(--bar-ink);
   user-select: none;
 }
 
@@ -20,7 +20,7 @@
   position: relative;
   flex: none;
   padding: 0 16px;
-  color: var(--accent-ink);
+  color: var(--bar-ink);
   font-family: var(--font-label);
   font-weight: 600;
   font-size: 15px;
@@ -28,7 +28,7 @@
   text-transform: uppercase;
   line-height: 40px;
 }
-/* hover stays white with an --ink-3 bar, so only the active tab is ever accent */
+/* hover stays --bar-ink with an --ink-3 bar, so only the active tab is ever accent */
 .rg-tabbar__tab--on,
 .rg-tabbar__tab--on:hover { color: var(--accent); }
 .rg-tabbar__tab--on::after,
@@ -63,5 +63,21 @@
 
 @media (max-width: 639.98px) {
   .rg-tabbar__tab { padding: 0 10px; font-size: 14px; }
-  .rg-tabbar__right { padding: 0 10px; }
+  .rg-tabbar__right { padding: 0 10px; gap: 8px; }
+  /* the app name gives way on phone, so all four tabs and the theme toggle fit in 390 px */
+  .rg-tabbar__app { display: none; }
 }
+
+/* dark mode toggle: a fixed 24 px box in the right end, before the app name */
+.rg-tabbar__theme {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  color: var(--ink-3);
+}
+.rg-tabbar__theme:hover { color: var(--bar-ink); }
+.rg-tabbar__theme[aria-pressed="true"] { color: var(--accent); }
+.rg-tabbar__theme:focus-visible { outline-offset: 0; }

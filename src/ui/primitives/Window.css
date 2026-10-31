@@ -5,7 +5,7 @@
   max-width: calc(100vw - 16px);
   background: var(--panel);
   border: 1px solid var(--ink);
-  box-shadow: 0 4px 10px rgb(21 24 28 / 0.12);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--shadow) 67%, transparent);
 }
 
 .rg-window__bar {
@@ -14,8 +14,8 @@
   gap: 10px;
   height: 28px;
   padding: 0 0 0 10px;
-  background: var(--ink);
-  color: var(--accent-ink);
+  background: var(--bar);
+  color: var(--bar-ink);
   cursor: move;
   touch-action: none;
   user-select: none;
@@ -38,7 +38,7 @@
   display: flex;
   align-items: center;
   flex: none;
-  color: var(--accent-ink);
+  color: var(--bar-ink);
 }
 
 .rg-window__close {
@@ -48,11 +48,11 @@
   flex: none;
   width: 28px;
   height: 28px;
-  color: var(--accent-ink);
+  color: var(--bar-ink);
   cursor: pointer;
 }
 .rg-window__close:hover { background: var(--accent); }
-.rg-window__close:focus-visible { outline-offset: -2px; outline-color: var(--accent-ink); }
+.rg-window__close:focus-visible { outline-offset: -2px; outline-color: var(--bar-ink); }
 
 .rg-window__body {
   padding: 10px 12px 12px;

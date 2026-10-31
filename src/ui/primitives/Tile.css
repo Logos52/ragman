@@ -12,7 +12,7 @@
   --rg-mk: clamp(10px, calc(var(--cell) / 4), 14px);
 }
 
-.rg-tile:hover { border-color: var(--ink); }
+.rg-tile:hover { border-color: var(--strip-ink); }
 
 /* art: letterboxed with 2 px padding inside the border */
 .rg-tile__art {
@@ -46,8 +46,8 @@
   max-width: calc(100% - var(--rg-marks, 0px));
   padding: 0 3px;
   height: 13px;
-  background: rgb(255 255 255 / 0.85);
-  color: var(--ink);
+  background: var(--strip);
+  color: var(--strip-ink);
   font-family: var(--font-label);
   font-weight: 600;
   font-size: 10px;
@@ -58,23 +58,23 @@
   text-overflow: ellipsis;
 }
 
-/* container: double rule, ink label strip */
-.rg-tile--container { border-color: var(--ink); }
+/* container: double rule, --bar label strip */
+.rg-tile--container { border-color: var(--strip-ink); }
 .rg-tile--container::after {
   content: '';
   position: absolute;
   inset: 2px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--strip-ink);
   pointer-events: none;
 }
 .rg-tile--container .rg-tile__art { inset: 5px; }
 .rg-tile--container .rg-tile__name {
-  background: var(--ink);
-  color: var(--accent-ink);
+  background: var(--bar);
+  color: var(--bar-ink);
 }
 
 /* placeholder: no art */
-.rg-tile--placeholder { background: var(--grid-bg); }
+.rg-tile--placeholder { background: var(--tile-ph); }
 .rg-tile__ph {
   position: absolute;
   inset: 0;
@@ -89,7 +89,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
   overflow: hidden;
-  color: var(--ink-2);
+  color: var(--tile-ph-ink);
   font-family: var(--font-label);
   font-weight: 600;
   font-size: 11px;
@@ -110,7 +110,8 @@
 }
 
 /* markers: pin, lock and the consumable dot share one row at the top-left. Each glyph is solid --ink on its own
-   white chip with a faint ink hairline, EFT style, so it reads at a glance over any art. */
+   --tile chip with a faint hairline, EFT style, so it reads at a glance over any art (tiles stay light in dark mode,
+   so everything drawn on a tile uses --tile, --strip and --strip-ink). */
 .rg-tile__marks {
   position: absolute;
   top: 2px;
@@ -120,7 +121,7 @@
   align-items: center;
   gap: 1px;
   height: calc(var(--rg-mk) + 2px);
-  color: var(--ink);
+  color: var(--strip-ink);
   pointer-events: none;
 }
 .rg-tile__mark {
@@ -130,14 +131,14 @@
   width: var(--rg-mk);
   height: var(--rg-mk);
   padding: 1px;
-  background: var(--panel);
-  box-shadow: 0 0 0 1px rgb(21 24 28 / 0.22);
+  background: var(--tile);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--strip-ink) 22%, transparent);
 }
 .rg-tile--container .rg-tile__marks { top: 4px; left: 4px; }
 /* the pin reads as a solid push-pin (its head is a closed shape); the lock stays an outline so its keyhole shows */
 .rg-tile__mark--pin path { fill: currentColor; }
 .rg-tile__dot { position: relative; }
-/* the consumable dot sits on its own white chip like the pin and the lock, with a white ring round the dot */
+/* the consumable dot sits on its own --tile chip like the pin and the lock, with a --tile ring round the dot */
 .rg-tile__dot::after {
   content: '';
   position: absolute;
@@ -147,8 +148,8 @@
   height: calc(var(--rg-mk) * 0.5);
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: var(--ink);
-  box-shadow: 0 0 0 1px var(--panel);
+  background: var(--strip-ink);
+  box-shadow: 0 0 0 1px var(--tile);
 }
 
 /* quantity, bottom-right (left of the special-care corner when both are drawn) */
@@ -160,8 +161,8 @@
   min-width: 12px;
   height: 13px;
   padding: 0 3px;
-  background: rgb(255 255 255 / 0.85);
-  color: var(--ink);
+  background: var(--strip);
+  color: var(--strip-ink);
   font-family: var(--font-label);
   font-weight: 700;
   font-size: 11px;
@@ -279,8 +280,8 @@
   outline: 2px solid var(--accent);
   outline-offset: -2px;
 }
-/* ... and the "?" steps inside that ring (its 2 px plus 1 px of white), so orange never runs into orange */
-.rg-slot .rg-tile--selected .rg-tile__unv { left: 3px; bottom: 3px; box-shadow: 0 0 0 1px var(--panel); }
+/* ... and the "?" steps inside that ring (its 2 px plus 1 px of --tile), so orange never runs into orange */
+.rg-slot .rg-tile--selected .rg-tile__unv { left: 3px; bottom: 3px; box-shadow: 0 0 0 1px var(--tile); }
 .rg-slot .rg-tile--selected .rg-tile__marks { top: 3px; left: 3px; }
 .rg-tile--selected .rg-tile__art,
 .rg-tile--selected .rg-tile__ph { overflow: hidden; }

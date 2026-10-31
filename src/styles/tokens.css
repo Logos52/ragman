@@ -23,11 +23,73 @@
   --status-travel-only: #7C3AED;
   --status-not-worn: #9AA4B1;
   --status-retired: #CBD2DA;
+  --status-ink: #FFFFFF;              /* chip text on daily, rotation, seasonal, not worn */
+  --status-travel-only-ink: #FFFFFF;  /* chip text on travel only; retired uses --ink */
+
+  /* surfaces with their own ink: the tab bar and every ink strip (tooltip, window title bar, luggage tag,
+     container label strip, strong label tab) stay dark in both themes */
+  --bar: #15181C;
+  --bar-ink: #FFFFFF;
+  /* things drawn on a tile: tiles stay light in both themes, since product photos have white backgrounds */
+  --strip: rgba(255,255,255,0.85);    /* name and quantity strip */
+  --strip-ink: #15181C;               /* strip text, tile hover border, container double rule */
+  --tile-ph: #F1F3F6;                 /* placeholder tile fill (no art) */
+  --tile-ph-ink: #5B6572;             /* placeholder tile name */
+  --region-chip: rgba(255,255,255,0.85); /* reserved-region label chip */
+  --glow: rgba(255,255,255,0.95);     /* radial glow behind the placeholder figure */
+  --shadow: rgba(21,24,28,0.18);      /* menus, modal, slots editor; windows use it at two thirds */
+  --scrim: rgba(21,24,28,0.32);       /* modal backdrop */
+  --dim: rgba(241,243,246,0.75);      /* Filter by item: laid over every tile that does another job */
+  --accent-hover: #E94A12;
+  --ink-hover: #2A2F36;
 
   --cell: 56px;
 
   --font-label: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: "Barlow", system-ui, sans-serif;
+}
+
+/* Dark: data-theme="dark" on <html>, set by the tab bar toggle (src/ui/theme.ts). Source of truth: docs/DESIGN.md "Dark". */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page: #14171C;
+  --panel: #1B1F25;
+  --line: #323842;
+  --grid-bg: #20252C;
+  --grid-line: #363D47;
+  --tile: #E6E9ED;
+  --tile-line: #7D8794;
+  --ink: #E8ECF1;
+  --ink-2: #B9C1CB;
+  --ink-3: #A3ACB7;
+  --accent: #FF5A1F;
+  --accent-ink: #14171C;
+  --ok: #2FD06A;
+  --bad: #F25555;
+  --region: #5B8EF5;
+
+  --status-daily: #FF5A1F;
+  --status-rotation: #E8ECF1;
+  --status-seasonal: #22B0EE;
+  --status-travel-only: #7C3AED;
+  --status-not-worn: #8A94A0;
+  --status-retired: #5A636F;
+  --status-ink: #14171C;
+  --status-travel-only-ink: #FFFFFF;
+
+  --bar: #0C0E11;
+  --bar-ink: #F2F4F7;
+  --strip: rgba(247,248,250,0.90);
+  --strip-ink: #14171C;
+  --tile-ph: #C9CFD6;
+  --tile-ph-ink: #3A424D;
+  --region-chip: #1B1F25;
+  --glow: rgba(255,255,255,0.06);
+  --shadow: rgba(0,0,0,0.55);
+  --scrim: rgba(6,8,10,0.62);
+  --dim: rgba(20,23,28,0.75);
+  --accent-hover: #E94A12;
+  --ink-hover: #C9D0D8;
 }
 
 @media (max-width: 1279.98px) {

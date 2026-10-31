@@ -52,7 +52,7 @@
 .gx-filter__btn:hover { color: var(--ink); background: var(--grid-bg); }
 .gx-filter__btn--on, .gx-filter__btn--on:hover { background: var(--accent); color: var(--accent-ink); }
 
-.gx-inkbar { display: inline-flex; padding: 6px 10px; background: var(--ink); width: 220px; }
+.gx-inkbar { display: inline-flex; padding: 6px 10px; background: var(--bar); width: 220px; }
 .gx-inkbar .rg-weight { width: 100%; }
 
 .gx-hoverme { width: calc(var(--cell) - 1px); height: calc(var(--cell) - 1px); }

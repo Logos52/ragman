@@ -173,6 +173,14 @@ const P: Record<string, ReactElement> = {
   ),
   edit: <path d="M4 20h4L19.5 8.5l-4-4L4 16v4ZM13.5 6.5l4 4" />,
   link: <path d="M10 14a4 4 0 0 0 5.7 0l3.6-3.6a4 4 0 0 0-5.7-5.7L12 6.3M14 10a4 4 0 0 0-5.7 0l-3.6 3.6a4 4 0 0 0 5.7 5.7l1.6-1.6" />,
+  // theme toggle: the sun shows in dark mode (click for light), the moon in light mode (click for dark)
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2.5v2.5M12 19v2.5M2.5 12H5M19 12h2.5M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8" />
+    </>
+  ),
+  moon: <path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" />,
 };
 
 export const categoryGlyphNames = [
@@ -182,7 +190,7 @@ export const slotGlyphNames = [
   'head', 'eyes', 'ears', 'neck', 'wrist', 'torso-base', 'torso-mid', 'torso-outer', 'hands', 'legs', 'underwear', 'socks', 'feet',
   'pockets', 'backpack', 'carry-on', 'pouch',
 ];
-export const uiGlyphNames = ['search', 'sort', 'plus', 'close', 'archive', 'tag', 'weight', 'check', 'undo', 'grip', 'chevron-down', 'pin', 'lock', 'link'];
+export const uiGlyphNames = ['search', 'sort', 'plus', 'close', 'archive', 'tag', 'weight', 'check', 'undo', 'grip', 'chevron-down', 'pin', 'lock', 'link', 'sun', 'moon'];
 
 export function hasGlyph(name: string): boolean {
   return name in P;

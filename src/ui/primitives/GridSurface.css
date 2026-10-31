@@ -34,7 +34,7 @@
   max-width: calc(var(--rg-cell) * var(--rg-rw) - 28px);
   padding: 0 3px;
   /* a small translucent paper chip, so the label reads over art */
-  background: rgb(255 255 255 / 0.85);
+  background: var(--region-chip);
   color: var(--region);
   font-family: var(--font-label);
   font-weight: 600;

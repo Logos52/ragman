@@ -5,7 +5,8 @@
   touch-action: none;
   cursor: grab;
 }
-.rg-itile--dim { opacity: 0.25; }
+/* Filter by item: a --dim veil over the tile (in light it matches the old 25% opacity over --grid-bg) */
+.rg-itile--dim::after { content: ''; position: absolute; inset: 0; z-index: 6; background: var(--dim); pointer-events: none; }
 .rg-itile:has(.rg-tile--locked) { cursor: default; }
 .rg-itile--source { opacity: 0.35; }
 .rg-gridpos:has(.rg-tile--selected) { z-index: 4; }

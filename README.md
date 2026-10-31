@@ -53,7 +53,9 @@ Data helpers, run from this folder with `python -I`:
 - `scripts/worn-fit.py <slug> [<slug2> ...] <image> --data ../ragman-data` keeps only what differs from the base figure, saves `images/worn/<slug>.png` and sets `images.worn` on each slug; see `docs/avatar.md`.
 - `scripts/check-items.py <batch.json> --data ../ragman-data` checks a vendor stock or inbox batch of item records against the schema, the value lists, slug collisions and the no-prices rule before it is merged; needs `pip install jsonschema`.
 
-See `docs/DESIGN.md` for the look ("Departures") and `docs/ARCHITECTURE.md` for the engine rules, slot rules, sort modes and the EFT inventory fields.
+A sun and moon button in the tab bar switches dark mode; the choice is kept per browser.
+
+See `docs/DESIGN.md` for the look ("Departures", and its dark set) and `docs/ARCHITECTURE.md` for the engine rules, slot rules, sort modes and the EFT inventory fields.
 
 ## License and affiliation
 

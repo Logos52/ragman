@@ -4,6 +4,8 @@
  * phone 390x844, into refs/proof/, plus refs/proof/perf.json from window.__ragmanPerf.
  *
  *   node scripts/shots.mjs            (npm run shots)
+ *   SHOTS_THEME=dark node scripts/shots.mjs gear-plane tooltip   (the dark theme: <name>-dark-<desktop|phone>.png)
+ *   SHOTS_OUT=<dir>                   (write the PNGs there instead of refs/proof/)
  *
  * Starts its own Vite dev server on port 5370 (stopped on exit). Every PUT to /data/* is aborted, so the
  * real ragman-data/inventory.json and images are never written. Shots that change data first re-adopt the
@@ -25,7 +27,9 @@ const PW_DIR = process.env.PW_DIR ?? PW_CANDIDATES.find((d) => existsSync(join(d
 const { chromium } = require(join(PW_DIR, 'node_modules', 'playwright'));
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = join(root, 'refs', 'proof');
+const OUT = process.env.SHOTS_OUT ? resolve(process.env.SHOTS_OUT) : join(root, 'refs', 'proof');
+// 'dark' stores ragman:theme=dark before every navigation, as the tab bar toggle would
+const THEME = process.env.SHOTS_THEME === 'dark' ? 'dark' : 'light';
 const PORT = Number(process.env.SHOTS_PORT ?? 5370); // override when 5370 is taken
 const BASE = `http://localhost:${PORT}/`;
 const CTRL = process.platform === 'darwin' ? 'Meta' : 'Control'; // macOS Chromium turns Ctrl-click into a right-click; the app takes Cmd as Ctrl
@@ -33,7 +37,10 @@ const VIEWPORTS = [
   { tag: 'desktop', width: 1440, height: 900 },
   { tag: 'phone', width: 390, height: 844 },
 ];
-const only = process.argv.slice(2); // optional shot names to run
+// optional shot names to run; the dark theme with no names runs the dark set (every screen state the theme changes)
+const DARK_SET = ['gear-plane', 'overall', 'tasks', 'window-filson', 'context-menu', 'tooltip', 'edit', 'archive',
+  'inspect-item', 'filter-by-item', 'pinned-locked-unverified-stack', 'drag-valid', 'error-banner', 'slots-editor'];
+const only = process.argv.slice(2).length ? process.argv.slice(2) : THEME === 'dark' ? DARK_SET : [];
 
 mkdirSync(OUT, { recursive: true });
 
@@ -71,6 +78,7 @@ const pageErrors = [];
  */
 async function open(browser, vp, opts = {}) {
   const ctx = await browser.newContext({ viewport: { width: vp.width, height: vp.height }, deviceScaleFactor: 1 });
+  if (THEME === 'dark') await ctx.addInitScript(() => { try { localStorage.setItem('ragman:theme', 'dark'); } catch { /* blocked */ } });
   const page = await ctx.newPage();
   page.on('pageerror', (e) => pageErrors.push(`${vp.tag}: ${String(e)}`));
   page.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource|ERR_FAILED|404/.test(m.text())) pageErrors.push(`${vp.tag}: ${m.text()}`); });
@@ -139,7 +147,7 @@ async function neutralPointer(page) {
 
 async function shot(page, name, vp, opts = {}) {
   if (!opts.keepPointer) await neutralPointer(page);
-  await page.screenshot({ path: join(OUT, `${name}-${vp.tag}.png`), fullPage: !!opts.fullPage });
+  await page.screenshot({ path: join(OUT, `${name}${THEME === 'dark' ? '-dark' : ''}-${vp.tag}.png`), fullPage: !!opts.fullPage });
 }
 
 /** Stash geometry: the grid's rect, px per cell, the view, and a free-cell finder. */
@@ -1191,4 +1199,4 @@ try {
 }
 if (pageErrors.length) console.log(`page errors:\n  ${[...new Set(pageErrors)].join('\n  ')}`);
 if (failures.length) { console.log(`\n${failures.length} failure(s):\n  ${failures.join('\n  ')}`); process.exitCode = 1; }
-else console.log('\nall shots written to refs/proof/');
+else console.log(`\nall shots written to ${OUT}`);

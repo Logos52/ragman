@@ -13,6 +13,7 @@ Vite + React 18 + TypeScript + zustand. No router, no CSS framework, no UI libra
 | `src/model/persist.ts` | data sources: server (`/data/*`), folder (File System Access API), bundled (public demo) |
 | `src/ui/*` | React components; one folder per screen region |
 | `src/styles/*` | design tokens and global CSS; see `docs/DESIGN.md` |
+| `src/ui/theme.ts` | light or dark theme: reads, applies, stores and toggles `data-theme` on `<html>`; `useTheme()` for React |
 | `scripts/serve.mjs` | standalone tiny server for a production build pointed at a ragman-data clone |
 | `scripts/sync.mjs` | background git sync of the data repo, used by both servers |
 | `scripts/shots.mjs` | Playwright screenshots of every view in every state, desktop and phone |
@@ -26,7 +27,7 @@ Vite + React 18 + TypeScript + zustand. No router, no CSS framework, no UI libra
 - Cell art priority: `images.icon`, then `images.grok`, then `images.photo`, then placeholder.
 - Every mutation is synchronous; `persist` debounces the write (500 ms) and shows `saveState` in the footer badge.
 - Undo stack: ten snapshots of `inv` (73 items is about 60 KB, so snapshots are cheap).
-- Window positions (container and Inspect windows) are the only thing the UI keeps in `localStorage` (`ragman:win:<kind>:<id>`), every read and write in try/catch; nothing else is stored in the browser.
+- The UI keeps two things in `localStorage`, every read and write in try/catch: window positions (container and Inspect windows, `ragman:win:<kind>:<id>`) and the theme (`ragman:theme`, `dark` or absent). Nothing else is stored in the browser.
 - UI state that is not data (`src/ui/uiStore.ts`): open Inspect windows (`inspectIds`), the shared window stacking order (`zOrder`), the Filter by item highlight (`jobFilter`).
 - Drag is pointer-event based (no HTML5 DnD). The ghost follows the cursor via `transform`, the hovered grid cell is computed from geometry, and `canFit` runs on every pointermove (O(cells), under 1 ms).
 - Performance: `performance.mark` around every store mutation and the drag frame; `window.__ragmanPerf` exposes the measurements so the screenshot script can assert under 100 ms.

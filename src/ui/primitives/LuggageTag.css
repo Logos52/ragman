@@ -4,8 +4,8 @@
   height: 14px;
   max-width: 100%;
   padding: 0 5px 0 11px;
-  background: var(--ink);
-  color: var(--accent-ink);
+  background: var(--bar);
+  color: var(--bar-ink);
   /* chamfered left end like a baggage tag */
   clip-path: polygon(4px 0, 100% 0, 100% 100%, 4px 100%, 0 calc(100% - 4px), 0 4px);
   /* the punched hole */

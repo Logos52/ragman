@@ -15,7 +15,7 @@
   font-variant-numeric: tabular-nums;
 }
 .rg-weight__text { overflow: hidden; text-overflow: ellipsis; }
-.rg-weight--light { color: var(--accent-ink); }
+.rg-weight--light { color: var(--bar-ink); }
 .rg-weight--over,
 .rg-weight--light.rg-weight--over { color: var(--bad); font-weight: 600; }
 
@@ -36,8 +36,8 @@
   bottom: 0;
   background: var(--ink);
 }
-.rg-weight--light .rg-meter { background: rgb(255 255 255 / 0.25); }
-.rg-weight--light .rg-meter__fill { background: var(--accent-ink); }
+.rg-weight--light .rg-meter { background: color-mix(in srgb, var(--bar-ink) 25%, transparent); }
+.rg-weight--light .rg-meter__fill { background: var(--bar-ink); }
 .rg-meter--over .rg-meter__fill,
 .rg-weight--light .rg-meter--over .rg-meter__fill { background: var(--bad); }
 

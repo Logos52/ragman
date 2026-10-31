@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory</title>
+    <script>
+      // the stored theme, applied before first paint so a dark page never flashes light (src/ui/theme.ts)
+      try { if (localStorage.getItem('ragman:theme') === 'dark') document.documentElement.dataset.theme = 'dark'; } catch (e) {}
+    </script>
+    <style>
+      /* until the stylesheet loads: the dark --page fill, so the first frame is not white */
+      :root[data-theme="dark"] { color-scheme: dark; background: #14171C; }
+    </style>
   </head>
   <body>
     <div id="root"></div>
