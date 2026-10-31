@@ -450,7 +450,7 @@
   left: 0;
   width: min(100%, 360px);
   z-index: 6;
-  box-shadow: 0 4px 4px rgb(21 24 28 / 0.18);
+  box-shadow: 0 4px 4px var(--shadow);
 }
 .gear-tabsman__row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 .gear-tabsman__k { font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); font-size: 12px; margin-right: 3px; }
