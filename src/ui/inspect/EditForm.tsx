@@ -6,7 +6,7 @@ import { Select } from '../primitives/Select';
 import { TextField } from '../primitives/TextField';
 import { useUi } from '../uiStore';
 import { getStore, kebab, uniqueSlug, useImagesTick, useInv, useInventory } from '../app/useStore';
-import type { Item } from '../../model/types';
+import type { Item, RefusalOut } from '../../model/types';
 import { PasteZone } from './PasteZone';
 import { PanelsEditor, panelDrafts, panelsOf, type PanelDraft } from './PanelsEditor';
 import './inspect.css';
@@ -138,8 +138,11 @@ function ItemForm({ mode, id, item, onClose }: ItemFormProps) {
       const cur = getStore().getItem(slug);
       if (mode === 'edit' && cur) {
         // Panels first, so a weight limit or layout written next lands on an item that is a container.
-        if (panelsChanged && 'panels' in parsed && !getStore().setPanels(slug, parsed.panels, parsed.from)) {
-          throw new Error('panels refused: a locked item would have to move');
+        const why: RefusalOut = {};
+        if (panelsChanged && 'panels' in parsed && !getStore().setPanels(slug, parsed.panels, parsed.from, why)) {
+          throw new Error(why.reason === 'full'
+            ? 'panels refused: an item that no longer fits has no room in its stash'
+            : why.reason === 'locked' ? 'panels refused: a locked item would have to move' : 'panels refused: not a valid panel list');
         }
         const patch = diff(cur, fields) as Record<string, unknown>;
         if (photo) patch.images = { ...(cur.images ?? {}), photo };

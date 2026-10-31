@@ -21,6 +21,13 @@ export const SORTS:{ value: SortMode; label: string }[] = [
   { value: 'size-desc', label: 'Size' },
 ];
 
+/** Sort one grid; a stash is a fixed grid, so an order that does not pack is refused and the banner says so. */
+function sortOrRefuse(grid: GridRef, mode: SortMode, where: string) {
+  if (getStore().sortGrid(grid, mode)) return;
+  const label = SORTS.find((s) => s.value === mode)?.label ?? mode;
+  useUi.getState().setNotice(`Sort refused: the items in ${where} do not fit the grid in ${label} order. Nothing moved.`);
+}
+
 function FilterStrip() {
   const categories = useInventory((s) => s.inv?.settings.categories);
   const active = useInventory((s) => s.filters.categories);
@@ -113,7 +120,7 @@ export function StashColumn() {
           {/* right-aligned, also when a long tab row wraps them onto a line of their own */}
           <span className="gear-stash__acts">
             <VerifyAllButton />
-            <Button size="sm" icon="sort" onClick={() => store.sortGrid(grid, filters.sort)}>Sort</Button>
+            <Button size="sm" icon="sort" onClick={() => sortOrRefuse(grid, filters.sort, showArchive ? 'Archive' : location)}>Sort</Button>
             <Button size="sm" variant="accent" icon="plus" onClick={() => useUi.getState().setAddOpen(true)}>Add</Button>
           </span>
         </div>

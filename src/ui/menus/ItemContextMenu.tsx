@@ -123,7 +123,7 @@ export function ItemContextMenu() {
     const attachRows: ContextSubItem[] = item.attachedTo ? [] : s.attachTargets(id).map(({ parent, slot }) => {
       const occ = s.attachmentsOf(parent).find((a) => a.slot === slot);
       const pname = inv.items[parent]?.name ?? parent;
-      return { label: occ ? `${pname} · ${slot} (swap)` : `${pname} · ${slot}`, onSelect: () => { s.attach(id, parent, slot); } };
+      return { label: occ ? `${pname} · ${slot} (swap)` : `${pname} · ${slot}`, onSelect: () => { if (!s.attach(id, parent, slot)) flashTile(id); } };
     });
     const archived = item.status === 'Not Worn';
     const inStash = s.effectivePlace(id)?.kind === 'stash';

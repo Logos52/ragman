@@ -27,6 +27,8 @@
   .rg-app__main { overflow: visible; }
   /* the page scrolls on phone; the tab bar stays pinned at the top (windows already clamp below its 40 px) */
   .rg-app > .rg-tabbar { position: sticky; top: 0; z-index: 40; }
+  /* a refusal notice (Sort, loadout switch) stays pinned under the tab bar, so it is seen from far down the page */
+  .rg-app > .rg-app__notice { position: sticky; top: 40px; z-index: 39; }
   /* scrolling to an element (scrollIntoView, find, focus) leaves it clear of the pinned tab bar */
   html { scroll-padding-top: 40px; }
 }

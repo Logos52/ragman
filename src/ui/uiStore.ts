@@ -50,7 +50,7 @@ export interface UiState {
   setJobFilter(f: JobFilter | null): void;
   setNotice(notice: string | null): void;
   setTabsOpen(open: boolean): void;
-  /** Close every transient overlay (Esc, tab change): menu, tooltip, Edit and Add forms. Windows stay open. */
+  /** Close every transient overlay (Esc, tab change): menu, tooltip, Edit and Add forms, the stash tab editor. Windows stay open. */
   closeAll(): void;
 }
 
@@ -96,5 +96,5 @@ export const useUi = create<UiState>()((set) => ({
   setJobFilter: (jobFilter) => set({ jobFilter }),
   setNotice: (notice) => set({ notice }),
   setTabsOpen: (tabsOpen) => set({ tabsOpen }),
-  closeAll: () => set({ contextMenu: null, tooltip: null, editId: null, addOpen: false }),
+  closeAll: () => set({ contextMenu: null, tooltip: null, editId: null, addOpen: false, tabsOpen: false }),
 }));

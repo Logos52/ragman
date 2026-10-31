@@ -27,7 +27,7 @@
  * moveLocation swaps a location with its neighbour. setStashRows sets the rows of every stash: a whole number from the
  * lowest stash home's bottom edge (minStashRows) to MAX_STASH_ROWS.
  */
-import type { Cells, Inventory, Item, Panel, Region } from '../types';
+import type { Cells, Inventory, Item, Panel, RefusalOut, Region, StructureRefusal } from '../types';
 import { ancestorsOf, MAX_STASH_ROWS, minStashRows, POCKETS_ID, POCKETS_PANEL } from './place';
 import { acceptsItem } from './fit';
 import { refit } from './moves';
@@ -82,11 +82,13 @@ export function cleanPanels(panels: Panel[]): Panel[] | null {
   return out;
 }
 
+const refuse = (why: RefusalOut | undefined, reason: StructureRefusal): false => { if (why) why.reason = reason; return false; };
+
 /** Replace a container's panels (see the header). `from[i]`: the old name of panels[i], null when it is new. */
-export function setPanels(inv: Inventory, id: string, panels: Panel[], from: (string | null)[] = [], stashLocation = ''): boolean {
+export function setPanels(inv: Inventory, id: string, panels: Panel[], from: (string | null)[] = [], stashLocation = '', why?: RefusalOut): boolean {
   const item = inv.items[id];
   const clean = cleanPanels(panels);
-  if (!item || !clean) return false;
+  if (!item || !clean) return refuse(why, 'invalid');
   if (JSON.stringify(item.panels ?? null) === JSON.stringify(clean)) return false;
   const rename = new Map<string, string>();
   clean.forEach((p, i) => { const old = from[i]; if (old && old !== p.name) rename.set(old, p.name); });
@@ -103,8 +105,8 @@ export function setPanels(inv: Inventory, id: string, panels: Panel[], from: (st
     }
   }
   item.panels = clean;
-  for (const cid of inside) if (!refit(inv, cid, stashLocation)) return false;
-  return !lockedMoved(inv, locked);
+  for (const cid of inside) if (!refit(inv, cid, stashLocation)) return refuse(why, 'full');
+  return lockedMoved(inv, locked) ? refuse(why, 'locked') : true;
 }
 
 /** Does `slot` of an attachment parent take `item`? Its tags or category must include the slot name. */
@@ -164,7 +166,7 @@ export function detach(inv: Inventory, id: string, stashLocation: string): boole
 /* ---------------- the active loadout ---------------- */
 
 /** Replace the active loadout's slot list (trimmed, blank and duplicate names dropped). */
-export function setLoadoutSlots(inv: Inventory, slots: string[]): boolean {
+export function setLoadoutSlots(inv: Inventory, slots: string[], why?: RefusalOut): boolean {
   const lo = inv.loadouts[inv.activeLoadout];
   if (!lo) return false;
   const next = cleanList(slots);
@@ -177,20 +179,20 @@ export function setLoadoutSlots(inv: Inventory, slots: string[]): boolean {
     if (gone) { delete lo.placements[id]; leaving.push(id); }
   }
   lo.slots = next;
-  if (!settleLoadout(inv, leaving)) return false;
-  return !lockedMoved(inv, locked);
+  if (!settleLoadout(inv, leaving)) return refuse(why, 'full');
+  return lockedMoved(inv, locked) ? refuse(why, 'locked') : true;
 }
 
 /** Resize the active loadout's pockets grid (whole cells, 1 to 40 each way). */
-export function setPocketsGrid(inv: Inventory, grid: Cells): boolean {
+export function setPocketsGrid(inv: Inventory, grid: Cells, why?: RefusalOut): boolean {
   const lo = inv.loadouts[inv.activeLoadout];
-  if (!lo || !isCells(grid)) return false;
+  if (!lo || !isCells(grid)) return refuse(why, 'invalid');
   const cur = lo.pocketsGrid ?? [4, 1];
   if (cur[0] === grid[0] && cur[1] === grid[1]) return false;
   const locked = placesOf(inv, lockedIds(inv));
   lo.pocketsGrid = [grid[0], grid[1]];
-  if (!settleLoadout(inv, [])) return false;
-  return !lockedMoved(inv, locked);
+  if (!settleLoadout(inv, [])) return refuse(why, 'full');
+  return lockedMoved(inv, locked) ? refuse(why, 'locked') : true;
 }
 
 

@@ -2,12 +2,22 @@
  * Per-loadout structure controls: the slot list editor under the loadout picker (add or remove slots for the
  * active loadout, custom slots included) and the Pockets grid size (pocketsGrid, w x h).
  * Both write through the store (setLoadoutSlots, setPocketsGrid): items in a removed slot, or pockets items that
- * no longer fit, go back home; an edit that would move a locked item is refused and the control shows why.
+ * no longer fit, go back home; an edit that would move a locked item, or send an item home to a full stash, is
+ * refused and the control shows which.
  */
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Button } from '../primitives/Button';
 import { getStore, useInventory } from '../hooks/useInv';
+import type { RefusalOut } from '../../model/types';
+
+/** The words for a refused slots or pockets edit. */
+const WHY: Record<NonNullable<RefusalOut['reason']>, string> = {
+  invalid: 'not a valid value',
+  locked: 'a locked item would have to move',
+  full: 'an item going home finds its stash full',
+};
+const SHORT: Record<NonNullable<RefusalOut['reason']>, string> = { invalid: 'refused', locked: 'locked item', full: 'stash full' };
 
 /** Put a default slot back at its place in settings.defaultSlots order; custom slots keep theirs. */
 function withSlot(slots: string[], slot: string, defaults: string[]): string[] {
@@ -28,7 +38,8 @@ export function SlotsEditor({ onClose }: { onClose: () => void }) {
   const defaults = inv.settings.defaultSlots;
   const custom = lo.slots.filter((s) => !defaults.includes(s));
   const apply = (next: string[], what: string) => {
-    setRefused(store.setLoadoutSlots(next) || JSON.stringify(next) === JSON.stringify(lo.slots) ? null : `${what}: a locked item would have to move`);
+    const why: RefusalOut = {};
+    setRefused(store.setLoadoutSlots(next, why) || JSON.stringify(next) === JSON.stringify(lo.slots) ? null : `${what}: ${WHY[why.reason ?? 'invalid']}`);
   };
   const toggle = (slot: string) => (lo.slots.includes(slot)
     ? apply(lo.slots.filter((s) => s !== slot), slot)
@@ -73,19 +84,20 @@ export function SlotsEditor({ onClose }: { onClose: () => void }) {
 export function PocketsSize() {
   const key = useInventory((s) => (s.activeLoadout().pocketsGrid ?? [4, 1]).join('x'));
   const grid = key.split('x').map(Number) as [number, number];
-  const [refused, setRefused] = useState(false);
+  const [refused, setRefused] = useState<RefusalOut['reason'] | null>(null);
   const set = (i: 0 | 1, v: string) => {
     const n = Number(v);
     if (!Number.isInteger(n) || n < 1 || n > 40) return;
     const next: [number, number] = i === 0 ? [n, grid[1]] : [grid[0], n];
-    setRefused(!getStore().setPocketsGrid(next) && (next[0] !== grid[0] || next[1] !== grid[1]));
+    const why: RefusalOut = {};
+    setRefused(!getStore().setPocketsGrid(next, why) && (next[0] !== grid[0] || next[1] !== grid[1]) ? why.reason ?? 'invalid' : null);
   };
   return (
-    <span className="gear-pockets__size" title={refused ? 'Refused: a locked item would have to move' : 'Pockets size in cells'}>
+    <span className="gear-pockets__size" title={refused ? `Refused: ${WHY[refused]}` : 'Pockets size in cells'}>
       <input type="number" min={1} max={40} value={grid[0]} aria-label="Pockets width" onChange={(e) => set(0, e.target.value)} />
       <span>×</span>
       <input type="number" min={1} max={40} value={grid[1]} aria-label="Pockets height" onChange={(e) => set(1, e.target.value)} />
-      {refused ? <span className="gear-pockets__err">locked item</span> : null}
+      {refused ? <span className="gear-pockets__err">{SHORT[refused]}</span> : null}
     </span>
   );
 }

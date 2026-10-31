@@ -5,14 +5,19 @@
  */
 import type {
   Cell, Cells, DataSource, DropTarget, EffectivePlace, Filters, FitResult, GridRef, GridView, Inventory, Item, ItemPatch,
-  Loadout, OverallSummary, Panel, SaveState, SortMode, SplitResult, SyncState, Task, WeightSummary, LoadoutPlace,
+  Loadout, OverallSummary, Panel, RefusalOut, SaveState, SortMode, SplitResult, SyncState, Task, WeightSummary, LoadoutPlace,
 } from './types';
 
 export interface InventoryState {
   /** null until a data source has loaded. */
   inv: Inventory | null;
   source: DataSource | null;
-  loadError: string | null;   // set when no source can be opened or the file is unreadable
+  /**
+   * Set when no source can be opened or the file is unreadable (inv stays null), and also while an inventory is loaded
+   * when items do not fit their fixed stash grid: "No room in the stash for: <names>". Cleared by a structure edit
+   * (Rows) that makes them fit. Check `inv` to tell the two apart.
+   */
+  loadError: string | null;
   saveState: SaveState;
   saveError: string | null;
   /** Git sync of the data repo, as the server reports it (GET /data/sync). */
@@ -113,7 +118,7 @@ export interface InventoryActions {
   mergeStacks(source: string, target: string): boolean;
   /** Split n off a stack into a new item `<id>-<k>` at `target` (default: first free cells of the stack's grid). */
   splitStack(id: string, n: number, target?: DropTarget): SplitResult;
-  sortGrid(ref: GridRef, mode?: SortMode): void;           // Sort button: first-free repack in `mode` order (default filters.sort)
+  sortGrid(ref: GridRef, mode?: SortMode): boolean;        // Sort button: first-free repack in `mode` order (default filters.sort); false when the items do not pack in that order
   switchLoadout(name: string): boolean;                    // unused items go back to stash, first free cells; false (no switch) when one finds its stash full
   setStashLocation(loc: string): void;                     // UI state, not undoable
   setShowArchive(on: boolean): void;                       // UI state
@@ -134,13 +139,13 @@ export interface InventoryActions {
    * Replace a container's panels (grid, accepts, regions; an item with none gains them). `from[i]` is the old name of
    * panels[i] (null = new) so a rename keeps its contents; contents that no longer fit are re-placed like a footprint
    * edit. Refused (false) for an empty list, blank/duplicate names, bad cells, a region outside its panel, or when a
-   * locked item would have to move.
+   * locked item would have to move, or when an item that has to go back home finds its stash full. `why.reason` says which.
    */
-  setPanels(id: string, panels: Panel[], from?: (string | null)[]): boolean;
-  /** The active loadout's slot list (add or remove slots). Items in a removed slot go home. Refused if a locked item would move. */
-  setLoadoutSlots(slots: string[]): boolean;
-  /** The active loadout's pockets grid [w, h], 1 to 40 each. Pockets items that no longer fit are re-placed, else go home. */
-  setPocketsGrid(grid: Cells): boolean;
+  setPanels(id: string, panels: Panel[], from?: (string | null)[], why?: RefusalOut): boolean;
+  /** The active loadout's slot list (add or remove slots). Items in a removed slot go home. Refused if a locked item would move or a stash is full (`why.reason`). */
+  setLoadoutSlots(slots: string[], why?: RefusalOut): boolean;
+  /** The active loadout's pockets grid [w, h], 1 to 40 each. Pockets items that no longer fit are re-placed, else go home; refused as setLoadoutSlots. */
+  setPocketsGrid(grid: Cells, why?: RefusalOut): boolean;
   /** Attach an item to a parent's attachment slot (swaps out an item already there, which goes to its stash). */
   attach(id: string, parent: string, slot: string): boolean;
   /** Take an attachment off; it lands at the first free cells of its stash (the Archive when Not Worn). */

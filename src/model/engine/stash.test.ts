@@ -7,7 +7,8 @@ import { firstFree } from './firstFree';
 import { sortGrid } from './sort';
 import { switchLoadout } from './loadout';
 import { addItem, deleteItem, moveItem, sendToStash, unarchiveItem, updateItem } from './moves';
-import { addLocation, detach, itemsAt, moveLocation, removeLocation, renameLocation, setStashRows } from './structure';
+import { addLocation, attach, detach, itemsAt, moveLocation, removeLocation, renameLocation, setLoadoutSlots, setPanels, setPocketsGrid, setStashRows } from './structure';
+import type { RefusalOut } from '../types';
 
 const USA: GridRef = { kind: 'stash', location: 'USA' };
 const inv0 = (): Inventory => normalize(fixture());
@@ -82,6 +83,52 @@ describe('fixed stash height (settings.stashRows)', () => {
     fill(inv, 'USA'); // Work carries the watch, so its home cells are free on screen and get filled
     expect(switchLoadout(inv, 'Plane')).toBeNull();
     expect(switchLoadout(inv0(), 'Plane')).not.toBeNull();
+  });
+
+  it('slots, pockets and panel edits refuse with reason full when an item going home finds its stash full', () => {
+    const slots = inv0();
+    slots.settings.stashRows = 4;
+    fill(slots, 'USA'); // Work carries the watch, so its home cells are free on screen and get filled
+    const why: RefusalOut = {};
+    expect(setLoadoutSlots(slots, slots.loadouts.Work.slots.filter((s) => s !== 'Wrist'), why)).toBe(false);
+    expect(why.reason).toBe('full');
+
+    const pockets = inv0();
+    pockets.settings.stashRows = 4;
+    expect(moveItem(pockets, 'cable', { kind: 'grid', grid: { kind: 'pockets' }, x: 0, y: 0, rotated: true }, 'USA')).toBe(true);
+    fill(pockets, 'USA');
+    const whyP: RefusalOut = {};
+    expect(setPocketsGrid(pockets, [1, 1], whyP)).toBe(false);
+    expect(whyP.reason).toBe('full');
+
+    const panels = inv0();
+    panels.settings.stashRows = 4;
+    fill(panels, 'USA');
+    const p = structuredClone(panels.items.filson.panels!);
+    const whyF: RefusalOut = {};
+    expect(setPanels(panels, 'filson', [p[1]], [p[1].name], 'USA', whyF)).toBe(false); // the MacBook leaves Main
+    expect(whyF.reason).toBe('full');
+  });
+
+  it('a panel edit that would move a locked item refuses with reason locked; a bad list with reason invalid', () => {
+    const inv = inv0();
+    inv.items.macbook.locked = true;
+    const p = structuredClone(inv.items.filson.panels!);
+    p[0] = { ...p[0], grid: [3, 8], regions: [] }; // the 4 x 3 MacBook only fits turned
+    const why: RefusalOut = {};
+    expect(setPanels(inv, 'filson', p, p.map((x) => x.name), 'USA', why)).toBe(false);
+    expect(why.reason).toBe('locked');
+    const bad: RefusalOut = {};
+    expect(setPanels(inv, 'filson', [], [], 'USA', bad)).toBe(false);
+    expect(bad.reason).toBe('invalid');
+  });
+
+  it('an attach swap refuses when the item it takes off has no room in its stash', () => {
+    const inv = inv0();
+    inv.settings.stashRows = 4;
+    inv.items.band2 = { name: 'Band 2', category: 'accessories', tags: ['band'], location: 'Vietnam', home: { kind: 'stash', location: 'Vietnam', x: 0, y: 0, rotated: false } };
+    fill(inv, 'USA');
+    expect(attach(inv, 'band2', 'watch', 'band', 'USA')).toBe(false); // the old band would need USA cells
   });
 
   it('delete, detach and a location edit refuse instead of leaving an item with no place', () => {

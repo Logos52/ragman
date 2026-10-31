@@ -187,5 +187,26 @@ describe('store: EFT features', () => {
     adoptInventory(raw);
     expect(getStore().loadError).toBe('No room in the stash for: Filson');
     expect(getStore().getItem('filson')?.home).toMatchObject({ kind: 'stash', x: 0, y: 0 });
+    // more rows make the Filson fit: the banner goes with it
+    expect(getStore().setStashRows(4)).toBe(true);
+    expect(getStore().loadError).toBeNull();
+  });
+
+  it('a stash Sort that does not pack in its order answers false and adds no undo step', () => {
+    const raw = fixture();
+    raw.settings.stashWidth = 3;
+    raw.settings.stashRows = 2;
+    raw.settings.locations.push('Box');
+    const put = (id: string, name: string, footprint: [number, number], x: number, y: number) => {
+      raw.items[id] = { name, category: 'tops', footprint, location: 'Box', home: { kind: 'stash', location: 'Box', x, y, rotated: false } };
+    };
+    put('c', 'C', [2, 2], 0, 0);
+    put('a', 'A', [1, 1], 2, 0);
+    put('b', 'B', [1, 1], 2, 1);
+    adoptInventory(raw);
+    const box: GridRef = { kind: 'stash', location: 'Box' };
+    expect(getStore().sortGrid(box, 'name')).toBe(false);
+    expect(getStore().undoDepth).toBe(0);
+    expect(getStore().sortGrid(box, 'size-desc')).toBe(true);
   });
 });

@@ -38,7 +38,7 @@ describe('setPanels', () => {
     const locked = inv0();
     locked.items.macbook.locked = true;
     const q = panelsOf(locked, 'filson');
-    q[0].grid = [3, 3];
+    q[0] = { ...q[0], grid: [3, 8], regions: [] }; // the 4 x 3 MacBook only fits turned
     expect(setPanels(locked, 'filson', q, q.map((x) => x.name), 'USA')).toBe(false);
   });
 });

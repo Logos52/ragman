@@ -27,7 +27,7 @@ declare global {
 
 /**
  * Global keys, each fires once:
- * Esc closes the menu and forms; then clears Filter by item (and the hover tooltip with it); then the tooltip alone;
+ * Esc closes the menu, the forms and the stash tab editor; then clears Filter by item (and the hover tooltip with it); then the tooltip alone;
  * then closes the top Inspect window.
  * Ctrl/Cmd-Z undoes (not while typing). Delete (or Backspace) on the selected item opens its menu on the
  * delete confirm, at the tile.
@@ -38,7 +38,7 @@ function useGlobalKeys() {
       if (e.defaultPrevented) return;
       if (e.key === 'Escape') {
         const ui = useUi.getState();
-        if (ui.contextMenu || ui.editId || ui.addOpen) {
+        if (ui.contextMenu || ui.editId || ui.addOpen || ui.tabsOpen) {
           ui.closeAll();
           e.preventDefault();
         } else if (ui.jobFilter) {
@@ -140,7 +140,8 @@ export function App() {
       {/* the file loaded, but some items have no room in their stash (a stash is a fixed grid): named, never dropped */}
       {loadError && inv ? <Banner tone="bad">{loadError}</Banner> : null}
       {notice ? (
-        <Banner tone="bad" action={<Button size="sm" variant="ink" onClick={() => useUi.getState().setNotice(null)}>Dismiss</Button>}>
+        <Banner tone="bad" className="rg-app__notice"
+          action={<Button size="sm" variant="ink" onClick={() => useUi.getState().setNotice(null)}>Dismiss</Button>}>
           {notice}
         </Banner>
       ) : null}

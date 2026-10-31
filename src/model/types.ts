@@ -163,6 +163,11 @@ export interface GridView {
   items: GridItemView[];
 }
 
+/** Why a structure edit (panels, slots, pockets) was refused: a bad value, a locked item would move, or an item has no room in its stash. */
+export type StructureRefusal = 'invalid' | 'locked' | 'full';
+/** Out-parameter: a refused structure edit writes its reason here. */
+export interface RefusalOut { reason?: StructureRefusal }
+
 export interface FitResult {
   ok: boolean;
   /** Cells the dragged item would cover, for the green/red highlight. */

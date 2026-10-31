@@ -127,6 +127,8 @@ function sorted(inv: Inventory, ids: string[], f: Filters): string[] {
 
 /* ---------------- the store ---------------- */
 
+const MISFIT_PREFIX = 'No room in the stash for: ';
+
 class Abort { constructor(readonly value: unknown) {} }
 
 export const useInventory = create<RagmanStore>()((set, get) => {
@@ -177,10 +179,14 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     set({ stashLocation: fallback && list.includes(fallback) ? fallback : list[0] ?? '' });
   }
 
+  /** The load error for items outside their fixed stash grid (named, never dropped), or null when every item fits. */
+  function misfitError(inv: Inventory): string | null {
+    const misfits = stashMisfits(inv);
+    return misfits.length ? `${MISFIT_PREFIX}${misfits.map((id) => inv.items[id].name || id).join(', ')}` : null;
+  }
+
   function adopt(raw: Inventory, source: DataSource, eol: Eol = '\n') {
     const inv = normalize(raw);
-    // A stash is a fixed grid: an item that could not be re-placed inside it is named, never dropped.
-    const misfits = stashMisfits(inv);
     images?.dispose();
     images = new ImageResolver(source, {
       bundledUrls: source.kind === 'bundled' ? bundledImageUrls() : undefined,
@@ -197,7 +203,7 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     undoRing.clear();
     clearSyncTimers();
     set({
-      inv, source, loadError: misfits.length ? `No room in the stash for: ${misfits.map((id) => inv.items[id].name || id).join(', ')}` : null,
+      inv, source, loadError: misfitError(inv),
       saveState: 'saved', saveError: null, undoDepth: 0, openWindows: [],
       stashLocation: inv.settings.locations[0] ?? '', showArchive: false,
       syncState: 'off', syncAt: null, syncMessage: null, syncConflict: false,
@@ -382,7 +388,7 @@ export const useInventory = create<RagmanStore>()((set, get) => {
     },
     sortGrid: (ref, mode) => {
       const m = mode ?? get().filters.sort;
-      return mutate('sortGrid', undefined, (d) => sortGrid(d, ref, m) && undefined);
+      return mutate('sortGrid', false, (d) => sortGrid(d, ref, m));
     },
     switchLoadout: (name) => mutate('switchLoadout', false, (d) => {
       if (!d.loadouts[name] || d.activeLoadout === name) return false;
@@ -426,9 +432,9 @@ export const useInventory = create<RagmanStore>()((set, get) => {
       if (place) lo.placements[id] = structuredClone(place); else delete lo.placements[id];
       return undefined;
     }),
-    setPanels: (id, panels, from) => mutate('setPanels', false, (d, loc) => S.setPanels(d, id, panels, from, loc) && true),
-    setLoadoutSlots: (slots) => mutate('setLoadoutSlots', false, (d) => S.setLoadoutSlots(d, slots) && true),
-    setPocketsGrid: (grid) => mutate('setPocketsGrid', false, (d) => S.setPocketsGrid(d, grid) && true),
+    setPanels: (id, panels, from, why) => mutate('setPanels', false, (d, loc) => S.setPanels(d, id, panels, from, loc, why) && true),
+    setLoadoutSlots: (slots, why) => mutate('setLoadoutSlots', false, (d) => S.setLoadoutSlots(d, slots, why) && true),
+    setPocketsGrid: (grid, why) => mutate('setPocketsGrid', false, (d) => S.setPocketsGrid(d, grid, why) && true),
     attach: (id, parent, slot) => mutate('attach', false, (d, loc) => S.attach(d, id, parent, slot, loc) && true),
     detach: (id) => mutate('detach', false, (d, loc) => S.detach(d, id, loc) && true),
     addLocation: (name) => mutate('addLocation', false, (d) => S.addLocation(d, name) && true),
@@ -443,7 +449,13 @@ export const useInventory = create<RagmanStore>()((set, get) => {
       return ok;
     },
     moveLocation: (name, dir) => mutate('moveLocation', false, (d) => S.moveLocation(d, name, dir) && true),
-    setStashRows: (rows) => mutate('setStashRows', false, (d) => S.setStashRows(d, rows) && true),
+    setStashRows(rows) {
+      const ok = mutate('setStashRows', false, (d) => S.setStashRows(d, rows) && true);
+      // More rows can make the items named at load fit: the banner follows.
+      const { inv, loadError } = get();
+      if (ok && inv && loadError?.startsWith(MISFIT_PREFIX)) set({ loadError: misfitError(inv) });
+      return ok;
+    },
     undo() {
       perf('undo', () => {
         const prev = undoRing.pop();

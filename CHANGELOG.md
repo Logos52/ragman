@@ -4,7 +4,7 @@ Newest first. The public demo at logos52.github.io/ragman shows these under Patc
 
 ## 2026-10-31
 
-- Fixed stash size, like EFT: every stash is 10 cells wide and 68 rows tall. When a stash is full, Add, Move to Stash, Unarchive and a loadout switch that would send an item home are refused instead of growing the grid. The Archive still grows.
+- Fixed stash size, like EFT: every stash has a fixed number of rows, 68 unless you change it. When a stash is full, Add, Move to Stash, Unarchive and a loadout switch that would send an item home are refused instead of growing the grid. The Archive still grows.
 - Stash tabs: add a tab with the `+` at the end of the row; the pencil after Archive renames the open tab, moves it left or right, deletes it (only when no item has that location) and sets the number of stash rows.
 
 ## 2026-10-30

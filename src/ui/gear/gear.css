@@ -289,9 +289,10 @@
   .gear-stash { overflow: visible; }
   .gear-stash__body { flex-direction: column; }
   .gear-filter { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; }
-  /* the stash is a fixed 68-row grid (2312 px at the 34 px cell): it scrolls inside its own box, one screen tall
-     under the sticky tab bar, so Quick Use and the footer stay close below it */
-  .gear-stash__scroll { overflow-x: hidden; overflow-y: auto; max-height: calc(100dvh - 40px - 24px); }
+  /* the stash is a fixed 68-row grid (2312 px at the 34 px cell): it scrolls inside its own box. The label tab
+     (18 px), the filter row (32 px + 4 px gap) and the grid fit one screen under the 40 px sticky tab bar, with
+     8 px for the panel's borders, so at the grid's last rows the filter row and label are still in view */
+  .gear-stash__scroll { overflow-x: hidden; overflow-y: auto; max-height: calc(100dvh - 40px - 18px - 36px - 8px); }
   .gear-quick { align-items: stretch; height: auto; padding: 8px 12px; }
   /* the last box scrolls to end inside the gutter */
   .gear-quick__boxes { overflow-x: auto; padding-bottom: 4px; padding-right: 12px; }
