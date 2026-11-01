@@ -40,7 +40,7 @@ if not isinstance(items, dict):
     sys.exit("the batch needs an 'items' object of slug -> record")
 if "vendor" in batch:
     v = batch["vendor"]
-    for k in ("id", "name", "url"):
+    for k in ("id", "name"):
         if not v.get(k):
             errors.append(f"vendor.{k} is missing")
     if v.get("id") and not slug_re.match(v["id"]):

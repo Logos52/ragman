@@ -137,4 +137,4 @@ No new `FitResult` reason. Table state lives in `uiStore` and is not saved. The 
 - [ ] Remember columns, sort and filters: (a) no, reset on reload; (b) in `inventory.json`; (c) per browser, which changes the architecture rule. Pick: (a) for v1.
 - [ ] Saved views, Duplicates, weigh session, CSV export: (a) later; (b) v1. Pick: (a).
 - [ ] Location cell: (a) editable, moving items to the new stash's first free cells; (b) read-only. Pick: (a).
-- [ ] Vendors (Wedge added them to the PRD on 2026-10-31; his text is not yet in this repo): (a) each vendor's stock is a `VENDORS` group in the containers table, and dragging a stock row onto a stash tab is the buy; (b) vendors get their own tab and the Table view does not list them. Pick: (a), to be checked against his wording.
+- [ ] Vendors: there are two, Minimalist (items from minimalism creators) and BIFL. Grok Bot compiles their items into `vendors/minimalist.json` and `vendors/bifl.json` in the data repo. They are items Wedge is considering, not items he owns. (a) A `VENDORS` group in the containers table, where dragging a row onto a stash tab means he bought it; (b) a separate tab. Pick: (a).
