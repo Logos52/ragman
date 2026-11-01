@@ -2,7 +2,7 @@
 
 Usage: python -I scripts/import_export.py <inventory-export.json> <ragman-data dir>
 
-Rules applied (see docs/PRD.md):
+Rules applied:
 - Only owned items import. to_buy, rejected and given_away rows are skipped.
 - Status is use-based: in_rotation yes -> Rotation, no -> Not Worn, unknown -> blank.
 - Quantity N becomes N separate items with -2, -3 suffixes.

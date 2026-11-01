@@ -12,7 +12,7 @@ Named after the Tarkov trader who sells clothing and gear. On screen the app is 
 | --- | --- |
 | `schema/inventory.schema.json` | the formal schema for `inventory.json` |
 | `data/demo/` | demo data for the public build, pre-approved items only |
-| `docs/` | the PRD and design notes |
+| `docs/` | architecture and design notes. The PRDs are in a private repo |
 | `src/` | the app: `model/` (types, store contract, engine, persistence), `ui/` (screens, drag, menus, windows), `styles/` (tokens, fonts) |
 | `scripts/` | `serve.mjs` (production server), `shots.mjs` (Playwright proof), `icon-fit.py`, `link-grok.py`, `import_export.py` |
 | `refs/` | local screenshots and references, gitignored |
