@@ -23,9 +23,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
       - name: Install dependencies
         run: npm ci
       - name: Install lint-kit
@@ -82,7 +79,21 @@ jobs:
 
           npm install --prefix "$RUNNER_TEMP/lint-kit" --install-strategy=nested --no-save --no-package-lock "$src"
           npm --prefix "$RUNNER_TEMP/lint-kit/node_modules/lint-kit" run build
-          python -m pip install -r "$RUNNER_TEMP/lint-kit/node_modules/lint-kit/requirements.txt"
+          if ! command -v python3 >/dev/null 2>&1; then
+            echo "::error::python3 is not installed on the runner"
+            exit 1
+          fi
+          python3 --version
+          venv="$RUNNER_TEMP/lint-kit-venv"
+          req="$RUNNER_TEMP/lint-kit/node_modules/lint-kit/requirements.txt"
+          if python3 -m venv "$venv"; then
+            "$venv/bin/python" -m pip install --upgrade pip
+            "$venv/bin/python" -m pip install -r "$req"
+            echo "$venv/bin" >> "$GITHUB_PATH"
+          else
+            python3 -m pip install --user --break-system-packages -r "$req"
+            echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+          fi
       - name: Record baseline
         run: |
           mkdir -p node_modules/.bin
