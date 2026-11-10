@@ -1,0 +1,7079 @@
+{
+  "entries": [
+    {
+      "rule": "R1",
+      "file": "scripts/icon-fit.py",
+      "fingerprint": "214241af"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/import_export.py",
+      "fingerprint": "2d8b5b21"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/import_export.py",
+      "fingerprint": "6c8e1d5f"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/import_export.py",
+      "fingerprint": "9533b90e"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/import_export.py",
+      "fingerprint": "c9dcc2e9"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/import_export.py",
+      "fingerprint": "e972df8"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/link-grok.py",
+      "fingerprint": "d7f8cc2b"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "22cb9771"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "34b9ef46"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "3ba8d4d7"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "5a7361eb"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "8c388fd9"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "a087b9b1"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "a20ff470"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "ab561201"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "b6bf1e2f"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "1747058a"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "232c8e72"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "260d62d8"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "8206f66e"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "9335f4e7"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "97c8c4d2"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "a2b5bc6c"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "a2d266e3"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "a5e51449"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "b5de7ee1"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "d680430"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "d8122595"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.test.mjs",
+      "fingerprint": "203dcdca"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.test.mjs",
+      "fingerprint": "b8c2a073"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/sync.test.mjs",
+      "fingerprint": "c06a0a7c"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "2854b26d"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "4b46bf02"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "58068565"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "706d5a24"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "8f86e90"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "afa260f4"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "b8f0bdaa"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "db8fa2cf"
+    },
+    {
+      "rule": "R1",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "e9eeb296"
+    },
+    {
+      "rule": "R1",
+      "file": "src/main.tsx",
+      "fingerprint": "abecbe86"
+    },
+    {
+      "rule": "R1",
+      "file": "src/main.tsx",
+      "fingerprint": "e655f018"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "105c91e7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "132eeb03"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "1471a07c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "16904265"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "184499e4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "193ea222"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "1d590bef"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "1f587c06"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "202a476a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "27588c58"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "2b735ade"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "2b831de"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "2e7f0f3d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "2ea06415"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "2f2dbde8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "347f5507"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "39ad4ec6"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "3b30796a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "3f0fdd7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "40b9218f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "423945a5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "43661ef7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "45b2e469"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "492f6899"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "4ca80ab6"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "4dc0c3cf"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "4e3d0d82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "4f48058a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "52a3ecea"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "596a4f44"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "5b02e4fa"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "5cfb4849"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "62710f2f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "676b47dc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "67878cdf"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "6da9390d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "850fc047"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "8a808fd7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "94ecde48"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "959c2e16"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "96a7be12"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "97e67a4a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "9886c77c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "9a432672"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "9beadb55"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "a39df77a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "a7ebbed8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "a80d0da4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "a9f21d98"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "b4c69199"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "ba5f7ee7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "ba61f87a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "bd626689"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "be624b4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "c6503b54"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "d61fb210"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "d7b805d1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "d7dc9d2d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "d8bd092a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "d8bd092a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "d9535ee5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "de7d7ccd"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "e1c1b883"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "e4a16a16"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "e771a05d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "e8527b82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "eb589d71"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "ecb27b24"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "ed623c39"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "ed9531c7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "f1306315"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "f6469f74"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "fb21bd2f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/api.ts",
+      "fingerprint": "fbe6ecc5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/demo.test.ts",
+      "fingerprint": "3673d4e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/demo.test.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "3a2a8847"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "76c37bec"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "7c71b055"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "a95f7ad0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "bbf780fc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "bf2b231f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "1264c86"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "53c238bd"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "e597eed7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "f03143ef"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "7aab0031"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "a37364a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "a71b20f8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "a9dd77a3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "199a063"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "1b0a58d3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "3fbbbfcf"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "42898b2a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "51326cb4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "62935d85"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "6b65e23c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "c91ecf4a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "e0d2eafa"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/loadout.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "1e80bb8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "1ecbb301"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "25926776"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "2d869d28"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "39d2ae8d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "3bd2b471"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "3d3a8fee"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "434acfaa"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "4841e60"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "514b3610"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "516de14a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "54dddaa1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "58fde264"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "615f98db"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "70f6e5f3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "77ba559b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "8b813fc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "93494304"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "96e5bad"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "9c13c8a9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "b27f1345"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "b67c5075"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "bf4385af"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c9b13abb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "dc7a0ffb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "e65e3a40"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "e6bbccb0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "e74de2a2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "ea347030"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/normalize.ts",
+      "fingerprint": "647368f9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/normalize.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/normalize.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/ops.ts",
+      "fingerprint": "1679a06b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/ops.ts",
+      "fingerprint": "1ba9e98a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/ops.ts",
+      "fingerprint": "3463b04c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/ops.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/ops.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/ops.ts",
+      "fingerprint": "ddc6543f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/overall.test.ts",
+      "fingerprint": "4f8fb776"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/overall.test.ts",
+      "fingerprint": "a165cd1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/overall.test.ts",
+      "fingerprint": "c9166ecf"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/overall.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "271ad29d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "3f417143"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "5849f19d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "99714a49"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "c7f3aab2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "d72ec223"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/share.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/slotRules.ts",
+      "fingerprint": "32c251ef"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/slotRules.ts",
+      "fingerprint": "6ac385e8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/slotRules.ts",
+      "fingerprint": "84c8fce0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/slotRules.ts",
+      "fingerprint": "9b75d0b1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/slotRules.ts",
+      "fingerprint": "b03d7b41"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/slotRules.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/sort.ts",
+      "fingerprint": "86a5ab77"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/sort.ts",
+      "fingerprint": "9c63f496"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/sort.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/stacks.ts",
+      "fingerprint": "1d60eddb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/stacks.ts",
+      "fingerprint": "46ffdd84"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/stacks.ts",
+      "fingerprint": "bf042621"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/stacks.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/stash.test.ts",
+      "fingerprint": "488e8ef0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/strip.ts",
+      "fingerprint": "1c902957"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/strip.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/strip.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/strip.ts",
+      "fingerprint": "d69e3a41"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/structure.test.ts",
+      "fingerprint": "3adcd013"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/structure.test.ts",
+      "fingerprint": "414d1991"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/structure.test.ts",
+      "fingerprint": "f352f939"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "8bb11856"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/tasks.ts",
+      "fingerprint": "86aaedee"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/tasks.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/undo.ts",
+      "fingerprint": "242295d4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/undo.ts",
+      "fingerprint": "339c4172"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/undo.ts",
+      "fingerprint": "83e8c267"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/weights.ts",
+      "fingerprint": "2cecb58d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/weights.ts",
+      "fingerprint": "5d5688eb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/weights.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/weights.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/engine/weights.ts",
+      "fingerprint": "ec46cc79"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/persist.test.ts",
+      "fingerprint": "53cc7a84"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/persist.test.ts",
+      "fingerprint": "9fe627e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/persist.ts",
+      "fingerprint": "bbac3f50"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/persist.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/persist.ts",
+      "fingerprint": "e49b4aeb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/realdata.test.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/realdata.test.ts",
+      "fingerprint": "cb0478b1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/review.test.ts",
+      "fingerprint": "f9a8479d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "2e2adb94"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "ab7a0f1f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "bab42e21"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "c65821fa"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "d659c775"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "e412581d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.ts",
+      "fingerprint": "458a108a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.ts",
+      "fingerprint": "64c7b7dc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.ts",
+      "fingerprint": "772e3a74"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.ts",
+      "fingerprint": "9bec63e4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.ts",
+      "fingerprint": "c096bcd2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.ts",
+      "fingerprint": "cc0726c8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/store.ts",
+      "fingerprint": "dc735df2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/sync.test.ts",
+      "fingerprint": "f8946247"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/test/fixture.ts",
+      "fingerprint": "36c084a4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/test/node-shim.d.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "12e3e950"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "19fe9d50"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "1b4e38e8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "1d588012"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "2120e8c5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "270361c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "278a53c1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "2bb29224"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "3dd898ca"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "406e6526"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "40b046b4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "4190243a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "4c5fbfab"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "55afdab7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "5708c6"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "5e5895cb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "601cfea0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "63e41c02"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "68e4c9a4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "6a0796df"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "6b68b2d5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "6f1e92bd"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "75f3fefb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "775ed05a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "7b43ad06"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "80c69ca6"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "819da1af"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "8231d370"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "83c33332"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "87852374"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "8c275c94"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "9084d619"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "9660b47d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "983acaf"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "9899373c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "9bdd9fe9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "a5103c97"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "be6fb848"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "beabc44f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "bfa87294"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "c132c057"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "c8ab075b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "cb6f0307"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "ccd63570"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "cd73b2e3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "d14acec1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "d652aa77"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "d78dea10"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "d8b2b606"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "df5b6782"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "e1a8b5d0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "e23e1f3b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "eebbd77c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/types.ts",
+      "fingerprint": "f042ee01"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/uiHidden.test.ts",
+      "fingerprint": "571e56dd"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/uiHidden.test.ts",
+      "fingerprint": "78901a29"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/uiHidden.test.ts",
+      "fingerprint": "9914ef28"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/uiHidden.test.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/model/uiHidden.test.ts",
+      "fingerprint": "cc0c44b8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/fonts.css",
+      "fingerprint": "d7d1ee7c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/global.css",
+      "fingerprint": "343e2277"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/global.css",
+      "fingerprint": "99eba1f8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/global.css",
+      "fingerprint": "dfa3a8c1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/global.css",
+      "fingerprint": "f2eace17"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "14d3ba11"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "19867c70"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "219c8fd5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "242284e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "287cf842"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "32b8d10f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "399f0d20"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "47d50ba5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "4c8150aa"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "7427de50"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "89843c17"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "96180874"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "b1020ff2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "b506868c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "d1de3958"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "e98a09a0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "ec21f631"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "ecadba77"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "f2c10e06"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "f54db062"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "fc02550e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/styles/tokens.css",
+      "fingerprint": "fdad5270"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.css",
+      "fingerprint": "2aef28fc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.css",
+      "fingerprint": "558052e9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.css",
+      "fingerprint": "665d717"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.css",
+      "fingerprint": "721943e8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.css",
+      "fingerprint": "db0df7b6"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "53c5f332"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "5ad0fa0c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "aae779b3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "ccf8fa91"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "cd3fa124"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "1dfccbf0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "268fc2c9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "37763019"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "39a14689"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "5017a780"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "8b115738"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "ac573e07"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/Overlays.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/PatchNotes.css",
+      "fingerprint": "6f0260ce"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/PatchNotes.tsx",
+      "fingerprint": "ada7089d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/PatchNotes.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/ThemeToggle.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/useStore.ts",
+      "fingerprint": "29722bd"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/useStore.ts",
+      "fingerprint": "9ae2cba"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/useStore.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/app/useStore.ts",
+      "fingerprint": "c28a84ec"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/DragLayer.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "489943f7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "4dc3a9f4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "55666a2c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "569b77c4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "63946937"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "98d0a950"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "b061e3ff"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "b9c826ce"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "e0414a1d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/registry.ts",
+      "fingerprint": "6a201e6"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/registry.ts",
+      "fingerprint": "6ca1d031"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/registry.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/registry.ts",
+      "fingerprint": "fd34355"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "1751e6d9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "43d352e9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "44c9a111"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "4c05150"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "7c91ccc1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "91366fa3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "93356eef"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "962a243d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "a0830508"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "c69d3109"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "c79721d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/useDropZone.ts",
+      "fingerprint": "23b5ee95"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/useDropZone.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/drag/useDropZone.ts",
+      "fingerprint": "e3dce976"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gallery/Gallery.css",
+      "fingerprint": "e3da99f7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "cc1154dc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/CarriedColumn.tsx",
+      "fingerprint": "3eb9f373"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "22dcc589"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "5a58ce60"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "5a87b2fa"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "72b1cc40"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/Footer.tsx",
+      "fingerprint": "d8a61345"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/GearScreen.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/GridZone.tsx",
+      "fingerprint": "20de2c2b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/GridZone.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/GridZone.tsx",
+      "fingerprint": "d7ee7d18"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/GridZone.tsx",
+      "fingerprint": "fee99ad7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/LoadoutSlots.tsx",
+      "fingerprint": "5468dca8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/LoadoutSlots.tsx",
+      "fingerprint": "afb4ab4e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/LoadoutSlots.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "4fe034ae"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "73e6c27c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "80e65708"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "cb0ea688"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "e3dce976"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/QuickUseRow.tsx",
+      "fingerprint": "d5aa49b9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/SlotZone.tsx",
+      "fingerprint": "3c9ae1e3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/SlotZone.tsx",
+      "fingerprint": "6d9ca037"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/StashColumn.tsx",
+      "fingerprint": "1b43102a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/StashColumn.tsx",
+      "fingerprint": "b378eed9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/StashTabs.tsx",
+      "fingerprint": "1b7d605a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/StashTabs.tsx",
+      "fingerprint": "7625e4b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/StashTabs.tsx",
+      "fingerprint": "bf20b50e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/StashTabs.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/StashTabs.tsx",
+      "fingerprint": "c748ce9a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/VerifyAllButton.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "107cfce5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "1415c6"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "15660cd4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "19e74c72"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "1a83f509"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "1dcf2887"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "25f0ea2a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "287208a7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "2bbcea2c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "33864184"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "3666c9b1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "4a7ad33b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "4ae12528"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "567e7213"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "7d35a27b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "88bbd538"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "8a2ea5f9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "a156f147"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "ad0247f0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "ae014a45"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "bb726259"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "bd54cdab"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "bfca9988"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "c9146788"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "d1c20d46"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "d52ab0a2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "ddc01d4a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "e99e1adf"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "ebfe71dd"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "f260f4be"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "fb264d9d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/hooks/useCellSize.ts",
+      "fingerprint": "e76537f8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/hooks/useCellSize.ts",
+      "fingerprint": "eed9733"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/hooks/useInv.ts",
+      "fingerprint": "dc676afc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/hooks/useRetainedGrids.test.tsx",
+      "fingerprint": "4bb70250"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "8b92255b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "d71d9519"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "e3dce976"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/hooks/windowMemory.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "2838489e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "2d377a0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "71836bc8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "82818198"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "704574b3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "9b9d9752"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "486d77bc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/PasteZone.tsx",
+      "fingerprint": "28ac34a5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/PasteZone.tsx",
+      "fingerprint": "4d75899f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/PasteZone.tsx",
+      "fingerprint": "6eacecc2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "2d70988d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "36f7c646"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "5d273606"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "6b39c41a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "72ce57ed"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "78d86d74"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "816581e1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "8da41683"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "8eac2076"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "eafe6d34"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "15cf0785"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "3465698c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "4fbe5170"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "69c02e16"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "899bb46f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "8da5dd8c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "a8e5b2c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "b372cef8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "db34a677"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "f779b96f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/items.css",
+      "fingerprint": "1cd0796e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/items/items.css",
+      "fingerprint": "34edc489"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "35a927d9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "c8d552f4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "c9546951"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/menus/ItemTooltip.tsx",
+      "fingerprint": "62c56d1c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/menus/ItemTooltip.tsx",
+      "fingerprint": "6dd86c59"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/menus/ItemTooltip.tsx",
+      "fingerprint": "8edac021"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/overall/OverallScreen.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/overall/overall.css",
+      "fingerprint": "640d3cec"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/overall/overall.css",
+      "fingerprint": "650431bd"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/overall/overall.css",
+      "fingerprint": "9bad25d8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/overall/overall.css",
+      "fingerprint": "ca5742ba"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/overall/overall.css",
+      "fingerprint": "d54c13fb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Banner.css",
+      "fingerprint": "b0135d65"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Banner.tsx",
+      "fingerprint": "24491771"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Banner.tsx",
+      "fingerprint": "686e0a91"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Button.tsx",
+      "fingerprint": "6f39bff8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Button.tsx",
+      "fingerprint": "a87da8ee"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "1a0804ce"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "3e445f65"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "8acc895d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.css",
+      "fingerprint": "41233cf5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.css",
+      "fingerprint": "5908780b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.css",
+      "fingerprint": "92b4d1d5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.css",
+      "fingerprint": "a5504a50"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.css",
+      "fingerprint": "b149203f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "103a7e50"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "1c16703c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "39fcd07f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "5a741f75"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "60a4d17a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "75428d96"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "7bebc11"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "937c852d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "a93d3265"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "bb0a1c69"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "c10717a2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "c9094e21"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "edf6310f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/EmptyState.css",
+      "fingerprint": "52569071"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/EmptyState.css",
+      "fingerprint": "a5eae7c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/EmptyState.tsx",
+      "fingerprint": "6822b8c0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/EmptyState.tsx",
+      "fingerprint": "a61dfec"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Figure.css",
+      "fingerprint": "afa1e1c1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Figure.tsx",
+      "fingerprint": "537282a2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Figure.tsx",
+      "fingerprint": "9d552dae"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Figure.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.css",
+      "fingerprint": "2183bf9f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.css",
+      "fingerprint": "684410d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.css",
+      "fingerprint": "9a6ab9fa"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.css",
+      "fingerprint": "f9e36b94"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.css",
+      "fingerprint": "fd834f02"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "463a1eee"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "7a56c45f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "ac95224c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "e4249cf2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/LabelTab.css",
+      "fingerprint": "8dd11f29"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/LabelTab.tsx",
+      "fingerprint": "334bc6a1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/LabelTab.tsx",
+      "fingerprint": "6805006a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/LuggageTag.css",
+      "fingerprint": "6e165f74"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/LuggageTag.css",
+      "fingerprint": "fa592a4f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/LuggageTag.tsx",
+      "fingerprint": "4b627490"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/LuggageTag.tsx",
+      "fingerprint": "54b64ef"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Modal.css",
+      "fingerprint": "927024cd"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "477eede"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "7bcc8743"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "8a7ba675"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "ac7b3e7a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "b1624e84"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "b2cbd8f7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SaveBadge.css",
+      "fingerprint": "c0f3142d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SaveBadge.tsx",
+      "fingerprint": "d02812d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SegmentedControl.tsx",
+      "fingerprint": "ab9663f3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SegmentedControl.tsx",
+      "fingerprint": "e8d57f5c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Select.tsx",
+      "fingerprint": "9474a0c3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Select.tsx",
+      "fingerprint": "c9886e0f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SlotBox.css",
+      "fingerprint": "41652ff"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SlotBox.css",
+      "fingerprint": "5b21b7ef"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SlotBox.css",
+      "fingerprint": "e57e0b1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SlotBox.css",
+      "fingerprint": "ff43e929"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SlotBox.tsx",
+      "fingerprint": "175f6573"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SlotBox.tsx",
+      "fingerprint": "4a270b08"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SlotBox.tsx",
+      "fingerprint": "4ccbb2f0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SlotBox.tsx",
+      "fingerprint": "cee20977"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SlotBox.tsx",
+      "fingerprint": "ec00f354"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SyncBadge.tsx",
+      "fingerprint": "306d642d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SyncBadge.tsx",
+      "fingerprint": "a97a5f3d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SyncBadge.tsx",
+      "fingerprint": "b0456ac1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/SyncBadge.tsx",
+      "fingerprint": "d35da2b0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/TabBar.css",
+      "fingerprint": "3776a0a0"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/TabBar.css",
+      "fingerprint": "38c8394b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/TabBar.css",
+      "fingerprint": "5a389743"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/TabBar.tsx",
+      "fingerprint": "3f0fc491"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/TabBar.tsx",
+      "fingerprint": "9314ce4b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/TextField.tsx",
+      "fingerprint": "ccd1beef"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "126a5108"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "25e9218c"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "2b5c649b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "2c014fa6"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "2c67b2fc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "34a9b2a2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "4d17ba8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "4dd16348"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "5f19ffbe"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "6221a5ce"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "76086155"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "8495d8d4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "897a5a07"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "94277b6a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "98bb119b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "a738f61"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "b82dab68"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "e6b49725"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "eae8ff20"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "f02b1708"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "faf9143d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "fec73ed8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "1ad90a7b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "3057b522"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "36196d56"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "4dfccbeb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "678d8499"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "689d2db6"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "77a410ca"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "7ff40596"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "924bfcd5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "9674ca4f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "9b75bc8e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "a908dde7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "e66292db"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.css",
+      "fingerprint": "b6b8106d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "1ae6ad1d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "1fcd6048"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "32951eab"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "34b132d8"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "778cdc49"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "bace97ba"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "d92c7804"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "dc2c8ed9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "ffc483f4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/WeightReadout.css",
+      "fingerprint": "a196a6d4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/WeightReadout.css",
+      "fingerprint": "c55b81ef"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/WeightReadout.css",
+      "fingerprint": "ec3dcbf7"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/WeightReadout.tsx",
+      "fingerprint": "197a784d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "1b609b0a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "22e234ae"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "56966089"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "c81d70e2"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "cfbf1b9f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "dcd543d1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "30325320"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "69a2b84a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "9f6c93b5"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "a3ba09bb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "c411eac3"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "c52df147"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "c7f4a21e"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/primitives/index.ts",
+      "fingerprint": "ebda73ed"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "3e671166"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "d132b2d4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "1f57c504"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "36c0103a"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "414c229f"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "67be587"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "6cb43d21"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "7e7006bf"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "c815a335"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "ca3765be"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "cd4f6b3b"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/theme.ts",
+      "fingerprint": "103786f9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/theme.ts",
+      "fingerprint": "2fc0b640"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/theme.ts",
+      "fingerprint": "42ce15cc"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/theme.ts",
+      "fingerprint": "457e57dd"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/theme.ts",
+      "fingerprint": "613d6f75"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/theme.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/theme.ts",
+      "fingerprint": "e7b5e98d"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/theme.ts",
+      "fingerprint": "feedf6b4"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "1dcb8981"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "2664a918"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "36c2ea"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "36fd0700"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "390edb87"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "79907cec"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "7e571856"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "8b6f2204"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "938463eb"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "af1e94b1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "e351e8b1"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "f0b852e9"
+    },
+    {
+      "rule": "R1",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "f70633b7"
+    },
+    {
+      "rule": "R1",
+      "file": "vite.config.ts",
+      "fingerprint": "a1de2001"
+    },
+    {
+      "rule": "R1",
+      "file": "vite.config.ts",
+      "fingerprint": "ba98cf3b"
+    },
+    {
+      "rule": "R1",
+      "file": "vite.config.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R1",
+      "file": "vite.config.ts",
+      "fingerprint": "f72c200a"
+    },
+    {
+      "rule": "R10",
+      "file": ".github/workflows/lint-kit.yml",
+      "fingerprint": "9af48e30"
+    },
+    {
+      "rule": "R10",
+      "file": ".github/workflows/lint-kit.yml",
+      "fingerprint": "b8a1ce5a"
+    },
+    {
+      "rule": "R10",
+      "file": "package.json",
+      "fingerprint": "fe0c521a"
+    },
+    {
+      "rule": "R16",
+      "file": "CONTRIBUTING.md",
+      "fingerprint": "d720ed74"
+    },
+    {
+      "rule": "R16",
+      "file": "README.md",
+      "fingerprint": "8b266c9e"
+    },
+    {
+      "rule": "R16",
+      "file": "README.md",
+      "fingerprint": "b64bb865"
+    },
+    {
+      "rule": "R16",
+      "file": "data/demo/README.md",
+      "fingerprint": "bdc5216a"
+    },
+    {
+      "rule": "R16",
+      "file": "data/demo/README.md",
+      "fingerprint": "bdc5216a"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/ARCHITECTURE.md",
+      "fingerprint": "23dfeba5"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/ARCHITECTURE.md",
+      "fingerprint": "9b3b0d19"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/ARCHITECTURE.md",
+      "fingerprint": "d87b9db2"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/DESIGN.md",
+      "fingerprint": "3e865b5f"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/DESIGN.md",
+      "fingerprint": "89198d36"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/DESIGN.md",
+      "fingerprint": "939f3434"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/avatar.md",
+      "fingerprint": "8cbc724b"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/avatar.md",
+      "fingerprint": "dc2ad49c"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/avatar.md",
+      "fingerprint": "ed789ee2"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/icons.md",
+      "fingerprint": "25e53198"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/icons.md",
+      "fingerprint": "a93eded2"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/icons.md",
+      "fingerprint": "bcaad238"
+    },
+    {
+      "rule": "R17",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "f1480557"
+    },
+    {
+      "rule": "R17",
+      "file": "src/model/engine/share.ts",
+      "fingerprint": "532b427b"
+    },
+    {
+      "rule": "R17",
+      "file": "src/model/engine/share.ts",
+      "fingerprint": "c3d6c475"
+    },
+    {
+      "rule": "R17",
+      "file": "src/model/engine/undo.ts",
+      "fingerprint": "6f39b758"
+    },
+    {
+      "rule": "R17",
+      "file": "src/model/engine/undo.ts",
+      "fingerprint": "74bf0269"
+    },
+    {
+      "rule": "R17",
+      "file": "vite.config.ts",
+      "fingerprint": "9769a9fe"
+    },
+    {
+      "rule": "R18",
+      "file": "src/model/engine/share.ts",
+      "fingerprint": "d27d5008"
+    },
+    {
+      "rule": "R18",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "bf298483"
+    },
+    {
+      "rule": "R19",
+      "file": "src/model/engine/share.ts",
+      "fingerprint": "a6fa447e"
+    },
+    {
+      "rule": "R19",
+      "file": "src/model/engine/share.ts",
+      "fingerprint": "d27d5008"
+    },
+    {
+      "rule": "R19",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "5ce526c6"
+    },
+    {
+      "rule": "R19",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "7d01ac4d"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/import_export.py",
+      "fingerprint": "88882107"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "8a45618b"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "8a45618b"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "134de2c5"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "13b50901"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "13b50901"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "3aec4e25"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "622bc15f"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "7d742ac9"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "7d742ac9"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "a78280b4"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "c4ed4be3"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "ffd4207f"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "3959b35c"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "500e74d7"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "500e74d7"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "54a0733f"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "54a0733f"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "e024fadc"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "ff6795cc"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.test.mjs",
+      "fingerprint": "526f4643"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.test.mjs",
+      "fingerprint": "5a3d6b7d"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.test.mjs",
+      "fingerprint": "5a3d6b7d"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.test.mjs",
+      "fingerprint": "89b9e61b"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/sync.test.mjs",
+      "fingerprint": "f40a956c"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "14426311"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "14426311"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "34dfdd6c"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "4642181"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "47f19345"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "6547d8e0"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "de7a25ef"
+    },
+    {
+      "rule": "R2",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "f09f2c3d"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/demo.test.ts",
+      "fingerprint": "36c0e7b7"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/demo.test.ts",
+      "fingerprint": "5e2753eb"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/demo.test.ts",
+      "fingerprint": "fd0a8ec1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "3c43882b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "4a7d3974"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "552a42bc"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "73fff3cd"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "73fff3cd"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "ee60433f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "204868e1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "42334204"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "738d6957"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "8439e0e8"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "a7e264a2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "c00690c0"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "c00690c0"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "e76c4649"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "ffdab376"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "28592da1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "28fdf11f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "90f7e4e4"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "90f7e4e4"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "d764fe3b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "49d674a2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "49d674a2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "5bd8b2b1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "94a32bca"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "94a32bca"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "c7989ae6"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "f511d73"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "40d36d57"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "4d180c72"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "5f03ac0f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/loadout.ts",
+      "fingerprint": "531f8ec6"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/loadout.ts",
+      "fingerprint": "531f8ec6"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/loadout.ts",
+      "fingerprint": "94f7c67b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/loadout.ts",
+      "fingerprint": "94f7c67b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/loadout.ts",
+      "fingerprint": "94f7c67b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "378dd3ac"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "378dd3ac"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "3c115318"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "3c115318"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "4121bbbd"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "563e665f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "5f5e6618"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "6acd5e1b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "8a5e1ab3"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "8a5e1ab3"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "8e4de93d"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "8e4de93d"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "a636950e"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c4cf2764"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c4cf2764"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c4cf2764"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c9c81a51"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c9c81a51"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "d28548c2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "d28548c2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "d7b962c9"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "d7b962c9"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "d7b962c9"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/normalize.ts",
+      "fingerprint": "c38ede08"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/normalize.ts",
+      "fingerprint": "c38ede08"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/ops.ts",
+      "fingerprint": "91712c29"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/ops.ts",
+      "fingerprint": "a7a91529"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/ops.ts",
+      "fingerprint": "ca88e6d2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/overall.test.ts",
+      "fingerprint": "20526cc2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/overall.ts",
+      "fingerprint": "ee47ab4a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "234ac4bb"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "46df0c84"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "46df0c84"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "8ff3b467"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "cc4bd5f3"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "f9175708"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "ff0da97d"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "ff0da97d"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/stash.test.ts",
+      "fingerprint": "9afa3a33"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/stash.test.ts",
+      "fingerprint": "aea346b4"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/stash.test.ts",
+      "fingerprint": "d7667a4b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/stash.test.ts",
+      "fingerprint": "dca3cdec"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/stash.test.ts",
+      "fingerprint": "dca3cdec"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.test.ts",
+      "fingerprint": "357a3458"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "1708c025"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "1708c025"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "33920d10"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "33920d10"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "7880510c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "8dadf68e"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "90cbd7f1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "99b05516"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "9b95663e"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "daa345da"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "daa345da"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/engine/weights.ts",
+      "fingerprint": "eadd1253"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/persist.test.ts",
+      "fingerprint": "4f0b1563"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/persist.test.ts",
+      "fingerprint": "8b01e86a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/persist.ts",
+      "fingerprint": "962f734d"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/persist.ts",
+      "fingerprint": "a96743ab"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/persist.ts",
+      "fingerprint": "a96743ab"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/realdata.test.ts",
+      "fingerprint": "e9ce929c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/realdata.test.ts",
+      "fingerprint": "fe12514e"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/review.test.ts",
+      "fingerprint": "6ba31d45"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/review.test.ts",
+      "fingerprint": "718c44c3"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/review.test.ts",
+      "fingerprint": "738d6957"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "3facf60a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "495755db"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "495755db"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "9afa3a33"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "b9572a4c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "f29864ea"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.ts",
+      "fingerprint": "1a72f342"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.ts",
+      "fingerprint": "5547d81c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.ts",
+      "fingerprint": "5547d81c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.ts",
+      "fingerprint": "736e58c2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/store.ts",
+      "fingerprint": "e34d8201"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/sync.test.ts",
+      "fingerprint": "7a9bc75b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/sync.test.ts",
+      "fingerprint": "b1235d68"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/test/fixture.ts",
+      "fingerprint": "88e73a16"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/types.ts",
+      "fingerprint": "811c9dc5"
+    },
+    {
+      "rule": "R2",
+      "file": "src/model/types.ts",
+      "fingerprint": "811c9dc5"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "20b84b4c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "20b84b4c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "6de2481c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "6de2481c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "d93a1277"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "e246f6d2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "b7cb9945"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/registry.ts",
+      "fingerprint": "58c9d51f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "10a53829"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "199df1f8"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "2d00d942"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "2d0778c6"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "2d4f6e30"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "3afe1465"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "3afe1465"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "476e102a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "476e102a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "634041df"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "8f68b903"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "93762477"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "a414215"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "bb32813a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "c33eee35"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "fa86358f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "fa86358f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "70778efa"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "70778efa"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "bff599c1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "4c1f56df"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "9399c3bf"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "9399c3bf"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "fd210e6a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/GridZone.tsx",
+      "fingerprint": "441bd514"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/LoadoutSlots.tsx",
+      "fingerprint": "21a4649f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/LoadoutSlots.tsx",
+      "fingerprint": "8dfc8df1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "c7ff42be"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "c7ff42be"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/SlotZone.tsx",
+      "fingerprint": "52004601"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/StashColumn.tsx",
+      "fingerprint": "b2c9c4f4"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/StashTabs.tsx",
+      "fingerprint": "b8415ca1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/StashTabs.tsx",
+      "fingerprint": "b8415ca1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/StashTabs.tsx",
+      "fingerprint": "f6aebc6a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/gear/gear.css",
+      "fingerprint": "9e0c2731"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "1a96f4b5"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "1a96f4b5"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "2cf2c53b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "2cf2c53b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "cfd30d4"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "cfd30d4"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "dc6b8477"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "870012b8"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "870012b8"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "42c499d2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "4c544ebc"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "d531d53a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/PasteZone.tsx",
+      "fingerprint": "9ad1547d"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/PasteZone.tsx",
+      "fingerprint": "b112fa3a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/PasteZone.tsx",
+      "fingerprint": "ffaf21cf"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/inspect/inspect.css",
+      "fingerprint": "6b39c41a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "5d56b5a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "5d56b5a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "fd59c9c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "43e8deec"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "43e8deec"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "b3167c1a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "b3167c1a"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/menus/ItemTooltip.tsx",
+      "fingerprint": "a15a86a1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/menus/ItemTooltip.tsx",
+      "fingerprint": "a15a86a1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/overall/OverallScreen.tsx",
+      "fingerprint": "c5e7164f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/overall/OverallScreen.tsx",
+      "fingerprint": "f547c3ce"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Button.tsx",
+      "fingerprint": "8247e7a4"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "880acde7"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "59a4b33c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "74e29eeb"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "74e29eeb"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "758cc5f8"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "758cc5f8"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "821d91f4"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "821d91f4"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "ddda65f5"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "ddda65f5"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Figure.tsx",
+      "fingerprint": "8eb55c4f"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "f6f92493"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "f6f92493"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "6de2481c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "7a8d95d3"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "e246f6d2"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/SegmentedControl.tsx",
+      "fingerprint": "d5eff20b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/SlotBox.tsx",
+      "fingerprint": "5a0681d6"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/SyncBadge.tsx",
+      "fingerprint": "fcbabb61"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/TabBar.tsx",
+      "fingerprint": "c28d073c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/TextField.tsx",
+      "fingerprint": "dc1e6f11"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Tile.css",
+      "fingerprint": "ea72bfd3"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "4a9be1fe"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "4a9be1fe"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "19e76c0d"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "3028dde0"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "59a4b33c"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "a3c621b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/WeightReadout.tsx",
+      "fingerprint": "da104b94"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "a6b207ab"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "9f216a0b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "9f216a0b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "1867c5df"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "1867c5df"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "3fcd98a1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "3fcd98a1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "4d7282ed"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "5332299b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "5332299b"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/tasks/tasks.css",
+      "fingerprint": "3677cef5"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/theme.test.ts",
+      "fingerprint": "4b87454e"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/theme.test.ts",
+      "fingerprint": "50286fe1"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "571b1edd"
+    },
+    {
+      "rule": "R2",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "d4e2736a"
+    },
+    {
+      "rule": "R2",
+      "file": "vite.config.ts",
+      "fingerprint": "3214c3db"
+    },
+    {
+      "rule": "R2",
+      "file": "vite.config.ts",
+      "fingerprint": "35fbabfb"
+    },
+    {
+      "rule": "R2",
+      "file": "vite.config.ts",
+      "fingerprint": "b0909e35"
+    },
+    {
+      "rule": "R2",
+      "file": "vite.config.ts",
+      "fingerprint": "b0909e35"
+    },
+    {
+      "rule": "R21",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "f24e0ad6"
+    },
+    {
+      "rule": "R21",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "260d62d8"
+    },
+    {
+      "rule": "R21",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "209fb074"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/api.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/engine/fit.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/engine/slotRules.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/engine/sort.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/engine/structure.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/engine/tasks.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/engine/weights.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/persist.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/store.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/model/types.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/app/PatchNotes.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/drag/registry.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/drag/useDropZone.ts",
+      "fingerprint": "4b05d3c6"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "ef813a9a"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/gear/GearScreen.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/gear/GridZone.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/gear/SlotZone.tsx",
+      "fingerprint": "6d9ca037"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/hooks/useInv.ts",
+      "fingerprint": "dc676afc"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "ec72121d"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/hooks/windowMemory.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "c85f76fe"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/inspect/PasteZone.tsx",
+      "fingerprint": "1601281a"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/Banner.tsx",
+      "fingerprint": "d22ba727"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/Button.tsx",
+      "fingerprint": "66dafe78"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "d22ba727"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "de097804"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/EmptyState.tsx",
+      "fingerprint": "d22ba727"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/Figure.tsx",
+      "fingerprint": "1601281a"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "754b7158"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/LabelTab.tsx",
+      "fingerprint": "d22ba727"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/LuggageTag.tsx",
+      "fingerprint": "81d5aa7e"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "4b05d3c6"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/SaveBadge.tsx",
+      "fingerprint": "17d9b795"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/SegmentedControl.tsx",
+      "fingerprint": "c7d267e3"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/Select.tsx",
+      "fingerprint": "dfba9686"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/SlotBox.tsx",
+      "fingerprint": "fff330a3"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/SyncBadge.tsx",
+      "fingerprint": "17d9b795"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/TabBar.tsx",
+      "fingerprint": "588f5118"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/TextField.tsx",
+      "fingerprint": "66dafe78"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "1601281a"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "92be19de"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/WeightReadout.tsx",
+      "fingerprint": "383eb613"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "eaa0246"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "c37372a7"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/theme.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R21",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "c03f8f82"
+    },
+    {
+      "rule": "R22",
+      "file": "scripts/icon-fit.py",
+      "fingerprint": "b9153b6"
+    },
+    {
+      "rule": "R22",
+      "file": "scripts/import_export.py",
+      "fingerprint": "b9153b6"
+    },
+    {
+      "rule": "R22",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "39fb6106"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/api.ts",
+      "fingerprint": "315acad4"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/api.ts",
+      "fingerprint": "6673e110"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/api.ts",
+      "fingerprint": "ab285906"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/api.ts",
+      "fingerprint": "c8a4ba93"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "92e93ae5"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "8cdf8b0b"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/firstFree.ts",
+      "fingerprint": "8ef339b6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/images.ts",
+      "fingerprint": "6c50f00d"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "2f824fe8"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "8ff3b467"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "de7ef0b4"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "de7ef0b4"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/sort.ts",
+      "fingerprint": "af49589a"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/engine/weights.ts",
+      "fingerprint": "73387093"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/persist.ts",
+      "fingerprint": "379c2ac0"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/persist.ts",
+      "fingerprint": "379c2ac0"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/persist.ts",
+      "fingerprint": "53c13965"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/persist.ts",
+      "fingerprint": "74497215"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/persist.ts",
+      "fingerprint": "842223a9"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/persist.ts",
+      "fingerprint": "a212d2d9"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/persist.ts",
+      "fingerprint": "c700448"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/persist.ts",
+      "fingerprint": "d0638e3f"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/store.ts",
+      "fingerprint": "2b3a8e14"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/store.ts",
+      "fingerprint": "4f92decb"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/store.ts",
+      "fingerprint": "c91a1f2d"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/store.ts",
+      "fingerprint": "c91a1f2d"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/store.ts",
+      "fingerprint": "cf2244c6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/sync.test.ts",
+      "fingerprint": "e71b9f8e"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/test/node-shim.d.ts",
+      "fingerprint": "a21f91e9"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "11e9770"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "132ebd31"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "16462597"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "1b20d550"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "214fcafb"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "246249cf"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "284d5f88"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "2cda6d63"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "355b8992"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "3667b0d9"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "399928b4"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "469e551a"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "4dcba60c"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "55afdab7"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "5c58079c"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "5c58079c"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "5c9f5591"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "62479a17"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "6f8d7d26"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "775ed05a"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "7f595402"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "83db1109"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "88c8910a"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "88f4a6ca"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "8f52db7f"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "9660b47d"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "9aae1701"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "9b85e05e"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "a927ce32"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "aaebd4a5"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "af6ae70f"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "b0362bd6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "b403b26b"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "b49df1d"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "b6b8a278"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "c87c3f68"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "c87c3f68"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "cb6f0307"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "d4e2a5f5"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "da4256e9"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "e799250d"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "f19eda6c"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "f8e0dd40"
+    },
+    {
+      "rule": "R3",
+      "file": "src/model/types.ts",
+      "fingerprint": "f8fcaf7e"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "90293610"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "fa77b639"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/app/GearSkeleton.tsx",
+      "fingerprint": "89897bde"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/app/PatchNotes.tsx",
+      "fingerprint": "f2313fd5"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/app/PatchNotes.tsx",
+      "fingerprint": "f2313fd5"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/DragLayer.tsx",
+      "fingerprint": "efad3b53"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "145c8fc6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "1f301947"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "722c4eaf"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "85573d27"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/dragStore.ts",
+      "fingerprint": "a0c7050c"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/registry.ts",
+      "fingerprint": "4aeec5e6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "3994757d"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "571b29b9"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "93762477"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/session.ts",
+      "fingerprint": "a92c5be2"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/drag/useDropZone.ts",
+      "fingerprint": "17514e94"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "468c44bf"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "a0a8d4fb"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/CarriedColumn.tsx",
+      "fingerprint": "14f297e"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/CarriedColumn.tsx",
+      "fingerprint": "44b94615"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/CarriedColumn.tsx",
+      "fingerprint": "883b3cc9"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/CarriedColumn.tsx",
+      "fingerprint": "d78b0169"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "24ac8e17"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "4c1f56df"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "ca9301f"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "fd210e6a"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/GridZone.tsx",
+      "fingerprint": "509f0551"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/LoadoutSlots.tsx",
+      "fingerprint": "8dfc8df1"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "dc1afc16"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/QuickUseRow.tsx",
+      "fingerprint": "9c44eaf6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/SlotZone.tsx",
+      "fingerprint": "9c78421d"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/StashColumn.tsx",
+      "fingerprint": "6cb816e7"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/gear/StashColumn.tsx",
+      "fingerprint": "f6942b7"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "17905ea6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "17905ea6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "723c805c"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/hooks/windowMemory.ts",
+      "fingerprint": "8e11a258"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "56a04b28"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "640370e0"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "6956c96"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "4a4d159f"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "870012b8"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "9a34aeea"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "e0812ed3"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "144d54d6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "47d8ef92"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "4c544ebc"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "a9c0e865"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "d531d53a"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "d531d53a"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/inspect/PasteZone.tsx",
+      "fingerprint": "38651e20"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/items/ItemTile.tsx",
+      "fingerprint": "5abbc5fe"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "43e8deec"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/overall/OverallScreen.tsx",
+      "fingerprint": "8605bef6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/overall/OverallScreen.tsx",
+      "fingerprint": "fb832a0c"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/overall/OverallScreen.tsx",
+      "fingerprint": "fb832a0c"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Banner.tsx",
+      "fingerprint": "43f2de89"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Button.tsx",
+      "fingerprint": "6d6c041a"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Button.tsx",
+      "fingerprint": "be786c69"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "135a64ac"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "8195b673"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "9fef9053"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "aefafdd4"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Chip.tsx",
+      "fingerprint": "d6322684"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "2674aacf"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "33014ed5"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "590b2052"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "913ffabb"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "fbd60bd8"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/EmptyState.tsx",
+      "fingerprint": "f7515825"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/EmptyState.tsx",
+      "fingerprint": "fe73cf03"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Figure.tsx",
+      "fingerprint": "5b5c84fe"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Figure.tsx",
+      "fingerprint": "6804a7c7"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "28a979a4"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "5a9bcec0"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "6d1ab715"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "8154e123"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "bd7a7b51"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/LabelTab.tsx",
+      "fingerprint": "8db7d0ec"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/LuggageTag.tsx",
+      "fingerprint": "802ec587"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "4a14b2f0"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/SaveBadge.tsx",
+      "fingerprint": "216c3a37"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/SegmentedControl.tsx",
+      "fingerprint": "2f87b751"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/SegmentedControl.tsx",
+      "fingerprint": "9a909a"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Select.tsx",
+      "fingerprint": "93362d4"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Select.tsx",
+      "fingerprint": "abe99961"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/SlotBox.tsx",
+      "fingerprint": "ea9877d9"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/SyncBadge.tsx",
+      "fingerprint": "5fba6c5"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/TabBar.tsx",
+      "fingerprint": "34fb989f"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/TabBar.tsx",
+      "fingerprint": "4f4bafdf"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/TextField.tsx",
+      "fingerprint": "a37db829"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "f15cef64"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "1465dcab"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "3028dde0"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "8f0ddb35"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "cbbacf3e"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "cf3520fd"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Tooltip.tsx",
+      "fingerprint": "e37d29d1"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/WeightReadout.tsx",
+      "fingerprint": "13019ae6"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/WeightReadout.tsx",
+      "fingerprint": "81cb7fdd"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/WeightReadout.tsx",
+      "fingerprint": "db3b856f"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "262f86eb"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "c3dcf0aa"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "62eaafe4"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "d5319bc0"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/primitives/glyphs.tsx",
+      "fingerprint": "fae05f59"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "20d41cd9"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "35163e97"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "4d7282ed"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "5332299b"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "c4183f1c"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/tasks/TasksScreen.tsx",
+      "fingerprint": "dd8fec6f"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "28459dbe"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "49f15dbb"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "ab53c239"
+    },
+    {
+      "rule": "R3",
+      "file": "src/ui/uiStore.ts",
+      "fingerprint": "def33b63"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/check-items.py",
+      "fingerprint": "1ce6f28c"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/check-items.py",
+      "fingerprint": "9f17bea8"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/check-items.py",
+      "fingerprint": "c0a255ed"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/icon-fit.py",
+      "fingerprint": "9bf940e3"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/icon-fit.py",
+      "fingerprint": "a12d9c1b"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/import_export.py",
+      "fingerprint": "46f756a5"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/import_export.py",
+      "fingerprint": "7047414a"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/import_export.py",
+      "fingerprint": "bec43ca6"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/import_export.py",
+      "fingerprint": "e9db3845"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/link-grok.py",
+      "fingerprint": "ba01d04b"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/make-demo.py",
+      "fingerprint": "8f863171"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/serve.mjs",
+      "fingerprint": "99b323b4"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "134de2c5"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "191b5c04"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "388d70b7"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "4d9e4480"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "56981055"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "80026a23"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/shots.mjs",
+      "fingerprint": "9c05bbff"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "73a47504"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/sync.mjs",
+      "fingerprint": "a0f11dd7"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "56de5e2a"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "db76b0c0"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "e19d8932"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "ea3cdd15"
+    },
+    {
+      "rule": "R4",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "f513a02b"
+    },
+    {
+      "rule": "R4",
+      "file": "src/main.tsx",
+      "fingerprint": "a60a87f5"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/demo.test.ts",
+      "fingerprint": "4109f77d"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/demo.test.ts",
+      "fingerprint": "f533716f"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/demo.test.ts",
+      "fingerprint": "f533716f"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "519656b7"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "96415362"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "c2bf86ca"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/eft.test.ts",
+      "fingerprint": "f489ca9b"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "19761189"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "ab8c349"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "f1480557"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/engine.test.ts",
+      "fingerprint": "f1480557"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/loadout.ts",
+      "fingerprint": "322e6bc3"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/loadout.ts",
+      "fingerprint": "8b820fed"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/loadout.ts",
+      "fingerprint": "c4ffa63c"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "3c197858"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "6c3b0509"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "bb358057"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/moves.ts",
+      "fingerprint": "c661ba71"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/normalize.ts",
+      "fingerprint": "d1a9d628"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/place.ts",
+      "fingerprint": "c46c12b5"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/share.ts",
+      "fingerprint": "e85ed7e3"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/share.ts",
+      "fingerprint": "e85ed7e3"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/sort.ts",
+      "fingerprint": "bd36e95c"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/stash.test.ts",
+      "fingerprint": "257309c5"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/stash.test.ts",
+      "fingerprint": "87ba129f"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/stash.test.ts",
+      "fingerprint": "d32d371d"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/structure.test.ts",
+      "fingerprint": "786fa6ef"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/structure.test.ts",
+      "fingerprint": "944f20f4"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/engine/structure.test.ts",
+      "fingerprint": "944f20f4"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.test.ts",
+      "fingerprint": "4655fea"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.test.ts",
+      "fingerprint": "4655fea"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "11b9cc97"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "1c838a35"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "379c2ac0"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "379c2ac0"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "39d048aa"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "51cd5fe8"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "73d38bf2"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "7e394ab"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "842223a9"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "b1793fe0"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/persist.ts",
+      "fingerprint": "cf1e1f99"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/realdata.test.ts",
+      "fingerprint": "611bee8f"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/realdata.test.ts",
+      "fingerprint": "e96a553a"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/review.test.ts",
+      "fingerprint": "2d1ec7a0"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/review.test.ts",
+      "fingerprint": "2d1ec7a0"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/review.test.ts",
+      "fingerprint": "357987e9"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "4f18d8f3"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "bab42e21"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "e152867c"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/store.test.ts",
+      "fingerprint": "f540327f"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/store.ts",
+      "fingerprint": "7199744d"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/store.ts",
+      "fingerprint": "85a140d5"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/store.ts",
+      "fingerprint": "fb36f506"
+    },
+    {
+      "rule": "R4",
+      "file": "src/model/test/fixture.ts",
+      "fingerprint": "7c98646a"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "8ed8c9b7"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/app/App.tsx",
+      "fingerprint": "d0bfcfab"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/app/useStore.ts",
+      "fingerprint": "1faf79d4"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/drag/useDropZone.ts",
+      "fingerprint": "e3dce976"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "611cb370"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "e0734fee"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/gallery/Gallery.tsx",
+      "fingerprint": "f9e5dbb5"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/gear/ContainerWindows.tsx",
+      "fingerprint": "37ff4761"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/gear/GridZone.tsx",
+      "fingerprint": "8880fece"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/gear/LoadoutSlots.tsx",
+      "fingerprint": "cf4c6a0a"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "d6cd84c4"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/gear/PersonColumn.tsx",
+      "fingerprint": "e3dce976"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/gear/StashColumn.tsx",
+      "fingerprint": "e730fd45"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "17905ea6"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/hooks/useRetainedGrids.ts",
+      "fingerprint": "e3dce976"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/hooks/windowMemory.ts",
+      "fingerprint": "1b744977"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "50890841"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "612a386d"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "7d01ac4d"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "8db39190"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "91679b8d"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "a79e2a92"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/EditForm.tsx",
+      "fingerprint": "c64ee809"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/InspectCard.tsx",
+      "fingerprint": "72874fc2"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "6293790a"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/inspect/PanelsEditor.tsx",
+      "fingerprint": "6293790a"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/menus/ItemContextMenu.tsx",
+      "fingerprint": "331c29df"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/ContextMenu.tsx",
+      "fingerprint": "dc6f7dc7"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/Figure.tsx",
+      "fingerprint": "2901379"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "14b4c993"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/GridSurface.tsx",
+      "fingerprint": "9073abb8"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/LuggageTag.tsx",
+      "fingerprint": "678b445c"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "5b9f1e33"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "c687759c"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/Modal.tsx",
+      "fingerprint": "ff90ca9d"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/SegmentedControl.tsx",
+      "fingerprint": "b1b167a2"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "129e5cbc"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/Tile.tsx",
+      "fingerprint": "5b5bcd4d"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/WeightReadout.tsx",
+      "fingerprint": "8daf6fa2"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/WeightReadout.tsx",
+      "fingerprint": "fbb90548"
+    },
+    {
+      "rule": "R4",
+      "file": "src/ui/primitives/Window.tsx",
+      "fingerprint": "805127e1"
+    },
+    {
+      "rule": "R4",
+      "file": "vite.config.ts",
+      "fingerprint": "3a90e26e"
+    },
+    {
+      "rule": "R4",
+      "file": "vite.config.ts",
+      "fingerprint": "9769a9fe"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/icon-fit.py",
+      "fingerprint": "1e5f831c"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/icon-fit.py",
+      "fingerprint": "27e84479"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/icon-fit.py",
+      "fingerprint": "9bf940e3"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/icon-fit.py",
+      "fingerprint": "b151885f"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/make-demo.py",
+      "fingerprint": "6a047bf9"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/make-demo.py",
+      "fingerprint": "6a047bf9"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/make-demo.py",
+      "fingerprint": "87c7ffda"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/make-demo.py",
+      "fingerprint": "87c7ffda"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "8f86e90"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "e5e79fe9"
+    },
+    {
+      "rule": "R5",
+      "file": "scripts/worn-fit.py",
+      "fingerprint": "e7d0d356"
+    },
+    {
+      "rule": "R5",
+      "file": "tsconfig.json",
+      "fingerprint": "fe0c521a"
+    }
+  ]
+}
