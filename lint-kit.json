@@ -1,0 +1,21 @@
+{
+  "profile": "adopt",
+  "languages": ["ts", "mjs", "py", "css"],
+  "ignore": ["node_modules/**", "dist/**", ".git/**", "coverage/**", ".vite/**"],
+  "proseGlobs": [
+    "README.md",
+    "**/README.md",
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "**/CONTRIBUTING.md",
+    "docs/**/*.md"
+  ],
+  "boundaryFiles": [],
+  "baseline": ".lint-kit-baseline.json",
+  "rules": {},
+  "batch": "v4",
+  "prose": {
+    "allow": []
+  }
+}
