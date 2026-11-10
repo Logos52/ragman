@@ -111,16 +111,15 @@ jobs:
           if [ -n "${GITHUB_BASE_REF:-}" ]; then
             git fetch --depth 1 origin "$GITHUB_BASE_REF"
           fi
-          npx kit --help || true
-          npx kit baseline --help || true
           npx kit baseline
+          cp .lint-kit-baseline.json "$RUNNER_TEMP/lint-kit-baseline.upload.json"
           node -e "const b=require('./.lint-kit-baseline.json'); console.log('baseline entries', Array.isArray(b.entries)?b.entries.length:b.entries)"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: lint-kit-baseline
-          path: .lint-kit-baseline.json
-          if-no-files-found: warn
+          path: ${{ runner.temp }}/lint-kit-baseline.upload.json
+          if-no-files-found: error
       - name: Check
         run: |
           mkdir -p node_modules/.bin
