@@ -12,30 +12,83 @@ Named after the Tarkov trader who sells clothing and gear. On screen the app is 
 | --- | --- |
 | `schema/inventory.schema.json` | the formal schema for `inventory.json` |
 | `data/demo/` | demo data for the public build, pre-approved items only |
-| `docs/` | architecture and design notes. The PRDs are in a private repo |
+| `docs/` | architecture and design notes. The PRDs are in a private repo. Local setup is `docs/DEVELOPMENT.md` |
 | `src/` | the app: `model/` (types, store contract, engine, persistence), `ui/` (screens, drag, menus, windows), `styles/` (tokens, fonts) |
-| `scripts/` | `serve.mjs` (production server), `shots.mjs` (Playwright proof), `icon-fit.py`, `link-grok.py`, `import_export.py` |
+| `scripts/` | `serve.mjs` (production server), `sync.mjs` (git sync), `shots.mjs` (Playwright proof), and the Python data tools |
 | `refs/` | local screenshots and references, gitignored |
 
-The real inventory lives in the private `ragman-data` repo and is never committed here.
+The real inventory lives in the private `ragman-data` repo and is never committed here. This repo does not contain that clone. The dev server and `scripts/serve.mjs` read a data folder: `RAGMAN_DATA`, or `../ragman-data` when that variable is unset.
 
-## Running it
+## Prerequisites
 
-Needs Node 22 and a clone of the private `ragman-data` repo beside this one (`../ragman-data`, or set `RAGMAN_DATA`).
+- Node.js 22. The Pages workflow (`.github/workflows/pages.yml`) installs Node 22. `package.json` has no `engines` field.
+- npm. The lockfile is `package-lock.json`, and CI installs with `npm ci`.
+
+Python is only for the data tools under `scripts/`. It is not required to install, run, or test the app. See [Data tools](#data-tools).
+
+## Install
+
+From this repo:
 
 ```
-npm install
-npm run dev          # http://localhost:5173, serves ../ragman-data at /data/*, saves in place
-npm run build && npm run serve   # production build with the same data endpoints
-npm run build:public # public demo build (bundles data/demo, edits reset on reload)
-npm test             # engine, store, real-data and UI-rule tests (real data from ../ragman-data, or RAGMAN_DATA)
-npm run typecheck
-npm run shots        # Playwright proof: refs/proof/*.png at 1440 and 390, perf.json, tests.txt
+npm ci
 ```
 
-The dev and production servers refuse any path containing `prices` or `..`, and only `inventory.json` and `images/*` are reachable. Every mutation is in memory; the file is written in the background and the footer badge shows the save state.
+## Run the public demo
 
-Both servers also commit and push the data repo in the background, so the layout follows you between machines. When the data folder is a git repo with an upstream branch, the server first commits any uncommitted changes, pulls with rebase and pushes. After each save it waits for a quiet period, then commits (`Layout <time> from <hostname>`), pulls with rebase and pushes. Files whose name contains `prices` and the `.claude` folder are never staged. Nothing is force-pushed, reset or checked out.
+This is the build CI publishes. It bundles `data/demo/inventory.json`. Edits stay in memory and reset on reload (`VITE_BUILD=public` in `src/model/persist.ts`). No private data clone is required.
+
+```
+npm run build:public
+npm run preview -- --base /ragman/
+```
+
+Open http://localhost:4173/ragman/ . The server redirects `/` to that path.
+
+`build:public` sets Vite's base to `/ragman/` (`package.json`). `npm run preview` on its own uses base `/`, so the HTML requests `/ragman/assets/...` and the script does not load. Pass `--base /ragman/`.
+
+While the dev server is running, http://localhost:5173/?gallery shows the design-system gallery (`src/main.tsx`).
+
+## Run against a data folder
+
+`npm run dev` and `npm run serve` serve `inventory.json` and `images/*` from the data folder at `/data/*`, and they write saves back to that folder.
+
+With the private `ragman-data` checkout beside this repo, the default path is enough:
+
+```
+npm run dev
+```
+
+http://localhost:5173/
+
+The production build of that same mode:
+
+```
+npm run build
+npm run serve
+```
+
+http://localhost:4173/ . `scripts/serve.mjs` listens on `PORT`, or the port argument, or 4173. Without `../ragman-data`, that server still starts, sync stays off ("not a git repo"), and `GET /data/inventory.json` is 404.
+
+If `../ragman-data` is not there, `npm run dev` still starts, and `GET /data/inventory.json` answers 404 with the body `not found`. `src/ui/app/App.tsx` renders a banner, "Inventory file not found ·", and a Choose folder button when the store has an error and no inventory. Choosing a folder uses the File System Access API. `src/model/persist.ts` tells other browsers to use Chrome or Edge.
+
+To run and save against the committed demo file without editing `data/demo/`, copy it into `data/private/` (gitignored) and point `RAGMAN_DATA` at that directory. `RAGMAN_SYNC=0` keeps the server from committing or pushing:
+
+```
+mkdir -p data/private
+cp data/demo/inventory.json data/private/
+RAGMAN_DATA=data/private RAGMAN_SYNC=0 npm run dev
+```
+
+The same variables work with the production server, after `npm run build`:
+
+```
+RAGMAN_DATA=data/private RAGMAN_SYNC=0 npm run serve
+```
+
+Both servers refuse any `/data` path containing `prices` or `..`. Only `inventory.json` and `images/*` are served. Every mutation is in memory; the file is written in the background and the footer badge shows the save state.
+
+When the data folder is the top of a git repo with an upstream branch, and `RAGMAN_SYNC` is not `0`, both servers commit and push that repo in the background. The rules are in `docs/ARCHITECTURE.md` (Sync). `npm test` forces sync off, because Vitest sets `VITEST`. This checkout was not run against a data repo with an upstream, so the push itself was not exercised.
 
 | Env var | Default | Effect |
 | --- | --- | --- |
@@ -43,15 +96,44 @@ Both servers also commit and push the data repo in the background, so the layout
 | `RAGMAN_SYNC` | on | `0` turns the git sync off |
 | `RAGMAN_SYNC_DELAY_MS` | `20000` | the quiet period after the last save before a sync |
 
-The footer shows the sync state right of the save badge: nothing when sync is off or nothing has synced yet, `SYNCED 12:04` (local time of the last sync), `PUSHING`, `PUSH FAILED · RETRY` (no network or push rejected; the local commit stays and the next save or Retry tries again), `CONFLICT · PULL BY HAND · RETRY` (the rebase was aborted, or a save made during the sync clashed with the pulled changes and the file was put back to that save; no automatic sync runs until you pull by hand and press Retry or restart the server). The page reads the file once when it loads: reload it after a pull brings changes from the other machine, or the next save writes over them. `npm run shots` and `npm test` run with sync off; the `footer-sync` shots set the sync states on the store and fail if the footer is wider than the page.
+The footer shows the sync state right of the save badge. The states and the "reload after a pull" rule are described in `docs/ARCHITECTURE.md`.
 
-Data helpers, run from this folder with `python -I`:
+## Tests
 
-- `scripts/link-grok.py ../ragman-data` links `images/grok/<slug>.*` files to items (`images.grok`); files whose name is not the slug are listed in the script by hand.
-- `scripts/icon-fit.py <slug> <image> --footprint WxH --data ../ragman-data` cuts the background, fits the art to the footprint canvas and sets `images.icon`; see `docs/icons.md`.
-- `scripts/worn-fit.py --install-base <image> --data ../ragman-data` cuts and fits Grok's base figure to `images/avatar/base.png`; see `docs/avatar.md`.
-- `scripts/worn-fit.py <slug> [<slug2> ...] <image> --data ../ragman-data` keeps only what differs from the base figure, saves `images/worn/<slug>.png` and sets `images.worn` on each slug; see `docs/avatar.md`.
-- `scripts/check-items.py <batch.json> --data ../ragman-data` checks a vendor stock or inbox batch of item records against the schema, the value lists, slug collisions and the no-prices rule before it is merged; needs `pip install jsonschema`.
+Same checks the Pages workflow runs, in the same order:
+
+```
+npm run typecheck
+npm test
+npm run build:public
+```
+
+`npm test` is `vitest run` (`vite.config.ts`: jsdom, `src/**/*.test.{ts,tsx}` and `scripts/**/*.test.mjs`). `src/model/realdata.test.ts` reads `RAGMAN_DATA` or `../ragman-data` and skips when `inventory.json` is absent. `src/model/demo.test.ts` always checks that `data/demo/inventory.json` loads, and skips the "no string from the private file" check unless `../ragman-data/inventory.json` is beside this repo (that path does not follow `RAGMAN_DATA`).
+
+## CI
+
+`.github/workflows/pages.yml` ("Publish the public demo") runs on every push to `main`, and from `workflow_dispatch`. It does not run on pull requests.
+
+The build job checks out the repo, installs Node 22 with an npm cache, then runs `npm ci`, `npm run typecheck`, `npm test`, and `npm run build:public`. It uploads `dist` as a Pages artifact. The deploy job publishes that artifact with `actions/deploy-pages`. The workflow comment names the site: https://logos52.github.io/ragman/
+
+A push to `main`, including a merge, rebuilds and deploys that site. The markdown in this repo is not what the site serves.
+
+There is no lint script and no lint-kit config in this repo. The workflow does not run a linter.
+
+## Data tools
+
+These scripts edit a `ragman-data` folder. Their usage lines are at the top of each file. They did not complete here: this machine has `python3` and no `python` on `PATH`, Pillow and `jsonschema` are not installed, and the private data clone is not present.
+
+- `scripts/link-grok.py` sets `images.grok` from `images/grok/`.
+- `scripts/icon-fit.py` fits an icon and sets `images.icon`. See `docs/icons.md`.
+- `scripts/worn-fit.py` fits the base figure and worn layers. See `docs/avatar.md`. It also has a `--selftest` that needs Pillow.
+- `scripts/check-items.py` checks a vendor or inbox batch against the schema. It exits if `jsonschema` is missing.
+- `scripts/make-demo.py` regenerates `data/demo/inventory.json` from a private inventory. See `data/demo/README.md`.
+- `scripts/import_export.py` imports an older export into a data folder.
+
+`npm run shots` (`scripts/shots.mjs`) is written to save Playwright screenshots at 1440×900 and 390×844 into `refs/proof/`, plus `refs/proof/perf.json`. Playwright is not a dependency of this repo. The script loads it from `PW_DIR`, or from a directory outside this repo. Running it here exited immediately because that module was not found.
+
+## Design notes
 
 A sun and moon button in the tab bar switches dark mode; the choice is kept per browser.
 
