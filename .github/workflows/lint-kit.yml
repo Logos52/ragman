@@ -19,22 +19,12 @@ jobs:
     env:
       LINT_KIT_PIN: 11b2880e890ba1525775843e3f6027e729afbe25
     steps:
-      - name: Free disk on the box runner
-        run: |
-          set -euo pipefail
-          df -h
-          avail_kb=$(df -Pk / | awk 'NR==2 {print $4}')
-          echo "avail_kb=${avail_kb}"
-          if [ "$avail_kb" -lt 3000000 ]; then
-            rm -rf /home/box/runners/ragman/_work/ragman/ragman/node_modules
-            rm -rf "${RUNNER_TOOL_CACHE:-/home/box/runners/ragman/_work/_tool}"
-            find /home/box/runners/ragman/_diag -type f -name 'Worker_*.log' -mmin +30 -delete 2>/dev/null || true
-          fi
-          df -h
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Install dependencies
+        run: npm ci
       - name: Install lint-kit
         env:
           LINT_KIT_DEPLOY_KEY: ${{ secrets.LINT_KIT_DEPLOY_KEY }}
@@ -87,8 +77,18 @@ jobs:
           fi
           rm -f "$key_file"
 
-          npm install --prefix "$RUNNER_TEMP/lint-kit" --install-strategy=nested --no-save --no-package-lock "$src"
-          npm --prefix "$RUNNER_TEMP/lint-kit/node_modules/lint-kit" run build
+          # A path install omits devDependencies, so tsc is missing. Install the
+          # pinned clone as a git dependency, the same way the GitHub URL does.
+          npm install --prefix "$RUNNER_TEMP/lint-kit" --install-strategy=nested --no-save --no-package-lock "git+file://${src}#${pin}"
+          installed="$RUNNER_TEMP/lint-kit/node_modules/lint-kit"
+          if [ -d "$installed/.git" ]; then
+            got="$(git -C "$installed" rev-parse HEAD)"
+            if [ "$got" != "$pin" ]; then
+              echo "::error::refusing commit ${got}; lint-kit pin is ${pin}"
+              exit 1
+            fi
+          fi
+          npm --prefix "$installed" run build
           if ! command -v python3 >/dev/null 2>&1; then
             echo "::error::python3 is not installed on the runner"
             exit 1
