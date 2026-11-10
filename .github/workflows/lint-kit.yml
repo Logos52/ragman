@@ -104,21 +104,6 @@ jobs:
             python3 -m pip install --user --break-system-packages -r "$req"
             echo "$HOME/.local/bin" >> "$GITHUB_PATH"
           fi
-      - name: Prune baseline
-        run: |
-          mkdir -p node_modules/.bin
-          ln -sfn "$RUNNER_TEMP/lint-kit/node_modules/.bin/kit" node_modules/.bin/kit
-          if [ -n "${GITHUB_BASE_REF:-}" ]; then
-            git fetch --depth 1 origin "$GITHUB_BASE_REF"
-          fi
-          npx kit baseline --prune
-          cp .lint-kit-baseline.json "$RUNNER_TEMP/lint-kit-baseline.upload.json"
-          node -e "const b=require('./.lint-kit-baseline.json'); console.log('baseline entries', Array.isArray(b.entries)?b.entries.length:b.entries)"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: lint-kit-baseline
-          path: ${{ runner.temp }}/lint-kit-baseline.upload.json
-          if-no-files-found: error
       - name: Check
         run: |
           mkdir -p node_modules/.bin

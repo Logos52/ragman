@@ -3647,11 +3647,6 @@
     },
     {
       "rule": "R16",
-      "file": "README.md",
-      "fingerprint": "b64bb865"
-    },
-    {
-      "rule": "R16",
       "file": "data/demo/README.md",
       "fingerprint": "bdc5216a"
     },
@@ -3689,6 +3684,11 @@
       "rule": "R16",
       "file": "docs/DESIGN.md",
       "fingerprint": "939f3434"
+    },
+    {
+      "rule": "R16",
+      "file": "docs/DEVELOPMENT.md",
+      "fingerprint": "e6cbc91c"
     },
     {
       "rule": "R16",
